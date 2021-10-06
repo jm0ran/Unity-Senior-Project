@@ -338,6 +338,7 @@ GameObject:
   - component: {fileID: 1777034989}
   - component: {fileID: 1777034988}
   - component: {fileID: 1777034987}
+  - component: {fileID: 1777034990}
   m_Layer: 0
   m_Name: redsus1
   m_TagString: Interactable
@@ -360,7 +361,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 1.08
+  m_Radius: 0.84
 --- !u!212 &1777034988
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -428,6 +429,32 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &1777034990
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1777034986}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.032253265, y: 0.058055878}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.7419739, y: 0.7677765}
+  m_EdgeRadius: 0
 --- !u!1 &1973124997
 GameObject:
   m_ObjectHideFlags: 0
@@ -558,7 +585,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!95 &1973125002
 Animator:
   serializedVersion: 4
@@ -591,6 +618,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c6a0be40271446a9aaa6669d3327600, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentInterObj: {fileID: 0}
 --- !u!58 &1973125004
 CircleCollider2D:
   m_ObjectHideFlags: 0
