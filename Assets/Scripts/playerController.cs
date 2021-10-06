@@ -17,7 +17,7 @@ public class playerController : MonoBehaviour
 
     //Slighly different from start but also runs before the game starts
     void Awake(){
-        animator = GetComponent<Animator>();
+        animator = GetComponent<Animator>(); //Grabs the animator component from the object that this script is attached to
     }
     
     // Start is called before the first frame update
