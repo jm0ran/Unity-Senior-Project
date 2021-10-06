@@ -426,12 +426,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9917201024ab24928b82ae455abcd297, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 10
+  moveSpeed: 4
   turnLocked: 0
   rb: {fileID: 1973125001}
   animator: {fileID: 0}
   movement: {x: 0, y: 0}
   lastKey: 
+  horizontalSpeed: 0
+  verticalSpeed: 0
+  totSpeed: 0
 --- !u!50 &1973125001
 Rigidbody2D:
   serializedVersion: 4

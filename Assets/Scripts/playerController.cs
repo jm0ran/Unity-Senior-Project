@@ -11,7 +11,15 @@ public class playerController : MonoBehaviour
     public Animator animator; //Allows script access to animator
     public Vector2 movement;
     public string lastKey; //String to store the last key you pressed
+    public float horizontalSpeed;
+    public float verticalSpeed;
+    public float totSpeed;
 
+    //Slighly different from start but also runs before the game starts
+    void Awake(){
+        animator = GetComponent<Animator>();
+    }
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -81,6 +89,16 @@ public class playerController : MonoBehaviour
                 turnLocked = false;
             }
         }
+
+        //Below is where we define floats that the animation controller uses to manage states
+        horizontalSpeed = movement.x * moveSpeed;
+        verticalSpeed = movement.y * moveSpeed ;
+        totSpeed = horizontalSpeed + verticalSpeed;
+        animator.SetFloat("horizontalSpeed", horizontalSpeed);
+        animator.SetFloat("verticalSpeed", verticalSpeed);
+        animator.SetFloat("totSpeed", totSpeed);
+
+
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
         
     }
