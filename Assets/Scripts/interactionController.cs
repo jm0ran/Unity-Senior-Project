@@ -12,6 +12,11 @@ public class interactionController : MonoBehaviour
         
     }
 
+    void printHi(string message){
+        gameObject.SetActive(false);
+        Debug.Log(message);
+    }
+
     // Update is called once per frame
     void Update()
     {
