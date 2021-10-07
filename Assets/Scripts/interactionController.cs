@@ -8,12 +8,18 @@ public class interactionController : MonoBehaviour
     public bool talks;
     public bool item;
     public List<string> dia; //Creates a list for the Dialogue
+    public GameObject UI;
+    
+    void Awake(){
+        UI = GameObject.FindWithTag("UI");
+    }
 
 
     void renderSpeech(){
         foreach (string line in dia){
             Debug.Log(line);
         }
+        UI.SetActive(true);
         //This will be what creates and renders the dialougue, want to seperate the speech function
 
         //Steps:

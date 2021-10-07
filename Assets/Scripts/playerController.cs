@@ -35,8 +35,9 @@ public class playerController : MonoBehaviour
     //Will be used to lock player movement and actions during dialouge and the sorts
     void lockPlayer(bool state){
         locked = state;
-        movement.x = 0;
-        movement.y = 0;
+        animator.SetFloat("horizontalSpeed", 0);
+        animator.SetFloat("verticalSpeed", 0);
+        animator.SetFloat("totSpeed", 0);
     }
 
 
@@ -107,11 +108,12 @@ public class playerController : MonoBehaviour
             horizontalSpeed = movement.x * moveSpeed;
             verticalSpeed = movement.y * moveSpeed ;
             totSpeed = horizontalSpeed + verticalSpeed;
-            animator.SetFloat("horizontalSpeed", horizontalSpeed);
-            animator.SetFloat("verticalSpeed", verticalSpeed);
-            animator.SetFloat("totSpeed", totSpeed);
-
-
+            if(!locked){
+                animator.SetFloat("horizontalSpeed", horizontalSpeed);
+                animator.SetFloat("verticalSpeed", verticalSpeed);
+                animator.SetFloat("totSpeed", totSpeed);
+            }
+        
             rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
         }
     }
