@@ -7,9 +7,13 @@ public class interactionController : MonoBehaviour
     public float interactionRange; //Want to implement later
     public bool talks;
     public bool item;
+    public List<string> dia; //Creates a list for the Dialogue
 
 
     void renderSpeech(){
+        foreach (string line in dia){
+            Debug.Log(line);
+        }
         //This will be what creates and renders the dialougue, want to seperate the speech function
 
         //Steps:
@@ -27,6 +31,7 @@ public class interactionController : MonoBehaviour
     void printHi(GameObject player){
         gameObject.SetActive(false);
         player.SendMessage("lockPlayer", true);
+        renderSpeech();
     }
 
     // Update is called once per frame
