@@ -24,6 +24,10 @@ public class interactionController : MonoBehaviour
         inProgress = false;
     }
 
+    void Start(){
+        StartCoroutine(Testing());
+    }
+
 
     void renderSpeech(){
         totLines = dia.Count;
@@ -68,5 +72,17 @@ public class interactionController : MonoBehaviour
                 player.SendMessage("lockPlayer", false);
             }
         }
+    }
+    //Want to use an IENumerator to ignore input for 3 seconds after the press of a key
+    IEnumerator Testing(){
+        while(!Input.GetKeyDown(KeyCode.T)){
+            yield return null;
+        }
+        if(Input.GetKeyDown(KeyCode.T)){
+            Debug.Log("Triggered");
+            yield return new WaitForSeconds(5f);
+        }
+        StartCoroutine(Testing());
+
     }
 }
