@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Interactable
   - UI
+  - textBox
   layers:
   - Default
   - TransparentFX
