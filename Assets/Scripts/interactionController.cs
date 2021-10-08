@@ -53,7 +53,7 @@ public class interactionController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         if(inProgress && textProgress < nextLine){
             textBox.text = dia[textProgress];
