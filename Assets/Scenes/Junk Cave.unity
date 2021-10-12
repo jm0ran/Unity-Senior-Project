@@ -218,6 +218,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5249815743594813495, guid: 85e6383c979a647c7a77be99ebe037bd, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5249815743594813495, guid: 85e6383c979a647c7a77be99ebe037bd, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 5249815743594813495, guid: 85e6383c979a647c7a77be99ebe037bd, type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 1080
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 85e6383c979a647c7a77be99ebe037bd, type: 3}
 --- !u!4 &393431827 stripped
@@ -562,17 +574,30 @@ PrefabInstance:
       propertyPath: m_WasSpriteAssigned
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6719321019276836511, guid: be95b199e395e4317a43a7003b888e93, type: 3}
+      propertyPath: m_Radius
+      value: 0.95410776
+      objectReference: {fileID: 0}
+    - target: {fileID: 6719321019276836511, guid: be95b199e395e4317a43a7003b888e93, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.2939844
+      objectReference: {fileID: 0}
+    - target: {fileID: 6719321019276836511, guid: be95b199e395e4317a43a7003b888e93, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.07826424
+      objectReference: {fileID: 0}
     - target: {fileID: 6719321019276836513, guid: be95b199e395e4317a43a7003b888e93, type: 3}
       propertyPath: dia.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6719321019276836513, guid: be95b199e395e4317a43a7003b888e93, type: 3}
       propertyPath: dia.Array.data[0]
-      value: The hole smells like a dying animal...
+      value: Is Hole
       objectReference: {fileID: 0}
     - target: {fileID: 6719321019276836514, guid: be95b199e395e4317a43a7003b888e93, type: 3}
       propertyPath: m_Name
-      value: defaultNPC
+      value: Hole
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6719321019276836512, guid: be95b199e395e4317a43a7003b888e93, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: be95b199e395e4317a43a7003b888e93, type: 3}

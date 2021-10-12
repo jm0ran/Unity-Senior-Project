@@ -25,11 +25,12 @@ public class playerController : MonoBehaviour
     }
 
     //Fixed refresh time seperate from framerate
-    void FixedUpdate()
-    {
-        checkMovement();
+    void FixedUpdate(){
+        checkMovement();  
+    }
+    
+    void Update(){
         checkActions();
-        
     }
 
     //Will be used to lock player movement and actions during dialouge and the sorts
