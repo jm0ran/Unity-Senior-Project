@@ -45,7 +45,7 @@ public class playerController : MonoBehaviour
     void checkActions()
     {
         if(Input.GetKeyDown(KeyCode.E) && currentInterObj != null && !locked){ //Checks for keypress as well as that you are in range of an interactable object
-            currentInterObj.SendMessage("printHi", gameObject);
+            currentInterObj.SendMessage("startDia", gameObject);
         }
     }
 
