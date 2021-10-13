@@ -28,7 +28,7 @@ public class playerController : MonoBehaviour
     void FixedUpdate(){
         checkMovement();  
     }
-    
+
     void Update(){
         checkActions();
     }
@@ -123,6 +123,9 @@ public class playerController : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other){ //Runs when there is a collision between a trigger and regular collider
         if (other.tag == "Interactable"){
             currentInterObj = other.gameObject; //Stores collided object assuming it is tagged "Interactable"
+        }
+        if (other.tag == "door"){
+            other.gameObject.SendMessage("nextScene");
         }
     }
     void OnTriggerExit2D(Collider2D other){ //On exit with a trigger collision area

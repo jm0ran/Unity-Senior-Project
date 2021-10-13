@@ -8,6 +8,7 @@ TagManager:
   - UI
   - textBox
   - Map
+  - door
   layers:
   - Default
   - TransparentFX
