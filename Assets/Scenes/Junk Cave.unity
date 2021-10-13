@@ -485,6 +485,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destScene: 1
+  originScene: junkCave
+  nextCameraPos: topLeft
 --- !u!4 &1187256613
 Transform:
   m_ObjectHideFlags: 0

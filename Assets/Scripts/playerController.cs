@@ -19,9 +19,15 @@ public class playerController : MonoBehaviour
     public GameObject currentInterObj;
     public bool locked = false;
 
+    //Used for passing Camera values
+    public GameObject camObj;
+    public Camera cam;
+
     //Slighly different from start but also runs before the game starts
     void Awake(){
         animator = GetComponent<Animator>(); //Grabs the animator component from the object that this script is attached to
+        camObj = GameObject.FindWithTag("MainCamera");
+        cam = camObj.GetComponent<Camera>();
     }
 
     //Fixed refresh time seperate from framerate
@@ -49,7 +55,6 @@ public class playerController : MonoBehaviour
             currentInterObj.SendMessage("startDia", gameObject);
         }
     }
-
 
     //Move function accepts different directions
     void checkMovement()
@@ -125,6 +130,8 @@ public class playerController : MonoBehaviour
             currentInterObj = other.gameObject; //Stores collided object assuming it is tagged "Interactable"
         }
         if (other.tag == "door"){
+            sceneController.camSize = cam.orthographicSize;
+            sceneController.camAspect = cam.aspect;
             other.gameObject.SendMessage("nextScene");
         }
     }

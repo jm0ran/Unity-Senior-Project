@@ -12,8 +12,8 @@ public class cameraController : MonoBehaviour
     public float[] mapBoundaries;
     public float[] newCameraCords;
 
-    // Start is called before the first frame update
-    void Start()
+    //I have to be careful about the order I calls stuff like "Awake, Start, OnEnable, etc"
+    void Awake()
     {
         cam = gameObject.GetComponent<Camera>();
         map = GameObject.FindWithTag("Map");
@@ -27,17 +27,19 @@ public class cameraController : MonoBehaviour
         mapBoundaries[0] = mapSprite.bounds.extents.x;
         mapBoundaries[1] = mapSprite.bounds.extents.y;
 
-
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+        //If Camera's x position is at the maximum distance for X stop updating in relation to player
         if(cam.orthographicSize * cam.aspect + Mathf.Abs(player.position.x) < mapBoundaries[0]){
             newCameraCords[0] = player.position.x;
         }else{
             newCameraCords[0] = transform.position.x;
         }
+        //Same as before but for y
         if (cam.orthographicSize + Mathf.Abs(player.position.y) < mapBoundaries[1]){
             newCameraCords[1] = player.position.y;
         }else{
@@ -46,6 +48,17 @@ public class cameraController : MonoBehaviour
 
         transform.position = new Vector3(newCameraCords[0], newCameraCords[1], transform.position.z);
         
+    }
+
+    void setCamera(string cameraPos){
+        switch(cameraPos){
+            case "topLeft":
+                Debug.Log(sceneController.camSize);
+                newCameraCords[0] = -(mapBoundaries[0]) + sceneController.camSize * sceneController.camAspect;
+                newCameraCords [1] = (mapBoundaries[1]) - sceneController.camSize;
+                transform.position = new Vector3(newCameraCords[0], newCameraCords[1], transform.position.z);
+                break;
+        }
     }
 
 }
