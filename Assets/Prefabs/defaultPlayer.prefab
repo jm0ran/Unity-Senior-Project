@@ -111,6 +111,8 @@ MonoBehaviour:
   totSpeed: 0
   currentInterObj: {fileID: 0}
   locked: 0
+  camObj: {fileID: 0}
+  cam: {fileID: 0}
 --- !u!50 &5356381381487066198
 Rigidbody2D:
   serializedVersion: 4
