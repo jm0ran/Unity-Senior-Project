@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 6719321019276836509}
   - component: {fileID: 6719321019276836510}
   - component: {fileID: 6719321019276836511}
-  - component: {fileID: 6719321019276836512}
   - component: {fileID: 6719321019276836513}
   m_Layer: 0
   m_Name: defaultNPC
@@ -103,32 +102,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.84
---- !u!61 &6719321019276836512
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6719321019276836514}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.032253265, y: 0.058055878}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.7419739, y: 0.7677765}
-  m_EdgeRadius: 0
 --- !u!114 &6719321019276836513
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -141,13 +114,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30624858323d94c5d9b3d77a4a33689e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactionRange: 0
-  talks: 0
-  item: 0
   dia: []
   UI: {fileID: 0}
   player: {fileID: 0}
   textBox: {fileID: 0}
-  totLines: 7
+  totalLines: 0
   textProgress: 6
-  nextLine: 0

@@ -11,6 +11,7 @@ public class npcController : MonoBehaviour
     public Text textBox;
     public int totalLines;
     public int textProgress;
+    public string[] diaOrder;
     
     void Awake(){
         UI = GameObject.FindWithTag("UI");
