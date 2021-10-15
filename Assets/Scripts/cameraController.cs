@@ -27,6 +27,8 @@ public class cameraController : MonoBehaviour
         mapBoundaries[0] = mapSprite.bounds.extents.x;
         mapBoundaries[1] = mapSprite.bounds.extents.y;
 
+        player.position = new Vector3(sceneController.initPlayerPos[0], sceneController.initPlayerPos[1], player.position.z);
+        Debug.Log(sceneController.initPlayerPos[0]);
         
     }
 
@@ -53,9 +55,18 @@ public class cameraController : MonoBehaviour
     void setCamera(string cameraPos){
         switch(cameraPos){
             case "topLeft":
-                Debug.Log(sceneController.camSize);
                 newCameraCords[0] = -(mapBoundaries[0]) + sceneController.camSize * sceneController.camAspect;
                 newCameraCords [1] = (mapBoundaries[1]) - sceneController.camSize;
+                transform.position = new Vector3(newCameraCords[0], newCameraCords[1], transform.position.z);
+                break;
+            case "bottom":
+                newCameraCords[0] = 0f;
+                newCameraCords[1] = (-mapBoundaries[1]) + sceneController.camSize;
+                transform.position = new Vector3(newCameraCords[0], newCameraCords[1], transform.position.z);
+                break;
+            case "top":
+                newCameraCords[0] = 0f;
+                newCameraCords[1] = mapBoundaries[1] - sceneController.camSize;
                 transform.position = new Vector3(newCameraCords[0], newCameraCords[1], transform.position.z);
                 break;
         }

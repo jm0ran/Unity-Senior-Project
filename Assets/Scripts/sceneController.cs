@@ -8,6 +8,7 @@ public class sceneController : MonoBehaviour
     public static string cameraPos;
     public static float camSize;
     public static float camAspect;
+    public static float[] initPlayerPos = new float[2];
 
     public GameObject cam;
 
