@@ -21,11 +21,11 @@ public class npcController : MonoBehaviour
 
     void startDia(GameObject player){
         player.SendMessage("lockPlayer", true);
-        StartCoroutine(Testing());
         totalLines = dia.Count;
         textProgress = 0;
         textBox.text = dia[textProgress];
         UI.SetActive(true);
+         StartCoroutine(Testing());
     }
 
     IEnumerator Testing(){
