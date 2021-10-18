@@ -5,19 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class doorController : MonoBehaviour
 {
-    public int destScene;
-    public string originScene;
-    public string nextCameraPos;
-    public float destX;
-    public float destY;
-    // Start is called before the first frame update
+//------------------------------------------------------------------------
+//Main Variables Used in Scripts
+    public int destScene; //Destination scene
+    public string originScene; //Origin scene
+    public string nextCameraPos; //Next CameraPosition
+    public float destX; //X destination for player
+    public float destY; //Y destination for player
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
+//------------------------------------------------------------------------
+//Main User defined functions
     void nextScene(){
         //Grabs cam size because pixelperfect camera is weird
         sceneController.initPlayerPos[0] = destX;
@@ -26,4 +23,8 @@ public class doorController : MonoBehaviour
         sceneController.cameraPos = nextCameraPos;
         SceneManager.LoadScene(destScene);
     }
+
+//------------------------------------------------------------------------
+//Unity defined functions
+    
 }

@@ -4,16 +4,17 @@ using UnityEngine;
 
 public class UIController : MonoBehaviour
 {
-    // Start is called before the first frame update
+    //Want to use UI Controller to control what is being shown in the UI stuff like menus and Dialogue for when I have more than just textboxs
+    //------------------------------------------------------------------------
+    //Main variables used in Script
+
+    //------------------------------------------------------------------------
+    //User defined functions
+
+    //------------------------------------------------------------------------
+    //Unity Defined Functions
     void Start()
     {
-        gameObject.SetActive(false); //Disables object
-    }
-
-    void FixedUpdate()
-    {
-        //I will need to check for input values relating to clicking next on dialogue
-    }
-
-    //I need to retrieve the game object for the textbox so I can assign text to it
+        gameObject.SetActive(false); //Disables object initially so that the UI is not visable on the start of a Scene
+    }    
 }
