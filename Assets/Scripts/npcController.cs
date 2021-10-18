@@ -5,21 +5,19 @@ using UnityEngine.UI;
 
 public class npcController : MonoBehaviour
 {
+//------------------------------------------------------------------------
+//Main Variables Used in Scripts
     public List<string> dia; //Creates a list for the Dialogue
     public GameObject UI;
     public GameObject player;
     public Text textBox;
     public int totalLines;
     public int textProgress;
-    public string[] diaOrder;
-    
-    void Awake(){
-        UI = GameObject.FindWithTag("UI");
-        textBox = GameObject.FindWithTag("textBox").GetComponent<Text>();
-        player = GameObject.FindWithTag("Player");
-    }
+    public string[] diaOrder; //Will maybe be used for potraits of characters during Dialougue, still not exactly sure how I want to do this yet
 
-    void startDia(GameObject player){
+//------------------------------------------------------------------------
+//Main User Defined Functions
+    void startDia(GameObject player){ //Called by playerController in order to start the Dialougue System
         player.SendMessage("lockPlayer", true);
         totalLines = dia.Count;
         textProgress = 0;
@@ -28,7 +26,7 @@ public class npcController : MonoBehaviour
          StartCoroutine(Testing());
     }
 
-    IEnumerator Testing(){
+    IEnumerator Testing(){ //Coroutine called and loops through for Dialougue
         //This while loop will continue to test for KeyDown T (Temportary key used to progress the text)
         while(!Input.GetKeyDown(KeyCode.T)){
             yield return null;
@@ -44,5 +42,13 @@ public class npcController : MonoBehaviour
             player.SendMessage("lockPlayer", false);
             yield return null;
         }
+    }
+
+//------------------------------------------------------------------------
+//Unity Functions
+    void Awake(){
+        UI = GameObject.FindWithTag("UI");
+        textBox = GameObject.FindWithTag("textBox").GetComponent<Text>();
+        player = GameObject.FindWithTag("Player");
     }
 }
