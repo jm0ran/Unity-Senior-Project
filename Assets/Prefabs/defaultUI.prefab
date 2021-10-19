@@ -114,6 +114,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73b39212737614b3ab01d2e72a0122be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainProfile: {fileID: 21300000, guid: 36d3157372c22424fbb54872a37136ca, type: 3}
+  YeProfile: {fileID: 21300000, guid: 7d77372d4edfb4988a3a2a980e91db7c, type: 3}
+  gokuProfile: {fileID: 21300000, guid: bbb144f2c55fa46e8936cac0a85165f5, type: 3}
+  hunterProfile: {fileID: 21300000, guid: 471c0dbf933a24887b6b9cc9efb3bf57, type: 3}
+  banditProfile: {fileID: 21300000, guid: 19399b510768b42f09c60560acaf730a, type: 3}
+  imposterProfile: {fileID: 21300000, guid: 3834a6668aa234c4dbf097570cc25d06, type: 3}
+  profileObject: {fileID: 0}
+  profileImage: {fileID: 0}
 --- !u!1 &5249815743832172864
 GameObject:
   m_ObjectHideFlags: 0
@@ -285,7 +293,7 @@ GameObject:
   - component: {fileID: 6689954289670987874}
   m_Layer: 5
   m_Name: Image
-  m_TagString: Untagged
+  m_TagString: profileBox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

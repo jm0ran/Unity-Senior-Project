@@ -9,6 +9,7 @@ TagManager:
   - textBox
   - Map
   - door
+  - profileBox
   layers:
   - Default
   - TransparentFX
