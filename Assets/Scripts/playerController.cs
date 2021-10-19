@@ -16,6 +16,7 @@ public class playerController : MonoBehaviour
     public float horizontalSpeed;
     public float verticalSpeed;
     public float totSpeed;
+    public int lastDirection; //This variable will be used for storing the last direction of the player, up:1, down:2, right:3, left:4
 
     //Used for interaction
     public GameObject currentInterObj;
@@ -34,7 +35,7 @@ public class playerController : MonoBehaviour
         }
     }
     
-    void checkMovement() //Main movement logic called by the update function, over complicated to prevent 2 inputs at same time
+    void checkMovement() //Main movement logic called by the update function, over complicated to prevent 2 inputs at same time, this function is massive, I might want to split it up later on 
     {
         if(!locked){
             //I want to be careful of this code here, dont want it to cause jitters, it should but idk
@@ -81,10 +82,23 @@ public class playerController : MonoBehaviour
             horizontalSpeed = movement.x * moveSpeed;
             verticalSpeed = movement.y * moveSpeed ;
             totSpeed = horizontalSpeed + verticalSpeed;
+
+            //Defines last direction used fpr animation later on
+            if(horizontalSpeed > 0){
+                lastDirection = 3;
+            }else if(horizontalSpeed < 0){
+                lastDirection = 4;
+            }else if (verticalSpeed > 0){
+                lastDirection = 1;
+            }else  if(verticalSpeed < 0){
+                lastDirection = 2;
+            }
+
             if(!locked){
                 animator.SetFloat("horizontalSpeed", horizontalSpeed);
                 animator.SetFloat("verticalSpeed", verticalSpeed);
                 animator.SetFloat("totSpeed", totSpeed);
+                animator.SetInteger("lastDirection", lastDirection);
             }
             rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
         }

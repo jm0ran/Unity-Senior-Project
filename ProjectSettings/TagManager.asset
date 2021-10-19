@@ -46,3 +46,15 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: MapBase
+    uniqueID: 2596197983
+    locked: 0
+  - name: MapBelow
+    uniqueID: 4236558031
+    locked: 0
+  - name: Player
+    uniqueID: 1019733039
+    locked: 0
+  - name: MapAbove
+    uniqueID: 1260859883
+    locked: 0

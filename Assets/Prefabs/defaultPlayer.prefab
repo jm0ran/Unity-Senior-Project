@@ -74,8 +74,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1019733039
+  m_SortingLayer: 3
   m_SortingOrder: 1
   m_Sprite: {fileID: -1387206866, guid: 94b47762acdc6435eb0d11000a9a484b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -109,6 +109,7 @@ MonoBehaviour:
   horizontalSpeed: 0
   verticalSpeed: 0
   totSpeed: 0
+  lastDirection: 0
   currentInterObj: {fileID: 0}
   locked: 0
   camObj: {fileID: 0}
