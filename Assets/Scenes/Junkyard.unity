@@ -1322,15 +1322,51 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6719321019276836513, guid: be95b199e395e4317a43a7003b888e93, type: 3}
       propertyPath: dia.Array.size
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6719321019276836513, guid: be95b199e395e4317a43a7003b888e93, type: 3}
       propertyPath: dia.Array.data[0]
-      value: Press T to progress
+      value: Who are you
       objectReference: {fileID: 0}
     - target: {fileID: 6719321019276836513, guid: be95b199e395e4317a43a7003b888e93, type: 3}
       propertyPath: dia.Array.data[1]
-      value: This is a test of the Dialougue System
+      value: I am the imposter from AmongUZ
+      objectReference: {fileID: 0}
+    - target: {fileID: 6719321019276836513, guid: be95b199e395e4317a43a7003b888e93, type: 3}
+      propertyPath: dia.Array.data[2]
+      value: Doesn't that make you kinda yk
+      objectReference: {fileID: 0}
+    - target: {fileID: 6719321019276836513, guid: be95b199e395e4317a43a7003b888e93, type: 3}
+      propertyPath: dia.Array.data[3]
+      value: I'm not sus
+      objectReference: {fileID: 0}
+    - target: {fileID: 6719321019276836513, guid: be95b199e395e4317a43a7003b888e93, type: 3}
+      propertyPath: dia.Array.data[4]
+      value: Yo mama smell
+      objectReference: {fileID: 0}
+    - target: {fileID: 6719321019276836513, guid: be95b199e395e4317a43a7003b888e93, type: 3}
+      propertyPath: diaOrder.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6719321019276836513, guid: be95b199e395e4317a43a7003b888e93, type: 3}
+      propertyPath: diaOrder.Array.data[0]
+      value: Main
+      objectReference: {fileID: 0}
+    - target: {fileID: 6719321019276836513, guid: be95b199e395e4317a43a7003b888e93, type: 3}
+      propertyPath: diaOrder.Array.data[1]
+      value: Amongus
+      objectReference: {fileID: 0}
+    - target: {fileID: 6719321019276836513, guid: be95b199e395e4317a43a7003b888e93, type: 3}
+      propertyPath: diaOrder.Array.data[2]
+      value: Main
+      objectReference: {fileID: 0}
+    - target: {fileID: 6719321019276836513, guid: be95b199e395e4317a43a7003b888e93, type: 3}
+      propertyPath: diaOrder.Array.data[3]
+      value: Amongus
+      objectReference: {fileID: 0}
+    - target: {fileID: 6719321019276836513, guid: be95b199e395e4317a43a7003b888e93, type: 3}
+      propertyPath: diaOrder.Array.data[4]
+      value: Main
       objectReference: {fileID: 0}
     - target: {fileID: 6719321019276836514, guid: be95b199e395e4317a43a7003b888e93, type: 3}
       propertyPath: m_Name

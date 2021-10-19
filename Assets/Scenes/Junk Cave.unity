@@ -594,6 +594,14 @@ PrefabInstance:
       propertyPath: dia.Array.data[0]
       value: Is Hole
       objectReference: {fileID: 0}
+    - target: {fileID: 6719321019276836513, guid: be95b199e395e4317a43a7003b888e93, type: 3}
+      propertyPath: diaOrder.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6719321019276836513, guid: be95b199e395e4317a43a7003b888e93, type: 3}
+      propertyPath: diaOrder.Array.data[0]
+      value: Main
+      objectReference: {fileID: 0}
     - target: {fileID: 6719321019276836514, guid: be95b199e395e4317a43a7003b888e93, type: 3}
       propertyPath: m_Name
       value: Hole

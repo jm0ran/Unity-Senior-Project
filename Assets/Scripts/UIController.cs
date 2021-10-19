@@ -20,8 +20,19 @@ public class UIController : MonoBehaviour
 
     //------------------------------------------------------------------------
     //User defined functions
-    void changeProfile(){
+    void changeProfile(string inProfile){
         //This is where we're going to be changinng the profile photo for the charcter window
+        switch (inProfile){
+            case "Kanye":
+                profileBox.sprite = YeProfile;
+                break;
+            case "Amongus":
+                profileBox.sprite = imposterProfile;
+                break;
+            case "Main":
+                profileBox.sprite = mainProfile;
+                break;
+        }
     }
     void changeText(){
         //Want to move the functione used to update the text on the screen to here
@@ -33,7 +44,6 @@ public class UIController : MonoBehaviour
     {
         //Very initial testing of just how changing the image works in unity and stuff preparing for a system to change during dialougue
         profileBox = GameObject.FindWithTag("profileBox").GetComponent<Image>();
-        profileBox.sprite = gokuProfile;
         gameObject.SetActive(false); //Disables object initially so that the UI is not visable on the start of a Scene
     }    
 }
