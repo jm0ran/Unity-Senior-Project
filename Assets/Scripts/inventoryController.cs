@@ -10,7 +10,9 @@ public class inventoryController : MonoBehaviour
     void Start()
     {
         playerInv = new inventory();
+        playerInv.readFromJson();
         playerInv.addObj("Item Name Testing", 0);
+        playerInv.saveToJson();
         Debug.Log(JsonUtility.ToJson(playerInv)); //Just serializes and logs the info
     }
 
