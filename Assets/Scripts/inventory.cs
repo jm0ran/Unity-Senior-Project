@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -20,7 +21,15 @@ public class inventory
         System.IO.File.WriteAllText("./testData.json", jsonDataW);
     }
     public void readFromJson(){
-        string jsonDataR = System.IO.File.ReadAllText("./testData.json");
+        string jsonDataR = "";
+        //Work on this try catch loop tomorrow
+        
+        try{
+            jsonDataR = System.IO.File.ReadAllText("./testData.json");
+        }catch(Exception e){
+            Debug.Log("Could not locate the json file: " + e);
+        }
+        
         this.items = JsonUtility.FromJson<inventory>(jsonDataR).items;
     }
 }
