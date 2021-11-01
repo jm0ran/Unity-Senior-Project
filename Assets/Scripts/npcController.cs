@@ -17,7 +17,7 @@ public class npcController : MonoBehaviour
 
 //------------------------------------------------------------------------
 //Main User Defined Functions
-    void startDia(GameObject player){ //Called by playerController in order to start the Dialougue System
+    void startDia(){ //Called by playerController in order to start the Dialougue System
         player.SendMessage("lockPlayer", true);
         totalLines = dia.Count;
         textProgress = 0;
