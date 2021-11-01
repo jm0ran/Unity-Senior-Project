@@ -20,6 +20,7 @@ public class sceneController : MonoBehaviour
     //Add a boolean to determine if there is starting dialogue for this scene
     public bool triggered = false;
     public bool OpeningDia;
+    
 
 //------------------------------------------------------------------------
 //User defined functions
