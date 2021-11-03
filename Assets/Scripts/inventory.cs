@@ -5,6 +5,8 @@ using UnityEngine;
 using System.IO;
 using System.Text;
 
+//The inventory system is contained in a testing scene for the moment and will be implemented later
+
 [System.Serializable]
 public class inventory
 {
@@ -40,7 +42,7 @@ public class inventory
         string jsonDataW = JsonUtility.ToJson(this);
         System.IO.File.WriteAllText("SaveData/invData.json", jsonDataW);
     }
-    public void readFromJson(){
+    public void readFromJson(){ //Reads from json and creates an empty list if the json doesnt exist
         string jsonDataR = "";
         try{
             jsonDataR = System.IO.File.ReadAllText("SaveData/invData.json");
