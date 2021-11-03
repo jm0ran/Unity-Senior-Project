@@ -668,6 +668,50 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5600940388785363104, guid: 58b4be5f949a54d4da2b334d2443982a, type: 3}
+      propertyPath: dia.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5600940388785363104, guid: 58b4be5f949a54d4da2b334d2443982a, type: 3}
+      propertyPath: dia.Array.data[0]
+      value: "It\u2019s been three years since the accident\u2026"
+      objectReference: {fileID: 0}
+    - target: {fileID: 5600940388785363104, guid: 58b4be5f949a54d4da2b334d2443982a, type: 3}
+      propertyPath: dia.Array.data[1]
+      value: In 2032, the music industry collapsed
+      objectReference: {fileID: 0}
+    - target: {fileID: 5600940388785363104, guid: 58b4be5f949a54d4da2b334d2443982a, type: 3}
+      propertyPath: dia.Array.data[2]
+      value: 4 major artists took advantage of this moment
+      objectReference: {fileID: 0}
+    - target: {fileID: 5600940388785363104, guid: 58b4be5f949a54d4da2b334d2443982a, type: 3}
+      propertyPath: dia.Array.data[3]
+      value: " These artists split Kanye West\u2019s soul into 4 parts"
+      objectReference: {fileID: 0}
+    - target: {fileID: 5600940388785363104, guid: 58b4be5f949a54d4da2b334d2443982a, type: 3}
+      propertyPath: dia.Array.data[4]
+      value: His body was left petrified
+      objectReference: {fileID: 0}
+    - target: {fileID: 5600940388785363104, guid: 58b4be5f949a54d4da2b334d2443982a, type: 3}
+      propertyPath: diaOrder.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5600940388785363104, guid: 58b4be5f949a54d4da2b334d2443982a, type: 3}
+      propertyPath: diaOrder.Array.data[1]
+      value: Main
+      objectReference: {fileID: 0}
+    - target: {fileID: 5600940388785363104, guid: 58b4be5f949a54d4da2b334d2443982a, type: 3}
+      propertyPath: diaOrder.Array.data[2]
+      value: Main
+      objectReference: {fileID: 0}
+    - target: {fileID: 5600940388785363104, guid: 58b4be5f949a54d4da2b334d2443982a, type: 3}
+      propertyPath: diaOrder.Array.data[3]
+      value: Main
+      objectReference: {fileID: 0}
+    - target: {fileID: 5600940388785363104, guid: 58b4be5f949a54d4da2b334d2443982a, type: 3}
+      propertyPath: diaOrder.Array.data[4]
+      value: Main
+      objectReference: {fileID: 0}
     - target: {fileID: 5600940388785363107, guid: 58b4be5f949a54d4da2b334d2443982a, type: 3}
       propertyPath: m_Name
       value: startingDia

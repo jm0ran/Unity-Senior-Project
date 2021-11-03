@@ -77,3 +77,8 @@ crashlytics-build.properties
 #Mac Stuff
 .DS_Store
 .DS_Store?
+
+#Music Folder
+/Music/*
+!/Music/.gitkeep
+!/Music/whatToInclude.txt
