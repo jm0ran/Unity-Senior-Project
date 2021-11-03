@@ -79,6 +79,6 @@ crashlytics-build.properties
 .DS_Store?
 
 #Music Folder
-/Music/*
-!/Music/.gitkeep
-!/Music/whatToInclude.txt
+/Assets/Music/*
+!/Assets/Music/.gitkeep
+!/Assets/Music/whatToInclude.txt
