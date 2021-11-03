@@ -12,9 +12,9 @@ public class inventoryController : MonoBehaviour
         playerInv = new inventory();
         playerInv.readFromJson();
         playerInv.addObj("Item Name Testing", 0);
+        playerInv.remObj(playerInv.findObj("Locate Item"), 2);
+        Debug.Log(playerInv.findObj("Locate Item"));
         playerInv.saveToJson();
-        playerInv.findObj("Locate Item");
-        Debug.Log(JsonUtility.ToJson(playerInv)); //Just serializes and logs the info
     }
 
 }
