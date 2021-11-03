@@ -13,6 +13,7 @@ public class inventoryController : MonoBehaviour
         playerInv.readFromJson();
         playerInv.addObj("Item Name Testing", 0);
         playerInv.saveToJson();
+        playerInv.findObj("Locate Item");
         Debug.Log(JsonUtility.ToJson(playerInv)); //Just serializes and logs the info
     }
 
