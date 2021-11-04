@@ -1,0 +1,24 @@
+{
+    "map": [
+        {
+            "time": 0.16,
+            "button": "up"
+        },
+        {
+            "time": 1.52,
+            "button": "up"
+        },
+        {
+            "time": 2.90,
+            "button": "up"
+        },
+        {
+            "time": 4.28,
+            "button": "up"
+        },
+        {
+            "time": 5.66,
+            "button": "up"
+        }
+    ]
+}

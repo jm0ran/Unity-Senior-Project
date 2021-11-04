@@ -8,30 +8,41 @@ public class audioTestController : MonoBehaviour
     public GameObject testObj;
     public beatMap mainMap;
 
+    //User Defined Functions
+    void visualizeNote(){
+        if(mainMap.map.Count > 0 && testAudio.time > mainMap.map[0].time){
+            Debug.Log(mainMap.map.Count);
+            mainMap.map.RemoveAt(0);
+            testObj.GetComponent<SpriteRenderer>().enabled = false;
+            StartCoroutine(ExecuteAfterTime());
+        }
+    }
+
+
+
     // Start is called before the first frame update
     void Start()
     {
+        //Creates and starts audio
         testAudio = gameObject.GetComponent<AudioSource>();
         testAudio.Play();
 
-        //Messing around with beatmaps and checking them out 
+        //Imports the beatMap's json file which holds the information on each note
         mainMap = new beatMap();
-        mainMap.addNote(1.2f, "up");
-        //I have to be careful because unity serializes floats in weird and wacky ways 
-        Debug.Log(JsonUtility.ToJson(mainMap));
+        mainMap.readBeatMap("Runaway.json");
     }
 
     // Update is called once per frame
     void Update()
     {
+        visualizeNote();
         if(Input.GetKey("p")){
             testAudio.Pause();
         }else if(Input.GetKey("o")){
             testAudio.UnPause();
         }
         if(Input.GetKeyDown("space")){
-            testObj.GetComponent<SpriteRenderer>().enabled = false;
-            StartCoroutine(ExecuteAfterTime());
+            Debug.Log(testAudio.time);
         }
     }
     void FixedUpdate(){
@@ -39,9 +50,7 @@ public class audioTestController : MonoBehaviour
     }
 
     IEnumerator ExecuteAfterTime(){
-        Debug.Log("Started");
         yield return new WaitForSeconds(0.2f);
-        Debug.Log("Reenabled");
         testObj.GetComponent<SpriteRenderer>().enabled = true;
     }
 }

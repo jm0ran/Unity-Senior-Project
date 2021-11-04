@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
 
 [System.Serializable]
 public class beatMap{
@@ -16,6 +17,6 @@ public class beatMap{
     }
 
     public void readBeatMap(string path){
-        //Going to read a beatmap from a file
+        this.map = JsonUtility.FromJson<beatMap>(File.ReadAllText(Path.Combine(Application.streamingAssetsPath, path))).map;
     }
 }
