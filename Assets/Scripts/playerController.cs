@@ -37,7 +37,7 @@ public class playerController : MonoBehaviour
                     currentInterObj.SendMessage("startDia");
                     break;
                 case "chest":
-                    Debug.Log("Chest");
+                    currentInterObj.SendMessage("openChest");
                     break;
             }
         }

@@ -6,12 +6,19 @@ public class audioTestController : MonoBehaviour
 {
     public AudioSource testAudio;
     public GameObject testObj;
+    public beatMap mainMap;
 
     // Start is called before the first frame update
     void Start()
     {
         testAudio = gameObject.GetComponent<AudioSource>();
         testAudio.Play();
+
+        //Messing around with beatmaps and checking them out 
+        mainMap = new beatMap();
+        mainMap.addNote(1.2f, "up");
+        //I have to be careful because unity serializes floats in weird and wacky ways 
+        Debug.Log(JsonUtility.ToJson(mainMap));
     }
 
     // Update is called once per frame
