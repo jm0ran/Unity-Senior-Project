@@ -23,7 +23,6 @@ public class npcController : MonoBehaviour
     void startDia(){ //Called by playerController in order to start the Dialougue System
         bool willContinue = true;
         if(oneTime){
-            Debug.Log(persistController.gameProg[persistID]);
             if(!persistController.gameProg[persistID]){
                 willContinue = true;
                 persistController.gameProg[persistID] = true;

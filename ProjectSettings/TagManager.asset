@@ -11,6 +11,7 @@ TagManager:
   - door
   - profileBox
   - startingDia
+  - chest
   layers:
   - Default
   - TransparentFX

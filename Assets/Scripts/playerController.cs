@@ -31,7 +31,15 @@ public class playerController : MonoBehaviour
     void checkActions() //Called within Update loop to check for player interaction input
     {
         if(Input.GetKeyDown(KeyCode.E) && currentInterObj != null && !locked){ //Checks for keypress as well as that you are in range of an interactable object
-            currentInterObj.SendMessage("startDia");
+            switch (currentInterObj.tag)
+            {
+                case "Interactable":
+                    currentInterObj.SendMessage("startDia");
+                    break;
+                case "chest":
+                    Debug.Log("Chest");
+                    break;
+            }
         }
     }
     
@@ -131,16 +139,19 @@ public class playerController : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other){ //Runs when there is a collision between a trigger and regular collider
         if (other.tag == "Interactable"){
             currentInterObj = other.gameObject; //Stores collided object assuming it is tagged "Interactable"
+        }else if(other.tag == "chest"){
+            currentInterObj = other.gameObject;
         }
         if (other.tag == "door"){
             sceneController.camSize = cam.orthographicSize;
             sceneController.camAspect = cam.aspect;
             other.gameObject.SendMessage("nextScene");
         }
+
     }
 
     void OnTriggerExit2D(Collider2D other){ //On exit with a trigger collision area
-        if (other.tag == "Interactable" && other.gameObject == currentInterObj){
+        if (/*other.tag == "Interactable" && */other.gameObject == currentInterObj){
             currentInterObj = null; //Resets the object assuming it's equal to the current game object
         }
     }
