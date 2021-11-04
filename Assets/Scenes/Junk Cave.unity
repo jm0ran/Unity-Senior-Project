@@ -669,6 +669,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5600940388785363104, guid: 58b4be5f949a54d4da2b334d2443982a, type: 3}
+      propertyPath: oneTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5600940388785363104, guid: 58b4be5f949a54d4da2b334d2443982a, type: 3}
+      propertyPath: persistID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5600940388785363104, guid: 58b4be5f949a54d4da2b334d2443982a, type: 3}
       propertyPath: dia.Array.size
       value: 5
       objectReference: {fileID: 0}

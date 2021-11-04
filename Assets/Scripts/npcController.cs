@@ -14,17 +14,32 @@ public class npcController : MonoBehaviour
     public Text textBox;
     public int totalLines;
     public int textProgress;
+    [Header("Persistance")]
+    public bool oneTime = false; //Determines whether or not this is a one time event
+    public int persistID = -1; //Set to -1 by default to call errors instead of false flags
 
 //------------------------------------------------------------------------
 //Main User Defined Functions
     void startDia(){ //Called by playerController in order to start the Dialougue System
-        player.SendMessage("lockPlayer", true);
-        totalLines = dia.Count;
-        textProgress = 0;
-        UI.SetActive(true); //Be careful here, want to clear out default values in UI at some point
-        UI.SendMessage("changeProfile", diaOrder[textProgress]);
-        textBox.text = dia[textProgress];
-         StartCoroutine(DiaLoop());
+        bool willContinue = true;
+        if(oneTime){
+            Debug.Log(persistController.gameProg[persistID]);
+            if(!persistController.gameProg[persistID]){
+                willContinue = true;
+                persistController.gameProg[persistID] = true;
+            }else{
+                willContinue = false;
+            }
+        }
+        if(willContinue){
+            player.SendMessage("lockPlayer", true);
+            totalLines = dia.Count;
+            textProgress = 0;
+            UI.SetActive(true); //Be careful here, want to clear out default values in UI at some point
+            UI.SendMessage("changeProfile", diaOrder[textProgress]); //Sends photo for dialogue
+            textBox.text = dia[textProgress]; //Sets the text for the dialogue
+            StartCoroutine(DiaLoop());
+        }
     }
 
     IEnumerator DiaLoop(){ //Coroutine called and loops through for Dialougue
