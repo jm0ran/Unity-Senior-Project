@@ -19,6 +19,38 @@
         {
             "time": 5.66,
             "button": "up"
+        },
+        {
+            "time": 7.04,
+            "button": "up"
+        },
+        {
+            "time": 8.41,
+            "button": "up"
+        },
+        {
+            "time": 9.81,
+            "button": "up"
+        },
+        {
+            "time": 11.18,
+            "button": "up"
+        },
+        {
+            "time": 12.54,
+            "button": "up"
+        },
+        {
+            "time": 13.93,
+            "button": "up"
+        },
+        {
+            "time": 15.30,
+            "button": "up"
+        },
+        {
+            "time": 16.69,
+            "button": "up"
         }
     ]
 }
