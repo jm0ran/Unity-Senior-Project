@@ -23,6 +23,12 @@ public class doorController : MonoBehaviour
         sceneController.cameraPos = nextCameraPos;
         SceneManager.LoadScene(destScene);
     }
+    //TEMPORARY CODE TO TRANSITION TO MUSIC SECTION IN BUILD
+    void Update(){
+        if(Input.GetKeyDown("m")){
+            SceneManager.LoadScene(4);
+        }
+    }
 
 //------------------------------------------------------------------------
 //Unity defined functions

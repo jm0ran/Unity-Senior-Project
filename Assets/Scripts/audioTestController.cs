@@ -5,6 +5,8 @@ using UnityEngine;
 public class audioTestController : MonoBehaviour
 {
     public AudioSource testAudio;
+    public GameObject testObj;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,7 +22,19 @@ public class audioTestController : MonoBehaviour
         }else if(Input.GetKey("o")){
             testAudio.UnPause();
         }
+        if(Input.GetKeyDown("space")){
+            testObj.GetComponent<SpriteRenderer>().enabled = false;
+            StartCoroutine(ExecuteAfterTime());
+        }
     }
     void FixedUpdate(){
-        Debug.Log(testAudio.time);
+        //Debug.Log(testAudio.time);
     }
+
+    IEnumerator ExecuteAfterTime(){
+        Debug.Log("Started");
+        yield return new WaitForSeconds(0.2f);
+        Debug.Log("Reenabled");
+        testObj.GetComponent<SpriteRenderer>().enabled = true;
+    }
+}
