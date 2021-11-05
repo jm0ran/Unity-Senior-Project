@@ -6,6 +6,7 @@ public class audioTestController : MonoBehaviour
 {
     public AudioSource testAudio;
     public GameObject testObj;
+    public GameObject arrowPrefab;
     public beatMap mainMap;
 
     //User Defined Functions
@@ -18,11 +19,17 @@ public class audioTestController : MonoBehaviour
         }
     }
 
-
+    void newArrow(float triggerTime, string button){ //This is my function that is going to instantiate my arrow
+        noteController newArrow = Instantiate(arrowPrefab).GetComponent<noteController>(); //This is what creates an arrow, this is also what I'll be doing with my script
+        newArrow.triggerTime = 1.3f;
+        newArrow.button = "button";
+    }
 
     // Start is called before the first frame update
     void Start()
     {
+        newArrow(1.4f, "up");
+
         //Creates and starts audio
         testAudio = gameObject.GetComponent<AudioSource>();
         testAudio.Play();
