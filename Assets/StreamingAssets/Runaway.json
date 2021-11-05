@@ -1,56 +1,68 @@
 {
     "map": [
         {
-            "time": 0.16,
+            "time": 0.10,
             "button": "up"
         },
         {
-            "time": 1.52,
+            "time": 1.47,
             "button": "up"
         },
         {
-            "time": 2.90,
+            "time": 2.85,
             "button": "up"
         },
         {
-            "time": 4.28,
+            "time": 4.23,
             "button": "up"
         },
         {
-            "time": 5.66,
+            "time": 5.61,
             "button": "up"
         },
         {
-            "time": 7.04,
+            "time": 6.99,
             "button": "up"
         },
         {
-            "time": 8.41,
+            "time": 8.37,
             "button": "up"
         },
         {
-            "time": 9.81,
+            "time": 9.75,
             "button": "up"
         },
         {
-            "time": 11.18,
+            "time": 11.13,
             "button": "up"
         },
         {
-            "time": 12.54,
+            "time": 12.50,
             "button": "up"
         },
         {
-            "time": 13.93,
+            "time": 13.88,
             "button": "up"
         },
         {
-            "time": 15.30,
+            "time": 15.27,
             "button": "up"
         },
         {
-            "time": 16.69,
+            "time": 16.65,
             "button": "up"
+        },
+        {
+            "time": 18.025,
+            "button": "up"
+        },
+        {
+            "time": 19.40,
+            "button": "up"
+        },
+        {
+            "time": 20.78,
+            "button": "down"
         }
     ]
 }
