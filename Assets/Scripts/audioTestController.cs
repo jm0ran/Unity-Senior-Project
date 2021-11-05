@@ -8,14 +8,11 @@ public class audioTestController : MonoBehaviour
     public GameObject arrowPrefab;
     public beatMap mainMap;
     public float delayStart;
-    public float targetX;
+    public float timeToTarget;
     public float noteSpawnPos;
-    private float timeToTarget;
 
     //User Defined Functions
-    void visualizeNote(){
-        Debug.Log((mainMap.map[0].time + delayStart - timeToTarget) - Time.timeSinceLevelLoad);
-        
+    void visualizeNote(){        
         if(mainMap.map.Count > 0 && (Time.timeSinceLevelLoad) > (mainMap.map[0].time + delayStart - timeToTarget)){
             newArrow(mainMap.map[0].time, mainMap.map[0].button);
         }
@@ -40,7 +37,6 @@ public class audioTestController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        timeToTarget = (noteSpawnPos - targetX) / (0.1f * 60f);
         testAudio = gameObject.GetComponent<AudioSource>();
         //Imports the beatMap's json file which holds the information on each note
         mainMap = new beatMap();

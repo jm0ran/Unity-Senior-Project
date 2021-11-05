@@ -28,7 +28,7 @@ public class noteController : MonoBehaviour
         rb = gameObject.GetComponent<Rigidbody2D>();
     }
     void Update(){
-        transform.Translate(Vector3.left * (10.5f / 1.75f) * Time.deltaTime);
+        transform.Translate(Vector3.left * (10.5f / 3f) * Time.deltaTime);
     }
 
 

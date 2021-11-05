@@ -256,8 +256,8 @@ MonoBehaviour:
   arrowPrefab: {fileID: 2641462043934423796, guid: 904e7b30347594ea8967c3fadb9bdf48, type: 3}
   mainMap:
     map: []
-  delayStart: 2
-  targetX: -4.5
+  delayStart: 4
+  timeToTarget: 3
   noteSpawnPos: 6
 --- !u!82 &1459815464
 AudioSource:
