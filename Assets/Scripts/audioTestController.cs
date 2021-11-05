@@ -25,6 +25,7 @@ public class audioTestController : MonoBehaviour
         noteController newArrowNC = newArrow.GetComponent<noteController>(); 
         newArrowNC.triggerTime = triggerTime;
         newArrowNC.button = button;
+        newArrowNC.timeToTarget = timeToTarget;
         
     }
 

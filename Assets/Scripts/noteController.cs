@@ -9,6 +9,7 @@ public class noteController : MonoBehaviour
     public string button;
     public Rigidbody2D rb;
     public float speed = 1;
+    public float timeToTarget;
 
     //User Defined Functions
     public void moveNote(){
@@ -28,7 +29,7 @@ public class noteController : MonoBehaviour
         rb = gameObject.GetComponent<Rigidbody2D>();
     }
     void Update(){
-        transform.Translate(Vector3.left * (10.5f / 3f) * Time.deltaTime);
+        transform.Translate(Vector3.left * (10.5f / timeToTarget) * Time.deltaTime);
     }
 
 
