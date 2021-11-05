@@ -118,8 +118,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 49813e93f153546259bcc13dc943e1e5
-      internalID: -264477474
+      spriteID: 0a969fcc9ad9641e39c6dc94ae744a09
+      internalID: 1130564420
       vertices: []
       indices: 
       edges: []
@@ -139,8 +139,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fa68f8aa73b46495cbfca293fb7f50ac
-      internalID: -1522412505
+      spriteID: bbdc0381ae76a4167b8608a4f1addf5b
+      internalID: 735763953
       vertices: []
       indices: 
       edges: []
@@ -160,8 +160,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d4df520a0d86a4e649b73bccb5332d04
-      internalID: -828314778
+      spriteID: ae522d2a77b3644a1a84faadb12fb697
+      internalID: -1258319381
       vertices: []
       indices: 
       edges: []
@@ -181,8 +181,92 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1fc55c9f7e364468682c5b8f7042ad17
-      internalID: -1089683965
+      spriteID: de8bd740367eb467eadf1a8a56b45ede
+      internalID: -757019719
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: battleArrows_4
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d69318bd9d394531966cdfc7f4eeb0b
+      internalID: -1360287569
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: battleArrows_5
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f6e5e09fd2387467b97b3f774c8505fb
+      internalID: 1304149517
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: battleArrows_6
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a53176b0a3a048d2b13770340628811
+      internalID: 1757675767
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: battleArrows_7
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cfa4f3e1c2b5845b99768db91fc8bf4e
+      internalID: -1331380268
       vertices: []
       indices: 
       edges: []
@@ -198,10 +282,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      battleArrows_2: -828314778
-      battleArrows_0: -264477474
-      battleArrows_1: -1522412505
-      battleArrows_3: -1089683965
+      battleArrows_2: -1258319381
+      battleArrows_5: 1304149517
+      battleArrows_0: 1130564420
+      battleArrows_6: 1757675767
+      battleArrows_7: -1331380268
+      battleArrows_1: 735763953
+      battleArrows_4: -1360287569
+      battleArrows_3: -757019719
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

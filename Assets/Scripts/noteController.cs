@@ -10,6 +10,7 @@ public class noteController : MonoBehaviour
     public Rigidbody2D rb;
     public float speed = 1;
     public float timeToTarget;
+    public float trackDistance;
 
     //User Defined Functions
     public void moveNote(){
@@ -17,6 +18,9 @@ public class noteController : MonoBehaviour
             Destroy(gameObject);
         }
         //rb.MovePosition(new Vector2(rb.position.x - 0.1f,rb.position.y) * Time.deltaTime);
+    }
+    public void triggerNote(){ //
+        Debug.Log("Triggered Note");
     }
 
 
@@ -29,7 +33,7 @@ public class noteController : MonoBehaviour
         rb = gameObject.GetComponent<Rigidbody2D>();
     }
     void Update(){
-        transform.Translate(Vector3.left * (10.5f / timeToTarget) * Time.deltaTime);
+        transform.Translate(Vector3.left * (trackDistance / timeToTarget) * Time.deltaTime);
     }
 
 

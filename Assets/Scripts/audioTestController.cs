@@ -9,7 +9,9 @@ public class audioTestController : MonoBehaviour
     public beatMap mainMap;
     public float delayStart;
     public float timeToTarget;
-    public float noteSpawnPos;
+    public float noteSpawnX;
+    public float noteSpawnY;
+    public float noteTargetX;
 
     //User Defined Functions
     void visualizeNote(){        
@@ -21,11 +23,12 @@ public class audioTestController : MonoBehaviour
     void newArrow(float triggerTime, string button){ //This is my function that is going to instantiate my arrow
         mainMap.map.RemoveAt(0);
         GameObject newArrow = Instantiate(arrowPrefab); //This is what creates an arrow, this is also what I'll be doing with my script
-        newArrow.transform.position = new Vector3(noteSpawnPos,2,0); //Want to change this based on note type
+        newArrow.transform.position = new Vector3(noteSpawnX,noteSpawnY,0); //Want to change this based on note type
         noteController newArrowNC = newArrow.GetComponent<noteController>(); 
         newArrowNC.triggerTime = triggerTime;
         newArrowNC.button = button;
         newArrowNC.timeToTarget = timeToTarget;
+        newArrowNC.trackDistance = noteSpawnX - noteTargetX;
         
     }
 
