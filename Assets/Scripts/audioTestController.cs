@@ -5,31 +5,26 @@ using UnityEngine;
 public class audioTestController : MonoBehaviour
 {
     public AudioSource testAudio;
-    public GameObject testObj;
     public GameObject arrowPrefab;
     public beatMap mainMap;
 
     //User Defined Functions
     void visualizeNote(){
         if(mainMap.map.Count > 0 && testAudio.time > mainMap.map[0].time){
-            Debug.Log(mainMap.map.Count);
+            newArrow(mainMap.map[0].time, mainMap.map[0].button);
             mainMap.map.RemoveAt(0);
-            testObj.GetComponent<SpriteRenderer>().enabled = false;
-            StartCoroutine(ExecuteAfterTime());
         }
     }
 
     void newArrow(float triggerTime, string button){ //This is my function that is going to instantiate my arrow
         noteController newArrow = Instantiate(arrowPrefab).GetComponent<noteController>(); //This is what creates an arrow, this is also what I'll be doing with my script
-        newArrow.triggerTime = 1.3f;
-        newArrow.button = "button";
+        newArrow.triggerTime = triggerTime;
+        newArrow.button = button;
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        newArrow(1.4f, "up");
-
         //Creates and starts audio
         testAudio = gameObject.GetComponent<AudioSource>();
         testAudio.Play();
@@ -56,8 +51,4 @@ public class audioTestController : MonoBehaviour
         //Debug.Log(testAudio.time);
     }
 
-    IEnumerator ExecuteAfterTime(){
-        yield return new WaitForSeconds(0.2f);
-        testObj.GetComponent<SpriteRenderer>().enabled = true;
-    }
 }
