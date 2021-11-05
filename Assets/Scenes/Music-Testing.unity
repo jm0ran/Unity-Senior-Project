@@ -200,7 +200,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 179369564}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.03715986, y: 0.215536, z: 0}
+  m_LocalPosition: {x: 1.52, y: -0.53, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -254,6 +254,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   testAudio: {fileID: 0}
   testObj: {fileID: 179369564}
+  arrowPrefab: {fileID: 2641462043934423796, guid: 904e7b30347594ea8967c3fadb9bdf48, type: 3}
+  mainMap:
+    map: []
 --- !u!82 &1459815464
 AudioSource:
   m_ObjectHideFlags: 0
