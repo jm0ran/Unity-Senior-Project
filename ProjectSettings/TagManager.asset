@@ -12,6 +12,7 @@ TagManager:
   - profileBox
   - startingDia
   - chest
+  - arrow
   layers:
   - Default
   - TransparentFX
