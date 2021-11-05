@@ -7,10 +7,7 @@ public class noteController : MonoBehaviour
     //Predefined Variables
     public float triggerTime;
     public string button;
-    public Vector2 startLocation; 
     public Rigidbody2D rb;
-
-
 
     //User Defined Functions
     public void moveNote(){
@@ -24,10 +21,7 @@ public class noteController : MonoBehaviour
         moveNote();
     }
     public void Awake(){
-        //rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
-
         rb = gameObject.GetComponent<Rigidbody2D>();
-        
     }
 
 

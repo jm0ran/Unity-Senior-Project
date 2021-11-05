@@ -17,9 +17,12 @@ public class audioTestController : MonoBehaviour
     }
 
     void newArrow(float triggerTime, string button){ //This is my function that is going to instantiate my arrow
-        noteController newArrow = Instantiate(arrowPrefab).GetComponent<noteController>(); //This is what creates an arrow, this is also what I'll be doing with my script
-        newArrow.triggerTime = triggerTime;
-        newArrow.button = button;
+        GameObject newArrow = Instantiate(arrowPrefab); //This is what creates an arrow, this is also what I'll be doing with my script
+        newArrow.transform.position = new Vector3(3,2,0); //Want to change this based on note type
+        noteController newArrowNC = newArrow.GetComponent<noteController>(); 
+        newArrowNC.triggerTime = triggerTime;
+        newArrowNC.button = button;
+        
     }
 
     // Start is called before the first frame update
