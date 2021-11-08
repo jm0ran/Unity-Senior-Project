@@ -2,8 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class audioTestController : MonoBehaviour
+public class audioController : MonoBehaviour
 {
+    //Static Funny
+    public static float songTime = 0;
+
     public AudioSource testAudio;
     public GameObject arrowPrefab;
     public beatMap mainMap;
@@ -18,6 +21,10 @@ public class audioTestController : MonoBehaviour
         if(mainMap.map.Count > 0 && (Time.timeSinceLevelLoad) > (mainMap.map[0].time + delayStart - timeToTarget)){
             newArrow(mainMap.map[0].time, mainMap.map[0].button);
         }
+    }
+
+    void updateSongTime(){
+        songTime = testAudio.time;
     }
 
     void newArrow(float triggerTime, string button){ //This is my function that is going to instantiate my arrow
@@ -52,6 +59,7 @@ public class audioTestController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        updateSongTime();
         visualizeNote();
         if(Input.GetKey("p")){
             testAudio.Pause();

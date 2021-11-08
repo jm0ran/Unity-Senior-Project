@@ -13,6 +13,7 @@ TagManager:
   - startingDia
   - chest
   - arrow
+  - audioController
   layers:
   - Default
   - TransparentFX
