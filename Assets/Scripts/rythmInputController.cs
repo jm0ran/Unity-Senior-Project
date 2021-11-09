@@ -8,10 +8,15 @@ public class rythmInputController : MonoBehaviour
     
     //Define in Unity
     public string direction;
+    public Sprite invertedArrow;
+    public Sprite mainSprite;
+    public SpriteRenderer spriteRenderer;
 
 
 //User Defined Functions
-    void triggerCurrentNote(){
+    void triggerCurrentNote(){ 
+        spriteRenderer.sprite = invertedArrow;
+        StartCoroutine(returnToSprite(0.25f));
         if(currentNotes.Count > 0){ //The closest note to the player is going to be 0 in the array, besides for the possible edgecase of a passed note, but thats an edgecase to work on later
             GameObject contactNote = currentNotes[0];
             currentNotes.RemoveAt(0);
@@ -24,10 +29,17 @@ public class rythmInputController : MonoBehaviour
         }
     }
 
+    IEnumerator returnToSprite(float delay){
+        Debug.Log("Coroutine");
+        yield return new WaitForSeconds(delay);
+        spriteRenderer.sprite = mainSprite;
+    }
+
 
 
 //Unity Defined Functions
     void Start(){
+        spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
     }
 
     void OnTriggerEnter2D(Collider2D other){
