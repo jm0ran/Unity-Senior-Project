@@ -6,15 +6,15 @@
         },
         {
             "time": 1.47,
-            "button": "up"
+            "button": "down"
         },
         {
             "time": 2.85,
-            "button": "up"
+            "button": "right"
         },
         {
             "time": 4.23,
-            "button": "up"
+            "button": "left"
         },
         {
             "time": 5.61,
@@ -22,15 +22,15 @@
         },
         {
             "time": 6.99,
-            "button": "up"
+            "button": "down"
         },
         {
             "time": 8.37,
-            "button": "up"
+            "button": "right"
         },
         {
             "time": 9.75,
-            "button": "up"
+            "button": "left"
         },
         {
             "time": 11.13,
@@ -38,15 +38,15 @@
         },
         {
             "time": 12.50,
-            "button": "up"
+            "button": "down"
         },
         {
             "time": 13.88,
-            "button": "up"
+            "button": "right"
         },
         {
             "time": 15.27,
-            "button": "up"
+            "button": "left"
         },
         {
             "time": 16.65,
@@ -54,15 +54,15 @@
         },
         {
             "time": 18.025,
-            "button": "up"
+            "button": "down"
         },
         {
             "time": 19.40,
-            "button": "up"
+            "button": "right"
         },
         {
             "time": 20.78,
-            "button": "down"
+            "button": "left"
         }
     ]
 }

@@ -13,7 +13,7 @@ public class audioController : MonoBehaviour
     public float delayStart;
     public float timeToTarget;
     public float noteSpawnX;
-    public float noteSpawnY;
+    private float noteSpawnY;
     public float noteTargetX;
 
     //User Defined Functions
@@ -30,6 +30,22 @@ public class audioController : MonoBehaviour
     void newArrow(float triggerTime, string button){ //This is my function that is going to instantiate my arrow
         mainMap.map.RemoveAt(0);
         GameObject newArrow = Instantiate(arrowPrefab); //This is what creates an arrow, this is also what I'll be doing with my script
+        noteSpawnY = 0f; //Default in case beatmap is wrong
+        switch(button){
+            case "up":
+                noteSpawnY = 1.5f;
+                break;
+            case "down":
+                noteSpawnY = 0.5f;
+                break;
+            case "right":
+                noteSpawnY = -0.5f;
+                break;
+            case "left":
+                noteSpawnY = -1.5f;
+                break;
+        }
+        
         newArrow.transform.position = new Vector3(noteSpawnX,noteSpawnY,0); //Want to change this based on note type
         noteController newArrowNC = newArrow.GetComponent<noteController>(); 
         newArrowNC.triggerTime = triggerTime;
