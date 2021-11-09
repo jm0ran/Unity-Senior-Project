@@ -12,6 +12,14 @@ public class noteController : MonoBehaviour
     public float timeToTarget;
     public float trackDistance;
 
+    //Sprites for the arrows, assined in unity
+    public Sprite upSprite;
+    public Sprite downSprite;
+    public Sprite rightSprite;
+    public Sprite leftSprite;
+    
+    public SpriteRenderer spriteRenderer;
+
     //User Defined Functions
     public void moveNote(){
         if(rb.position.x < -7.5){
@@ -31,6 +39,24 @@ public class noteController : MonoBehaviour
     }
     public void Awake(){
         rb = gameObject.GetComponent<Rigidbody2D>();
+        spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+    }
+    public void Start(){
+        //Case statement to set the correct sprite for the object
+        switch(button){
+            case "up":
+                spriteRenderer.sprite = upSprite;
+                break;
+            case "down":
+                spriteRenderer.sprite = downSprite;
+                break;
+            case "right":
+                spriteRenderer.sprite = rightSprite;
+                break;
+            case "left":
+                spriteRenderer.sprite = leftSprite;
+                break;
+        }
     }
     void Update(){
         transform.Translate(Vector3.left * (trackDistance / timeToTarget) * Time.deltaTime);

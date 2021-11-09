@@ -105,6 +105,10 @@ MonoBehaviour:
   speed: 2
   timeToTarget: 0
   trackDistance: 0
+  upSprite: {fileID: -757019719, guid: d2cc8f40dac1f4afda0018eb9eeb9f8c, type: 3}
+  downSprite: {fileID: 735763953, guid: d2cc8f40dac1f4afda0018eb9eeb9f8c, type: 3}
+  rightSprite: {fileID: -1258319381, guid: d2cc8f40dac1f4afda0018eb9eeb9f8c, type: 3}
+  leftSprite: {fileID: 1130564420, guid: d2cc8f40dac1f4afda0018eb9eeb9f8c, type: 3}
 --- !u!50 &-2137267091734178537
 Rigidbody2D:
   serializedVersion: 4
