@@ -14,6 +14,7 @@ TagManager:
   - chest
   - arrow
   - audioController
+  - scoreController
   layers:
   - Default
   - TransparentFX

@@ -11,6 +11,7 @@ public class rythmInputController : MonoBehaviour
     public Sprite invertedArrow;
     public Sprite mainSprite;
     public SpriteRenderer spriteRenderer;
+    public GameObject scoreController;
 
 
 //User Defined Functions
@@ -21,16 +22,15 @@ public class rythmInputController : MonoBehaviour
             GameObject contactNote = currentNotes[0];
             currentNotes.RemoveAt(0);
             float targetTime = contactNote.GetComponent<noteController>().triggerTime;
-            Debug.Log(audioController.songTime - targetTime);
+            float timeDiff = audioController.songTime - targetTime;
+            scoreController.SendMessage("noteHit", 2f);
             Destroy(contactNote);
-            
         }else{
             
         }
     }
 
     IEnumerator returnToSprite(float delay){
-        Debug.Log("Coroutine");
         yield return new WaitForSeconds(delay);
         spriteRenderer.sprite = mainSprite;
     }
@@ -40,6 +40,7 @@ public class rythmInputController : MonoBehaviour
 //Unity Defined Functions
     void Start(){
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+        scoreController = GameObject.FindWithTag("scoreController");
     }
 
     void OnTriggerEnter2D(Collider2D other){
@@ -53,8 +54,9 @@ public class rythmInputController : MonoBehaviour
             int toRemove = other.gameObject.GetInstanceID();
             for(int i = 0; i < currentNotes.Count; i++){
                 if(currentNotes[i].GetInstanceID() == toRemove){
+                    //This is where I handle a note miss and where I'm going to call my score controller
                     currentNotes.RemoveAt(i);
-                    Debug.Log("Removed a passed note");
+                    scoreController.SendMessage("noteMiss");
                 }
             }
         }
