@@ -261,51 +261,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &831847039
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 831847041}
-  - component: {fileID: 831847040}
-  m_Layer: 0
-  m_Name: scoreController
-  m_TagString: scoreController
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &831847040
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 831847039}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 37e44f16116154608a7723428ae14750, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &831847041
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 831847039}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.2957801, y: 0.71303195, z: 0.64556533}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &917134480
 PrefabInstance:
@@ -392,9 +348,10 @@ GameObject:
   - component: {fileID: 1028454890}
   - component: {fileID: 1028454889}
   - component: {fileID: 1028454888}
+  - component: {fileID: 1028454892}
   m_Layer: 5
-  m_Name: Canvas
-  m_TagString: Untagged
+  m_Name: battleUI
+  m_TagString: scoreController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -428,10 +385,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -474,13 +431,26 @@ RectTransform:
   m_Children:
   - {fileID: 1904490084}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1028454892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1028454887}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37e44f16116154608a7723428ae14750, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  streakText: {fileID: 0}
 --- !u!1 &1459815461
 GameObject:
   m_ObjectHideFlags: 0
@@ -722,7 +692,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6288802906935159767, guid: 2d3fec7ad03d4436e9dbfe7f7f75ab23, type: 3}
       propertyPath: orthographic size
-      value: 2.8125
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6288802906935159594, guid: 2d3fec7ad03d4436e9dbfe7f7f75ab23, type: 3}
@@ -740,7 +710,7 @@ GameObject:
   - component: {fileID: 1904490085}
   m_Layer: 5
   m_Name: streakCounter
-  m_TagString: Untagged
+  m_TagString: streakCounter
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -762,8 +732,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -669.94507, y: 442.15442}
-  m_SizeDelta: {x: 540.1099, y: 147.6912}
+  m_AnchoredPosition: {x: -543, y: 442.15442}
+  m_SizeDelta: {x: 750.8505, y: 147.6912}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1904490085
 MonoBehaviour:
@@ -785,10 +755,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Streak
+  m_text: 'Streak: 0'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: dcae1c5496fa0421c89d4b337f3c2a6a, type: 2}
+  m_sharedMaterial: {fileID: -5568699264938293333, guid: dcae1c5496fa0421c89d4b337f3c2a6a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

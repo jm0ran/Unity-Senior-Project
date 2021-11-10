@@ -63,6 +63,58 @@
         {
             "time": 20.78,
             "button": "left"
+        },
+        {
+            "time": 22.18,
+            "button": "up"
+        },
+        {
+            "time": 23.55,
+            "button": "down"
+        },
+        {
+            "time": 24.93,
+            "button": "right"
+        },
+        {
+            "time": 26.312,
+            "button": "left"
+        },
+        {
+            "time": 27.69,
+            "button": "up"
+        },
+        {
+            "time": 29.07,
+            "button": "down"
+        },
+        {
+            "time": 30.45,
+            "button": "right"
+        },
+        {
+            "time": 31.83,
+            "button": "left"
+        },
+        {
+            "time": 33.20,
+            "button": "up"
+        },
+        {
+            "time": 34.45,
+            "button": "down"
+        },
+        {
+            "time": 35.96,
+            "button": "right"
+        },
+        {
+            "time": 37.34,
+            "button": "left"
+        },
+        {
+            "time": 37.34,
+            "button": "up"
         }
     ]
 }

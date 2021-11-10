@@ -15,6 +15,7 @@ TagManager:
   - arrow
   - audioController
   - scoreController
+  - streakCounter
   layers:
   - Default
   - TransparentFX
