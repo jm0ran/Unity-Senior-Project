@@ -11,6 +11,7 @@ public class noteController : MonoBehaviour
     public float speed = 1;
     public float timeToTarget;
     public float trackDistance;
+    public bool isMoving = true;
 
     //Sprites for the arrows, assined in unity
     public Sprite upSprite;
@@ -28,10 +29,15 @@ public class noteController : MonoBehaviour
         //rb.MovePosition(new Vector2(rb.position.x - 0.1f,rb.position.y) * Time.deltaTime);
     }
     public void triggerNote(){ //
-        Debug.Log("Triggered Note");
+        StartCoroutine(delayDestroy());
     }
 
 
+    IEnumerator delayDestroy(){ //This is the function I will use to delay the destruction of the note a small amount while alsp pausing it
+        isMoving = false;
+        yield return new WaitForSeconds(0.1f);
+        Destroy(gameObject);
+    }
 
     //Unity Defined Functions\
     public void FixedUpdate(){
@@ -59,7 +65,9 @@ public class noteController : MonoBehaviour
         }
     }
     void Update(){
-        transform.Translate(Vector3.left * (trackDistance / timeToTarget) * Time.deltaTime);
+        if(isMoving){
+            transform.Translate(Vector3.left * (trackDistance / timeToTarget) * Time.deltaTime);
+        }
     }
 
 

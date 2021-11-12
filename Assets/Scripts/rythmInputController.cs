@@ -24,7 +24,7 @@ public class rythmInputController : MonoBehaviour
             float targetTime = contactNote.GetComponent<noteController>().triggerTime;
             float timeDiff = audioController.songTime - targetTime;
             scoreController.SendMessage("noteHit", 2f);
-            Destroy(contactNote);
+            contactNote.SendMessage("triggerNote");
         }else{
             
         }
@@ -34,7 +34,6 @@ public class rythmInputController : MonoBehaviour
         yield return new WaitForSeconds(delay);
         spriteRenderer.sprite = mainSprite;
     }
-
 
 
 //Unity Defined Functions
