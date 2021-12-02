@@ -74,6 +74,10 @@ crashlytics-build.properties
 //[Aa]ssets/Ignore
 /[Aa]ssets/Ignore.meta
 
+#Ignore Save Data
+Assets/StreamingAssets/invData.json
+Assets/StreamingAssets/invData.json.meta
+
 #Mac Stuff
 .DS_Store
 .DS_Store?
@@ -82,3 +86,7 @@ crashlytics-build.properties
 /Assets/Music/*
 !/Assets/Music/.gitkeep
 !/Assets/Music/whatToInclude.txt
+
+
+
+

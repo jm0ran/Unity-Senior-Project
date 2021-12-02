@@ -504,6 +504,7 @@ MonoBehaviour:
   timeToTarget: 3
   noteSpawnX: 6
   noteTargetX: -4.3
+  customStartTime: 20
 --- !u!82 &1459815464
 AudioSource:
   m_ObjectHideFlags: 0
