@@ -76,6 +76,7 @@ crashlytics-build.properties
 
 #Ignore Save Data
 Assets/StreamingAssets/invData.json
+Assets/StreamingAssets/invData.json.meta
 
 #Mac Stuff
 .DS_Store

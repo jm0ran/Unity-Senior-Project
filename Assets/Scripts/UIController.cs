@@ -17,6 +17,8 @@ public class UIController : MonoBehaviour
     public Sprite imposterProfile;
     
     public Image profileBox;
+    public Text textbox;
+    public GameObject textObj;
 
     //------------------------------------------------------------------------
     //User defined functions
@@ -34,8 +36,8 @@ public class UIController : MonoBehaviour
                 break;
         }
     }
-    void changeText(){
-        //Want to move the functione used to update the text on the screen to here
+    void changeText(string inputText){
+        textbox.text = inputText;
     }
 
     //------------------------------------------------------------------------
@@ -44,6 +46,8 @@ public class UIController : MonoBehaviour
     {
         //Very initial testing of just how changing the image works in unity and stuff preparing for a system to change during dialougue
         profileBox = GameObject.FindWithTag("profileBox").GetComponent<Image>();
+        textbox = GameObject.FindWithTag("textBox").GetComponent<Text>();
         gameObject.SetActive(false); //Disables object initially so that the UI is not visable on the start of a Scene
+
     }    
 }

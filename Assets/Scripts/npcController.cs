@@ -11,7 +11,6 @@ public class npcController : MonoBehaviour
     public List<string> diaOrder; //Will maybe be used for potraits of characters during Dialougue, still not exactly sure how I want to do this yet
     public GameObject UI;
     public GameObject player;
-    public Text textBox;
     public int totalLines;
     public int textProgress;
     [Header("Persistance")]
@@ -36,7 +35,7 @@ public class npcController : MonoBehaviour
             textProgress = 0;
             UI.SetActive(true); //Be careful here, want to clear out default values in UI at some point
             UI.SendMessage("changeProfile", diaOrder[textProgress]); //Sends photo for dialogue
-            textBox.text = dia[textProgress]; //Sets the text for the dialogue
+            UI.SendMessage("changeText", dia[textProgress]); //Sets the text for the dialogue
             StartCoroutine(DiaLoop());
         }
     }
@@ -50,7 +49,7 @@ public class npcController : MonoBehaviour
         if(textProgress < (totalLines - 1)){
             textProgress++; //Instantiate before we render the text
             UI.SendMessage("changeProfile", diaOrder[textProgress]);
-            textBox.text = dia[textProgress];
+            UI.SendMessage("changeText", dia[textProgress]);
             yield return new WaitForSeconds(0.1f);; //Waits the set amount of time before continuing the coroutine
             StartCoroutine(DiaLoop());
         }else{
@@ -64,7 +63,6 @@ public class npcController : MonoBehaviour
 //Unity Functions
     void Awake(){
         UI = GameObject.FindWithTag("UI");
-        textBox = GameObject.FindWithTag("textBox").GetComponent<Text>();
         player = GameObject.FindWithTag("Player");
     }
 }
