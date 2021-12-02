@@ -8,6 +8,7 @@ public class chestController : MonoBehaviour
     public GameObject player;
     public Sprite altSprite;
     public bool triggered = false;
+    public string contents;
 
     //User defined functions
     public void openChest(){
@@ -16,8 +17,12 @@ public class chestController : MonoBehaviour
         if(altSprite != null && !triggered){
             gameObject.GetComponent<SpriteRenderer>().sprite = altSprite;
             triggered = true;
+            Debug.Log("Triggered an openChest");
+            //This is where I want to move the items into the player's inventory
         }
-        Debug.Log("Triggered an openChest");
+        else if(triggered){
+            Debug.Log("This chest has already been triggered");
+        }
     }
 
 

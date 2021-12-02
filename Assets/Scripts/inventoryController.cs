@@ -9,15 +9,19 @@ public class inventoryController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log("Active");
         //Code to test the inventory system
-        /*
+        
         playerInv = new inventory();
         playerInv.readFromJson();
-        playerInv.addObj("Item Name Testing", 0);
-        playerInv.remObj(playerInv.findObj("Locate Item"), 2);
-        Debug.Log(playerInv.findObj("Locate Item"));
+        // playerInv.addObj("Item Name Testing", 2);
+        // playerInv.addObj("Locate Item", 3);
+        // playerInv.addObj("Item Name Testing", 1);
+        // playerInv.addObj("Locate Item", 2);
+        // Debug.Log(playerInv.findObj("Locate Item"));
+        playerInv.balance();
         playerInv.saveToJson();
-        */
+
     }
 
 }
