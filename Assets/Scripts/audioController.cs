@@ -15,11 +15,16 @@ public class audioController : MonoBehaviour
     public float noteSpawnX;
     private float noteSpawnY;
     public float noteTargetX;
+    public float customStartTime = 0;
 
     //User Defined Functions
     void visualizeNote(){        
-        if(mainMap.map.Count > 0 && (Time.timeSinceLevelLoad) > (mainMap.map[0].time + delayStart - timeToTarget)){
-            newArrow(mainMap.map[0].time, mainMap.map[0].button);
+        if(mainMap.map.Count > 0 && (Time.timeSinceLevelLoad + customStartTime) > (mainMap.map[0].time + delayStart - timeToTarget)){
+            if(mainMap.map[0].time < customStartTime){
+                mainMap.map.RemoveAt(0);
+            }else{
+                newArrow(mainMap.map[0].time, mainMap.map[0].button);
+            }
         }
     }
 
@@ -58,6 +63,7 @@ public class audioController : MonoBehaviour
     IEnumerator startMusic(){
         yield return new WaitForSeconds(delayStart);
         //Starts audio
+        testAudio.time = 0 + customStartTime;
         testAudio.Play();
     }
 
