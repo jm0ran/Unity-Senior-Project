@@ -5,21 +5,20 @@ using UnityEngine;
 
 public class inventoryController : MonoBehaviour
 {
+//Pre defined variables for the script
     public inventory playerInv;
-    // Start is called before the first frame update
+
+//User Defined Functions
+    
+
+//Unity Defined Functions
     void Start()
     {
-        Debug.Log("Active");
-        //Code to test the inventory system
-        
+        //Creates and loads player inventory
         playerInv = new inventory();
         playerInv.readFromJson();
-        // playerInv.addObj("Item Name Testing", 2);
-        // playerInv.addObj("Locate Item", 3);
-        // playerInv.addObj("Item Name Testing", 1);
-        // playerInv.addObj("Locate Item", 2);
-        // Debug.Log(playerInv.findObj("Locate Item"));
-        playerInv.balance();
+        
+        //Saves the player inventory data to streaming assets
         playerInv.saveToJson();
 
     }

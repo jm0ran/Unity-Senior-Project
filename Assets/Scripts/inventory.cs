@@ -17,8 +17,10 @@ public class inventory
     } 
     public void addObj(string itemName, int itemAmount){ //Function to addObj to inventory, will be called by other scripts
         this.items.Add(new item(itemName, itemAmount));
+        this.balance(); //Balances inv after adding a new item
     }
     public void remObj(string itemName, int itemAmount){ //Going to be used to remove objects
+        this.balance(); //Balances inv before deleting anything
         int itemIndex = findObj(itemName);
         if(itemIndex != -1){
             if((this.items[itemIndex].itemAmount - itemAmount) < 1){
@@ -75,5 +77,7 @@ public class inventory
             Debug.Log("Could not locate the json file: " + e);
             this.items = new List<item>(); //Creates a new empty list if the inventory data cannot be found
         }
+
+        this.balance(); //Balances list upon being added
     }
 }
