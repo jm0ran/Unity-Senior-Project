@@ -16,6 +16,8 @@ TagManager:
   - audioController
   - scoreController
   - streakCounter
+  - photoDia
+  - noPhotoDia
   layers:
   - Default
   - TransparentFX
