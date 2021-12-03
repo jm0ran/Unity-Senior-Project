@@ -16,9 +16,16 @@ public class UIController : MonoBehaviour
     public Sprite banditProfile;
     public Sprite imposterProfile;
     
+
+    //Need to find a way to dynamically set these based on what UI Element is avaliable
     public Image profileBox;
     public Text textbox;
     public GameObject textObj;
+
+
+    //Layers of the UI
+    public GameObject photoDia;
+    public GameObject noPhotoDia;
 
     //------------------------------------------------------------------------
     //User defined functions
@@ -40,6 +47,28 @@ public class UIController : MonoBehaviour
         textbox.text = inputText;
     }
 
+    void enableUIItem(string item){
+        switch(item){
+            case "photoDia":
+                photoDia.SetActive(true);
+                break;
+            case "noPhotoDia":
+                noPhotoDia.SetActive(false);
+                break;
+        }
+    }
+
+    void disableUIItem(string item){
+        switch(item){
+            case "photoDia":
+                photoDia.SetActive(false);
+                break;
+            case "noPhotoDia":
+                noPhotoDia.SetActive(false);
+                break;
+        }
+    }
+
     //------------------------------------------------------------------------
     //Unity Defined Functions
     void Start()
@@ -47,7 +76,10 @@ public class UIController : MonoBehaviour
         //Very initial testing of just how changing the image works in unity and stuff preparing for a system to change during dialougue
         profileBox = GameObject.FindWithTag("profileBox").GetComponent<Image>();
         textbox = GameObject.FindWithTag("textBox").GetComponent<Text>();
-        gameObject.SetActive(false); //Disables object initially so that the UI is not visable on the start of a Scene
+        photoDia = GameObject.FindWithTag("photoDia");
+        noPhotoDia = GameObject.FindWithTag("noPhotoDia");
 
+        disableUIItem("photoDia");
+        disableUIItem("noPhotoDia");
     }    
 }
