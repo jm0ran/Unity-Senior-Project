@@ -16,6 +16,8 @@ public class UIController : MonoBehaviour
     public Sprite banditProfile;
     public Sprite imposterProfile;
     
+
+    //Need to find a way to dynamically set these based on what UI Element is avaliable
     public Image profileBox;
     public Text textbox;
     public GameObject textObj;
