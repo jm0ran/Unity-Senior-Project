@@ -63,8 +63,8 @@ public class UIController : MonoBehaviour
     void disableUIItem(string item){
         switch(item){
             case "*":
-                photoDia.setActive(false);
-                noPhotoDia.setActive(false);
+                photoDia.SetActive(false);
+                noPhotoDia.SetActive(false);
                 break;
             case "photoDia":
                 photoDia.SetActive(false);
