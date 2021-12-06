@@ -48,6 +48,7 @@ public class UIController : MonoBehaviour
     }
 
     void enableUIItem(string item){
+        disableUIItem("*"); //Disables all UI items to prevent 2 states from occuring at same time
         switch(item){
             case "photoDia":
                 photoDia.SetActive(true);
@@ -56,10 +57,15 @@ public class UIController : MonoBehaviour
                 noPhotoDia.SetActive(false);
                 break;
         }
+        assignTags(/*Want to add a reference to active object*/); //Tags need to be assigned to teh children of the object in order for rest of game to call correct objects
     }
 
     void disableUIItem(string item){
         switch(item){
+            case "*":
+                photoDia.setActive(false);
+                noPhotoDia.setActive(false);
+                break;
             case "photoDia":
                 photoDia.SetActive(false);
                 break;
@@ -67,6 +73,10 @@ public class UIController : MonoBehaviour
                 noPhotoDia.SetActive(false);
                 break;
         }
+    }
+
+    void assignTags(){ //This function is going to be used to assign tags to the children of the currently active UI item
+
     }
 
     //------------------------------------------------------------------------
@@ -79,7 +89,6 @@ public class UIController : MonoBehaviour
         photoDia = GameObject.FindWithTag("photoDia");
         noPhotoDia = GameObject.FindWithTag("noPhotoDia");
 
-        disableUIItem("photoDia");
-        disableUIItem("noPhotoDia");
+        disableUIItem("*");
     }    
 }
