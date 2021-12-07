@@ -14,6 +14,7 @@ public class npcController : MonoBehaviour
     public int totalLines;
     public int textProgress;
     [Header("Persistance")]
+    public string diaType; //Dia type defines type of Dialogue window to render, options are image and noImage, going to be implemented later
     public bool oneTime = false; //Determines whether or not this is a one time event
     public int persistID = -1; //Set to -1 by default to call errors instead of false flags
 

@@ -24,6 +24,9 @@ public class UIController : MonoBehaviour
 
 
     //Layers of the UI
+    public List<GameObject> layersList;
+    public GameObject activeItem;
+
     public GameObject photoDia;
     public GameObject noPhotoDia;
 
@@ -44,38 +47,40 @@ public class UIController : MonoBehaviour
         }
     }
     void changeText(string inputText){
+           foreach (Transform child in activeItem.transform){ //Runs for each child of the current active item
+               Debug.Log(child.gameObject.tag);
+           }
         textbox.text = inputText;
     }
 
     void enableUIItem(string item){
-        disableUIItem("*"); //Disables all UI items to prevent 2 states from occuring at same time
+        disableUIItems(); //Disables all UI items to prevent 2 states from occuring at same time
+        activeItem = null;
         switch(item){
             case "photoDia":
                 photoDia.SetActive(true);
+                activeItem = photoDia;
                 break;
             case "noPhotoDia":
+                activeItem = noPhotoDia;
                 noPhotoDia.SetActive(false);
                 break;
+            default:
+                Debug.Log("No object with name: " + item + " found");
+                break;
         }
-        assignTags(/*Want to add a reference to active object*/); //Tags need to be assigned to teh children of the object in order for rest of game to call correct objects
     }
 
-    void disableUIItem(string item){
-        switch(item){
-            case "*":
-                photoDia.SetActive(false);
-                noPhotoDia.SetActive(false);
-                break;
-            case "photoDia":
-                photoDia.SetActive(false);
-                break;
-            case "noPhotoDia":
-                noPhotoDia.SetActive(false);
-                break;
-        }
+    void disableUIItems(){
+        foreach(GameObject layer in layersList){
+                    layer.SetActive(false);
+        }   
     }
 
     void assignTags(){ //This function is going to be used to assign tags to the children of the currently active UI item
+        foreach(GameObject layer in layersList){
+            Debug.Log(layer.activeSelf);
+        }
 
     }
 
@@ -89,6 +94,12 @@ public class UIController : MonoBehaviour
         photoDia = GameObject.FindWithTag("photoDia");
         noPhotoDia = GameObject.FindWithTag("noPhotoDia");
 
-        disableUIItem("*");
+        layersList = new List<GameObject>();
+        layersList.Add(photoDia);
+        layersList.Add(noPhotoDia);
+
+        disableUIItems();
+        enableUIItem("photoDia");
+        changeText("Hi");
     }    
 }
