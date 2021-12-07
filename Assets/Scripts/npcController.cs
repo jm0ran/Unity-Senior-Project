@@ -14,6 +14,7 @@ public class npcController : MonoBehaviour
     public int totalLines;
     public int textProgress;
     [Header("Persistance")]
+    public string diaType; //Dia type defines type of Dialogue window to render, options are image and noImage, going to be implemented later
     public bool oneTime = false; //Determines whether or not this is a one time event
     public int persistID = -1; //Set to -1 by default to call errors instead of false flags
 
@@ -33,9 +34,9 @@ public class npcController : MonoBehaviour
             player.SendMessage("lockPlayer", true);
             totalLines = dia.Count;
             textProgress = 0;
-            UI.SetActive(true); //Be careful here, want to clear out default values in UI at some point
+            UI.SendMessage("enableUIItem", "photoDia");
             UI.SendMessage("changeProfile", diaOrder[textProgress]); //Sends photo for dialogue
-            UI.SendMessage("changeText", dia[textProgress]); //Sets the text for the dialogue
+            UI.SendMessage("changeText", dia[textProgress] + ";" + diaOrder[textProgress]); //Sets the text for the dialogue
             StartCoroutine(DiaLoop());
         }
     }
@@ -49,11 +50,11 @@ public class npcController : MonoBehaviour
         if(textProgress < (totalLines - 1)){
             textProgress++; //Instantiate before we render the text
             UI.SendMessage("changeProfile", diaOrder[textProgress]);
-            UI.SendMessage("changeText", dia[textProgress]);
+            UI.SendMessage("changeText", dia[textProgress] + ";" + diaOrder[textProgress]);
             yield return new WaitForSeconds(0.1f);; //Waits the set amount of time before continuing the coroutine
             StartCoroutine(DiaLoop());
         }else{
-            UI.SetActive(false);
+            UI.SendMessage("disableUIItems");
             player.SendMessage("lockPlayer", false);
             yield return null;
         }
