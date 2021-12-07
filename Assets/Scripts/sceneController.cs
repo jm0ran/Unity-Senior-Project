@@ -26,7 +26,7 @@ public class sceneController : MonoBehaviour
 //User defined functions
 
     void openingDia(){ //Want to create an empty npc controller I can start Dialougue off of
-       startingDia.SendMessage("startDia");
+       //startingDia.SendMessage("startDia");
     }
 
 //------------------------------------------------------------------------

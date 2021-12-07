@@ -25,7 +25,8 @@ public class UIController : MonoBehaviour
 
     //Layers of the UI
     public List<GameObject> layersList;
-    public GameObject activeItem;
+    public GameObject activeItemObj;
+    public string activeItemName;
 
     public GameObject photoDia;
     public GameObject noPhotoDia;
@@ -46,23 +47,26 @@ public class UIController : MonoBehaviour
                 break;
         }
     }
-    void changeText(string inputText){
-           foreach (Transform child in activeItem.transform){ //Runs for each child of the current active item
-               Debug.Log(child.gameObject.tag);
+    void changeText(string inputText){ //Probably want to take argument as a concatanated string
+           foreach (Transform child in activeItemObj.transform){ //Runs for each child of the current active item
+               if(child.gameObject.tag == "textBox"){
+                   textObj = child.gameObject;
+               }
            }
-        textbox.text = inputText;
+        textObj.GetComponent<Text>().text = inputText;
     }
 
     void enableUIItem(string item){
         disableUIItems(); //Disables all UI items to prevent 2 states from occuring at same time
-        activeItem = null;
+        activeItemObj = null;
+        activeItemName = item;
         switch(item){
             case "photoDia":
                 photoDia.SetActive(true);
-                activeItem = photoDia;
+                activeItemObj = photoDia;
                 break;
             case "noPhotoDia":
-                activeItem = noPhotoDia;
+                activeItemObj = noPhotoDia;
                 noPhotoDia.SetActive(false);
                 break;
             default:
@@ -99,7 +103,7 @@ public class UIController : MonoBehaviour
         layersList.Add(noPhotoDia);
 
         disableUIItems();
-        enableUIItem("photoDia");
-        changeText("Hi");
+        // enableUIItem("photoDia");
+        // changeText("Testing");
     }    
 }
