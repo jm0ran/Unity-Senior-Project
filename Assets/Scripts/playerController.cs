@@ -28,9 +28,8 @@ public class playerController : MonoBehaviour
 
 //------------------------------------------------------------------------
 //Main User Defined Functions used in the Script
-    void checkActions() //Called within Update loop to check for player interaction input
-    {
-        if(Input.GetKeyDown(KeyCode.E) && currentInterObj != null && !locked){ //Checks for keypress as well as that you are in range of an interactable object
+    void triggerInteract(){ //This is how I am going to handle player actions with the new interact system
+        if(!locked && currentInterObj != null){
             switch (currentInterObj.tag)
             {
                 case "Interactable":
@@ -42,7 +41,14 @@ public class playerController : MonoBehaviour
             }
         }
     }
-    
+
+    void triggerMove(){ //Going to triggermovement with the player, want to move the movememnt logic to the input controller for simplicity
+        if(!locked){
+            
+        }
+    }
+
+
     void checkMovement() //Main movement logic called by the update function, over complicated to prevent 2 inputs at same time, this function is massive, I might want to split it up later on 
     {
         if(!locked){
@@ -130,10 +136,6 @@ public class playerController : MonoBehaviour
 
     void FixedUpdate(){
         checkMovement(); //Movement controller is kept in fixed update to keep movespeed consistent
-    }
-
-    void Update(){
-        checkActions(); //Checks nonmovement buttons in Update function to avoid any slowdowns
     }
 
     void OnTriggerEnter2D(Collider2D other){ //Runs when there is a collision between a trigger and regular collider

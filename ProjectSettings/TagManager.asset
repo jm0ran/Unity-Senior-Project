@@ -18,6 +18,7 @@ TagManager:
   - streakCounter
   - photoDia
   - noPhotoDia
+  - inventory
   layers:
   - Default
   - TransparentFX
