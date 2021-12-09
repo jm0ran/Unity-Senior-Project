@@ -28,9 +28,8 @@ public class playerController : MonoBehaviour
 
 //------------------------------------------------------------------------
 //Main User Defined Functions used in the Script
-    void checkActions() //Called within Update loop to check for player interaction input
-    {
-        if(Input.GetKeyDown(KeyCode.E) && currentInterObj != null && !locked){ //Checks for keypress as well as that you are in range of an interactable object
+    void triggerInteract(){ //This is how I am going to handle player actions with the new interact system
+        if(!locked && currentInterObj != null){
             switch (currentInterObj.tag)
             {
                 case "Interactable":
@@ -42,7 +41,8 @@ public class playerController : MonoBehaviour
             }
         }
     }
-    
+
+
     void checkMovement() //Main movement logic called by the update function, over complicated to prevent 2 inputs at same time, this function is massive, I might want to split it up later on 
     {
         if(!locked){
@@ -52,16 +52,12 @@ public class playerController : MonoBehaviour
             //This is the entrance point for movement, the system is designed so you can only move in one direction at a time
             if(!turnLocked){
                 if(Input.GetKey("up")){
-                    movement.y = 1;
                     lastKey = "up";
                 }else if(Input.GetKey("down")){
-                    movement.y = -1;
                     lastKey = "down";
                 }else if(Input.GetKey("left")){
-                    movement.x = -1;
                     lastKey = "left";
                 }else if(Input.GetKey("right")){
-                    movement.x = 1;
                     lastKey = "right";
                 }
                 //Locks turning
@@ -130,10 +126,6 @@ public class playerController : MonoBehaviour
 
     void FixedUpdate(){
         checkMovement(); //Movement controller is kept in fixed update to keep movespeed consistent
-    }
-
-    void Update(){
-        checkActions(); //Checks nonmovement buttons in Update function to avoid any slowdowns
     }
 
     void OnTriggerEnter2D(Collider2D other){ //Runs when there is a collision between a trigger and regular collider

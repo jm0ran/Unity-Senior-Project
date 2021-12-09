@@ -35,7 +35,6 @@ public class npcController : MonoBehaviour
             totalLines = dia.Count;
             textProgress = 0;
             UI.SendMessage("enableUIItem", "photoDia");
-            UI.SendMessage("changeProfile", diaOrder[textProgress]); //Sends photo for dialogue
             UI.SendMessage("changeText", dia[textProgress] + ";" + diaOrder[textProgress]); //Sets the text for the dialogue
             StartCoroutine(DiaLoop());
         }
@@ -49,7 +48,6 @@ public class npcController : MonoBehaviour
         //After the key is pressed we break out of the loop
         if(textProgress < (totalLines - 1)){
             textProgress++; //Instantiate before we render the text
-            UI.SendMessage("changeProfile", diaOrder[textProgress]);
             UI.SendMessage("changeText", dia[textProgress] + ";" + diaOrder[textProgress]);
             yield return new WaitForSeconds(0.1f);; //Waits the set amount of time before continuing the coroutine
             StartCoroutine(DiaLoop());

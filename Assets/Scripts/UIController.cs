@@ -26,8 +26,9 @@ public class UIController : MonoBehaviour
     //Layers of the UI
     public List<GameObject> layersList;
     public GameObject activeItemObj;
-    public string activeItemName;
+    public string activeItemType;
 
+    public GameObject inventory;
     public GameObject photoDia;
     public GameObject noPhotoDia;
 
@@ -45,21 +46,29 @@ public class UIController : MonoBehaviour
             case "Main":
                 profileBox.sprite = mainProfile;
                 break;
+            default:
+                profileBox.sprite = null;
+                break;
         }
     }
+
     void changeText(string inputText){ //Probably want to take argument as a concatanated string
-           foreach (Transform child in activeItemObj.transform){ //Runs for each child of the current active item
-               if(child.gameObject.tag == "textBox"){
+            foreach (Transform child in activeItemObj.transform){ //Runs for each child of the current active item
+                if(child.gameObject.tag == "textBox"){
                    textObj = child.gameObject;
                }
-           }
-        textObj.GetComponent<Text>().text = inputText;
+            }
+            if(activeItemType == "photoDia"){
+                changeProfile(inputText.Substring(inputText.IndexOf(";") + 1));
+            }
+            textObj.GetComponent<Text>().text = inputText.Substring(0, inputText.IndexOf(";"));
+            
     }
 
     void enableUIItem(string item){
         disableUIItems(); //Disables all UI items to prevent 2 states from occuring at same time
         activeItemObj = null;
-        activeItemName = item;
+        activeItemType = item;
         switch(item){
             case "photoDia":
                 photoDia.SetActive(true);
@@ -67,7 +76,11 @@ public class UIController : MonoBehaviour
                 break;
             case "noPhotoDia":
                 activeItemObj = noPhotoDia;
-                noPhotoDia.SetActive(false);
+                noPhotoDia.SetActive(true);
+                break;
+            case "inventory":
+                activeItemObj = inventory;
+                inventory.SetActive(true);
                 break;
             default:
                 Debug.Log("No object with name: " + item + " found");
@@ -77,7 +90,7 @@ public class UIController : MonoBehaviour
 
     void disableUIItems(){
         foreach(GameObject layer in layersList){
-                    layer.SetActive(false);
+            layer.SetActive(false);
         }   
     }
 
@@ -97,10 +110,12 @@ public class UIController : MonoBehaviour
         textbox = GameObject.FindWithTag("textBox").GetComponent<Text>();
         photoDia = GameObject.FindWithTag("photoDia");
         noPhotoDia = GameObject.FindWithTag("noPhotoDia");
+        inventory = GameObject.FindWithTag("inventory");
 
         layersList = new List<GameObject>();
         layersList.Add(photoDia);
         layersList.Add(noPhotoDia);
+        layersList.Add(inventory);
 
         disableUIItems();
         // enableUIItem("photoDia");
