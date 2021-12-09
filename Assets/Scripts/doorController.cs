@@ -30,9 +30,9 @@ public class doorController : MonoBehaviour
         CanvasGroup canvasGroup = fadeShade.GetComponent<CanvasGroup>();
         float alpha = 0.0f;
         while (alpha < 1f){
-            alpha += 0.02f;
+            alpha += 0.03f;
             canvasGroup.alpha = alpha;
-            yield return new WaitForSeconds(0.0025f);
+            yield return new WaitForSeconds(0.025f);
         }
         SceneManager.LoadScene(destScene);
 

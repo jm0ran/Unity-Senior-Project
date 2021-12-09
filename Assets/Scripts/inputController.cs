@@ -4,10 +4,17 @@ using UnityEngine;
 
 public class inputController : MonoBehaviour
 {
-    //Input Controller is where I eventually want to move all my key triggers to keep them all organized in one place
+   
+//------------------------------------------------------------------------
+//Predefined Script Variables   
+ //Input Controller is where I eventually want to move all my key triggers to keep them all organized in one place
     public GameObject UI;
     public GameObject player;
 
+
+
+//------------------------------------------------------------------------
+//Unity Defined Functions
     void Update(){ //Used for singular non movement button inputs like menus and interactiosn
         //general Input Logic
         if(Input.GetKeyDown(KeyCode.I)){

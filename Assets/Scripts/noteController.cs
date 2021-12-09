@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class noteController : MonoBehaviour
 {
-    //Predefined Variables
+//------------------------------------------------------------------------
+//Predefined Variables
     public float triggerTime;
     public string button;
     public Rigidbody2D rb;
@@ -21,7 +22,8 @@ public class noteController : MonoBehaviour
     
     public SpriteRenderer spriteRenderer;
 
-    //User Defined Functions
+//------------------------------------------------------------------------
+//User Defined Functions
     public void moveNote(){
         if(rb.position.x < -7.5){
             Destroy(gameObject);
@@ -39,7 +41,8 @@ public class noteController : MonoBehaviour
         Destroy(gameObject);
     }
 
-    //Unity Defined Functions\
+//------------------------------------------------------------------------
+//Unity Defined Functions
     public void FixedUpdate(){
         moveNote();
     }

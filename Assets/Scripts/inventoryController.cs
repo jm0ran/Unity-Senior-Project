@@ -5,12 +5,14 @@ using UnityEngine;
 
 public class inventoryController : MonoBehaviour
 {
-//Pre defined variables for the script
+//------------------------------------------------------------------------
+//Predefined variables for the script
     public inventory playerInv;
 
+//------------------------------------------------------------------------
 //User Defined Functions
     
-
+//------------------------------------------------------------------------
 //Unity Defined Functions
     void Start()
     {
