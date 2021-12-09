@@ -31,6 +31,7 @@ public class UIController : MonoBehaviour
     public GameObject inventory;
     public GameObject photoDia;
     public GameObject noPhotoDia;
+    public GameObject fadeShade;
 
     //------------------------------------------------------------------------
     //User defined functions
@@ -101,6 +102,16 @@ public class UIController : MonoBehaviour
 
     }
 
+    IEnumerator fadeIn(){
+        CanvasGroup canvasGroup = fadeShade.GetComponent<CanvasGroup>();
+        float alpha = 1f;
+        while (alpha > 0f){
+            alpha -= 0.03f;
+            canvasGroup.alpha = alpha;
+            yield return new WaitForSeconds(0.0025f);
+        }
+    }
+
     //------------------------------------------------------------------------
     //Unity Defined Functions
     void Start()
@@ -111,14 +122,15 @@ public class UIController : MonoBehaviour
         photoDia = GameObject.FindWithTag("photoDia");
         noPhotoDia = GameObject.FindWithTag("noPhotoDia");
         inventory = GameObject.FindWithTag("inventory");
+        fadeShade = GameObject.FindWithTag("fadeShade");
 
         layersList = new List<GameObject>();
         layersList.Add(photoDia);
         layersList.Add(noPhotoDia);
         layersList.Add(inventory);
 
-        disableUIItems();
-        // enableUIItem("photoDia");
-        // changeText("Testing");
+        disableUIItems(); //Fade shade is left out for the time being
+
+        StartCoroutine(fadeIn()); //Fades in upon start of Scene 
     }    
 }

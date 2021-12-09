@@ -5,12 +5,13 @@ using UnityEngine;
 public class scoreController : MonoBehaviour
 {
 
+//------------------------------------------------------------------------
 //PREDEFINED VARIABLES   
     int notesHit;
     int streak;
     public TMPro.TextMeshProUGUI streakText;
 
-
+//------------------------------------------------------------------------
 //USER DEFINED FUNCTIONS
     void noteHit(float timeDiff){ //This is where I'm gonna handle note hits
         streak++;
@@ -27,7 +28,7 @@ public class scoreController : MonoBehaviour
         streakText.text = "Streak: " + streak;
     }
 
-
+//------------------------------------------------------------------------
 //Unity Defined Functions
     void Start(){
         streak = 0;

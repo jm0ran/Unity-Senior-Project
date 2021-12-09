@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class audioController : MonoBehaviour
 {
-    //Static Funny
+//------------------------------------------------------------------------
+//Main Variables Used in Scripts
     public static float songTime = 0;
 
     public AudioSource testAudio;
@@ -17,7 +18,8 @@ public class audioController : MonoBehaviour
     public float noteTargetX;
     public float customStartTime = 0;
 
-    //User Defined Functions
+//------------------------------------------------------------------------
+//User Defined Functions
     void visualizeNote(){        
         if(mainMap.map.Count > 0 && (Time.timeSinceLevelLoad + customStartTime) > (mainMap.map[0].time + delayStart - timeToTarget)){
             if(mainMap.map[0].time < customStartTime){
@@ -67,6 +69,10 @@ public class audioController : MonoBehaviour
         testAudio.Play();
     }
 
+
+
+//------------------------------------------------------------------------
+//Unity Defined functions
     // Start is called before the first frame update
     void Start()
     {
@@ -91,8 +97,5 @@ public class audioController : MonoBehaviour
         if(Input.GetKeyDown("space")){
             Debug.Log(testAudio.time);
         }
-    }
-    void FixedUpdate(){
-        //Debug.Log(testAudio.time);
     }
 }

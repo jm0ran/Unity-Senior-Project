@@ -36,10 +36,23 @@ public class playerController : MonoBehaviour
                     currentInterObj.SendMessage("startDia");
                     break;
                 case "chest":
+                    locked = true;
                     currentInterObj.SendMessage("openChest");
+                    animator.SetBool("collecting", true);
+                    animator.SetTrigger("collect");
+                    lastDirection = 2;
+                    StartCoroutine(finishCollect(2));
+                    //Need to add a timeout that re disables chest case
+                    //Temporarily Going to Implement Collect animation here to get it working
                     break;
             }
         }
+    }
+
+     IEnumerator finishCollect(float seconds){ //Might want to make this into an anonymous function or whatever at some point
+        yield return new WaitForSeconds(seconds);
+        animator.SetBool("collecting", false);
+        locked = false;
     }
 
 
@@ -135,6 +148,7 @@ public class playerController : MonoBehaviour
             currentInterObj = other.gameObject;
         }
         if (other.tag == "door"){
+            locked = true;
             sceneController.camSize = cam.orthographicSize;
             sceneController.camAspect = cam.aspect;
             other.gameObject.SendMessage("nextScene");

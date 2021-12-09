@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class rythmInputController : MonoBehaviour
 {
+//------------------------------------------------------------------------
+//Pre Defined Functions
     private List<GameObject> currentNotes = new List<GameObject>();
     
     //Define in Unity
@@ -14,6 +16,7 @@ public class rythmInputController : MonoBehaviour
     public GameObject scoreController;
 
 
+//------------------------------------------------------------------------
 //User Defined Functions
     void triggerCurrentNote(){ 
         spriteRenderer.sprite = invertedArrow;
@@ -35,7 +38,7 @@ public class rythmInputController : MonoBehaviour
         spriteRenderer.sprite = mainSprite;
     }
 
-
+//------------------------------------------------------------------------
 //Unity Defined Functions
     void Start(){
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
