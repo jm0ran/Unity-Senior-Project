@@ -15,10 +15,11 @@ public class titleController : MonoBehaviour
 
 
     IEnumerator startFlashingText(){
-        flashingText.SetActive(false);
-        yield return new WaitForSeconds(0.75f);
-        flashingText.SetActive(true);
-        yield return new WaitForSeconds(0.75f);
-        StartCoroutine(startFlashingText());
+        while(true){
+            flashingText.SetActive(false);
+            yield return new WaitForSeconds(0.75f);
+            flashingText.SetActive(true);
+            yield return new WaitForSeconds(0.75f);
+        }
     }
 }
