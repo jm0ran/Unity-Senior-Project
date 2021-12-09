@@ -148,6 +148,7 @@ public class playerController : MonoBehaviour
             currentInterObj = other.gameObject;
         }
         if (other.tag == "door"){
+            locked = true;
             sceneController.camSize = cam.orthographicSize;
             sceneController.camAspect = cam.aspect;
             other.gameObject.SendMessage("nextScene");

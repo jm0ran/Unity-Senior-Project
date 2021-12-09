@@ -103,11 +103,12 @@ public class UIController : MonoBehaviour
     }
 
     IEnumerator fadeIn(){
-        float alpha = 0.75f;
+        CanvasGroup canvasGroup = fadeShade.GetComponent<CanvasGroup>();
+        float alpha = 1f;
         while (alpha > 0f){
-            alpha -= 0.01f;
-            fadeShade.GetComponent<CanvasGroup>().alpha = alpha;
-            yield return new WaitForSeconds(0.01f);
+            alpha -= 0.03f;
+            canvasGroup.alpha = alpha;
+            yield return new WaitForSeconds(0.0025f);
         }
     }
 

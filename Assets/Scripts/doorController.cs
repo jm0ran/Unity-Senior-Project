@@ -13,6 +13,8 @@ public class doorController : MonoBehaviour
     public float destX; //X destination for player
     public float destY; //Y destination for player
 
+    public GameObject fadeShade;
+
 //------------------------------------------------------------------------
 //Main User defined functions
     void nextScene(){
@@ -21,16 +23,33 @@ public class doorController : MonoBehaviour
         sceneController.initPlayerPos[1] = destY;
         sceneController.origin = originScene;
         sceneController.cameraPos = nextCameraPos;
-        SceneManager.LoadScene(destScene);
+        StartCoroutine(fadeTransition(destScene));
     }
-    //TEMPORARY CODE TO TRANSITION TO MUSIC SECTION IN BUILD
-    void Update(){
+
+    IEnumerator fadeTransition(string destScene){
+        CanvasGroup canvasGroup = fadeShade.GetComponent<CanvasGroup>();
+        float alpha = 0.0f;
+        while (alpha < 1f){
+            alpha += 0.02f;
+            canvasGroup.alpha = alpha;
+            yield return new WaitForSeconds(0.0025f);
+        }
+        SceneManager.LoadScene(destScene);
+
+    }
+
+
+
+//------------------------------------------------------------------------
+//Unity defined functions
+    void Start(){
+        fadeShade = GameObject.FindWithTag("fadeShade");
+    }
+
+    void Update(){ //Want to move this to input controller
         if(Input.GetKeyDown("m")){
             SceneManager.LoadScene(4);
         }
     }
-
-//------------------------------------------------------------------------
-//Unity defined functions
-    
 }
+
