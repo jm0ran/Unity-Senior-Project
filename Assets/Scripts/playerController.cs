@@ -37,6 +37,8 @@ public class playerController : MonoBehaviour
                     break;
                 case "chest":
                     currentInterObj.SendMessage("openChest");
+                    animator.SetTrigger("collect");
+                    //Temporarily Going to Implement Collect animation here to get it working
                     break;
             }
         }
