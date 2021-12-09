@@ -41,7 +41,7 @@ public class playerController : MonoBehaviour
                     animator.SetBool("collecting", true);
                     animator.SetTrigger("collect");
                     lastDirection = 2;
-                    StartCoroutine(finishCollect(3));
+                    StartCoroutine(finishCollect(2));
                     //Need to add a timeout that re disables chest case
                     //Temporarily Going to Implement Collect animation here to get it working
                     break;

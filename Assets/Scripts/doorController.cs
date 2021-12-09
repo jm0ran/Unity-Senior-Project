@@ -7,7 +7,7 @@ public class doorController : MonoBehaviour
 {
 //------------------------------------------------------------------------
 //Main Variables Used in Scripts
-    public int destScene; //Destination scene
+    public string destScene; //Destination scene
     public string originScene; //Origin scene
     public string nextCameraPos; //Next CameraPosition
     public float destX; //X destination for player

@@ -691,7 +691,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8600813395152412222, guid: 429d2113c2f364244a8732bd6da24241, type: 3}
       propertyPath: destScene
-      value: 1
+      value: Junkyard
       objectReference: {fileID: 0}
     - target: {fileID: 8600813395152412222, guid: 429d2113c2f364244a8732bd6da24241, type: 3}
       propertyPath: originScene

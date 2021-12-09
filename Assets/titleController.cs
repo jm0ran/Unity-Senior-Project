@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class titleController : MonoBehaviour
 {
@@ -13,6 +14,12 @@ public class titleController : MonoBehaviour
         StartCoroutine(startFlashingText());
     }
 
+    void Update(){
+        if(Input.GetKeyDown(KeyCode.Return)){
+            startGame();
+        }
+    }
+
 
     IEnumerator startFlashingText(){
         while(true){
@@ -21,5 +28,9 @@ public class titleController : MonoBehaviour
             flashingText.SetActive(true);
             yield return new WaitForSeconds(0.75f);
         }
+    }
+
+    void startGame(){
+        SceneManager.LoadScene("Junk Cave");
     }
 }

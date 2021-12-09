@@ -244,6 +244,10 @@ PrefabInstance:
       value: -4.3
       objectReference: {fileID: 0}
     - target: {fileID: 8600813395152412222, guid: 429d2113c2f364244a8732bd6da24241, type: 3}
+      propertyPath: destScene
+      value: Junk Cave
+      objectReference: {fileID: 0}
+    - target: {fileID: 8600813395152412222, guid: 429d2113c2f364244a8732bd6da24241, type: 3}
       propertyPath: originScene
       value: junkyard
       objectReference: {fileID: 0}
@@ -1118,6 +1122,63 @@ PolygonCollider2D:
       - {x: 2.444776, y: -6.495821}
       - {x: 2.49361, y: -9.471855}
       - {x: 15.570536, y: -9.490106}
+--- !u!1001 &1108425505
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2225247030206710401, guid: ec434abf2a0654af1b0ecb0c9c5d4daa, type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2225247030206710401, guid: ec434abf2a0654af1b0ecb0c9c5d4daa, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -11.47
+      objectReference: {fileID: 0}
+    - target: {fileID: 2225247030206710401, guid: ec434abf2a0654af1b0ecb0c9c5d4daa, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3.58
+      objectReference: {fileID: 0}
+    - target: {fileID: 2225247030206710401, guid: ec434abf2a0654af1b0ecb0c9c5d4daa, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2225247030206710401, guid: ec434abf2a0654af1b0ecb0c9c5d4daa, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2225247030206710401, guid: ec434abf2a0654af1b0ecb0c9c5d4daa, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2225247030206710401, guid: ec434abf2a0654af1b0ecb0c9c5d4daa, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2225247030206710401, guid: ec434abf2a0654af1b0ecb0c9c5d4daa, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2225247030206710401, guid: ec434abf2a0654af1b0ecb0c9c5d4daa, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2225247030206710401, guid: ec434abf2a0654af1b0ecb0c9c5d4daa, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2225247030206710401, guid: ec434abf2a0654af1b0ecb0c9c5d4daa, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2225247030206710406, guid: ec434abf2a0654af1b0ecb0c9c5d4daa, type: 3}
+      propertyPath: m_Name
+      value: defaultChest
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ec434abf2a0654af1b0ecb0c9c5d4daa, type: 3}
 --- !u!1001 &1434985196
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1159,7 +1220,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8600813395152412222, guid: 429d2113c2f364244a8732bd6da24241, type: 3}
       propertyPath: destScene
-      value: 3
+      value: Courtyard
       objectReference: {fileID: 0}
     - target: {fileID: 8600813395152412222, guid: 429d2113c2f364244a8732bd6da24241, type: 3}
       propertyPath: originScene
@@ -1415,7 +1476,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8600813395152412222, guid: 429d2113c2f364244a8732bd6da24241, type: 3}
       propertyPath: destScene
-      value: 2
+      value: Route 1
       objectReference: {fileID: 0}
     - target: {fileID: 8600813395152412222, guid: 429d2113c2f364244a8732bd6da24241, type: 3}
       propertyPath: originScene
