@@ -9,6 +9,7 @@ public class inputController : MonoBehaviour
     public GameObject player;
 
     void Update(){ //Used for singular non movement button inputs like menus and interactiosn
+        //general Input Logic
         if(Input.GetKeyDown(KeyCode.I)){
             Debug.Log("Inventory Open");
             UI.SendMessage("enableUIItem", "inventory");
@@ -20,6 +21,9 @@ public class inputController : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.E)){
             player.SendMessage("triggerInteract");
         }
+
+       //Move logic is staying in player controller right now because the locking system is weird to implement here so I'm working on it
+        
     }
     void Start(){
         UI = GameObject.FindWithTag("UI");

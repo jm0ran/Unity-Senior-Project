@@ -42,12 +42,6 @@ public class playerController : MonoBehaviour
         }
     }
 
-    void triggerMove(){ //Going to triggermovement with the player, want to move the movememnt logic to the input controller for simplicity
-        if(!locked){
-            
-        }
-    }
-
 
     void checkMovement() //Main movement logic called by the update function, over complicated to prevent 2 inputs at same time, this function is massive, I might want to split it up later on 
     {
