@@ -52,16 +52,12 @@ public class playerController : MonoBehaviour
             //This is the entrance point for movement, the system is designed so you can only move in one direction at a time
             if(!turnLocked){
                 if(Input.GetKey("up")){
-                    movement.y = 1;
                     lastKey = "up";
                 }else if(Input.GetKey("down")){
-                    movement.y = -1;
                     lastKey = "down";
                 }else if(Input.GetKey("left")){
-                    movement.x = -1;
                     lastKey = "left";
                 }else if(Input.GetKey("right")){
-                    movement.x = 1;
                     lastKey = "right";
                 }
                 //Locks turning
