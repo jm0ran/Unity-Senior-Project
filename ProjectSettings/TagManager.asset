@@ -19,6 +19,7 @@ TagManager:
   - photoDia
   - noPhotoDia
   - inventory
+  - flashingText
   layers:
   - Default
   - TransparentFX
