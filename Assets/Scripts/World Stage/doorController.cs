@@ -12,8 +12,10 @@ public class doorController : MonoBehaviour
     public string nextCameraPos; //Next CameraPosition
     public float destX; //X destination for player
     public float destY; //Y destination for player
+    public string direction;
 
     public GameObject fadeShade;
+    public GameObject player;
 
 //------------------------------------------------------------------------
 //Main User defined functions
@@ -30,7 +32,7 @@ public class doorController : MonoBehaviour
         CanvasGroup canvasGroup = fadeShade.GetComponent<CanvasGroup>();
         float alpha = 0.0f;
         while (alpha < 1f){
-            alpha += 0.03f;
+            alpha += 0.05f;
             canvasGroup.alpha = alpha;
             yield return new WaitForSeconds(0.025f);
         }
@@ -44,6 +46,7 @@ public class doorController : MonoBehaviour
 //Unity defined functions
     void Start(){
         fadeShade = GameObject.FindWithTag("fadeShade");
+        player = GameObject.FindWithTag("Player");
     }
 
     void Update(){ //Want to move this to input controller

@@ -47,7 +47,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destScene: 0
   originScene: 
-  nextCameraPos: 
+  nextCameraPos: 0
+  destX: 0
+  destY: 0
+  direction: down
+  fadeShade: {fileID: 0}
+  player: {fileID: 0}
 --- !u!60 &8600813395152412220
 PolygonCollider2D:
   m_ObjectHideFlags: 0
