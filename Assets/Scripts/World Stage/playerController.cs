@@ -13,10 +13,10 @@ public class playerController : MonoBehaviour
     public Animator animator; //Allows script access to animator
     public Vector2 movement;
     public string lastKey; //String to store the last key you pressed
-    public float horizontalSpeed;
-    public float verticalSpeed;
     public float totSpeed;
     public int lastDirection; //This variable will be used for storing the last direction of the player, up:1, down:2, right:3, left:4
+    public Vector2 continuedDirection;
+    public bool continuedMovement = false;
 
     //Used for interaction
     public GameObject currentInterObj;
@@ -55,13 +55,63 @@ public class playerController : MonoBehaviour
         locked = false;
     }
 
+    void continueInDirection(string direction){ //Need to implement animation stuff with all of these because it will bite me later
+        switch(direction){
+            case "left":
+                continuedDirection = new Vector2(-1, 0);
+                break;
+            case "right":
+                continuedDirection = new Vector2(1, 0);
+                break;
+            case "down":
+                continuedDirection = new Vector2(0, -1);
+                break;
+            case "up":
+                continuedDirection = new Vector2(0, 1);
+                break;
+            case "na":
+                continuedDirection = new Vector2(0,0);
+                break;
+        }
+        continuedMovement = true;
+    }
+
+    void updateAnimation(){ //This is where all my animation logic is stored and managed I hate animation controller thingy dumb stupid thing
+        if(locked && !continuedMovement){
+            animator.SetFloat("horizontalSpeed", 0);
+            animator.SetFloat("verticalSpeed", 0);
+            animator.SetFloat("totSpeed", 0);
+        }else if(continuedMovement){
+            animator.SetFloat("horizontalSpeed", continuedDirection.x);
+            animator.SetFloat("verticalSpeed", continuedDirection.y);
+            animator.SetFloat("totSpeed",   continuedDirection.x + continuedDirection.y);
+            Debug.Log(continuedDirection);
+        }else{ //If not locked
+            if(movement.x > 0){
+                lastDirection = 3;
+            }else if(movement.x < 0){
+                lastDirection = 4;
+            }else if (movement.y > 0){
+                lastDirection = 1;
+            }else  if(movement.y < 0){
+                lastDirection = 2;
+            }
+            if(!locked){
+                animator.SetFloat("horizontalSpeed", movement.x);
+                animator.SetFloat("verticalSpeed", movement.y);
+                animator.SetFloat("totSpeed", movement.x + movement.y);
+                animator.SetInteger("lastDirection", lastDirection);
+            }
+        }
+
+    }
+
 
     void checkMovement() //Main movement logic called by the update function, over complicated to prevent 2 inputs at same time, this function is massive, I might want to split it up later on 
     {
-        if(!locked){
+        if(!locked && !continuedMovement){
             //I want to be careful of this code here, dont want it to cause jitters, it should but idk
-            movement.y = 0;
-            movement.x = 0;            
+            movement = new Vector2(0,0);         
             //This is the entrance point for movement, the system is designed so you can only move in one direction at a time
             if(!turnLocked){
                 if(Input.GetKey("up")){
@@ -95,29 +145,10 @@ public class playerController : MonoBehaviour
                     turnLocked = false;
                 }
             }
-            //Below is where we define floats that the animation controller uses to manage states
-            horizontalSpeed = movement.x * moveSpeed;
-            verticalSpeed = movement.y * moveSpeed ;
-            totSpeed = horizontalSpeed + verticalSpeed;
-
-            //Defines last direction used fpr animation later on
-            if(horizontalSpeed > 0){
-                lastDirection = 3;
-            }else if(horizontalSpeed < 0){
-                lastDirection = 4;
-            }else if (verticalSpeed > 0){
-                lastDirection = 1;
-            }else  if(verticalSpeed < 0){
-                lastDirection = 2;
-            }
-
-            if(!locked){
-                animator.SetFloat("horizontalSpeed", horizontalSpeed);
-                animator.SetFloat("verticalSpeed", verticalSpeed);
-                animator.SetFloat("totSpeed", totSpeed);
-                animator.SetInteger("lastDirection", lastDirection);
-            }
             rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+        }
+        else if(continuedMovement){ //Continued movement used for the door controller 
+            rb.MovePosition(rb.position + continuedDirection * moveSpeed * Time.fixedDeltaTime);
         }
     }
 
@@ -138,7 +169,8 @@ public class playerController : MonoBehaviour
     }
 
     void FixedUpdate(){
-        checkMovement(); //Movement controller is kept in fixed update to keep movespeed consistent
+        checkMovement(); //Movement controller is kept in fixed update to keep movespeed consistent, prob gonna implement physics based movement instead of micro teleports at one point but yeah
+        updateAnimation();
     }
 
     void OnTriggerEnter2D(Collider2D other){ //Runs when there is a collision between a trigger and regular collider
@@ -149,6 +181,7 @@ public class playerController : MonoBehaviour
         }
         if (other.tag == "door"){
             locked = true;
+            continueInDirection(other.GetComponent<doorController>().direction);
             sceneController.camSize = cam.orthographicSize;
             sceneController.camAspect = cam.aspect;
             other.gameObject.SendMessage("nextScene");

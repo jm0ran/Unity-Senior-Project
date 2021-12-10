@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class UIController : MonoBehaviour
 {
@@ -19,7 +20,7 @@ public class UIController : MonoBehaviour
 
     //Need to find a way to dynamically set these based on what UI Element is avaliable
     public Image profileBox;
-    public Text textbox;
+    //public Text textbox;
     public GameObject textObj;
 
 
@@ -62,7 +63,7 @@ public class UIController : MonoBehaviour
             if(activeItemType == "photoDia"){
                 changeProfile(inputText.Substring(inputText.IndexOf(";") + 1));
             }
-            textObj.GetComponent<Text>().text = inputText.Substring(0, inputText.IndexOf(";"));
+            textObj.GetComponent<TextMeshProUGUI>().text = inputText.Substring(0, inputText.IndexOf(";"));
             
     }
 
@@ -106,7 +107,7 @@ public class UIController : MonoBehaviour
         CanvasGroup canvasGroup = fadeShade.GetComponent<CanvasGroup>();
         float alpha = 1f;
         while (alpha > 0f){
-            alpha -= 0.03f;
+            alpha -= 0.05f;
             canvasGroup.alpha = alpha;
             yield return new WaitForSeconds(0.0025f);
         }
@@ -118,7 +119,6 @@ public class UIController : MonoBehaviour
     {
         //Very initial testing of just how changing the image works in unity and stuff preparing for a system to change during dialougue
         profileBox = GameObject.FindWithTag("profileBox").GetComponent<Image>();
-        textbox = GameObject.FindWithTag("textBox").GetComponent<Text>();
         photoDia = GameObject.FindWithTag("photoDia");
         noPhotoDia = GameObject.FindWithTag("noPhotoDia");
         inventory = GameObject.FindWithTag("inventory");
