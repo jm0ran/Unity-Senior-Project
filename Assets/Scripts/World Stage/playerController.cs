@@ -85,7 +85,6 @@ public class playerController : MonoBehaviour
             animator.SetFloat("horizontalSpeed", continuedDirection.x);
             animator.SetFloat("verticalSpeed", continuedDirection.y);
             animator.SetFloat("totSpeed",   continuedDirection.x + continuedDirection.y);
-            Debug.Log(continuedDirection);
         }else{ //If not locked
             if(movement.x > 0){
                 lastDirection = 3;
