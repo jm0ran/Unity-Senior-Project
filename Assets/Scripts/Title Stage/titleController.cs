@@ -31,6 +31,6 @@ public class titleController : MonoBehaviour
     }
 
     void startGame(){
-        SceneManager.LoadScene("Junk Cave");
+        SceneManager.LoadScene("Cutscene 1");
     }
 }

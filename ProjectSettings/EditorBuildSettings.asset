@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Title Screen.unity
     guid: 56e52fa908be84f5a8b4286616cd00b5
   - enabled: 1
+    path: Assets/Scenes/Cutscene 1.unity
+    guid: 26cfb48f221934f7abffd31c2ade9684
+  - enabled: 1
     path: Assets/Scenes/Junk Cave.unity
     guid: 8208f376844de4a99a1818c33993ee1b
   - enabled: 1
@@ -18,7 +21,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Route 1.unity
     guid: a71eb44d79c2c4f028b8d2937ed9df0b
   - enabled: 1
-    path: Assets/Scenes/courtyard.unity
+    path: Assets/Scenes/Courtyard.unity
     guid: 6d71b2df2b5b24cf7a013f30d43f70d0
   - enabled: 1
     path: Assets/Scenes/Battle Stage.unity
