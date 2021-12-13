@@ -21,6 +21,8 @@ TagManager:
   - inventory
   - flashingText
   - fadeShade
+  - backing2
+  - backing1
   layers:
   - Default
   - TransparentFX
