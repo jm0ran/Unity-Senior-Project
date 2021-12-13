@@ -611,3 +611,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneText: {fileID: 0}
+  textDelay: 0.25
