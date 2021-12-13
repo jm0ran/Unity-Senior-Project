@@ -23,6 +23,7 @@ TagManager:
   - fadeShade
   - backing2
   - backing1
+  - backing3
   layers:
   - Default
   - TransparentFX
