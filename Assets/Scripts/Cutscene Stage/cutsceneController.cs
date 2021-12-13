@@ -9,6 +9,7 @@ public class cutsceneController : MonoBehaviour
     public TextMeshProUGUI sceneText;
     public float textDelay;
     public bool locked; //Used to lock checking to move forward while new text is loading
+    public GameObject fadeShade;
 
     //I want this this first cutscene controller to almost serve as a template as while I only plan to have this opening cutscene plans could definitely change, going to hardcode the information in slightly
 
@@ -16,6 +17,18 @@ public class cutsceneController : MonoBehaviour
     void renderText(string input){ //I want to keep render text in it's own function as I intend to do some kind of timed animation as the characters come in, I also want to containerize this segmenet as I may use it later
         locked = true;
         StartCoroutine(charByChar(input));
+    }
+
+    IEnumerator fadeTransition(string dest){
+        CanvasGroup canvasGroup = fadeShade.GetComponent<CanvasGroup>();
+        float alpha = 0.0f;
+        while (alpha < 1f){
+            alpha += 0.01f;
+            canvasGroup.alpha = alpha;
+            yield return new WaitForSeconds(0.025f);
+        }
+        sceneController.origin = "Cutscene 1";
+        SceneManager.LoadScene(dest);
     }
 
     IEnumerator charByChar(string input){
@@ -75,7 +88,7 @@ public class cutsceneController : MonoBehaviour
         while(!Input.GetKeyDown(KeyCode.Return) || locked){
             yield return null;
         }
-        SceneManager.LoadScene("Junk Cave");
+        StartCoroutine(fadeTransition("Junk Cave"));
     }
     
 
@@ -85,6 +98,8 @@ public class cutsceneController : MonoBehaviour
     void Start()
     {
         sceneText = GameObject.FindWithTag("textBox").GetComponent<TextMeshProUGUI>();
+        fadeShade = GameObject.FindWithTag("fadeShade");
+
         StartCoroutine(mainLoop());
     }
 

@@ -27,12 +27,15 @@ public class UIController : MonoBehaviour
     //Layers of the UI
     public List<GameObject> layersList;
     public GameObject activeItemObj;
+    public GameObject player;
     public string activeItemType;
 
     public GameObject inventory;
     public GameObject photoDia;
     public GameObject noPhotoDia;
     public GameObject fadeShade;
+
+    private float fadeSpeed = 0.05f;
 
     //------------------------------------------------------------------------
     //User defined functions
@@ -104,13 +107,21 @@ public class UIController : MonoBehaviour
     }
 
     IEnumerator fadeIn(){
+        if(sceneController.origin == "Cutscene 1"){
+            Debug.Log("Coming From Cutscene");
+            player.SendMessage("lockPlayer", true);
+            fadeSpeed = (0.01f);
+        }else{
+            fadeSpeed = (0.07f);
+        }
         CanvasGroup canvasGroup = fadeShade.GetComponent<CanvasGroup>();
         float alpha = 1f;
         while (alpha > 0f){
-            alpha -= 0.05f;
+            alpha -= fadeSpeed;
             canvasGroup.alpha = alpha;
-            yield return new WaitForSeconds(0.0025f);
+            yield return new WaitForSeconds(0.025f);
         }
+        player.SendMessage("lockPlayer", false);
     }
 
     //------------------------------------------------------------------------
@@ -118,6 +129,7 @@ public class UIController : MonoBehaviour
     void Start()
     {
         //Very initial testing of just how changing the image works in unity and stuff preparing for a system to change during dialougue
+        player = GameObject.FindWithTag("Player");
         profileBox = GameObject.FindWithTag("profileBox").GetComponent<Image>();
         photoDia = GameObject.FindWithTag("photoDia");
         noPhotoDia = GameObject.FindWithTag("noPhotoDia");
