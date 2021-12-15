@@ -142,6 +142,7 @@ public class UIController : MonoBehaviour
         layersList.Add(inventory);
 
         disableUIItems(); //Fade shade is left out for the time being
+        enableUIItem("inventory");
 
         StartCoroutine(fadeIn()); //Fades in upon start of Scene 
     }    

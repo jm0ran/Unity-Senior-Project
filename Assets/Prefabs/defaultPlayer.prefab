@@ -108,10 +108,10 @@ MonoBehaviour:
   animator: {fileID: 0}
   movement: {x: 0, y: 0}
   lastKey: 
-  horizontalSpeed: 0
-  verticalSpeed: 0
   totSpeed: 0
   lastDirection: 0
+  continuedDirection: {x: 0, y: 0}
+  continuedMovement: 0
   currentInterObj: {fileID: 0}
   locked: 0
   camObj: {fileID: 0}
@@ -187,6 +187,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerInv:
     items: []
+  inventoryRowPrefab: {fileID: 3859697574678741062, guid: 95143dc0b29ca4b62b92b4f767bc0d41, type: 3}
 --- !u!114 &6901071756796984613
 MonoBehaviour:
   m_ObjectHideFlags: 0
