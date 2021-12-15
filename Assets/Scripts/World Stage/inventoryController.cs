@@ -22,15 +22,27 @@ public class inventoryController : MonoBehaviour
     }
 
     void loadInventoryGUI(){
+        gameObject.GetComponent<inputController>().inInventory = true;
         gameObject.SendMessage("lockPlayer", true);
         for(int i = 0; i < playerInv.items.Count; i++){
-            Vector3 rowLocation = new Vector3(400, 200 * (i + 1), 0);
+            Vector3 rowLocation = new Vector3(-530, 200 * (i + 1), 0);
             GameObject newInvRow = Instantiate(inventoryRowPrefab, rowLocation, Quaternion.identity);
-            newInvRow.transform.SetParent(inventoryUI.transform);
+            newInvRow.transform.SetParent(inventoryUI.transform, false);
             newInvRow.transform.Find("invName").GetComponent<TextMeshProUGUI>().text = playerInv.items[i].itemName;
         }
         UI.SendMessage("enableUIItem", "inventory");
     }
+
+    void exitInv(){
+        UI.SendMessage("disableUIItems");
+        foreach(Transform child in inventoryUI.transform){
+            GameObject.Destroy(child.gameObject);
+        }
+        gameObject.GetComponent<inputController>().inInventory = false;
+        gameObject.SendMessage("lockPlayer", false);
+    }
+
+
 //------------------------------------------------------------------------
 //Unity Defined Functions
     void Start()
