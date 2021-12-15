@@ -16,21 +16,21 @@ public class titleController : MonoBehaviour
 
 
     IEnumerator slideBacking(){ //Idk how I got this to work lol
-        backBacking = backing1;
+        backBacking = backing3;
         midBacking = backing2;
-        frontBacking = backing3;
+        frontBacking = backing1;
         backOfTheLine = backing1;
         while(true){
             if(backBacking.position.x == 0){
-                frontBacking.position = new Vector3(-1987, frontBacking.position.y, frontBacking.position.z);
+                frontBacking.position = new Vector3(1987, frontBacking.position.y, frontBacking.position.z);
                 backBacking = frontBacking;
                 frontBacking = midBacking;
                 midBacking = backOfTheLine;
                 backOfTheLine = backBacking;
             }
-            backing1.position = backing1.position + new Vector3(0.5f,0,0);
-            backing2.position = backing2.position + new Vector3(0.5f,0,0);
-            backing3.position = backing3.position + new Vector3(0.5f,0,0);
+            backing1.position = backing1.position + new Vector3(-0.5f,0,0);
+            backing2.position = backing2.position + new Vector3(-0.5f,0,0);
+            backing3.position = backing3.position + new Vector3(-0.5f,0,0);
             yield return new WaitForSeconds(0.005f);
         }
     }
