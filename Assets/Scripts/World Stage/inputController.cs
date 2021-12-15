@@ -18,8 +18,8 @@ public class inputController : MonoBehaviour
     void Update(){ //Used for singular non movement button inputs like menus and interactiosn
         //general Input Logic
         if(Input.GetKeyDown(KeyCode.I)){
+            player.SendMessage("loadInventoryGUI");
             Debug.Log("Inventory Open");
-            UI.SendMessage("enableUIItem", "inventory");
         }
         if(Input.GetKeyDown(KeyCode.O)){
             Debug.Log("Inventory Close");
