@@ -152,6 +152,7 @@ public class playerController : MonoBehaviour
     }
 
     void lockPlayer(bool state){ //Locks player movement, used when triggering dialougue and other events that player needs to be frozen for
+        gameObject.GetComponent<inputController>().playerLocked = state;
         locked = state;
         animator.SetFloat("horizontalSpeed", 0);
         animator.SetFloat("verticalSpeed", 0);

@@ -11,6 +11,16 @@ public class inputController : MonoBehaviour
     public GameObject UI;
     public GameObject player;
 
+    //STATES
+    public bool playerLocked = false;
+    public bool inInventory = false;
+    public bool inDialogue = false;
+
+
+
+//User Defined Functions
+
+
 
 
 //------------------------------------------------------------------------
@@ -18,8 +28,13 @@ public class inputController : MonoBehaviour
     void Update(){ //Used for singular non movement button inputs like menus and interactiosn
         //general Input Logic
         if(Input.GetKeyDown(KeyCode.I)){
-            Debug.Log("Inventory Open");
-            UI.SendMessage("enableUIItem", "inventory");
+            if(!inInventory){
+                player.SendMessage("loadInventoryGUI");
+            }
+            else{
+                player.SendMessage("exitInv");
+            }
+            
         }
         if(Input.GetKeyDown(KeyCode.O)){
             Debug.Log("Inventory Close");

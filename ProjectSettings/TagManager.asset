@@ -24,6 +24,7 @@ TagManager:
   - backing2
   - backing1
   - backing3
+  - inventoryRow
   layers:
   - Default
   - TransparentFX
