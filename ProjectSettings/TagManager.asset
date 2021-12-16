@@ -21,10 +21,9 @@ TagManager:
   - inventory
   - flashingText
   - fadeShade
-  - backing2
-  - backing1
-  - backing3
   - inventoryRow
+  - sliding1
+  - sliding2
   layers:
   - Default
   - TransparentFX

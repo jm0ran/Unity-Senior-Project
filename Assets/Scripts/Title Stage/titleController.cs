@@ -6,31 +6,26 @@ using UnityEngine.SceneManagement;
 public class titleController : MonoBehaviour
 {
     public GameObject flashingText;
-    private RectTransform backing1;
-    private RectTransform backing2;
-    private RectTransform backing3;
-    public RectTransform backBacking;
-    public RectTransform midBacking;
-    public RectTransform frontBacking;
-    public RectTransform backOfTheLine;
+    private RectTransform sliding1;
+    private RectTransform sliding2;
+    private RectTransform frontBacking;
+    private RectTransform backBacking;
+    public RectTransform leftMost;
+    public RectTransform rightMost;
 
-
-    IEnumerator slideBacking(){ //Idk how I got this to work lol
-        backBacking = backing3;
-        midBacking = backing2;
-        frontBacking = backing1;
-        backOfTheLine = backing1;
+    IEnumerator slideBacking(){ //Works better then it did before
+        rightMost = sliding2;
+        leftMost = sliding1;
+        RectTransform tempVar;
         while(true){
-            if(backBacking.position.x == 0){
-                frontBacking.position = new Vector3(1987, frontBacking.position.y, frontBacking.position.z);
-                backBacking = frontBacking;
-                frontBacking = midBacking;
-                midBacking = backOfTheLine;
-                backOfTheLine = backBacking;
+            if(rightMost.localPosition.x == 0){
+                leftMost.localPosition = new Vector3(1987, 0, 0);
+                tempVar = leftMost;
+                leftMost = rightMost;
+                rightMost = tempVar;
             }
-            backing1.position = backing1.position + new Vector3(-0.5f,0,0);
-            backing2.position = backing2.position + new Vector3(-0.5f,0,0);
-            backing3.position = backing3.position + new Vector3(-0.5f,0,0);
+            sliding1.localPosition = sliding1.localPosition + new Vector3(-0.5f,0,0);
+            sliding2.localPosition = sliding2.localPosition + new Vector3(-0.5f,0,0);
             yield return new WaitForSeconds(0.005f);
         }
     }
@@ -55,9 +50,8 @@ public class titleController : MonoBehaviour
     void Start()
     {
         flashingText = GameObject.FindWithTag("flashingText");
-        backing1 = GameObject.FindWithTag("backing1").GetComponent<RectTransform>();
-        backing2 = GameObject.FindWithTag("backing2").GetComponent<RectTransform>();
-        backing3 = GameObject.FindWithTag("backing3").GetComponent<RectTransform>();
+        sliding1 = GameObject.FindWithTag("sliding1").GetComponent<RectTransform>();
+        sliding2 = GameObject.FindWithTag("sliding2").GetComponent<RectTransform>();
         StartCoroutine(startFlashingText());
         StartCoroutine(slideBacking());
     }
