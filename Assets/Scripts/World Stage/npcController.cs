@@ -58,7 +58,7 @@ public class npcController : MonoBehaviour
         }
     }
 
-//------------------------------------------------------------------------
+//-----------------hi:)-------------------------------------------------------
 //Unity Functions
     void Awake(){
         UI = GameObject.FindWithTag("UI");

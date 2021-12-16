@@ -34,6 +34,7 @@ public class UIController : MonoBehaviour
     public GameObject photoDia;
     public GameObject noPhotoDia;
     public GameObject fadeShade;
+    public GameObject camera;
 
     private float fadeSpeed = 0.05f;
 
@@ -58,17 +59,39 @@ public class UIController : MonoBehaviour
     }
 
     void changeText(string inputText){ //Probably want to take argument as a concatanated string
-            foreach (Transform child in activeItemObj.transform){ //Runs for each child of the current active item
-                if(child.gameObject.tag == "textBox"){
-                   textObj = child.gameObject;
-               }
+        foreach (Transform child in activeItemObj.transform){ //Runs for each child of the current active item
+            if(child.gameObject.tag == "textBox"){
+                textObj = child.gameObject;
             }
-            if(activeItemType == "photoDia"){
-                changeProfile(inputText.Substring(inputText.IndexOf(";") + 1));
-            }
-            textObj.GetComponent<TextMeshProUGUI>().text = inputText.Substring(0, inputText.IndexOf(";"));
-            
+        }
+        if(activeItemType == "photoDia"){
+            changeProfile(inputText.Substring(inputText.IndexOf(";") + 1));
+        }
+        textObj.GetComponent<TextMeshProUGUI>().text = inputText.Substring(0, inputText.IndexOf(";"));
+        
     }
+
+    void startDiaLoop(List<string> input){
+        List<string> dia = new List<string>();
+        List<string> diaOrder = new List<string>();
+        int totalLines = input.Count;
+        for(int i = 0; i < input.Count; i++){
+            dia.Add(input[i].Substring(0, input[i].IndexOf(";")));
+            diaOrder.Add(input[i].Substring(input[i].IndexOf(";") + 1));
+        }
+        StartCoroutine(diaLoop(totalLines, dia, diaOrder));
+    }
+
+    IEnumerator diaLoop(int totalLines, List<string> dia, List<string> diaOrder){
+        int lineProgress = 0;
+        while(lineProgress < totalLines){
+            Debug.Log(dia[lineProgress]);
+            lineProgress++;
+            yield return null;
+        }
+        yield return null;
+    }
+    
 
     void enableUIItem(string item){
         disableUIItems(); //Disables all UI items to prevent 2 states from occuring at same time
@@ -121,7 +144,10 @@ public class UIController : MonoBehaviour
             canvasGroup.alpha = alpha;
             yield return new WaitForSeconds(0.025f);
         }
-        player.SendMessage("lockPlayer", false);
+        if(!camera.GetComponent<sceneController>().triggered && camera.GetComponent<sceneController>().hasOpeningDia){ //Only want to trigger if the opening Dia is not running
+            player.SendMessage("lockPlayer", false);
+        }
+        
     }
 
     //------------------------------------------------------------------------
@@ -135,6 +161,7 @@ public class UIController : MonoBehaviour
         noPhotoDia = GameObject.FindWithTag("noPhotoDia");
         inventory = GameObject.FindWithTag("inventory");
         fadeShade = GameObject.FindWithTag("fadeShade");
+        camera = GameObject.FindWithTag("MainCamera");
 
         layersList = new List<GameObject>();
         layersList.Add(photoDia);

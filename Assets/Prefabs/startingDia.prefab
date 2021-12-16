@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5600940388785363100}
   - component: {fileID: 5600940388785363103}
   - component: {fileID: 5600940388785363104}
+  - component: {fileID: 3669347442279705746}
   m_Layer: 0
   m_Name: startingDia
   m_TagString: startingDia
@@ -103,6 +104,26 @@ MonoBehaviour:
   - Main
   UI: {fileID: 0}
   player: {fileID: 0}
-  textBox: {fileID: 0}
   totalLines: 0
   textProgress: 6
+  diaType: 
+  oneTime: 0
+  persistID: -1
+--- !u!114 &3669347442279705746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5600940388785363107}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa0c293e70a024aeab918dab8f3c3928, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggered: 0
+  persistID: -1
+  dia: []
+  diaOrder: []
+  UI: {fileID: 0}
+  player: {fileID: 0}
