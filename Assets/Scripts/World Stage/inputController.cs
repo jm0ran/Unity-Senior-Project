@@ -37,8 +37,7 @@ public class inputController : MonoBehaviour
             
         }
         if(Input.GetKeyDown(KeyCode.O)){
-            Debug.Log("Inventory Close");
-            UI.SendMessage("disableUIItems");
+
         }
         if(Input.GetKeyDown(KeyCode.E)){
             player.SendMessage("triggerInteract");

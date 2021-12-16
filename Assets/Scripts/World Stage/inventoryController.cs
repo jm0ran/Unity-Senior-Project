@@ -7,7 +7,7 @@ public class inventoryController : MonoBehaviour
 {
 //------------------------------------------------------------------------
 //Predefined variables for the script
-    public inventory playerInv;
+    public static inventory playerInv;
     //just using Unity Editor to assign this
     public GameObject inventoryRowPrefab;
     private GameObject UI;
@@ -21,11 +21,11 @@ public class inventoryController : MonoBehaviour
         playerInv.readFromJson();
     }
 
-    void loadInventoryGUI(){
+    void loadInventoryGUI(){ //Prob want to maybe move this to UI controller not sure yet
         gameObject.GetComponent<inputController>().inInventory = true;
         gameObject.SendMessage("lockPlayer", true);
         for(int i = 0; i < playerInv.items.Count; i++){
-            Vector3 rowLocation = new Vector3(-530, 200 * (i + 1), 0);
+            Vector3 rowLocation = new Vector3(-530,(-590) + (170 * (i + 1)), 0);
             GameObject newInvRow = Instantiate(inventoryRowPrefab, rowLocation, Quaternion.identity);
             newInvRow.transform.SetParent(inventoryUI.transform, false);
             newInvRow.transform.Find("invName").GetComponent<TextMeshProUGUI>().text = playerInv.items[i].itemName;
