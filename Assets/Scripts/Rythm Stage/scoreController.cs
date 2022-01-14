@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class scoreController : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class scoreController : MonoBehaviour
     int notesHit;
     int streak;
     public TMPro.TextMeshProUGUI streakText;
+    public Slider progressSlider;
+    public Image fillImage;
 
 //------------------------------------------------------------------------
 //USER DEFINED FUNCTIONS
@@ -18,6 +21,7 @@ public class scoreController : MonoBehaviour
         notesHit++;
         Debug.Log("Streak: " + streak);
         updateStreak();
+        gaugeUp();
     }
     void noteMiss(){
         Debug.Log("A Note Was Missed");
@@ -27,6 +31,20 @@ public class scoreController : MonoBehaviour
     void updateStreak(){
         streakText.text = "Streak: " + streak;
     }
+    void gaugeUp(){
+        if(progressSlider.value < 1f){
+            progressSlider.value += 0.1f;
+        }
+    }
+    void checkGauge(){
+        if(progressSlider.value >= 1){
+            fillImage.color = new Color(255, 255, 255, 100);
+        }
+    }
+    
+    void triggerGauge(){
+        progressSlider.value = 0;
+    }
 
 //------------------------------------------------------------------------
 //Unity Defined Functions
@@ -34,6 +52,14 @@ public class scoreController : MonoBehaviour
         streak = 0;
         notesHit = 0;
         streakText = GameObject.FindWithTag("streakCounter").GetComponent<TMPro.TextMeshProUGUI>();
+        progressSlider = GameObject.FindWithTag("progressSlider").GetComponent<Slider>();
+        fillImage = GameObject.FindWithTag("sliderFill").GetComponent<Image>();
+    }
+    void Update(){
+        checkGauge();
+        if(Input.GetKeyDown(KeyCode.Space) && progressSlider.value >= 1){
+            triggerGauge();
+        }
     }
 
 }

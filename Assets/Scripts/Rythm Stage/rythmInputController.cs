@@ -38,6 +38,8 @@ public class rythmInputController : MonoBehaviour
         spriteRenderer.sprite = mainSprite;
     }
 
+    
+
 //------------------------------------------------------------------------
 //Unity Defined Functions
     void Start(){
@@ -63,6 +65,7 @@ public class rythmInputController : MonoBehaviour
             }
         }
     }
+
 
     void Update(){
         if(Input.GetKeyDown(direction)){ //This will need to be changed to be dynamic for different directions

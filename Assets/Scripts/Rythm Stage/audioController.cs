@@ -37,11 +37,6 @@ public class audioController : MonoBehaviour
                 mainMap.map.RemoveAt(0);
             }
         }
-        
-
-        // if(mainMap.map.Count > 0 && (Time.timeSinceLevelLoad + customStartTime) > (mainMap.map[0].time + delayStart - timeToTarget)){
-        //     newArrow(mainMap.map[0].time, mainMap.map[0].button);
-        // }
     }
 
     void newArrow(float triggerTime, string button){ //This is my function that is going to instantiate my arrow
