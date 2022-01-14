@@ -21,10 +21,34 @@ public class audioController : MonoBehaviour
 //------------------------------------------------------------------------
 //User Defined Functions
     void noteSpawner(){ //Tracks current progress in song and spawns new notes accordingly      
-        songTime = mainSong.time;  
-        if(mainMap.map.Count > 0 && (Time.timeSinceLevelLoad + customStartTime) > (mainMap.map[0].time + delayStart - timeToTarget)){
-            newArrow(mainMap.map[0].time, mainMap.map[0].button);
+        songTime = mainSong.time;
+        if(mainMap.map.Count > 0){
+            if(mainMap.map[0].time - timeToTarget <= 0){
+                Debug.Log("Low note");
+                if((Time.timeSinceLevelLoad + customStartTime) > (mainMap.map[0].time + delayStart - timeToTarget)){
+                    newArrow(mainMap.map[0].time, mainMap.map[0].button);
+                }
+            }
+            else if(!(mainMap.map[0].time - timeToTarget <= 0)){
+                if((mainMap.map[0].time - timeToTarget) < mainSong.time){
+                    Debug.Log("High Note");
+                    if(mainMap.map[0].time - timeToTarget <= 0){
+                        Debug.Log("Early note pruned");
+                        mainMap.map.RemoveAt(0);
+                    }else{
+                        newArrow(mainMap.map[0].time, mainMap.map[0].button);
+                }
+            }
+            }
+            else{
+                mainMap.map.RemoveAt(0);
+            }
         }
+        
+
+        // if(mainMap.map.Count > 0 && (Time.timeSinceLevelLoad + customStartTime) > (mainMap.map[0].time + delayStart - timeToTarget)){
+        //     newArrow(mainMap.map[0].time, mainMap.map[0].button);
+        // }
     }
 
     void newArrow(float triggerTime, string button){ //This is my function that is going to instantiate my arrow
@@ -64,7 +88,7 @@ public class audioController : MonoBehaviour
 
     void pruneNotesFrom(float prunePoint){
         for(int i = 0; i < mainMap.map.Count; i++){
-            if(mainMap.map[i].time <= prunePoint + 5f){
+            if(mainMap.map[i].time + timeToTarget <= prunePoint){
                 Debug.Log("Pruned");
                 mainMap.map.RemoveAt(i);
             }
