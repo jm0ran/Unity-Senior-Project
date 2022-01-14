@@ -10,9 +10,11 @@ public class scoreController : MonoBehaviour
 //PREDEFINED VARIABLES   
     int notesHit;
     int streak;
-    public TMPro.TextMeshProUGUI streakText;
-    public Slider progressSlider;
-    public Image fillImage;
+    private TMPro.TextMeshProUGUI streakText;
+    private Slider progressSlider;
+    private Image fillImage;
+    private GameObject audioController;
+    private GameObject rythmStateController;
 
 //------------------------------------------------------------------------
 //USER DEFINED FUNCTIONS
@@ -44,6 +46,9 @@ public class scoreController : MonoBehaviour
     
     void triggerGauge(){
         progressSlider.value = 0;
+        audioController.SendMessage("prepAction");
+        rythmStateController.SendMessage("enterActionState");
+
     }
 
 //------------------------------------------------------------------------
@@ -54,6 +59,8 @@ public class scoreController : MonoBehaviour
         streakText = GameObject.FindWithTag("streakCounter").GetComponent<TMPro.TextMeshProUGUI>();
         progressSlider = GameObject.FindWithTag("progressSlider").GetComponent<Slider>();
         fillImage = GameObject.FindWithTag("sliderFill").GetComponent<Image>();
+        audioController = GameObject.FindWithTag("audioController");
+        rythmStateController = GameObject.FindWithTag("rythmStateController");
     }
     void Update(){
         checkGauge();

@@ -451,7 +451,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37e44f16116154608a7723428ae14750, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  streakText: {fileID: 0}
 --- !u!1 &1082347917
 GameObject:
   m_ObjectHideFlags: 0
@@ -464,7 +463,7 @@ GameObject:
   - component: {fileID: 1082347919}
   m_Layer: 5
   m_Name: progressSlider
-  m_TagString: Untagged
+  m_TagString: progressSlider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -530,7 +529,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 1986563980}
   m_HandleRect: {fileID: 0}
@@ -538,7 +537,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 0.5
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -579,6 +578,51 @@ RectTransform:
   m_AnchoredPosition: {x: 610, y: 448}
   m_SizeDelta: {x: 600, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1381824033
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1381824035}
+  - component: {fileID: 1381824034}
+  m_Layer: 0
+  m_Name: RythmStateController
+  m_TagString: rythmStateController
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1381824034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1381824033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28e0d92b9d2c64b619384a4b6b0bb2b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentState: 
+--- !u!4 &1381824035
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1381824033}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 410.02832, y: 410.50775, z: -6.573932}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1429403528
 GameObject:
   m_ObjectHideFlags: 0
@@ -668,7 +712,7 @@ GameObject:
   - component: {fileID: 1459815463}
   m_Layer: 0
   m_Name: audioControllerObj
-  m_TagString: Untagged
+  m_TagString: audioController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -724,7 +768,7 @@ AudioSource:
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
-  Mute: 0
+  Mute: 1
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
@@ -1019,7 +1063,7 @@ GameObject:
   - component: {fileID: 1986563981}
   m_Layer: 5
   m_Name: Fill
-  m_TagString: Untagged
+  m_TagString: sliderFill
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

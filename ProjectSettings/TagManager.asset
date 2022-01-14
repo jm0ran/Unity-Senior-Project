@@ -27,6 +27,9 @@ TagManager:
   - cloudA
   - cloudB
   - progressSlider
+  - sliderFill
+  - rythmStateController
+  - arrowTarget
   layers:
   - Default
   - TransparentFX

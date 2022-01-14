@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7888008701082726926}
   m_Layer: 0
   m_Name: arrowTarget
-  m_TagString: Untagged
+  m_TagString: arrowTarget
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -125,3 +125,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   direction: up
+  invertedArrow: {fileID: 0}
+  mainSprite: {fileID: 0}
+  spriteRenderer: {fileID: 0}
+  scoreController: {fileID: 0}

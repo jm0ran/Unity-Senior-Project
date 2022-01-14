@@ -18,11 +18,13 @@ public class audioController : MonoBehaviour
     public float noteTargetX;
     public float customStartTime = 0;
 
+    private bool noteLocked = false;
+
 //------------------------------------------------------------------------
 //User Defined Functions
     void noteSpawner(){ //Tracks current progress in song and spawns new notes accordingly      
         songTime = mainSong.time;
-        if(mainMap.map.Count > 0){
+        if(mainMap.map.Count > 0 && !noteLocked){
             if(mainMap.map[0].time - timeToTarget - customStartTime <= 0){
                 if((Time.timeSinceLevelLoad + customStartTime) > (mainMap.map[0].time + delayStart - timeToTarget)){
                     newArrow(mainMap.map[0].time, mainMap.map[0].button);
@@ -80,6 +82,10 @@ public class audioController : MonoBehaviour
         }
     }
 
+    void prepAction(){ //Function that is going to clear notes on field, lock notespawner and iniate transition to action stage
+        noteLocked = true;
+    }
+
 
 
 //------------------------------------------------------------------------
@@ -104,9 +110,6 @@ public class audioController : MonoBehaviour
             mainSong.Pause();
         }else if(Input.GetKey("o")){
             mainSong.UnPause();
-        }
-        if(Input.GetKeyDown("space")){
-            Debug.Log(mainSong.time);
         }
     }
 }
