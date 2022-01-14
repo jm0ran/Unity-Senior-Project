@@ -23,24 +23,17 @@ public class audioController : MonoBehaviour
     void noteSpawner(){ //Tracks current progress in song and spawns new notes accordingly      
         songTime = mainSong.time;
         if(mainMap.map.Count > 0){
-            if(mainMap.map[0].time - timeToTarget <= 0){
-                Debug.Log("Low note");
+            if(mainMap.map[0].time - timeToTarget - customStartTime <= 0){
                 if((Time.timeSinceLevelLoad + customStartTime) > (mainMap.map[0].time + delayStart - timeToTarget)){
                     newArrow(mainMap.map[0].time, mainMap.map[0].button);
                 }
             }
-            else if(!(mainMap.map[0].time - timeToTarget <= 0)){
+            else if(!(mainMap.map[0].time - timeToTarget - customStartTime <= 0)){
                 if((mainMap.map[0].time - timeToTarget) < mainSong.time){
-                    Debug.Log("High Note");
-                    if(mainMap.map[0].time - timeToTarget <= 0){
-                        Debug.Log("Early note pruned");
-                        mainMap.map.RemoveAt(0);
-                    }else{
-                        newArrow(mainMap.map[0].time, mainMap.map[0].button);
+                    newArrow(mainMap.map[0].time, mainMap.map[0].button);
                 }
             }
-            }
-            else{
+            else{ //If it doesn't meet either conditions above remove the note bc something is prob wrong
                 mainMap.map.RemoveAt(0);
             }
         }
@@ -87,11 +80,8 @@ public class audioController : MonoBehaviour
     }
 
     void pruneNotesFrom(float prunePoint){
-        for(int i = 0; i < mainMap.map.Count; i++){
-            if(mainMap.map[i].time + timeToTarget <= prunePoint){
-                Debug.Log("Pruned");
-                mainMap.map.RemoveAt(i);
-            }
+        while(mainMap.map[0].time <= prunePoint){
+            mainMap.map.RemoveAt(0);
         }
     }
 
