@@ -8,6 +8,7 @@ public class rythmStateController : MonoBehaviour
     private GameObject audioController;
     private GameObject rythmInputController;
     private GameObject[] arrows;
+    private GameObject [] arrowTargets;
 
     //This is where I want to control the state of the game and manage transitioning between the stages of battle and Rythm
     //States are going to include
@@ -20,12 +21,20 @@ public class rythmStateController : MonoBehaviour
         audioController.SendMessage("prepAction");
         Debug.Log("Attempted to enter action state");
         triggerRemainingNotes();
+        disableRythmElements();
     }
     
     void triggerRemainingNotes(){
         arrows = GameObject.FindGameObjectsWithTag("arrow");
         for(int i = 0; i < arrows.Length; i++){
             arrows[i].SendMessage("triggerNote");
+        }
+    }
+    
+    void disableRythmElements(){
+        arrowTargets = GameObject.FindGameObjectsWithTag("arrowTarget");
+        for(int i = 0; i < arrowTargets.Length; i++){
+            arrowTargets[i].SetActive(false);
         }
     }
    

@@ -13,7 +13,6 @@ public class scoreController : MonoBehaviour
     private TMPro.TextMeshProUGUI streakText;
     private Slider progressSlider;
     private Image fillImage;
-    private GameObject audioController;
     private GameObject rythmStateController;
 
 //------------------------------------------------------------------------
@@ -21,7 +20,7 @@ public class scoreController : MonoBehaviour
     void noteHit(float timeDiff){ //This is where I'm gonna handle note hits
         streak++;
         notesHit++;
-        Debug.Log("Streak: " + streak);
+        // Debug.Log("Streak: " + streak);
         updateStreak();
         gaugeUp();
     }
@@ -46,8 +45,8 @@ public class scoreController : MonoBehaviour
     
     void triggerGauge(){
         progressSlider.value = 0;
-        audioController.SendMessage("prepAction");
         rythmStateController.SendMessage("enterActionState");
+
 
     }
 
@@ -59,7 +58,6 @@ public class scoreController : MonoBehaviour
         streakText = GameObject.FindWithTag("streakCounter").GetComponent<TMPro.TextMeshProUGUI>();
         progressSlider = GameObject.FindWithTag("progressSlider").GetComponent<Slider>();
         fillImage = GameObject.FindWithTag("sliderFill").GetComponent<Image>();
-        audioController = GameObject.FindWithTag("audioController");
         rythmStateController = GameObject.FindWithTag("rythmStateController");
     }
     void Update(){
