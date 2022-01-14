@@ -6,27 +6,47 @@ using UnityEngine.SceneManagement;
 public class titleController : MonoBehaviour
 {
     public GameObject flashingText;
-    private RectTransform sliding1;
-    private RectTransform sliding2;
-    private RectTransform frontBacking;
-    private RectTransform backBacking;
-    public RectTransform leftMost;
-    public RectTransform rightMost;
+    private RectTransform groundA;
+    private RectTransform groundB;
+    public RectTransform leftGround;
+    public RectTransform rightGround;
 
-    IEnumerator slideBacking(){ //Works better then it did before
-        rightMost = sliding2;
-        leftMost = sliding1;
+    private RectTransform cloudA;
+    private RectTransform cloudB;
+    private RectTransform leftCloud;
+    private RectTransform rightCloud;
+
+    IEnumerator groundSlide(){ //Works better then it did before
+        leftGround = groundA;
+        rightGround = groundB;
         RectTransform tempVar;
         while(true){
-            if(rightMost.localPosition.x == 0){
-                leftMost.localPosition = new Vector3(1987, 0, 0);
-                tempVar = leftMost;
-                leftMost = rightMost;
-                rightMost = tempVar;
+            if(rightGround.localPosition.x == 0){
+                leftGround.localPosition = new Vector3(1987, 0, 0);
+                tempVar = leftGround;
+                leftGround = rightGround;
+                rightGround = tempVar;
             }
-            sliding1.localPosition = sliding1.localPosition + new Vector3(-0.5f,0,0);
-            sliding2.localPosition = sliding2.localPosition + new Vector3(-0.5f,0,0);
+            groundA.localPosition = groundA.localPosition + new Vector3(-0.5f,0,0);
+            groundB.localPosition = groundB.localPosition + new Vector3(-0.5f,0,0);
             yield return new WaitForSeconds(0.005f);
+        }
+    }
+
+    IEnumerator cloudSlide(){
+        leftCloud = cloudA;
+        rightCloud = cloudB;
+        RectTransform tempVar;
+        while(true){
+            if(leftCloud.localPosition.x >= 0){
+                rightCloud.localPosition = new Vector3(-1987, 0, 0);
+                tempVar = leftCloud;
+                leftCloud = rightCloud;
+                rightCloud = tempVar;
+            }
+            cloudA.localPosition = cloudA.localPosition + new Vector3(0.02f,0,0);
+            cloudB.localPosition = cloudB.localPosition + new Vector3(0.02f,0,0);
+            yield return new WaitForSeconds(0.008f);
         }
     }
 
@@ -50,10 +70,13 @@ public class titleController : MonoBehaviour
     void Start()
     {
         flashingText = GameObject.FindWithTag("flashingText");
-        sliding1 = GameObject.FindWithTag("sliding1").GetComponent<RectTransform>();
-        sliding2 = GameObject.FindWithTag("sliding2").GetComponent<RectTransform>();
+        groundA = GameObject.FindWithTag("groundA").GetComponent<RectTransform>();
+        groundB = GameObject.FindWithTag("groundB").GetComponent<RectTransform>();
+        cloudA = GameObject.FindWithTag("cloudA").GetComponent<RectTransform>();
+        cloudB = GameObject.FindWithTag("cloudB").GetComponent<RectTransform>();
         StartCoroutine(startFlashingText());
-        StartCoroutine(slideBacking());
+        StartCoroutine(groundSlide());
+        StartCoroutine(cloudSlide());
     }
 
     void Update(){

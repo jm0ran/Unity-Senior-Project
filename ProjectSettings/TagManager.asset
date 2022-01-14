@@ -22,8 +22,10 @@ TagManager:
   - flashingText
   - fadeShade
   - inventoryRow
-  - sliding1
-  - sliding2
+  - groundA
+  - groundB
+  - cloudA
+  - cloudB
   layers:
   - Default
   - TransparentFX
