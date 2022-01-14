@@ -17,6 +17,8 @@ public class rythmStateController : MonoBehaviour
     // -action: Music is still playing but notes are pause and player is met with a menu that will let them take action
 
     // Start is called before the first frame update
+    
+    
     void enterActionState(){
         audioController.SendMessage("prepAction");
         Debug.Log("Attempted to enter action state");
