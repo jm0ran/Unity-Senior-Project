@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class inputController : MonoBehaviour
 {
@@ -42,6 +43,10 @@ public class inputController : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.E)){
             player.SendMessage("triggerInteract");
         }
+        if(Input.GetKeyDown(KeyCode.M)){
+            SceneManager.LoadScene("Battle Stage");
+        }
+
 
        //Move logic is staying in player controller right now because the locking system is weird to implement here so I'm working on it
         

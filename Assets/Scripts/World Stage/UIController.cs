@@ -34,7 +34,7 @@ public class UIController : MonoBehaviour
     public GameObject photoDia;
     public GameObject noPhotoDia;
     public GameObject fadeShade;
-    public GameObject camera;
+    public GameObject mainCamera;
 
     private float fadeSpeed = 0.05f;
 
@@ -144,7 +144,7 @@ public class UIController : MonoBehaviour
             canvasGroup.alpha = alpha;
             yield return new WaitForSeconds(0.025f);
         }
-        if(!camera.GetComponent<sceneController>().triggered && camera.GetComponent<sceneController>().hasOpeningDia){ //Only want to trigger if the opening Dia is not running
+        if(!mainCamera.GetComponent<sceneController>().triggered && mainCamera.GetComponent<sceneController>().hasOpeningDia){ //Only want to trigger if the opening Dia is not running
             player.SendMessage("lockPlayer", false);
         }
         
@@ -161,7 +161,7 @@ public class UIController : MonoBehaviour
         noPhotoDia = GameObject.FindWithTag("noPhotoDia");
         inventory = GameObject.FindWithTag("inventory");
         fadeShade = GameObject.FindWithTag("fadeShade");
-        camera = GameObject.FindWithTag("MainCamera");
+        mainCamera = GameObject.FindWithTag("MainCamera");
 
         layersList = new List<GameObject>();
         layersList.Add(photoDia);

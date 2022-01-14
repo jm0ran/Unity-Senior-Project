@@ -48,11 +48,5 @@ public class doorController : MonoBehaviour
         fadeShade = GameObject.FindWithTag("fadeShade");
         player = GameObject.FindWithTag("Player");
     }
-
-    void Update(){ //Want to move this to input controller
-        if(Input.GetKeyDown("m")){
-            SceneManager.LoadScene(4);
-        }
-    }
 }
 

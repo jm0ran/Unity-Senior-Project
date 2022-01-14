@@ -26,6 +26,7 @@ TagManager:
   - groundB
   - cloudA
   - cloudB
+  - progressSlider
   layers:
   - Default
   - TransparentFX
