@@ -30,6 +30,8 @@ TagManager:
   - sliderFill
   - rythmStateController
   - arrowTarget
+  - rythmUI
+  - actionUI
   layers:
   - Default
   - TransparentFX

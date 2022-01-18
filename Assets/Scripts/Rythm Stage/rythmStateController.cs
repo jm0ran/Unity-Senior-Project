@@ -19,8 +19,13 @@ public class rythmStateController : MonoBehaviour
     // -action: Music is still playing but notes are pause and player is met with a menu that will let them take action
 
     // Start is called before the first frame update
-    
-    
+
+    void startBattle(){
+        actionUI.SetActive(false);
+        //Temporarily starting in action state while I work in it
+        //enterActionState();
+    }
+
     void enterActionState(){
         audioController.SendMessage("prepAction");
         triggerRemainingNotes();
@@ -46,6 +51,7 @@ public class rythmStateController : MonoBehaviour
     }
 
     void toggleActionElements(bool state){
+        actionUI.SetActive(state);
         //Heres where I want to enable the Action UI
     }
    
@@ -55,6 +61,8 @@ public class rythmStateController : MonoBehaviour
         currentState = "rythm";
         audioController = GameObject.FindWithTag("audioController");
         rythmUI = GameObject.FindWithTag("rythmUI");
+        actionUI = GameObject.FindWithTag("actionUI");
+        startBattle();
 
     }
 }
