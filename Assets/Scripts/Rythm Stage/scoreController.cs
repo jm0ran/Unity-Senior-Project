@@ -20,7 +20,6 @@ public class scoreController : MonoBehaviour
     void noteHit(float timeDiff){ //This is where I'm gonna handle note hits
         streak++;
         notesHit++;
-        // Debug.Log("Streak: " + streak);
         updateStreak();
         gaugeUp();
     }

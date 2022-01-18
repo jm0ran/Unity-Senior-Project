@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class rythmStateController : MonoBehaviour
 {
-    public string currentState;
+    static public string currentState;
     private GameObject audioController;
     private GameObject rythmInputController;
     private GameObject[] arrows;
     private GameObject [] arrowTargets;
+    private GameObject actionUI;
+    private GameObject rythmUI;
 
     //This is where I want to control the state of the game and manage transitioning between the stages of battle and Rythm
     //States are going to include
@@ -21,9 +23,10 @@ public class rythmStateController : MonoBehaviour
     
     void enterActionState(){
         audioController.SendMessage("prepAction");
-        Debug.Log("Attempted to enter action state");
         triggerRemainingNotes();
-        disableRythmElements();
+        toggleRythmElements(false);
+        toggleActionElements(true);
+        currentState = "action";
     }
     
     void triggerRemainingNotes(){
@@ -31,13 +34,19 @@ public class rythmStateController : MonoBehaviour
         for(int i = 0; i < arrows.Length; i++){
             arrows[i].SendMessage("triggerNote");
         }
+        arrows = null;
     }
     
-    void disableRythmElements(){
+    void toggleRythmElements(bool state){ //This is where I want to disable all the objects exclusive to the rythm stage
         arrowTargets = GameObject.FindGameObjectsWithTag("arrowTarget");
         for(int i = 0; i < arrowTargets.Length; i++){
-            arrowTargets[i].SetActive(false);
+            arrowTargets[i].SetActive(state);
         }
+        rythmUI.SetActive(state);
+    }
+
+    void toggleActionElements(bool state){
+        //Heres where I want to enable the Action UI
     }
    
    
@@ -45,6 +54,7 @@ public class rythmStateController : MonoBehaviour
     {
         currentState = "rythm";
         audioController = GameObject.FindWithTag("audioController");
+        rythmUI = GameObject.FindWithTag("rythmUI");
 
     }
 }

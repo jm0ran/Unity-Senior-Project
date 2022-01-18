@@ -68,8 +68,10 @@ public class rythmInputController : MonoBehaviour
 
 
     void Update(){
-        if(Input.GetKeyDown(direction)){ //This will need to be changed to be dynamic for different directions
-            triggerCurrentNote();
+        if(rythmStateController.currentState == "rythm"){ //Allowable inputs during rythm state
+            if(Input.GetKeyDown(direction)){ //I made it work I forgot how lol
+                triggerCurrentNote();
+            }
         }
     }
 }
