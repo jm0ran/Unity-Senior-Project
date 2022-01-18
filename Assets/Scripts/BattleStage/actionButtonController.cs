@@ -19,6 +19,8 @@ public class actionButtonController : MonoBehaviour
         button.onClick.AddListener(actionButtonClick);
         if(triggerName == "fight"){
             button.Select();
+        }else if(triggerName == "move1"){
+            button.Select();
         }
     }
 
