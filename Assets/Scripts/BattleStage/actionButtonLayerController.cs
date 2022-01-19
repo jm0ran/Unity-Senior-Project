@@ -8,6 +8,8 @@ public class actionButtonLayerController : MonoBehaviour
     private GameObject rootLayer;
     public GameObject fightLayer;
 
+    public static GameObject currentLayer;
+
     private GameObject[] layers;
 
     void Start(){
@@ -29,7 +31,13 @@ public class actionButtonLayerController : MonoBehaviour
             layers[i].SetActive(false);
         }
         dest.SetActive(true);
-        
+        currentLayer = dest;
         //This is where I'll go to the next menu
+    }
+
+    void Update(){
+        if(currentLayer != null & Input.GetKeyDown(KeyCode.Escape)){ //Takes us back to the root layer
+            menuTransition(rootLayer);
+        }
     }
 }
