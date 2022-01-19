@@ -1,0 +1,26 @@
+{
+    "acquiredCharacters": [],
+    "currentTeam": [
+        {
+            "name": "",
+            "maxHealth": 0,
+            "currentHealth": 0,
+            "level": 0,
+            "moves": []
+        },
+        {
+            "name": "",
+            "maxHealth": 0,
+            "currentHealth": 0,
+            "level": 0,
+            "moves": []
+        },
+        {
+            "name": "",
+            "maxHealth": 0,
+            "currentHealth": 0,
+            "level": 0,
+            "moves": []
+        }
+    ]
+}
