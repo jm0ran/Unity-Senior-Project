@@ -10,5 +10,6 @@ public class saveDataController : MonoBehaviour
         globalSave = new Save();
         globalSave.loadSavaData();
         globalSave.serializeSaveData();
+        globalSave.instantiateCharacter("Kanye");
     }
 }

@@ -17,7 +17,6 @@ public class Save{
 
     public void serializeSaveData(){
         string jsonDataW = JsonUtility.ToJson(this);
-        Debug.Log(JsonUtility.ToJson(this));
         System.IO.File.WriteAllText(Path.Combine(Application.streamingAssetsPath, "bigBoi.json"), jsonDataW);
     }
 
@@ -36,5 +35,29 @@ public class Save{
         }catch{
             Debug.Log("Could not find json file at " +  Path.Combine(Application.streamingAssetsPath, "bigBoi.json"));
         }
+    }
+
+    public void instantiateCharacter(string charName){
+        bool willContinue = true;
+        for(int i = 0; i <acquiredCharacters.Count; i++){
+            if(acquiredCharacters[i].name == charName){
+                willContinue = false;
+            }else{
+                willContinue = true;
+            }
+        }
+        if(willContinue){
+            try{
+                string jsonDataR = System.IO.File.ReadAllText(Path.Combine(Application.streamingAssetsPath, "characters", charName + ".json"));
+                Character returnChar = JsonUtility.FromJson<Character>(jsonDataR);
+                acquiredCharacters.Add(returnChar);
+            }catch{
+                willContinue = false;
+                Debug.Log("No character found with name: " + charName);
+            }
+        }else{
+            Debug.Log("Character Already Exists");
+        }
+        serializeSaveData();
     }
 }
