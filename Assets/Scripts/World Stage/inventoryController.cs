@@ -7,7 +7,7 @@ public class inventoryController : MonoBehaviour
 {
 //------------------------------------------------------------------------
 //Predefined variables for the script
-    public static inventory playerInv;
+    public static Inventory playerInv;
     //just using Unity Editor to assign this
     public GameObject inventoryRowPrefab;
     private GameObject UI;
@@ -17,7 +17,7 @@ public class inventoryController : MonoBehaviour
 //User Defined Functions
     void initInventory(){
         //Creates and loads player inventory
-        playerInv = new inventory();
+        playerInv = new Inventory();
         playerInv.readFromJson();
     }
 

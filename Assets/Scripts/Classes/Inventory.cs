@@ -8,15 +8,15 @@ using System.Text;
 //The inventory system is contained in a testing scene for the moment and will be implemented later
 
 [System.Serializable]
-public class inventory
+public class Inventory
 {
-    public List<item> items;
+    public List<Item> items;
 
-    public inventory(){ //Constructor function for my inventory
-        this.items = new List<item>();
+    public Inventory(){ //Constructor function for my inventory
+        this.items = new List<Item>();
     } 
     public void addObj(string itemName, int itemAmount){ //Function to addObj to inventory, will be called by other scripts
-        this.items.Add(new item(itemName, itemAmount));
+        this.items.Add(new Item(itemName, itemAmount));
         this.balance(); //Balances inv after adding a new item
     }
     public void remObj(string itemName, int itemAmount){ //Going to be used to remove objects
@@ -68,14 +68,14 @@ public class inventory
         try{
             jsonDataR = System.IO.File.ReadAllText(Path.Combine(Application.streamingAssetsPath, "invData.json"));
             if(jsonDataR != ""){
-                this.items = JsonUtility.FromJson<inventory>(jsonDataR).items;
+                this.items = JsonUtility.FromJson<Inventory>(jsonDataR).items;
             }else{
                 Debug.Log("json file is empty");
-                this.items = new List<item>();
+                this.items = new List<Item>();
             }
         }catch(Exception e){
             Debug.Log("Could not locate the json file: " + e);
-            this.items = new List<item>(); //Creates a new empty list if the inventory data cannot be found
+            this.items = new List<Item>(); //Creates a new empty list if the inventory data cannot be found
         }
 
         this.balance(); //Balances list upon being added
