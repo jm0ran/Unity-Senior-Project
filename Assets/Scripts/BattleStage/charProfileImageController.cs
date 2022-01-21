@@ -19,9 +19,12 @@ public class charProfileImageController : MonoBehaviour
         spriteDictionary.Add("Kanye", Kanye);
         spriteDictionary.Add("Goku", Goku);
         spriteDictionary.Add("Imposter", Imposter);
+        switchProfile(saveDataController.globalSave.currentTeam[0]);
     }
 
     void switchProfile(string charName){
         profile.sprite = spriteDictionary[charName];
     }
+
+
 }
