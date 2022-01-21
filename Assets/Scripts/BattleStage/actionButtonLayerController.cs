@@ -44,12 +44,28 @@ public class actionButtonLayerController : MonoBehaviour
             menuTransition(switchLayer);
         }else if(trigger == "root"){
             menuTransition(rootLayer);
+        }else if(trigger == "char1" || trigger == "char2" || trigger == "char3"){
+            menuTransition(rootLayer);
+            switch(trigger){
+                case "char1":
+                    currentChar = saveDataController.globalSave.currentTeam[0];
+                    break;
+                case "char2":
+                    currentChar = saveDataController.globalSave.currentTeam[1];
+                    break;
+                case "char3":
+                    currentChar = saveDataController.globalSave.currentTeam[2];
+                    break;
+            }
         }
+
+        
         if(trigger == "switch"){
             playerVisualInfo.SetActive(false);
             assignSwitchButtonData();
         }else{
             playerVisualInfo.SetActive(true);
+            updateCharProfile(currentChar);
         }
     }
 
