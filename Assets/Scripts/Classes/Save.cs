@@ -7,12 +7,12 @@ using System.IO;
 public class Save{
     //Really all I'm looking to store in here right now are acquired characters and team comp
     public List<Character> acquiredCharacters;
-    public Character[] currentTeam;
+    public string[] currentTeam;
     //MAKE SURE TO ADD NEW VALUES DOWN IN READ FUNCTION
 
     public Save(){
         acquiredCharacters = new List<Character>();
-        currentTeam = new Character[3] {null, null, null};
+        currentTeam = new string[3] {null, null, null};
     }
 
     public void serializeSaveData(){
@@ -60,4 +60,25 @@ public class Save{
         }
         serializeSaveData();
     }
+    public void assignToTeam(string charName, int charIndex){
+        bool charExists = false;
+        bool charAlreadyInTeam = false;
+        for(int i = 0; i < this.acquiredCharacters.Count; i++){
+            if(acquiredCharacters[i].name == charName){
+                charExists = true;
+            }
+        }
+
+        for(int i = 0; i < this.currentTeam.Length; i++){
+            if(currentTeam[i] == charName){
+                charAlreadyInTeam = true;
+            }
+        }
+
+        if(charExists && !charAlreadyInTeam && charIndex <= 3 && charIndex >= 0){
+            this.currentTeam[charIndex] = charName;
+        }
+        serializeSaveData();
+    }
+
 }

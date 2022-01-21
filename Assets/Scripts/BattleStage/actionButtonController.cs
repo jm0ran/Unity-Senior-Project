@@ -21,6 +21,8 @@ public class actionButtonController : MonoBehaviour
             button.Select();
         }else if(triggerName == "move1"){
             button.Select();
+        }else if(triggerName == "char1"){
+            button.Select(); //Combine all this into one conditional soon
         }
     }
 
