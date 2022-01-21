@@ -10,6 +10,7 @@ public class actionButtonLayerController : MonoBehaviour
     private GameObject fightLayer;
     private GameObject switchLayer;
     private string currentChar;
+    private GameObject playerVisualInfo;
     private GameObject currentLayer;
     private GameObject currentCharProfile;
     private GameObject[] layers;
@@ -22,6 +23,7 @@ public class actionButtonLayerController : MonoBehaviour
         fightLayer = GameObject.Find("fightLayer");
         switchLayer = GameObject.Find("switchLayer");
         currentCharProfile = GameObject.Find("currentCharProfile");
+        playerVisualInfo = GameObject.Find("playerVisualInfo");
         fightLayer.SetActive(false);
         switchLayer.SetActive(false);
         layers = new GameObject[] {rootLayer, fightLayer, switchLayer};
@@ -38,12 +40,18 @@ public class actionButtonLayerController : MonoBehaviour
             menuTransition(fightLayer);
         }else if(trigger == "switch"){
             menuTransition(switchLayer);
+        }else if(trigger == "root"){
+            menuTransition(rootLayer);
+        }
+        if(trigger == "switch"){
+            playerVisualInfo.SetActive(false);
+        }else{
+            playerVisualInfo.SetActive(true);
         }
     }
 
     void menuTransition(GameObject dest){
         for(int i = 0; i < layers.Length; i++){
-            Debug.Log(layers[i].name);
             layers[i].SetActive(false);
         }
         dest.SetActive(true);
@@ -53,7 +61,7 @@ public class actionButtonLayerController : MonoBehaviour
 
     void Update(){
         if(currentLayer != null & Input.GetKeyDown(KeyCode.Escape)){ //Takes us back to the root layer
-            menuTransition(rootLayer);
+            processButton("root");
         }
     }
 }
