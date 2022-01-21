@@ -365,7 +365,7 @@ GameObject:
   - component: {fileID: 299208790}
   - component: {fileID: 299208789}
   m_Layer: 5
-  m_Name: profile
+  m_Name: charProfile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -598,7 +598,7 @@ GameObject:
   - component: {fileID: 560593020}
   - component: {fileID: 560593019}
   m_Layer: 5
-  m_Name: profile
+  m_Name: charProfile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1964,7 +1964,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9044531916749251048, guid: 19b4b295599aa43a28a16a0e09a1f7ed, type: 3}
       propertyPath: m_Name
-      value: char3
+      value: buttonChar3
       objectReference: {fileID: 0}
     - target: {fileID: 9044531917286507408, guid: 19b4b295599aa43a28a16a0e09a1f7ed, type: 3}
       propertyPath: m_text
@@ -1981,6 +1981,10 @@ PrefabInstance:
     - target: {fileID: 9044531917286507409, guid: 19b4b295599aa43a28a16a0e09a1f7ed, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9044531917286507410, guid: 19b4b295599aa43a28a16a0e09a1f7ed, type: 3}
+      propertyPath: m_Name
+      value: charName
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 19b4b295599aa43a28a16a0e09a1f7ed, type: 3}
@@ -2099,7 +2103,7 @@ GameObject:
   - component: {fileID: 1254300137}
   - component: {fileID: 1254300136}
   m_Layer: 5
-  m_Name: profile
+  m_Name: charProfile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2349,7 +2353,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9044531916749251048, guid: 19b4b295599aa43a28a16a0e09a1f7ed, type: 3}
       propertyPath: m_Name
-      value: char2
+      value: buttonChar2
       objectReference: {fileID: 0}
     - target: {fileID: 9044531917286507408, guid: 19b4b295599aa43a28a16a0e09a1f7ed, type: 3}
       propertyPath: m_text
@@ -2370,6 +2374,10 @@ PrefabInstance:
     - target: {fileID: 9044531917286507409, guid: 19b4b295599aa43a28a16a0e09a1f7ed, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 2.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 9044531917286507410, guid: 19b4b295599aa43a28a16a0e09a1f7ed, type: 3}
+      propertyPath: m_Name
+      value: charName
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 19b4b295599aa43a28a16a0e09a1f7ed, type: 3}
@@ -3427,7 +3435,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9044531916749251048, guid: 19b4b295599aa43a28a16a0e09a1f7ed, type: 3}
       propertyPath: m_Name
-      value: char1
+      value: buttonChar1
       objectReference: {fileID: 0}
     - target: {fileID: 9044531917286507408, guid: 19b4b295599aa43a28a16a0e09a1f7ed, type: 3}
       propertyPath: m_text
@@ -3452,6 +3460,10 @@ PrefabInstance:
     - target: {fileID: 9044531917286507409, guid: 19b4b295599aa43a28a16a0e09a1f7ed, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 2.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 9044531917286507410, guid: 19b4b295599aa43a28a16a0e09a1f7ed, type: 3}
+      propertyPath: m_Name
+      value: charName
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 19b4b295599aa43a28a16a0e09a1f7ed, type: 3}

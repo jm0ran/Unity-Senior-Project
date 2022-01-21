@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.UI;
+using TMPro;
 
 public class actionButtonLayerController : MonoBehaviour
 {
@@ -45,6 +47,7 @@ public class actionButtonLayerController : MonoBehaviour
         }
         if(trigger == "switch"){
             playerVisualInfo.SetActive(false);
+            assignSwitchButtonData();
         }else{
             playerVisualInfo.SetActive(true);
         }
@@ -57,6 +60,33 @@ public class actionButtonLayerController : MonoBehaviour
         dest.SetActive(true);
         currentLayer = dest;
         //This is where I'll go to the next menu
+    }
+
+    void assignSwitchButtonData(){
+        GameObject char1 = GameObject.Find("buttonChar1");
+        GameObject char2 = GameObject.Find("buttonChar2");
+        GameObject char3 = GameObject.Find("buttonChar3");
+
+        GameObject[] charButtons = new GameObject[] {char1, char2, char3};
+
+        for(int i = 0; i < charButtons.Length; i++){
+            GameObject charName = null;
+            GameObject charProfile = null;
+            foreach(Transform child in charButtons[i].transform){
+                if(child.gameObject.name == "charName"){
+                    charName = child.gameObject;
+                }else if(child.gameObject.name == "charProfile"){
+                    charProfile = child.gameObject;
+                }
+            }
+            if(charProfile != null){
+                charProfile.GetComponent<Image>().sprite = charProfileImageController.spriteDictionary[saveDataController.globalSave.currentTeam[i]];
+            }
+            if(charName != null){
+                charName.GetComponent<TextMeshProUGUI>().text = saveDataController.globalSave.currentTeam[i];
+            }
+        }
+        
     }
 
     void Update(){
