@@ -31,6 +31,7 @@ public class rythmStateController : MonoBehaviour
         triggerRemainingNotes();
         toggleRythmElements(false);
         toggleActionElements(true);
+        GameObject.FindWithTag("enemyObject").GetComponent<SpriteRenderer>().enabled = true;
         currentState = "action";
     }
     
