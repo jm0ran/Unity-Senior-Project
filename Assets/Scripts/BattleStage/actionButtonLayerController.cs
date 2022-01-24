@@ -80,6 +80,8 @@ public class actionButtonLayerController : MonoBehaviour
 
 
     void assignSwitchButtonData(){
+        enableChildren(switchLayer);
+
         GameObject char1 = GameObject.Find("buttonChar1");
         GameObject char2 = GameObject.Find("buttonChar2");
         GameObject char3 = GameObject.Find("buttonChar3");
@@ -88,8 +90,7 @@ public class actionButtonLayerController : MonoBehaviour
 
         for(int i = 0; i < saveDataController.globalSave.currentTeam.Length; i++){ //Need handling for empty character slots
             if(saveDataController.globalSave.currentTeam[i] == ""){
-                charButtons[i].GetComponent<Button>().interactable = false;
-                //Gotta figure out what to do with these disabled mfs because I would be able to find them if else
+                charButtons[i].SetActive(false);
              }
         }
 
