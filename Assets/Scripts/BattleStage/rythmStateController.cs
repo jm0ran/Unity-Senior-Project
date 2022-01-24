@@ -64,6 +64,7 @@ public class rythmStateController : MonoBehaviour
         rythmUI = GameObject.FindWithTag("rythmUI");
         actionUI = GameObject.FindWithTag("actionUI");
         startBattle();
-
     }
+
+    
 }

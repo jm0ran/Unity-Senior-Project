@@ -1,0 +1,32 @@
+{
+    "name": "Drake",
+    "maxHealth": 1000,
+    "currentHealth": 1000,
+    "level": 1,
+    "moves": [
+        {
+            "name": "",
+            "maxUses": 0,
+            "remainingUses": 0,
+            "damage": 0
+        },
+        {
+            "name": "",
+            "maxUses": 0,
+            "remainingUses": 0,
+            "damage": 0
+        },
+        {
+            "name": "",
+            "maxUses": 0,
+            "remainingUses": 0,
+            "damage": 0
+        },
+        {
+            "name": "",
+            "maxUses": 0,
+            "remainingUses": 0,
+            "damage": 0
+        }
+    ]
+}

@@ -7,4 +7,6 @@ public class enemyController : MonoBehaviour
    void Start(){
         gameObject.GetComponent<SpriteRenderer>().enabled = false;
    }
+
+   
 }
