@@ -1897,6 +1897,8 @@ MonoBehaviour:
   Kanye: {fileID: 21300000, guid: 7d77372d4edfb4988a3a2a980e91db7c, type: 3}
   Goku: {fileID: 21300000, guid: bbb144f2c55fa46e8936cac0a85165f5, type: 3}
   Imposter: {fileID: 21300000, guid: 3834a6668aa234c4dbf097570cc25d06, type: 3}
+  Drake: {fileID: 21300000, guid: c0f9596c989d94330b70d24e7e3c1197, type: 3}
+  Bandit: {fileID: 21300000, guid: 51b362c8ff88741a882a964b04610f21, type: 3}
 --- !u!1001 &1234290208
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2620,6 +2622,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 326e552b8e41b4546a35ac8faf3fb2de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemy: Drake
 --- !u!1 &1429403528
 GameObject:
   m_ObjectHideFlags: 0
