@@ -6,7 +6,8 @@ using UnityEngine.UI;
 
 public class enemyController : MonoBehaviour
 {
-   public string enemy = "Drake"; //Going to be set dynamically in the future
+   public string enemyName = "Drake"; //Going to be set dynamically in the future
+   public Enemy enemyObj;
    public GameObject enemyVisualInfo;
    private SpriteRenderer enemySprite;
    private TextMeshProUGUI enemyNameTextBox;
@@ -18,7 +19,12 @@ public class enemyController : MonoBehaviour
 
 
    void Start(){
-        loadEnemyInfo();
+      loadEnemy();
+      loadEnemyInfo();
+   }
+
+   void loadEnemy(){
+      enemyObj = new Enemy(enemyName);
    }
 
    void loadEnemyInfo(){
@@ -38,10 +44,14 @@ public class enemyController : MonoBehaviour
       gameObject.GetComponent<SpriteRenderer>().enabled = false;
       enemySprite = GameObject.Find("enemyObject").GetComponent<SpriteRenderer>();
 
-      enemySprite.sprite = charProfileImageController.enemyDictionary[enemy];
-      enemyNameTextBox.text = enemy;
-      enemyHealthBar.value = 0.5f;
+      enemySprite.sprite = charProfileImageController.enemyDictionary[enemyName];
+      enemyNameTextBox.text = enemyName;
+      updateHealth();
 
+   }
+
+   void updateHealth(){ //All enemy damage calculations and stuff I want to handle in this script for better or for worse
+      // enemyHealthBar.value = 
    }
 
    
