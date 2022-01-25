@@ -27,11 +27,13 @@ public class rythmStateController : MonoBehaviour
     }
 
     void enterActionState(){
+        currentState = "action";
         audioController.SendMessage("prepAction");
         triggerRemainingNotes();
         toggleRythmElements(false);
         toggleActionElements(true);
-        currentState = "action";
+        GameObject.Find("enemyObject").GetComponent<SpriteRenderer>().enabled = true;
+        
     }
     
     void triggerRemainingNotes(){
@@ -63,6 +65,7 @@ public class rythmStateController : MonoBehaviour
         rythmUI = GameObject.FindWithTag("rythmUI");
         actionUI = GameObject.FindWithTag("actionUI");
         startBattle();
-
     }
+
+    
 }

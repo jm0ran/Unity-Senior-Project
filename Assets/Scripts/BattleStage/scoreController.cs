@@ -45,8 +45,6 @@ public class scoreController : MonoBehaviour
     void triggerGauge(){
         progressSlider.value = 0;
         rythmStateController.SendMessage("enterActionState");
-
-
     }
 
 //------------------------------------------------------------------------

@@ -30,7 +30,6 @@ public class actionButtonLayerController : MonoBehaviour
         switchLayer.SetActive(false);
         layers = new GameObject[] {rootLayer, fightLayer, switchLayer};
         currentChar = saveDataController.globalSave.currentTeam[0];
-        updateCharProfile(currentChar);
     }
 
     void updateCharProfile(string newChar){
@@ -40,6 +39,7 @@ public class actionButtonLayerController : MonoBehaviour
     void processButton(string trigger){
         if(trigger == "fight"){
             menuTransition(fightLayer);
+            assignFightButtonData();
         }else if(trigger == "switch"){
             menuTransition(switchLayer);
         }else if(trigger == "root"){
@@ -78,12 +78,21 @@ public class actionButtonLayerController : MonoBehaviour
         //This is where I'll go to the next menu
     }
 
+
     void assignSwitchButtonData(){
+        enableChildren(switchLayer);
+
         GameObject char1 = GameObject.Find("buttonChar1");
         GameObject char2 = GameObject.Find("buttonChar2");
         GameObject char3 = GameObject.Find("buttonChar3");
 
         GameObject[] charButtons = new GameObject[] {char1, char2, char3};
+
+        for(int i = 0; i < saveDataController.globalSave.currentTeam.Length; i++){ //Need handling for empty character slots
+            if(saveDataController.globalSave.currentTeam[i] == ""){
+                charButtons[i].SetActive(false);
+             }
+        }
 
         for(int i = 0; i < charButtons.Length; i++){
             GameObject charName = null;
@@ -95,14 +104,59 @@ public class actionButtonLayerController : MonoBehaviour
                     charProfile = child.gameObject;
                 }
             }
-            if(charProfile != null){
-                charProfile.GetComponent<Image>().sprite = charProfileImageController.spriteDictionary[saveDataController.globalSave.currentTeam[i]];
+            if(saveDataController.globalSave.currentTeam[i] != ""){
+                if(charProfile != null){
+                    charProfile.GetComponent<Image>().sprite = charProfileImageController.spriteDictionary[saveDataController.globalSave.currentTeam[i]];
+                }
+                if(charName != null){
+                    charName.GetComponent<TextMeshProUGUI>().text = saveDataController.globalSave.currentTeam[i];
+                }
             }
-            if(charName != null){
-                charName.GetComponent<TextMeshProUGUI>().text = saveDataController.globalSave.currentTeam[i];
-            }
-        }
+        }   
+    }
+
+    void assignFightButtonData(){
+        enableChildren(fightLayer);
+
+        GameObject move1 = GameObject.Find("buttonMove1");
+        GameObject move2 = GameObject.Find("buttonMove2");
+        GameObject move3 = GameObject.Find("buttonMove3");
+        GameObject move4 = GameObject.Find("buttonMove4");
+
+        GameObject[] moveButtons = new GameObject[] {move1, move2, move3, move4};
+        Move[] moves = null;
+
+        //For the current character I have to return the move list and then assign it to the buttons
         
+        for(int i = 0; i < saveDataController.globalSave.acquiredCharacters.Count; i++)
+        {
+            if(saveDataController.globalSave.acquiredCharacters[i].name == currentChar){
+                moves = saveDataController.globalSave.acquiredCharacters[i].moves;
+            }
+        };
+
+        if(moves != null){
+            for(int j = 0; j < moveButtons.Length; j++){ //Remember to pass if button is null
+                if(moves[j].name != ""){
+                    foreach(Transform child in moveButtons[j].transform){
+                        if(child.gameObject.name == "moveName"){
+                            child.gameObject.GetComponent<TextMeshProUGUI>().text = moves[j].name;
+                        };
+                    }
+                }else{
+                    moveButtons[j].SetActive(false); //This will work but I need to remember to loop through the children of fight layer before it starts to make sure everything is enabled
+                }
+            }
+            //This is where I need to assign each move to each button
+        }
+
+
+    }
+
+    void enableChildren(GameObject target){
+        foreach(Transform child in target.transform){
+            child.gameObject.SetActive(true);
+        }
     }
 
     void Update(){

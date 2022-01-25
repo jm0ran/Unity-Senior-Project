@@ -10,10 +10,10 @@ public class Character
     public int maxHealth;
     public int currentHealth;
     public int level;
-    public List<Move> moves;
+    public Move[] moves;
     //Probably want to create a system for learning new moves at some point
 
-    public Character(string name, int maxHealth, List<Move> moves){
+    public Character(string name, int maxHealth, Move[] moves){
         this.name = name;
         this.maxHealth = maxHealth;
         this.currentHealth = maxHealth;

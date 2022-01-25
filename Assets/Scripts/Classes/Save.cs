@@ -81,4 +81,16 @@ public class Save{
         serializeSaveData();
     }
 
+    public void pruneTeam(){ 
+        for(int i = 0; i < this.currentTeam.Length; i++){
+            if(this.currentTeam[i] == ""){
+                for(int j = i + 1; j < this.currentTeam.Length; j++){
+                    currentTeam[j - 1] = currentTeam[j];
+                    currentTeam[j] = "";
+                }
+            }
+        }
+        serializeSaveData();
+    }
+
 }
