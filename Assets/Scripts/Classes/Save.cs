@@ -26,7 +26,7 @@ public class Save{
             jsonDataR = System.IO.File.ReadAllText(Path.Combine(Application.streamingAssetsPath, "bigBoi.json"));
             if(jsonDataR != ""){
                 //Load the properties individually because object itself is read only, I could put this into a larger object but that sounds annoying, but is it more annoying then typing this long ass comment
-                Save acquiredData = JsonUtility.FromJson<Save>(System.IO.File.ReadAllText(Path.Combine(Application.streamingAssetsPath, "bigBoi.json")));
+                Save acquiredData = JsonUtility.FromJson<Save>(jsonDataR);
                 this.acquiredCharacters = acquiredData.acquiredCharacters;
                 this.currentTeam = acquiredData.currentTeam;
             }else{

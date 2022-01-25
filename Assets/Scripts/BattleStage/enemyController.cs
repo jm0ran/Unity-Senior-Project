@@ -24,7 +24,7 @@ public class enemyController : MonoBehaviour
    }
 
    void loadEnemy(){
-      enemyObj = new Enemy(enemyName);
+      enemyObj = new Enemy(enemyName); // <------ This is where I left off
    }
 
    void loadEnemyInfo(){
