@@ -32,7 +32,7 @@ TagManager:
   - arrowTarget
   - rythmUI
   - actionUI
-  - enemyObject
+  - enemyVisualInfo
   layers:
   - Default
   - TransparentFX

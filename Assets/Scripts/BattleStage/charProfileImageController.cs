@@ -21,9 +21,7 @@ public class charProfileImageController : MonoBehaviour
     public static Dictionary<string, Sprite> spriteDictionary = new Dictionary<string, Sprite>();
     public static Dictionary<string, Sprite> enemyDictionary = new Dictionary<string, Sprite>();
 
-    void Start(){
-        profile = gameObject.GetComponent<Image>();
-
+    void Awake(){ //Want sprite dictionary loaded very early
         //Sprite Dictionary
         spriteDictionary.Add("Kanye", kanye);
         spriteDictionary.Add("Goku", goku);
@@ -32,9 +30,10 @@ public class charProfileImageController : MonoBehaviour
         //Enemy Dictionary
         enemyDictionary.Add("Drake", drake);
         enemyDictionary.Add("Bandit", bandit);
-    
+    }
 
-
+    void Start(){
+        profile = gameObject.GetComponent<Image>();
         switchProfile(saveDataController.globalSave.currentTeam[0]);
     }
 
