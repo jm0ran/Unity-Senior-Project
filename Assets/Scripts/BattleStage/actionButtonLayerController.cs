@@ -17,7 +17,6 @@ public class actionButtonLayerController : MonoBehaviour
     private GameObject currentCharProfile;
     private GameObject[] layers;
     
-    public Sprite altSprite;
     
 
     void Start(){
@@ -58,8 +57,9 @@ public class actionButtonLayerController : MonoBehaviour
                     break;
             }
         }
-
-        
+        else if(trigger == "move1" || trigger == "move2" || trigger == "move3" || trigger =="move4"){
+            processMove(trigger);
+        }
         if(trigger == "switch"){
             playerVisualInfo.SetActive(false);
             assignSwitchButtonData();
@@ -67,6 +67,10 @@ public class actionButtonLayerController : MonoBehaviour
             playerVisualInfo.SetActive(true);
             updateCharProfile(currentChar);
         }
+    }
+
+    void processMove(string Trigger){
+        
     }
 
     void menuTransition(GameObject dest){

@@ -7,12 +7,12 @@ using System.IO;
 public class Enemy
 {
     public string name;
-    public int maxHealth;
-    public int currentHealth;
+    public float maxHealth;
+    public float currentHealth;
     public int level;
     public Move[] moves;
     
-    public Enemy(string name, int maxHealth, Move[] moves){ //Used for me to create new characters
+    public Enemy(string name, float maxHealth, Move[] moves){ //Used for me to create new characters
         this.name = name;
         this.maxHealth = maxHealth;
         this.currentHealth = maxHealth;
@@ -30,12 +30,11 @@ public class Enemy
             this.currentHealth = acquiredData.maxHealth;
             this.level = acquiredData.level;
             this.moves = acquiredData.moves;
-            Debug.Log(this.name);
         }catch{
             Debug.Log("Failed to instantiate the character " + charName + " reverting to defaults");
             this.name = null;
-            this.maxHealth = 0;
-            this.currentHealth = 0;
+            this.maxHealth = 0f;
+            this.currentHealth = 0f;
             this.level = 0;
             this.moves = new Move[4];
         }
