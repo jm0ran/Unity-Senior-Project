@@ -1434,7 +1434,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30f545571499345ed8586504560c014d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  altSprite: {fileID: 0}
 --- !u!114 &933248638
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1964,7 +1963,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -3101,7 +3100,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 326e552b8e41b4546a35ac8faf3fb2de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: Bandit
+  enemyName: Drake
+  enemyObj:
+    name: 
+    maxHealth: 0
+    currentHealth: 0
+    level: 0
+    moves: []
   enemyVisualInfo: {fileID: 0}
 --- !u!1 &1429403528
 GameObject:
@@ -3289,7 +3294,7 @@ MonoBehaviour:
   timeToTarget: 3
   noteSpawnX: 6
   noteTargetX: -4.3
-  customStartTime: 20
+  customStartTime: 0
 --- !u!82 &1459815464
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3305,7 +3310,7 @@ AudioSource:
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
-  Mute: 0
+  Mute: 1
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
@@ -3314,7 +3319,7 @@ AudioSource:
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
-  BypassEffects: 1
+  BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
   rolloffCustomCurve:
