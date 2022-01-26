@@ -46,13 +46,17 @@ public class enemyController : MonoBehaviour
 
       enemySprite.sprite = charProfileImageController.enemyDictionary[enemyName];
       enemyNameTextBox.text = enemyName;
-      enemyObj.currentHealth = 750;
       updateHealth();
 
    }
 
    void updateHealth(){ //All enemy damage calculations and stuff I want to handle in this script for better or for worse
       enemyHealthBar.value = enemyObj.currentHealth / enemyObj.maxHealth;
+   }
+
+   public void recieveDamage(Move recievedMove){
+      enemyObj.currentHealth -= recievedMove.damage;
+      updateHealth();
    }
 
    

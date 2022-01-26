@@ -16,6 +16,7 @@ public class actionButtonLayerController : MonoBehaviour
     private GameObject currentLayer;
     private GameObject currentCharProfile;
     private GameObject[] layers;
+    private int moveNum;
     
     
 
@@ -70,7 +71,30 @@ public class actionButtonLayerController : MonoBehaviour
     }
 
     void processMove(string Trigger){
+        switch(Trigger){
+            case "move1":
+                moveNum = 1;
+                break;
+            case "move2":
+                moveNum = 2;
+                break;
+            case "move3":
+                moveNum =3;
+                break;
+            case "move4":
+                moveNum = 4;
+                break;
+        }
+
+        Move[] playerMovePool = null;
+        for(int i = 0; i < saveDataController.globalSave.acquiredCharacters.Count; i++)
+        {
+            if(saveDataController.globalSave.acquiredCharacters[i].name == currentChar){
+                playerMovePool = saveDataController.globalSave.acquiredCharacters[i].moves;
+            }
+        };
         
+        GameObject.Find("enemyObject").SendMessage("recieveDamage", playerMovePool[moveNum - 1]);
     }
 
     void menuTransition(GameObject dest){
