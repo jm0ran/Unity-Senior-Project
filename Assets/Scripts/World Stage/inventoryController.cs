@@ -5,9 +5,11 @@ using TMPro;
 
 public class inventoryController : MonoBehaviour
 {
+//GOING TO EVENTUALLY MIGRATE TO THE ACTUAL INVENTORY GAME OBJECT AS THIS NO LONGER NEEDS TO BE HERE
+
 //------------------------------------------------------------------------
 //Predefined variables for the script
-    public static Inventory playerInv;
+    private Inventory playerInv;
     //just using Unity Editor to assign this
     public GameObject inventoryRowPrefab;
     private GameObject UI;
@@ -17,12 +19,6 @@ public class inventoryController : MonoBehaviour
 //------------------------------------------------------------------------
 //User Defined Functions
 //Probably want to move a lot of this off into the inventory menu object as it will likely only cause problems if it is here
-    void initInventory(){
-        //Creates and loads player inventory
-        playerInv = new Inventory();
-        playerInv.readFromJson();
-    }
-
     void loadInventoryGUI(){ //Prob want to maybe move this to UI controller not sure yet
         player.GetComponent<inputController>().inInventory = true;
         player.SendMessage("lockPlayer", true);
@@ -31,6 +27,7 @@ public class inventoryController : MonoBehaviour
             GameObject newInvRow = Instantiate(inventoryRowPrefab, rowLocation, Quaternion.identity);
             newInvRow.transform.SetParent(inventoryUI.transform, false);
             newInvRow.transform.Find("invName").GetComponent<TextMeshProUGUI>().text = playerInv.items[i].itemName;
+            //This is where I want to also assign the uh yk thing, but I need to move this script somewhere else now that inventory data is part of the globalSave object
         }
         UI.SendMessage("enableUIItem", "inventory");
     }
@@ -52,11 +49,8 @@ public class inventoryController : MonoBehaviour
         inventoryUI = GameObject.FindWithTag("inventory");
         UI = GameObject.FindWithTag("UI");
     }
-    
-    void Start()
-    {
-        initInventory();
-        playerInv.saveToJson();
+    void Start(){
+        playerInv = saveDataController.globalSave.inventory;
     }
 
 }
