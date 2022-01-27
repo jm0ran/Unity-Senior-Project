@@ -14,11 +14,15 @@ public class enemyController : MonoBehaviour
    private Slider enemyHealthBar;
    private Transform enemyObjTransform;
    private GameObject rootLayer;
+   private GameObject actionTextLayer;
+   private GameObject buttonLayers;
 
    void Awake(){
       enemyVisualInfo = GameObject.FindWithTag("enemyVisualInfo");
       enemyObjTransform = gameObject.GetComponent<Transform>();
       rootLayer = GameObject.Find("rootLayer");
+      actionTextLayer = GameObject.Find("actionTextLayer");
+      buttonLayers = GameObject.Find("ButtonLayers");
    }
 
 
@@ -66,6 +70,8 @@ public class enemyController : MonoBehaviour
    }
 
    IEnumerator damageProcess(Move recievedMove){
+      buttonLayers.SendMessage("menuTransition", actionTextLayer);
+
       yield return new WaitForSeconds(0.3f);
       enemyObj.currentHealth -= recievedMove.damage;
       updateHealth();
@@ -78,7 +84,7 @@ public class enemyController : MonoBehaviour
       
       //This is where I want to trigger a dialougue loop prob or possibly call another function to handle dialougue as a universal
 
-      GameObject.Find("ButtonLayers").SendMessage("menuTransition", rootLayer);
+      buttonLayers.SendMessage("menuTransition", rootLayer);
       
    }
    

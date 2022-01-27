@@ -11,6 +11,7 @@ public class actionButtonLayerController : MonoBehaviour
     private GameObject rootLayer;
     private GameObject fightLayer;
     private GameObject switchLayer;
+    private GameObject actionTextLayer;
     private string currentChar;
     private GameObject playerVisualInfo;
     private GameObject currentLayer;
@@ -19,16 +20,20 @@ public class actionButtonLayerController : MonoBehaviour
     private int moveNum;
     
     
-
-    void Start(){
+    void Awake(){
         rootLayer = GameObject.Find("rootLayer");
         fightLayer = GameObject.Find("fightLayer");
         switchLayer = GameObject.Find("switchLayer");
         currentCharProfile = GameObject.Find("currentCharProfile");
         playerVisualInfo = GameObject.Find("playerVisualInfo");
+        actionTextLayer = GameObject.Find("actionTextLayer");
+    }
+
+    void Start(){
         fightLayer.SetActive(false);
         switchLayer.SetActive(false);
-        layers = new GameObject[] {rootLayer, fightLayer, switchLayer};
+        actionTextLayer.SetActive(false);
+        layers = new GameObject[] {rootLayer, fightLayer, switchLayer, actionTextLayer};
         currentChar = saveDataController.globalSave.currentTeam[0];
     }
 
@@ -39,14 +44,11 @@ public class actionButtonLayerController : MonoBehaviour
     void processButton(string trigger){
         if(trigger == "fight"){
             menuTransition(fightLayer);
-            playerVisualInfo.SetActive(true);
             assignFightButtonData();
         }else if(trigger == "switch"){
             menuTransition(switchLayer);
             assignSwitchButtonData();
-            playerVisualInfo.SetActive(false);
         }else if(trigger == "root"){
-            playerVisualInfo.SetActive(true);
             menuTransition(rootLayer);
         }else if(trigger == "char1" || trigger == "char2" || trigger == "char3"){
             menuTransition(rootLayer);
@@ -61,12 +63,13 @@ public class actionButtonLayerController : MonoBehaviour
                     currentChar = saveDataController.globalSave.currentTeam[2];
                     break;
             }
-            playerVisualInfo.SetActive(true);
         }
         else if(trigger == "move1" || trigger == "move2" || trigger == "move3" || trigger =="move4"){
             toggleMenu(false);
-            playerVisualInfo.SetActive(false);
             processMove(trigger);
+        }else if(trigger == "actionTextLayer"){
+            menuTransition(actionTextLayer);
+            Debug.Log("Entered Text Layer");
         }
         if(playerVisualInfo.activeSelf){
             updateCharProfile(currentChar);
@@ -104,7 +107,9 @@ public class actionButtonLayerController : MonoBehaviour
         for(int i = 0; i < layers.Length; i++){
             layers[i].SetActive(false);
         }
-        if(dest != switchLayer){
+        if(dest == switchLayer || dest == actionTextLayer){
+            playerVisualInfo.SetActive(false);
+        }else{
             playerVisualInfo.SetActive(true);
         }
         dest.SetActive(true);
