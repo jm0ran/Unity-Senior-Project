@@ -12,7 +12,7 @@ public class actionButtonLayerController : MonoBehaviour
     private GameObject fightLayer;
     private GameObject switchLayer;
     private GameObject actionTextLayer;
-    private string currentChar;
+    public string currentChar;
     private GameObject playerVisualInfo;
     private GameObject currentLayer;
     private GameObject currentCharProfile;

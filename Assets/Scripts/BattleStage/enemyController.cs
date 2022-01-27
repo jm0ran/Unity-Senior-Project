@@ -15,6 +15,7 @@ public class enemyController : MonoBehaviour
    private Transform enemyObjTransform;
    private GameObject rootLayer;
    private GameObject actionTextLayer;
+   private TextMeshProUGUI actionMessageBox;
    private GameObject buttonLayers;
 
    void Awake(){
@@ -23,6 +24,7 @@ public class enemyController : MonoBehaviour
       rootLayer = GameObject.Find("rootLayer");
       actionTextLayer = GameObject.Find("actionTextLayer");
       buttonLayers = GameObject.Find("ButtonLayers");
+      actionMessageBox = actionTextLayer.GetComponent<TextMeshProUGUI>();
    }
 
 
@@ -70,7 +72,10 @@ public class enemyController : MonoBehaviour
    }
 
    IEnumerator damageProcess(Move recievedMove){
+      string charName = buttonLayers.GetComponent<actionButtonLayerController>().currentChar;
+      string message = charName + " used " + recievedMove.name;
       buttonLayers.SendMessage("menuTransition", actionTextLayer);
+      actionMessageBox.text = message;
 
       yield return new WaitForSeconds(0.3f);
       enemyObj.currentHealth -= recievedMove.damage;
