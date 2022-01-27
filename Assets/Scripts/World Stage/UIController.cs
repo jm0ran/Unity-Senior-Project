@@ -85,7 +85,6 @@ public class UIController : MonoBehaviour
     IEnumerator diaLoop(int totalLines, List<string> dia, List<string> diaOrder){
         int lineProgress = 0;
         while(lineProgress < totalLines){
-            Debug.Log(dia[lineProgress]);
             lineProgress++;
             yield return null;
         }

@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 5356381381487066198}
   - component: {fileID: 5356381381487066197}
   - component: {fileID: 5356381381487066195}
-  - component: {fileID: 8332615522137156007}
   - component: {fileID: 6901071756796984613}
   m_Layer: 0
   m_Name: defaultPlayer
@@ -173,21 +172,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.39
---- !u!114 &8332615522137156007
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5356381381487066202}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f28d6df21e2c1494cb337188b4993582, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerInv:
-    items: []
-  inventoryRowPrefab: {fileID: 3859697574678741062, guid: 95143dc0b29ca4b62b92b4f767bc0d41, type: 3}
 --- !u!114 &6901071756796984613
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -202,3 +186,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UI: {fileID: 0}
   player: {fileID: 0}
+  playerLocked: 0
+  inInventory: 0
+  inDialogue: 0
