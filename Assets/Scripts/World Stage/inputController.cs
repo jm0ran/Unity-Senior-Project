@@ -9,8 +9,10 @@ public class inputController : MonoBehaviour
 //------------------------------------------------------------------------
 //Predefined Script Variables   
  //Input Controller is where I eventually want to move all my key triggers to keep them all organized in one place
-    public GameObject UI;
-    public GameObject player;
+    private GameObject UI;
+    private GameObject player;
+    public GameObject persistController;
+
 
     //STATES
     public bool playerLocked = false;
@@ -22,18 +24,16 @@ public class inputController : MonoBehaviour
 //User Defined Functions
 
 
-
-
 //------------------------------------------------------------------------
 //Unity Defined Functions
     void Update(){ //Used for singular non movement button inputs like menus and interactiosn
         //general Input Logic
         if(Input.GetKeyDown(KeyCode.I)){
             if(!inInventory){
-                player.SendMessage("loadInventoryGUI");
+                persistController.SendMessage("loadInventoryGUI");
             }
             else{
-                player.SendMessage("exitInv");
+                persistController.SendMessage("exitInv");
             }
             
         }
@@ -51,8 +51,13 @@ public class inputController : MonoBehaviour
        //Move logic is staying in player controller right now because the locking system is weird to implement here so I'm working on it
         
     }
-    void Start(){
+    void Awake(){
+        persistController = GameObject.Find("persistController");
         UI = GameObject.FindWithTag("UI");
         player = GameObject.FindWithTag("Player");
+    }
+
+    void Start(){
+        
     }
 }
