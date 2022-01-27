@@ -12,9 +12,13 @@ public class enemyController : MonoBehaviour
    private SpriteRenderer enemySprite;
    private TextMeshProUGUI enemyNameTextBox;
    private Slider enemyHealthBar;
+   private Transform enemyObjTransform;
+   private GameObject rootLayer;
 
    void Awake(){
       enemyVisualInfo = GameObject.FindWithTag("enemyVisualInfo");
+      enemyObjTransform = gameObject.GetComponent<Transform>();
+      rootLayer = GameObject.Find("rootLayer");
    }
 
 
@@ -55,9 +59,27 @@ public class enemyController : MonoBehaviour
    }
 
    public void recieveDamage(Move recievedMove){
-      enemyObj.currentHealth -= recievedMove.damage;
-      updateHealth();
+      StartCoroutine(damageProcess(recievedMove));
+      
+      
+      
    }
 
+   IEnumerator damageProcess(Move recievedMove){
+      yield return new WaitForSeconds(0.3f);
+      enemyObj.currentHealth -= recievedMove.damage;
+      updateHealth();
+      enemyObjTransform.position = new Vector3(enemyObjTransform.position.x + 0.25f, enemyObjTransform.position.y, enemyObjTransform.position.z);
+      yield return new WaitForSeconds(0.1f);
+      enemyObjTransform.position = new Vector3(enemyObjTransform.position.x - 0.5f, enemyObjTransform.position.y, enemyObjTransform.position.z);
+      yield return new WaitForSeconds(0.1f);
+      enemyObjTransform.position = new Vector3(enemyObjTransform.position.x + 0.25f, enemyObjTransform.position.y, enemyObjTransform.position.z);
+      yield return new WaitForSeconds(0.5f);
+      
+      //This is where I want to trigger a dialougue loop prob or possibly call another function to handle dialougue as a universal
+
+      GameObject.Find("ButtonLayers").SendMessage("menuTransition", rootLayer);
+      
+   }
    
 }

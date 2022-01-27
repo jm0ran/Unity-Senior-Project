@@ -39,10 +39,14 @@ public class actionButtonLayerController : MonoBehaviour
     void processButton(string trigger){
         if(trigger == "fight"){
             menuTransition(fightLayer);
+            playerVisualInfo.SetActive(true);
             assignFightButtonData();
         }else if(trigger == "switch"){
             menuTransition(switchLayer);
+            assignSwitchButtonData();
+            playerVisualInfo.SetActive(false);
         }else if(trigger == "root"){
+            playerVisualInfo.SetActive(true);
             menuTransition(rootLayer);
         }else if(trigger == "char1" || trigger == "char2" || trigger == "char3"){
             menuTransition(rootLayer);
@@ -57,15 +61,14 @@ public class actionButtonLayerController : MonoBehaviour
                     currentChar = saveDataController.globalSave.currentTeam[2];
                     break;
             }
+            playerVisualInfo.SetActive(true);
         }
         else if(trigger == "move1" || trigger == "move2" || trigger == "move3" || trigger =="move4"){
+            toggleMenu(false);
+            playerVisualInfo.SetActive(false);
             processMove(trigger);
         }
-        if(trigger == "switch"){
-            playerVisualInfo.SetActive(false);
-            assignSwitchButtonData();
-        }else{
-            playerVisualInfo.SetActive(true);
+        if(playerVisualInfo.activeSelf){
             updateCharProfile(currentChar);
         }
     }
@@ -101,9 +104,19 @@ public class actionButtonLayerController : MonoBehaviour
         for(int i = 0; i < layers.Length; i++){
             layers[i].SetActive(false);
         }
+        if(dest != switchLayer){
+            playerVisualInfo.SetActive(true);
+        }
         dest.SetActive(true);
         currentLayer = dest;
         //This is where I'll go to the next menu
+    }
+
+    void toggleMenu(bool state){
+        for(int i = 0; i < layers.Length; i++){
+            layers[i].SetActive(state);
+        }
+        playerVisualInfo.SetActive(false);
     }
 
 
