@@ -9,10 +9,12 @@ public class Save{
     public List<Character> acquiredCharacters;
     public string[] currentTeam;
     //MAKE SURE TO ADD NEW VALUES DOWN IN READ FUNCTION
+    public Inventory inventory;
 
     public Save(){
         acquiredCharacters = new List<Character>();
         currentTeam = new string[3] {null, null, null};
+        inventory = new Inventory();
     }
 
     public void serializeSaveData(){
@@ -29,6 +31,7 @@ public class Save{
                 Save acquiredData = JsonUtility.FromJson<Save>(jsonDataR);
                 this.acquiredCharacters = acquiredData.acquiredCharacters;
                 this.currentTeam = acquiredData.currentTeam;
+                this.inventory = acquiredData.inventory;
             }else{
                 Debug.Log("Save data json file is empty");
             }

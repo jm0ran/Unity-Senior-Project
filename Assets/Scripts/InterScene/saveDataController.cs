@@ -6,7 +6,7 @@ public class saveDataController : MonoBehaviour
 {
     public static Save globalSave;
 
-    void Start(){
+    void Awake(){
         globalSave = new Save();
         globalSave.loadSavaData(); //Loads the save data up as a static variable so everyone can have a piece
         globalSave.pruneTeam();
