@@ -19,8 +19,6 @@ public class inputController : MonoBehaviour
     public bool inInventory = false;
     public bool inDialogue = false;
 
-
-
 //User Defined Functions
 
 

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class inventoryController : MonoBehaviour
 {
@@ -27,6 +28,7 @@ public class inventoryController : MonoBehaviour
             GameObject newInvRow = Instantiate(inventoryRowPrefab, rowLocation, Quaternion.identity);
             newInvRow.transform.SetParent(inventoryUI.transform, false);
             newInvRow.transform.Find("invName").GetComponent<TextMeshProUGUI>().text = playerInv.items[i].itemName;
+            newInvRow.transform.Find("invItem").GetComponent<Image>().sprite = itemController.itemDictionary[playerInv.items[i].itemName];
             //This is where I want to also assign the uh yk thing, but I need to move this script somewhere else now that inventory data is part of the globalSave object
         }
         UI.SendMessage("enableUIItem", "inventory");
