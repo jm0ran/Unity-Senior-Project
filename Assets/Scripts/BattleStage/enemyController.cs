@@ -85,7 +85,9 @@ public class enemyController : MonoBehaviour
       enemyObjTransform.position = new Vector3(enemyObjTransform.position.x - 0.5f, enemyObjTransform.position.y, enemyObjTransform.position.z);
       yield return new WaitForSeconds(0.1f);
       enemyObjTransform.position = new Vector3(enemyObjTransform.position.x + 0.25f, enemyObjTransform.position.y, enemyObjTransform.position.z);
-      yield return new WaitForSeconds(0.5f);
+      while(!Input.GetKeyDown(KeyCode.Return)){
+         yield return null;
+      }
       
       //This is where I want to trigger a dialougue loop prob or possibly call another function to handle dialougue as a universal
 
