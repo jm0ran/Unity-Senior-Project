@@ -3295,7 +3295,7 @@ MonoBehaviour:
   timeToTarget: 3
   noteSpawnX: 6
   noteTargetX: -4.3
-  customStartTime: 0
+  customStartTime: 12
 --- !u!82 &1459815464
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3306,12 +3306,12 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 13f85e66b02964899aed2ec33f7f93e1, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 090079ef557264f6d9584e08ba534179, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
-  Mute: 1
+  Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128

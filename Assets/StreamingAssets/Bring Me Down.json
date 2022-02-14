@@ -1,0 +1,60 @@
+{
+    "map": [
+        {
+            "time": 14.040,
+            "button": "left"
+        },
+        {
+            "time": 14.520,
+            "button": "right"
+        },
+        {
+            "time": 15.000,
+            "button": "down"
+        },
+        {
+            "time": 15.480,
+            "button": "up"
+        },
+        {
+            "time": 15.960,
+            "button": "down"
+        },
+        {
+            "time": 16.600,
+            "button": "right"
+        },
+        {
+            "time": 16.920,
+            "button": "left"
+        },
+        {
+            "time": 18.680,
+            "button": "left"
+        },
+        {
+            "time": 18.840,
+            "button": "left"
+        },
+        {
+            "time": 19.000,
+            "button": "left"
+        },
+        {
+            "time": 19.160,
+            "button": "left"
+        },
+        {
+            "time": 19.640,
+            "button": "right"
+        },
+        {
+            "time": 19.880,
+            "button": "right"
+        }
+
+        
+
+
+    ]
+}

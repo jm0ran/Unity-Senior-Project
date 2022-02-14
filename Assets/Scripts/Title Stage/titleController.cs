@@ -82,6 +82,8 @@ public class titleController : MonoBehaviour
     void Update(){
         if(Input.GetKeyDown(KeyCode.Return)){
             startGame();
+        }else if(Input.GetKeyDown(KeyCode.M)){
+            SceneManager.LoadScene("Battle Stage");
         }
     }
 }
