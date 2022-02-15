@@ -8,7 +8,7 @@ public class audioController : MonoBehaviour
 //Main Variables Used in Scripts
     public static float songTime = 0;
 
-    public AudioSource mainSong;
+    public static AudioSource mainSong;
     public GameObject arrowPrefab;
     public beatMap mainMap;
     public float delayStart;
@@ -82,8 +82,8 @@ public class audioController : MonoBehaviour
         }
     }
 
-    void prepAction(){ //Function that is going to clear notes on field, lock notespawner and iniate transition to action stage
-        noteLocked = true;
+    void isAction(bool state){ //Function that is going to clear notes on field, lock notespawner and iniate transition to action stage
+        noteLocked = state;
     }
 
 

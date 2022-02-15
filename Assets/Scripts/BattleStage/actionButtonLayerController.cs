@@ -50,6 +50,9 @@ public class actionButtonLayerController : MonoBehaviour
             assignSwitchButtonData();
         }else if(trigger == "root"){
             menuTransition(rootLayer);
+        }else if(trigger == "rythm"){
+            GameObject.Find("rythmStateController").SendMessage("enterRythmState");
+            //Call rythmStateController and trigger enterRythmState
         }else if(trigger == "char1" || trigger == "char2" || trigger == "char3"){
             menuTransition(rootLayer);
             switch(trigger){
@@ -71,7 +74,7 @@ public class actionButtonLayerController : MonoBehaviour
             menuTransition(actionTextLayer);
             Debug.Log("Entered Text Layer");
         }
-        if(playerVisualInfo.activeSelf){
+        if(playerVisualInfo.activeSelf && trigger != "rythm"){
             updateCharProfile(currentChar);
         }
     }
@@ -101,6 +104,8 @@ public class actionButtonLayerController : MonoBehaviour
         };
         
         GameObject.Find("enemyObject").SendMessage("recieveDamage", playerMovePool[moveNum - 1]);
+        scoreController.actionPoints -= 1;
+        scoreController.updateAP();
     }
 
     void menuTransition(GameObject dest){
@@ -115,6 +120,11 @@ public class actionButtonLayerController : MonoBehaviour
         dest.SetActive(true);
         currentLayer = dest;
         //This is where I'll go to the next menu
+        if(dest == rootLayer && scoreController.actionPoints <= 0){
+            Debug.Log("Out of action points");
+            //Need to disable all the buttons here besides the return to rythm button, just turn off their interactability
+        }
+
     }
 
     void toggleMenu(bool state){

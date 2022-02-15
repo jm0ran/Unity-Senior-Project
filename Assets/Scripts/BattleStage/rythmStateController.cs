@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class rythmStateController : MonoBehaviour
 {
     static public string currentState;
-    private GameObject audioController;
+    private GameObject audioControllerObj;
     private GameObject rythmInputController;
     private GameObject[] arrows;
     private GameObject [] arrowTargets;
@@ -28,12 +29,23 @@ public class rythmStateController : MonoBehaviour
 
     void enterActionState(){
         currentState = "action";
-        audioController.SendMessage("prepAction");
+        audioControllerObj.SendMessage("isAction", true);
         triggerRemainingNotes();
         toggleRythmElements(false);
         toggleActionElements(true);
+        //Should prob just make variables to store these references which I might do later
         GameObject.Find("enemyObject").GetComponent<SpriteRenderer>().enabled = true;
-        
+        scoreController.updateAP();        
+    }
+
+    void enterRythmState(){
+        currentState = "rythm"; //I know I'm spelling it wrong idc I'm spelling it wrong consistently
+        toggleActionElements(false);
+        toggleRythmElements(true);
+        GameObject.Find("enemyObject").GetComponent<SpriteRenderer>().enabled = false; //Should move this somewhere else but I am lazy
+        scoreController.updateAP();
+        audioControllerObj.SendMessage("pruneNotesFrom", audioController.mainSong.time + 3f);
+        audioControllerObj.SendMessage("isAction", false);
     }
     
     void triggerRemainingNotes(){
@@ -45,7 +57,6 @@ public class rythmStateController : MonoBehaviour
     }
     
     void toggleRythmElements(bool state){ //This is where I want to disable all the objects exclusive to the rythm stage
-        arrowTargets = GameObject.FindGameObjectsWithTag("arrowTarget");
         for(int i = 0; i < arrowTargets.Length; i++){
             arrowTargets[i].SetActive(state);
         }
@@ -57,13 +68,16 @@ public class rythmStateController : MonoBehaviour
         //Heres where I want to enable the Action UI
     }
    
-   
+    void Awake(){
+        arrowTargets = GameObject.FindGameObjectsWithTag("arrowTarget");
+        audioControllerObj = GameObject.FindWithTag("audioController");
+        rythmUI = GameObject.FindWithTag("rythmUI");
+        actionUI = GameObject.FindWithTag("actionUI");
+    }
+
     void Start()
     {
         currentState = "rythm";
-        audioController = GameObject.FindWithTag("audioController");
-        rythmUI = GameObject.FindWithTag("rythmUI");
-        actionUI = GameObject.FindWithTag("actionUI");
         startBattle();
     }
 
