@@ -71,7 +71,7 @@ public class enemyController : MonoBehaviour
       
    }
 
-   IEnumerator damageProcess(Move recievedMove){
+   IEnumerator damageProcess(Move recievedMove){ //This prob should't be in here lol but we'll roll with it
       string charName = buttonLayers.GetComponent<actionButtonLayerController>().currentChar;
       string message = charName + " used " + recievedMove.name;
       buttonLayers.SendMessage("menuTransition", actionTextLayer);
@@ -85,9 +85,7 @@ public class enemyController : MonoBehaviour
       enemyObjTransform.position = new Vector3(enemyObjTransform.position.x - 0.5f, enemyObjTransform.position.y, enemyObjTransform.position.z);
       yield return new WaitForSeconds(0.1f);
       enemyObjTransform.position = new Vector3(enemyObjTransform.position.x + 0.25f, enemyObjTransform.position.y, enemyObjTransform.position.z);
-      while(!Input.GetKeyDown(KeyCode.Return)){
-         yield return null;
-      }
+      yield return new WaitForSeconds(1f);
       
       //This is where I want to trigger a dialougue loop prob or possibly call another function to handle dialougue as a universal
 

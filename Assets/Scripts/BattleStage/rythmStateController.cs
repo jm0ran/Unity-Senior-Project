@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class rythmStateController : MonoBehaviour
 {
@@ -32,8 +33,9 @@ public class rythmStateController : MonoBehaviour
         triggerRemainingNotes();
         toggleRythmElements(false);
         toggleActionElements(true);
+        //Should prob just make variables to store these references which I might do later
         GameObject.Find("enemyObject").GetComponent<SpriteRenderer>().enabled = true;
-        
+        scoreController.updateAP();        
     }
     
     void triggerRemainingNotes(){
@@ -57,13 +59,15 @@ public class rythmStateController : MonoBehaviour
         //Heres where I want to enable the Action UI
     }
    
-   
-    void Start()
-    {
-        currentState = "rythm";
+    void Awake(){
         audioController = GameObject.FindWithTag("audioController");
         rythmUI = GameObject.FindWithTag("rythmUI");
         actionUI = GameObject.FindWithTag("actionUI");
+    }
+
+    void Start()
+    {
+        currentState = "rythm";
         startBattle();
     }
 
