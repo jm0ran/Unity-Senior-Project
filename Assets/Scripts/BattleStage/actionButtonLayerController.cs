@@ -50,6 +50,9 @@ public class actionButtonLayerController : MonoBehaviour
             assignSwitchButtonData();
         }else if(trigger == "root"){
             menuTransition(rootLayer);
+        }else if(trigger == "rythm"){
+            GameObject.Find("rythmStateController").SendMessage("enterRythmState");
+            //Call rythmStateController and trigger enterRythmState
         }else if(trigger == "char1" || trigger == "char2" || trigger == "char3"){
             menuTransition(rootLayer);
             switch(trigger){
@@ -71,7 +74,7 @@ public class actionButtonLayerController : MonoBehaviour
             menuTransition(actionTextLayer);
             Debug.Log("Entered Text Layer");
         }
-        if(playerVisualInfo.activeSelf){
+        if(playerVisualInfo.activeSelf && trigger != "rythm"){
             updateCharProfile(currentChar);
         }
     }
