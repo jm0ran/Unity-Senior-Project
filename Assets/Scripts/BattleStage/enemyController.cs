@@ -66,9 +66,6 @@ public class enemyController : MonoBehaviour
 
    public void recieveDamage(Move recievedMove){
       StartCoroutine(damageProcess(recievedMove));
-      
-      
-      
    }
 
    IEnumerator damageProcess(Move recievedMove){ //This prob should't be in here lol but we'll roll with it
@@ -87,10 +84,20 @@ public class enemyController : MonoBehaviour
       enemyObjTransform.position = new Vector3(enemyObjTransform.position.x + 0.25f, enemyObjTransform.position.y, enemyObjTransform.position.z);
       yield return new WaitForSeconds(1f);
       
-      //This is where I want to trigger a dialougue loop prob or possibly call another function to handle dialougue as a universal
+      //Check for death and process if dead
+      if(enemyObj.currentHealth <= 0){
+         //This is where the battle will theroretically end, this is big I may finally be leaving the battle stage
+         message = enemyObj.name + " got dogged on";
+         actionMessageBox.text = message;
+         yield return new WaitForSeconds(2f);
+         GameObject.Find("rythmStateController").SendMessage("enterRythmState");
+      }else{
+         buttonLayers.SendMessage("menuTransition", rootLayer);
 
-      buttonLayers.SendMessage("menuTransition", rootLayer);
+      }
+
       
    }
+   
    
 }

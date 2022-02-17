@@ -14,6 +14,7 @@ public class actionButtonLayerController : MonoBehaviour
     private GameObject actionTextLayer;
     public string currentChar;
     private GameObject playerVisualInfo;
+    private GameObject rythmStateControllerObj;
     private GameObject currentLayer;
     private GameObject currentCharProfile;
     private GameObject[] layers;
@@ -27,6 +28,7 @@ public class actionButtonLayerController : MonoBehaviour
         currentCharProfile = GameObject.Find("currentCharProfile");
         playerVisualInfo = GameObject.Find("playerVisualInfo");
         actionTextLayer = GameObject.Find("actionTextLayer");
+        rythmStateControllerObj = GameObject.Find("rythmStateController");
     }
 
     void Start(){
@@ -121,8 +123,7 @@ public class actionButtonLayerController : MonoBehaviour
         currentLayer = dest;
         //This is where I'll go to the next menu
         if(dest == rootLayer && scoreController.actionPoints <= 0){
-            Debug.Log("Out of action points");
-            //Need to disable all the buttons here besides the return to rythm button, just turn off their interactability
+            rythmStateControllerObj.SendMessage("enterRythmState");
         }
 
     }
