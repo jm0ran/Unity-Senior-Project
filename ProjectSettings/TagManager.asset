@@ -33,6 +33,7 @@ TagManager:
   - rythmUI
   - actionUI
   - enemyVisualInfo
+  - betterNPC
   layers:
   - Default
   - TransparentFX

@@ -68,9 +68,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 8987295040118500788}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba9dd69a0e5b047b1b90e32173b066fb, type: 3}
+  m_Script: {fileID: 11500000, guid: 012c798d57550463588bf7ada2c894e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pitbullGlasses: {fileID: 0}
-  dragonBall: {fileID: 0}
-  yeezy: {fileID: 0}
+  pitbullGlasses: {fileID: 21300000, guid: 5f793ff24c733493f91b821c66b4e471, type: 3}
+  dragonBall: {fileID: 21300000, guid: be1a80954ad6b4c3bb7570d55f580c05, type: 3}
+  yeezy: {fileID: 21300000, guid: 567892900f56a4cdd89e19cc52b27488, type: 3}
