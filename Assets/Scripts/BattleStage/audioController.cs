@@ -77,9 +77,12 @@ public class audioController : MonoBehaviour
     }
 
     void pruneNotesFrom(float prunePoint){
-        while(mainMap.map[0].time <= prunePoint){
-            mainMap.map.RemoveAt(0);
+        if(mainMap.map.Count > 0){
+            while(mainMap.map[0].time <= prunePoint){
+                mainMap.map.RemoveAt(0);
+            }
         }
+        
     }
 
     void isAction(bool state){ //Function that is going to clear notes on field, lock notespawner and iniate transition to action stage
