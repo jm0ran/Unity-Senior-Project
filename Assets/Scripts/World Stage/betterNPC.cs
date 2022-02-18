@@ -16,12 +16,7 @@ public class betterNPC : MonoBehaviour
     
 
     void startDia(){
-        //This is where I'll manage dialogue
-    }
-
-    void Start(){
-        UIController.setMenuState("photoDia");
-        UIController.updateDia("Hello", "main");
+        StartCoroutine(UIController.DiaCycle(dia,diaOrder));
     }
 
 

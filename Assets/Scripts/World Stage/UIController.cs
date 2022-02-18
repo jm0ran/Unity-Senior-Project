@@ -15,6 +15,8 @@ public class UIController : MonoBehaviour
     public static GameObject currentLayer = null;
     public static GameObject currentTextBox = null;
     public static GameObject currentProfileBox = null;
+
+    public static bool returnGate = false;
     
 
    public static GameObject findChild(string target, GameObject parent){
@@ -81,6 +83,27 @@ public class UIController : MonoBehaviour
         noPhotoDia = findChild("noPhotoDia", gameObject);
         inventory = findChild("inventory", gameObject);
         
+        setMenuState("none");
+    }
+
+    //Going to override for Dialogue without images
+    public static IEnumerator DiaCycle(List<string> dia, List<string> diaOrder){
+        returnGate = false;
+        setMenuState("photoDia");
+        updateDia(dia[0], diaOrder[0]);
+        yield return new WaitForSeconds(0.3f);
+        for(int i = 1; i < dia.Count; i++){
+            while(!returnGate){
+                yield return null;
+            }
+            updateDia(dia[i], diaOrder[i]);
+            yield return new WaitForSeconds(0.3f);
+            returnGate = false;
+        }
+        while(!returnGate){
+            yield return null;
+        }
+        returnGate = false;
         setMenuState("none");
     }
 }

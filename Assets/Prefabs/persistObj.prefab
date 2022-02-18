@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 477029498925558695}
   - component: {fileID: 7490801608667557426}
   - component: {fileID: 522924260357519988}
+  - component: {fileID: 55465813057420275}
   m_Layer: 0
   m_Name: persistObj
   m_TagString: Untagged
@@ -74,3 +75,22 @@ MonoBehaviour:
   pitbullGlasses: {fileID: 21300000, guid: 5f793ff24c733493f91b821c66b4e471, type: 3}
   dragonBall: {fileID: 21300000, guid: be1a80954ad6b4c3bb7570d55f580c05, type: 3}
   yeezy: {fileID: 21300000, guid: 567892900f56a4cdd89e19cc52b27488, type: 3}
+--- !u!114 &55465813057420275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8987295040118500788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bb6e49718f8f4f61b42ebe69389a193, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainProfile: {fileID: 21300000, guid: 36d3157372c22424fbb54872a37136ca, type: 3}
+  YeProfile: {fileID: 21300000, guid: 7d77372d4edfb4988a3a2a980e91db7c, type: 3}
+  gokuProfile: {fileID: 21300000, guid: bbb144f2c55fa46e8936cac0a85165f5, type: 3}
+  hunterProfile: {fileID: 21300000, guid: 471c0dbf933a24887b6b9cc9efb3bf57, type: 3}
+  banditProfile: {fileID: 21300000, guid: 19399b510768b42f09c60560acaf730a, type: 3}
+  imposterProfile: {fileID: 21300000, guid: 3834a6668aa234c4dbf097570cc25d06, type: 3}
+  nedProfile: {fileID: 21300000, guid: 57ec9bbb146354641bb8ad97b99186b7, type: 3}
