@@ -33,7 +33,6 @@ public class playerController : MonoBehaviour
             switch (currentInterObj.tag)
             {
                 case "betterNPC":
-                    Debug.Log("Maybe?");
                     currentInterObj.SendMessage("startDia");
                     break;
                 case "chest":

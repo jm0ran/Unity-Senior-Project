@@ -17,6 +17,8 @@ public class UIController : MonoBehaviour
     public static GameObject currentProfileBox = null;
 
     public static bool returnGate = false;
+
+    public static GameObject player;
     
 
    public static GameObject findChild(string target, GameObject parent){
@@ -51,6 +53,12 @@ public class UIController : MonoBehaviour
                 noPhotoDia.SetActive(false);
                 inventory.SetActive(false);
                 break;
+            case "noPhotoDia":
+                currentLayer = noPhotoDia;
+                photoDia.SetActive(false);
+                noPhotoDia.SetActive(true);
+                inventory.SetActive(false);
+                break;
             case "inventory":
                 currentLayer = inventory;
                 photoDia.SetActive(false);
@@ -61,28 +69,34 @@ public class UIController : MonoBehaviour
                 Debug.Log("Entered an invalid desired state for the UI");
                 break;
         }
+        if(desiredState != "none"){
+            player.SendMessage("lockPlayer", true);
+        }else{
+            player.SendMessage("lockPlayer", false);
+        }
+
         prepareChildren();
     }
 
     public static void updateDia(string inputText, string spriteName){
-        if(currentLayer == photoDia){
-            currentTextBox.GetComponent<TextMeshProUGUI>().text = inputText;
-            currentProfileBox.GetComponent<Image>().sprite = persistSprites.profiles[spriteName]; //Going to call my sprite dictionary
-        }else if(currentLayer == noPhotoDia){
-            currentTextBox.GetComponent<TextMeshProUGUI>().text = inputText;
-        }else if(currentLayer == inventory){
-            //Nothing here yet
-        }else{
-            //Also nothing here yet
-        }
+        currentTextBox.GetComponent<TextMeshProUGUI>().text = inputText;
+        currentProfileBox.GetComponent<Image>().sprite = persistSprites.profiles[spriteName]; //Going to call my sprite dictionary
+    }
+    public static void updateDia(string inputText){
+        currentTextBox.GetComponent<TextMeshProUGUI>().text = inputText;
     }
 
 
+
     void Awake(){
+        player = GameObject.FindWithTag("Player");
         photoDia = findChild("photoDia", gameObject);
         noPhotoDia = findChild("noPhotoDia", gameObject);
         inventory = findChild("inventory", gameObject);
         
+    }
+
+    void Start(){
         setMenuState("none");
     }
 
@@ -97,6 +111,25 @@ public class UIController : MonoBehaviour
                 yield return null;
             }
             updateDia(dia[i], diaOrder[i]);
+            yield return new WaitForSeconds(0.3f);
+            returnGate = false;
+        }
+        while(!returnGate){
+            yield return null;
+        }
+        returnGate = false;
+        setMenuState("none");
+    }
+    public static IEnumerator DiaCycle(List<string> dia){
+        returnGate = false;
+        setMenuState("noPhotoDia");
+        updateDia(dia[0]);
+        yield return new WaitForSeconds(0.3f);
+        for(int i = 1; i < dia.Count; i++){
+            while(!returnGate){
+                yield return null;
+            }
+            updateDia(dia[i]);
             yield return new WaitForSeconds(0.3f);
             returnGate = false;
         }

@@ -13,10 +13,16 @@ public class betterNPC : MonoBehaviour
     [Header("Parameters")]
     public bool rewards = false;
     public bool fight = false;
+    public string diaType = "photoDia";
     
 
     void startDia(){
-        StartCoroutine(UIController.DiaCycle(dia,diaOrder));
+        if(diaType == "photoDia"){
+            StartCoroutine(UIController.DiaCycle(dia,diaOrder));
+        }else if(diaType == "noPhotoDia"){
+            StartCoroutine(UIController.DiaCycle(dia));
+        }
+        
     }
 
 

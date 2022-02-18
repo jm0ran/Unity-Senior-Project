@@ -424,7 +424,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8103483010478753442, guid: b7046dd2988cc40df8270addaea8b73e, type: 3}
       propertyPath: dia.Array.data[0]
-      value: This was what originally brough me to the Junkyard
+      value: This was what originally brought me to the Junkyard
       objectReference: {fileID: 0}
     - target: {fileID: 8103483010478753442, guid: b7046dd2988cc40df8270addaea8b73e, type: 3}
       propertyPath: dia.Array.data[1]
