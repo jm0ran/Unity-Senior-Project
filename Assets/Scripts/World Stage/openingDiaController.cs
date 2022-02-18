@@ -16,6 +16,7 @@ public class openingDiaController : MonoBehaviour
 
     private bool hasChecked = false;
     public string diaType = "photoDia";
+    public string followUp = "";
     
 
     // void startDia(){
@@ -29,17 +30,17 @@ public class openingDiaController : MonoBehaviour
                 if(!tempOneTimes.oneTimes[persistID]){
                     tempOneTimes.oneTimes[persistID] = true;
                     if(diaType == "photoDia"){
-                        StartCoroutine(UIController.DiaCycle(dia,diaOrder));
+                        StartCoroutine(UIController.DiaCycle(dia,diaOrder, gameObject, followUp));
                     }else if(diaType == "noPhotoDia"){
-                        StartCoroutine(UIController.DiaCycle(dia));
+                        StartCoroutine(UIController.DiaCycle(dia, gameObject, followUp));
                     }
                 }  
                 
             }else{
                 if(diaType == "photoDia"){
-                    StartCoroutine(UIController.DiaCycle(dia,diaOrder));
+                    StartCoroutine(UIController.DiaCycle(dia,diaOrder, gameObject, followUp));
                 }else if(diaType == "noPhotoDia"){
-                    StartCoroutine(UIController.DiaCycle(dia));
+                    StartCoroutine(UIController.DiaCycle(dia, gameObject, followUp));
                 }
             }
         }

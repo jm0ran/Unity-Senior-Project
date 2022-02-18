@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8103483010478753444}
   - component: {fileID: 8103483010478753445}
   - component: {fileID: 8103483010478753442}
+  - component: {fileID: 7467125889425000036}
   - component: {fileID: 8103483010478753447}
   - component: {fileID: 8103483010478753446}
   m_Layer: 0
@@ -111,6 +112,19 @@ MonoBehaviour:
   persistID: -1
   rewards: 0
   fight: 0
+  diaType: photoDia
+--- !u!114 &7467125889425000036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8103483010478753443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57c1a638be1a3439f914f5311be0a705, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!58 &8103483010478753447
 CircleCollider2D:
   m_ObjectHideFlags: 0

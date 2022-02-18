@@ -351,6 +351,10 @@ PrefabInstance:
       value: noPhotoDia
       objectReference: {fileID: 0}
     - target: {fileID: 985297981440303804, guid: c7aedca8adb4049c5bafeb956e3387e1, type: 3}
+      propertyPath: followUp
+      value: test
+      objectReference: {fileID: 0}
+    - target: {fileID: 985297981440303804, guid: c7aedca8adb4049c5bafeb956e3387e1, type: 3}
       propertyPath: persistID
       value: 1
       objectReference: {fileID: 0}
@@ -1762,6 +1766,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8103483010478753442, guid: b7046dd2988cc40df8270addaea8b73e, type: 3}
+      propertyPath: followUp
+      value: fadeOut
+      objectReference: {fileID: 0}
     - target: {fileID: 8103483010478753442, guid: b7046dd2988cc40df8270addaea8b73e, type: 3}
       propertyPath: dia.Array.size
       value: 9

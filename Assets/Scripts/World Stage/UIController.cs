@@ -101,7 +101,7 @@ public class UIController : MonoBehaviour
     }
 
     //Going to override for Dialogue without images
-    public static IEnumerator DiaCycle(List<string> dia, List<string> diaOrder){
+    public static IEnumerator DiaCycle(List<string> dia, List<string> diaOrder, GameObject origin, string followUp){
         returnGate = false;
         setMenuState("photoDia");
         updateDia(dia[0], diaOrder[0]);
@@ -119,8 +119,13 @@ public class UIController : MonoBehaviour
         }
         returnGate = false;
         setMenuState("none");
+
+
+        if(followUp != ""){
+             origin.SendMessage(followUp);
+        }
     }
-    public static IEnumerator DiaCycle(List<string> dia){
+    public static IEnumerator DiaCycle(List<string> dia, GameObject origin, string followUp){
         returnGate = false;
         setMenuState("noPhotoDia");
         updateDia(dia[0]);
@@ -138,5 +143,16 @@ public class UIController : MonoBehaviour
         }
         returnGate = false;
         setMenuState("none");
+        if(followUp != ""){
+             origin.SendMessage(followUp);
+        }
+    }
+
+    public static void fadeIn(){
+        Debug.Log("fadeIn");
+    }
+
+    public static void fadeOut(){
+        Debug.Log("fadeOut");
     }
 }

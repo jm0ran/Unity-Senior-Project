@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 985297981440303805}
   - component: {fileID: 985297981440303804}
+  - component: {fileID: 8081234984780112556}
   m_Layer: 0
   m_Name: openingDiaNew
   m_TagString: Untagged
@@ -52,3 +53,17 @@ MonoBehaviour:
   persistID: 0
   rewards: 0
   fight: 0
+  diaType: photoDia
+  followUp: 
+--- !u!114 &8081234984780112556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 985297981440303807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57c1a638be1a3439f914f5311be0a705, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
