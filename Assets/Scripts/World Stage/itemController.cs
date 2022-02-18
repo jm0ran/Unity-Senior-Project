@@ -10,9 +10,12 @@ public class itemController : MonoBehaviour
 
     public static Dictionary<string, Sprite> itemDictionary = new Dictionary<string, Sprite>();
 
+    //Sort out the error relating to this at a later point
     void Awake(){
-        itemDictionary.Add("Black Glasses", pitbullGlasses);
-        itemDictionary.Add("Yeezy", yeezy);
-        itemDictionary.Add("Dragon Ball", dragonBall);
+        if(!(itemDictionary.Count > 0)){
+            itemDictionary.Add("Black Glasses", pitbullGlasses);
+            itemDictionary.Add("Yeezy", yeezy);
+            itemDictionary.Add("Dragon Ball", dragonBall);
+        }
     }
 }

@@ -32,7 +32,7 @@ public class playerController : MonoBehaviour
         if(!locked && currentInterObj != null){
             switch (currentInterObj.tag)
             {
-                case "Interactable":
+                case "betterNPC":
                     currentInterObj.SendMessage("startDia");
                     break;
                 case "chest":
@@ -174,7 +174,7 @@ public class playerController : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D other){ //Runs when there is a collision between a trigger and regular collider
-        if (other.tag == "Interactable"){
+        if (other.tag == "betterNPC"){
             currentInterObj = other.gameObject; //Stores collided object assuming it is tagged "Interactable"
         }else if(other.tag == "chest"){
             currentInterObj = other.gameObject;

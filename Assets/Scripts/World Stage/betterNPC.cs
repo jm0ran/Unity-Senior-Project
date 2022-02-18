@@ -13,15 +13,17 @@ public class betterNPC : MonoBehaviour
     [Header("Parameters")]
     public bool rewards = false;
     public bool fight = false;
+    public string diaType = "photoDia";
+    public string followUp = "";
+    public string followUpArgument = "";
     
 
     void startDia(){
-        //This is where I'll manage dialogue
-    }
-
-    void Start(){
-        UIController.setMenuState("photoDia");
-        UIController.updateDia("Hello", "main");
+        if(diaType == "photoDia"){
+            StartCoroutine(UIController.DiaCycle(dia,diaOrder, gameObject, followUp));
+        }else if(diaType == "noPhotoDia"){
+            StartCoroutine(UIController.DiaCycle(dia,gameObject, followUp));
+        }
     }
 
 

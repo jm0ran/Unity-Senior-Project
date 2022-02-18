@@ -27,11 +27,14 @@ public class inputController : MonoBehaviour
     void Update(){ //Used for singular non movement button inputs like menus and interactiosn
         //general Input Logic
         if(Input.GetKeyDown(KeyCode.I)){
+            //Need to lock player during inventory but want to fix the input controller first
             if(!inInventory){
-                persistController.SendMessage("loadInventoryGUI");
+                UIController.setMenuState("inventory");
+                inInventory = true;
             }
             else{
-                persistController.SendMessage("exitInv");
+                UIController.setMenuState("none");
+                inInventory = false;
             }
             
         }
@@ -43,6 +46,9 @@ public class inputController : MonoBehaviour
         }
         if(Input.GetKeyDown(KeyCode.M)){
             SceneManager.LoadScene("Battle Stage");
+        }
+        if(Input.GetKeyDown(KeyCode.Return)){
+            UIController.returnGate = true;
         }
 
 
