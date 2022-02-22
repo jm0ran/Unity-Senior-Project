@@ -25,12 +25,13 @@ public class UIController : MonoBehaviour
    public static GameObject findChild(string target, GameObject parent){
         if(parent != null){
             foreach (Transform child in parent.transform){
-                if(child.gameObject.name == target){
-                    return child.gameObject;
+                if(child.gameObject.name == target){                    return child.gameObject;
                 }
             }
+        }else{
         }
         return null;
+        
     }
 
     public static void prepareChildren(){
@@ -65,6 +66,7 @@ public class UIController : MonoBehaviour
                 photoDia.SetActive(false);
                 noPhotoDia.SetActive(false);
                 inventory.SetActive(true);
+                renderItems();
                 break;
             default:
                 Debug.Log("Entered an invalid desired state for the UI");
@@ -75,8 +77,9 @@ public class UIController : MonoBehaviour
         }else{
             player.SendMessage("lockPlayer", false);
         }
-
-        prepareChildren();
+        if(desiredState != "inventory"){
+            prepareChildren();
+        }
     }
 
     public static void updateDia(string inputText, string spriteName){
@@ -170,6 +173,17 @@ public class UIController : MonoBehaviour
             yield return new WaitForSeconds(0.025f);
         }
         SceneManager.LoadScene(destScene);
+    }
+
+    public static void renderItems(){
+        Debug.Log("Attempted to render items");
+        GameObject targetObject = findChild("items", currentLayer);
+        for(int i = 0; i < saveDataController.globalSave.inventory.items.Count; i++){
+            Debug.Log("item " + i);
+        }
+        // GameObject newInvRow = Instantiate(inventoryRowPrefab, rowLocation, Quaternion.identity);
+
+        //Should clear contents of this section first to prevent buildup every time you open menu but I will do that later
     }
 
 }
