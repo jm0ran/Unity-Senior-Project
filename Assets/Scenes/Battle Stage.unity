@@ -3569,7 +3569,7 @@ MonoBehaviour:
   timeToTarget: 3
   noteSpawnX: 6
   noteTargetX: -4.3
-  customStartTime: 12
+  customStartTime: 0
 --- !u!82 &1459815464
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3585,7 +3585,7 @@ AudioSource:
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
-  Mute: 1
+  Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128

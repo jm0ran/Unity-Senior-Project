@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class UIController : MonoBehaviour
 {
@@ -97,6 +98,7 @@ public class UIController : MonoBehaviour
     }
 
     void Start(){
+        StartCoroutine(fadeIn());
         setMenuState("none");
     }
 
@@ -148,11 +150,26 @@ public class UIController : MonoBehaviour
         }
     }
 
-    public static void fadeIn(){
-        Debug.Log("fadeIn");
+    public static IEnumerator fadeIn(){
+        CanvasGroup canvasGroup = GameObject.Find("fadeShade").GetComponent<CanvasGroup>();
+        float alpha = 1.0f;
+        canvasGroup.alpha = alpha;
+        while (alpha > 0f){
+            alpha -= 0.05f;
+            canvasGroup.alpha = alpha;
+            yield return new WaitForSeconds(0.025f);
+        }
     }
 
-    public static void fadeOut(){
-        Debug.Log("fadeOut");
+    public static IEnumerator fadeOut(string destScene){
+        CanvasGroup canvasGroup = GameObject.Find("fadeShade").GetComponent<CanvasGroup>();
+        float alpha = 0.0f;
+        while (alpha < 1f){
+            alpha += 0.05f;
+            canvasGroup.alpha = alpha;
+            yield return new WaitForSeconds(0.025f);
+        }
+        SceneManager.LoadScene(destScene);
     }
+
 }

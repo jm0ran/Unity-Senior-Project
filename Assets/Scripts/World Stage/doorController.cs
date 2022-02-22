@@ -25,7 +25,8 @@ public class doorController : MonoBehaviour
         sceneController.initPlayerPos[1] = destY;
         sceneController.origin = originScene;
         sceneController.cameraPos = nextCameraPos;
-        StartCoroutine(fadeTransition(destScene));
+        StartCoroutine(UIController.fadeOut(destScene));
+        // StartCoroutine(fadeTransition(destScene));
     }
 
     IEnumerator fadeTransition(string destScene){
