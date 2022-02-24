@@ -124,8 +124,6 @@
             "time": 39.760,
             "button": "up"
         },
-
-
         {
             "time": 41.820,
             "button": "left"
@@ -150,7 +148,68 @@
         {
             "time": 43.100,
             "button": "right"
+        },
+        {
+            "time": 45.480,
+            "button": "up"
+        },
+        {
+            "time": 45.800,
+            "button": "down"
+        },
+        {
+            "time": 49.640,
+            "button": "left"
+        },
+        {
+            "time": 49.960,
+            "button": "left"
+        },
+        {
+            "time": 50.280,
+            "button": "right"
+        },
+        {
+            "time": 50.750,
+            "button": "right"
+        },
+        {
+            "time": 51.380,
+            "button": "up"
+        },
+        {
+            "time": 51.540,
+            "button": "up"
+        },
+        {
+            "time": 51.860,
+            "button": "down"
+        },
+        {
+            "time": 52.040,
+            "button": "down"
+        },
+
+
+        {
+            "time": 52.340,
+            "button": "right"
+        },
+        {
+            "time": 52.500,
+            "button": "right"
+        },
+        {
+            "time": 52.820,
+            "button": "left"
+        },
+        {
+            "time": 52.980,
+            "button": "left"
         }
+
+
+
 
 
 

@@ -1669,6 +1669,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 767132252476147180, guid: f004047a132c94b93b4bc1241e3dd165, type: 3}
+      propertyPath: m_AdditionalShaderChannelsFlag
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 7193808458269452329, guid: f004047a132c94b93b4bc1241e3dd165, type: 3}
       propertyPath: m_Name
       value: worldUI
