@@ -25,7 +25,8 @@ public class UIController : MonoBehaviour
    public static GameObject findChild(string target, GameObject parent){
         if(parent != null){
             foreach (Transform child in parent.transform){
-                if(child.gameObject.name == target){                    return child.gameObject;
+                if(child.gameObject.name == target){                    
+                    return child.gameObject;
                 }
             }
         }else{
