@@ -12,14 +12,19 @@ public class UIController : MonoBehaviour
     public static GameObject photoDia;
     public static GameObject noPhotoDia;
     public static GameObject inventory;
+    
 
     public static GameObject currentLayer = null;
     public static GameObject currentTextBox = null;
     public static GameObject currentProfileBox = null;
 
+    public static GameObject itemsContainer = null;
+
     public static bool returnGate = false;
 
     public static GameObject player;
+    public GameObject inventoryPrefabPointer;
+    public static GameObject inventoryPrefab;
     
 
    public static GameObject findChild(string target, GameObject parent){
@@ -98,6 +103,9 @@ public class UIController : MonoBehaviour
         photoDia = findChild("photoDia", gameObject);
         noPhotoDia = findChild("noPhotoDia", gameObject);
         inventory = findChild("inventory", gameObject);
+        itemsContainer = findChild("itemsContainer", inventory);
+        
+        inventoryPrefab = inventoryPrefabPointer;
         
     }
 
@@ -182,6 +190,9 @@ public class UIController : MonoBehaviour
         Debug.Log("Attempted to render items");
         GameObject targetObject = findChild("items", currentLayer);
         for(int i = 0; i < saveDataController.globalSave.inventory.items.Count; i++){
+            GameObject newItemRow = Instantiate(inventoryPrefab, new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
+            newItemRow.transform.SetParent(itemsContainer.transform);
+            newItemRow.transform.localPosition = new Vector3(0,340,0);
             Debug.Log("item " + i);
         }
         // GameObject newInvRow = Instantiate(inventoryRowPrefab, rowLocation, Quaternion.identity);
