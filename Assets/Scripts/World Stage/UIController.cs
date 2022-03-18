@@ -187,13 +187,17 @@ public class UIController : MonoBehaviour
     }
 
     public static void renderItems(){
-        Debug.Log("Attempted to render items");
         GameObject targetObject = findChild("items", currentLayer);
-        for(int i = 0; i < saveDataController.globalSave.inventory.items.Count; i++){
+        List<Item> playerItems = saveDataController.globalSave.inventory.items;
+        for(int i = 0; i < playerItems.Count; i++){
             GameObject newItemRow = Instantiate(inventoryPrefab, new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
+            TextMeshProUGUI itemNameBox = findChild("itemName", newItemRow).GetComponent<TextMeshProUGUI>();
+            Image itemImageBox = findChild("itemImage", newItemRow).GetComponent<Image>();
+            itemNameBox.text = playerItems[i].itemName;
+            itemImageBox.sprite = itemController.itemDictionary[playerItems[i].itemName];
             newItemRow.transform.SetParent(itemsContainer.transform);
-            newItemRow.transform.localPosition = new Vector3(0,340,0);
-            Debug.Log("item " + i);
+            newItemRow.transform.localPosition = new Vector3(0,340 - (280 * i),0);
+            
         }
         // GameObject newInvRow = Instantiate(inventoryRowPrefab, rowLocation, Quaternion.identity);
 

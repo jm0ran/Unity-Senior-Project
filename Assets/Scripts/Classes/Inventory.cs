@@ -18,6 +18,7 @@ public class Inventory
     public void addObj(string itemName, int itemAmount){ //Function to addObj to inventory, will be called by other scripts
         this.items.Add(new Item(itemName, itemAmount));
         this.balance(); //Balances inv after adding a new item
+        saveDataController.globalSave.serializeSaveData();
     }
     public void remObj(string itemName, int itemAmount){ //Going to be used to remove objects
         this.balance(); //Balances inv before deleting anything
