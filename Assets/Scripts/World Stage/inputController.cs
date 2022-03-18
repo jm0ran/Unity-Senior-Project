@@ -12,6 +12,7 @@ public class inputController : MonoBehaviour
     private GameObject UI;
     private GameObject player;
     public GameObject persistController;
+    private GameObject inventoryController;
 
 
     //STATES
@@ -52,6 +53,28 @@ public class inputController : MonoBehaviour
         }
 
 
+        //Should section this by state
+        if(UIController.currentLayer == UIController.inventory){
+            string inputToPass = null;
+            if(Input.GetKeyDown(KeyCode.UpArrow)){
+                inputToPass = "up";
+            }
+            if(Input.GetKeyDown(KeyCode.RightArrow)){
+                inputToPass = "right";
+            }
+            if(Input.GetKeyDown(KeyCode.DownArrow)){
+                inputToPass = "down";
+            }
+            if(Input.GetKeyDown(KeyCode.LeftArrow)){
+                inputToPass = "left";
+            }
+            if(inputToPass != null){
+                inventoryController.SendMessage("menuInput", inputToPass);
+
+            }
+        }
+
+
        //Move logic is staying in player controller right now because the locking system is weird to implement here so I'm working on it
         
     }
@@ -59,6 +82,7 @@ public class inputController : MonoBehaviour
         persistController = GameObject.Find("persistController");
         UI = GameObject.FindWithTag("UI");
         player = GameObject.FindWithTag("Player");
+        inventoryController = GameObject.FindWithTag("inventory");
     }
 
     void Start(){

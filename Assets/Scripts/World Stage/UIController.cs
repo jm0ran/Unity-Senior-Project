@@ -12,14 +12,19 @@ public class UIController : MonoBehaviour
     public static GameObject photoDia;
     public static GameObject noPhotoDia;
     public static GameObject inventory;
+    
 
     public static GameObject currentLayer = null;
     public static GameObject currentTextBox = null;
     public static GameObject currentProfileBox = null;
 
+    public static GameObject itemsContainer = null;
+
     public static bool returnGate = false;
 
     public static GameObject player;
+    public GameObject inventoryPrefabPointer;
+    public static GameObject inventoryPrefab;
     
 
    public static GameObject findChild(string target, GameObject parent){
@@ -80,6 +85,9 @@ public class UIController : MonoBehaviour
         }
         if(desiredState != "inventory"){
             prepareChildren();
+            inventoryController.invStatusUpdate(false);
+        }else{
+            inventoryController.invStatusUpdate(true);
         }
     }
 
@@ -98,6 +106,9 @@ public class UIController : MonoBehaviour
         photoDia = findChild("photoDia", gameObject);
         noPhotoDia = findChild("noPhotoDia", gameObject);
         inventory = findChild("inventory", gameObject);
+        itemsContainer = findChild("itemsContainer", inventory);
+        
+        inventoryPrefab = inventoryPrefabPointer;
         
     }
 
@@ -173,14 +184,23 @@ public class UIController : MonoBehaviour
             canvasGroup.alpha = alpha;
             yield return new WaitForSeconds(0.025f);
         }
-        SceneManager.LoadScene(destScene);
+        if(destScene != null){
+            SceneManager.LoadScene(destScene);
+        }
     }
 
     public static void renderItems(){
-        Debug.Log("Attempted to render items");
         GameObject targetObject = findChild("items", currentLayer);
-        for(int i = 0; i < saveDataController.globalSave.inventory.items.Count; i++){
-            Debug.Log("item " + i);
+        List<Item> playerItems = saveDataController.globalSave.inventory.items;
+        for(int i = 0; i < playerItems.Count; i++){
+            GameObject newItemRow = Instantiate(inventoryPrefab, new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
+            TextMeshProUGUI itemNameBox = findChild("itemName", newItemRow).GetComponent<TextMeshProUGUI>();
+            Image itemImageBox = findChild("itemImage", newItemRow).GetComponent<Image>();
+            itemNameBox.text = playerItems[i].itemName;
+            itemImageBox.sprite = itemController.itemDictionary[playerItems[i].itemName];
+            newItemRow.transform.SetParent(itemsContainer.transform);
+            newItemRow.transform.localPosition = new Vector3(0,340 - (280 * i),0);
+            
         }
         // GameObject newInvRow = Instantiate(inventoryRowPrefab, rowLocation, Quaternion.identity);
 

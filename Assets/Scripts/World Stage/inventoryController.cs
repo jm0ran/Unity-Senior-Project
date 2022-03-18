@@ -17,42 +17,46 @@ public class inventoryController : MonoBehaviour
     private GameObject inventoryUI;
     private GameObject player;
 
+    private int currentSelection = 0;
+    public static bool inAction;
+    private GameObject[] currentItemObjects;
+
+
 //------------------------------------------------------------------------
 //User Defined Functions
-//Probably want to move a lot of this off into the inventory menu object as it will likely only cause problems if it is here
-    void loadInventoryGUI(){ //Prob want to maybe move this to UI controller not sure yet
-        player.GetComponent<inputController>().inInventory = true;
-        player.SendMessage("lockPlayer", true);
-        for(int i = 0; i < playerInv.items.Count; i++){
-            Vector3 rowLocation = new Vector3(-530,(-590) + (170 * (i + 1)), 0);
-            GameObject newInvRow = Instantiate(inventoryRowPrefab, rowLocation, Quaternion.identity);
-            newInvRow.transform.SetParent(inventoryUI.transform, false);
-            newInvRow.transform.Find("invName").GetComponent<TextMeshProUGUI>().text = playerInv.items[i].itemName;
-            newInvRow.transform.Find("invItem").GetComponent<Image>().sprite = itemController.itemDictionary[playerInv.items[i].itemName];
-            //This is where I want to also assign the uh yk thing, but I need to move this script somewhere else now that inventory data is part of the globalSave object
+
+    void menuInput(string inputPassed){
+        if(inAction){
+            Debug.Log(inputPassed);
+            //Going to use this input to scroll through basically
         }
-        UI.SendMessage("enableUIItem", "inventory");
     }
 
-    void exitInv(){
-        UI.SendMessage("disableUIItems");
-        foreach(Transform child in inventoryUI.transform){
-            GameObject.Destroy(child.gameObject);
+    public static void invStatusUpdate(bool status){
+        if(status){
+            GameObject.FindWithTag("inventory").SendMessage("initController");
+        }else{
+            inAction = false;
         }
-        player.GetComponent<inputController>().inInventory = false;
-        player.SendMessage("lockPlayer", false);
     }
 
+    public void initController(){
+        currentSelection = 0;
+        inAction = true;
+        //THIS IS WHERE IM LEAVING OFF FOR THE DAY AND AM GOING TO START CODING THE SELECTION AND MENU MOVENMENT PARTS
+    }
 
 //------------------------------------------------------------------------
 //Unity Defined Functions
     void Awake(){
-        player = GameObject.FindWithTag("Player");
-        inventoryUI = GameObject.FindWithTag("inventory");
+        inAction = false;
         UI = GameObject.FindWithTag("UI");
+
     }
     void Start(){
-        playerInv = saveDataController.globalSave.inventory;
+       
     }
+
+    
 
 }
