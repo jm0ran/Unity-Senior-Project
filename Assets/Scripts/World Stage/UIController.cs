@@ -173,7 +173,9 @@ public class UIController : MonoBehaviour
             canvasGroup.alpha = alpha;
             yield return new WaitForSeconds(0.025f);
         }
-        SceneManager.LoadScene(destScene);
+        if(destScene != null){
+            SceneManager.LoadScene(destScene);
+        }
     }
 
     public static void renderItems(){
