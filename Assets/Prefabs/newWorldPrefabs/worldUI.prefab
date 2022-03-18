@@ -646,6 +646,7 @@ GameObject:
   - component: {fileID: 6716037888235352036}
   - component: {fileID: 2071687121835732485}
   - component: {fileID: 767132252476147180}
+  - component: {fileID: 1512057773133791197}
   m_Layer: 5
   m_Name: inventory
   m_TagString: inventory
@@ -708,6 +709,19 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &1512057773133791197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6254947566129040131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f28d6df21e2c1494cb337188b4993582, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventoryRowPrefab: {fileID: 0}
 --- !u!1 &7193808458269452329
 GameObject:
   m_ObjectHideFlags: 0
@@ -825,6 +839,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73b39212737614b3ab01d2e72a0122be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventoryPrefabPointer: {fileID: 0}
 --- !u!1 &7193808459173084564
 GameObject:
   m_ObjectHideFlags: 0

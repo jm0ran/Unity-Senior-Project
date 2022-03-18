@@ -85,6 +85,9 @@ public class UIController : MonoBehaviour
         }
         if(desiredState != "inventory"){
             prepareChildren();
+            inventoryController.invStatusUpdate(false);
+        }else{
+            inventoryController.invStatusUpdate(true);
         }
     }
 
