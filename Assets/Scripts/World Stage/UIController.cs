@@ -161,7 +161,7 @@ public class UIController : MonoBehaviour
         returnGate = false;
         setMenuState("none");
         if(followUp != ""){
-             origin.SendMessage(followUp);
+            origin.SendMessage(followUp);
         }
     }
 

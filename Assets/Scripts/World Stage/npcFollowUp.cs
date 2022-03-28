@@ -8,6 +8,10 @@ public class npcFollowUp : MonoBehaviour
         StartCoroutine(fadeRemoveCo());
     }
 
+    void chest(){
+        Debug.Log("Triggered a chest");
+    }
+
 
     IEnumerator fadeRemoveCo(){ //Used to fade screen in and out while also disabling the NPC that this is triggered on
         StartCoroutine(UIController.fadeOut(null));
