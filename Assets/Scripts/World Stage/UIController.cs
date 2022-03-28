@@ -121,23 +121,30 @@ public class UIController : MonoBehaviour
     public static IEnumerator DiaCycle(List<string> dia, List<string> diaOrder, GameObject origin, string followUp){
         returnGate = false;
         setMenuState("photoDia");
-        updateDia(dia[0], diaOrder[0]);
-        yield return new WaitForSeconds(0.3f);
-        for(int i = 1; i < dia.Count; i++){
+        bool hasDialogue = true;
+        if(dia.Count > 0){
+            updateDia(dia[0], diaOrder[0]);
+        }else{
+            hasDialogue = false;
+            setMenuState("none");
+        }
+        if(hasDialogue){
+            yield return new WaitForSeconds(0.3f);
+            for(int i = 1; i < dia.Count; i++){
+                while(!returnGate){
+                    yield return null;
+                }
+                updateDia(dia[i], diaOrder[i]);
+                yield return new WaitForSeconds(0.3f);
+                returnGate = false;
+            }
             while(!returnGate){
                 yield return null;
             }
-            updateDia(dia[i], diaOrder[i]);
-            yield return new WaitForSeconds(0.3f);
             returnGate = false;
+            setMenuState("none");
         }
-        while(!returnGate){
-            yield return null;
-        }
-        returnGate = false;
-        setMenuState("none");
-
-
+        
         if(followUp != ""){
              origin.SendMessage(followUp);
         }
@@ -145,24 +152,33 @@ public class UIController : MonoBehaviour
     public static IEnumerator DiaCycle(List<string> dia, GameObject origin, string followUp){
         returnGate = false;
         setMenuState("noPhotoDia");
-        updateDia(dia[0]);
-        yield return new WaitForSeconds(0.3f);
-        for(int i = 1; i < dia.Count; i++){
+        bool hasDialogue = true;
+        if(dia.Count > 0){
+            updateDia(dia[0]);
+        }else{
+            hasDialogue = false;
+            setMenuState("none");
+        }
+        if(hasDialogue){
+            yield return new WaitForSeconds(0.3f);
+            for(int i = 1; i < dia.Count; i++){
+                while(!returnGate){
+                    yield return null;
+                }
+                updateDia(dia[i]);
+                yield return new WaitForSeconds(0.3f);
+                returnGate = false;
+            }
             while(!returnGate){
                 yield return null;
             }
-            updateDia(dia[i]);
-            yield return new WaitForSeconds(0.3f);
             returnGate = false;
+            setMenuState("none");
         }
-        while(!returnGate){
-            yield return null;
-        }
-        returnGate = false;
-        setMenuState("none");
         if(followUp != ""){
             origin.SendMessage(followUp);
         }
+        
     }
 
     public static IEnumerator fadeIn(){
