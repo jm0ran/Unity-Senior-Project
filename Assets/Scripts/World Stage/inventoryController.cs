@@ -22,6 +22,10 @@ public class inventoryController : MonoBehaviour
     public static bool inAction;
     private GameObject[] currentItemObjects;
 
+    //CurrentItemInfoBoxes
+    private Image currentItemImage;
+    private TextMeshProUGUI currentItemDescription;
+
 
 //------------------------------------------------------------------------
 //User Defined Functions
@@ -66,7 +70,7 @@ public class inventoryController : MonoBehaviour
             //I want a section here to determine if the items need to be moves down or up with funny algorithm of if and butts and coconuts
             
 
-            for(int i = 0; i < itemObjectsList.Count; i++){ //Logic for resetting item box colors and item box positioning
+            for(int i = 0; i < itemObjectsList.Count; i++){ //Logic for resetting item box colors and item box positioning, also updates current item info stuff
                 GameObject item = itemObjectsList[i];
                 item.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
                 Transform itemRowPosition = item.GetComponent<Transform>();
@@ -79,6 +83,10 @@ public class inventoryController : MonoBehaviour
                 
             }
             selectedObject.GetComponent<Image>().color = new Color32(255, 112, 112, 100); //Set selected gameObject to different color
+            
+            //Set currentItemInfo Image and description
+            currentItemImage.sprite = itemController.itemDictionary[selectedObject.name];
+            currentItemDescription.text = itemController.infoDictionary[selectedObject.name];
         }
     }
 
@@ -102,12 +110,11 @@ public class inventoryController : MonoBehaviour
         UI = GameObject.FindWithTag("UI");
         inventoryUI = GameObject.FindWithTag("inventory");
         itemsContainer = GameObject.Find("itemsContainer");
+        currentItemImage = GameObject.Find("currentItemImage").GetComponent<Image>();
+        currentItemDescription = GameObject.Find("currentItemDescription").GetComponent<TextMeshProUGUI>();
+
 
     }
-    void Start(){
-       
-    }
-
     
 
 }

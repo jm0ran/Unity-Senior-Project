@@ -24,7 +24,10 @@ public class itemController : MonoBehaviour
         }
         
         if(!(infoDictionary.Count > 0)){
-            // infoDictionary.Add();
+            infoDictionary.Add("Black Glasses", "A pair of simple black glasses, something tells you they've been well traveled");
+            infoDictionary.Add("Yeezy", "The tell tale sign of a Kanye fan is a pair of Yeezys, something seems different about this pair though");
+            infoDictionary.Add("Dragon Ball", "???");
+            infoDictionary.Add("MBDTF", "The widely recognized GOAT");
         }
 
     }

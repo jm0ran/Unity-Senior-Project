@@ -194,6 +194,7 @@ public class UIController : MonoBehaviour
         List<Item> playerItems = saveDataController.globalSave.inventory.items;
         for(int i = 0; i < playerItems.Count; i++){
             GameObject newItemRow = Instantiate(inventoryPrefab, new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
+            newItemRow.gameObject.name = playerItems[i].itemName;
             TextMeshProUGUI itemNameBox = findChild("itemName", newItemRow).GetComponent<TextMeshProUGUI>();
             Image itemImageBox = findChild("itemImage", newItemRow).GetComponent<Image>();
             itemNameBox.text = playerItems[i].itemName;
