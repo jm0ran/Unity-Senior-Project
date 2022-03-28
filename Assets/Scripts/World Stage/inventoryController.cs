@@ -25,6 +25,7 @@ public class inventoryController : MonoBehaviour
     //CurrentItemInfoBoxes
     private Image currentItemImage;
     private TextMeshProUGUI currentItemDescription;
+    private TextMeshProUGUI currentItemAmount;
 
 
 //------------------------------------------------------------------------
@@ -87,6 +88,7 @@ public class inventoryController : MonoBehaviour
             //Set currentItemInfo Image and description
             currentItemImage.sprite = itemController.itemDictionary[selectedObject.name];
             currentItemDescription.text = itemController.infoDictionary[selectedObject.name];
+            currentItemAmount.text = saveDataController.globalSave.inventory.items[saveDataController.globalSave.inventory.findObj(selectedObject.name)].itemAmount.ToString();;
         }
     }
 
@@ -110,9 +112,11 @@ public class inventoryController : MonoBehaviour
         UI = GameObject.FindWithTag("UI");
         inventoryUI = GameObject.FindWithTag("inventory");
         itemsContainer = GameObject.Find("itemsContainer");
+
+        //Current item info
         currentItemImage = GameObject.Find("currentItemImage").GetComponent<Image>();
         currentItemDescription = GameObject.Find("currentItemDescription").GetComponent<TextMeshProUGUI>();
-
+        currentItemAmount = GameObject.Find("currentItemAmount").GetComponent<TextMeshProUGUI>();
 
     }
     

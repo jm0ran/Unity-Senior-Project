@@ -30,8 +30,10 @@ public class inputController : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.I)){
             //Need to lock player during inventory but want to fix the input controller first
             if(!inInventory){
-                UIController.setMenuState("inventory");
-                inInventory = true;
+                if(UIController.currentLayer == null){
+                    UIController.setMenuState("inventory");
+                    inInventory = true;
+                }
             }
             else{
                 UIController.setMenuState("none");

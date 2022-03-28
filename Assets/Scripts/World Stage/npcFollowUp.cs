@@ -8,7 +8,8 @@ public class npcFollowUp : MonoBehaviour
         StartCoroutine(fadeRemoveCo());
     }
 
-    void chest(){
+    void chest(){ //This is for chests, needs to give player an item and stuff yk
+        
         Debug.Log("Triggered a chest");
     }
 
