@@ -12,7 +12,6 @@ public class inventoryController : MonoBehaviour
 //Predefined variables for the script
     private Inventory playerInv;
     //just using Unity Editor to assign this
-    public GameObject inventoryRowPrefab;
     private GameObject UI;
     private GameObject inventoryUI;
     private GameObject player;
@@ -54,15 +53,27 @@ public class inventoryController : MonoBehaviour
         //4. Initial implementation will likely just be skippy
         //5. write the necessary text in the funny box
         if(target >= 0 & target < itemObjectsList.Count){
+            currentSelection = target; //Updates current selection to reflect a successful change
+
             GameObject selectedObject = itemObjectsList[target]; //Might need to add something here if inventory has less than 1 item who knows lol
             
             //I want a section here to determine if the items need to be moves down or up with funny algorithm of if and butts and coconuts
             
-            foreach(GameObject item in itemObjectsList){ //Set all object colors to normal, also is going to handle jump menu movement
-                item.GetComponent<Image>().color = new Color32(255, 255, 255, 100);
+
+            for(int i = 0; i < itemObjectsList.Count; i++){
+                GameObject item = itemObjectsList[i];
+                item.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
+                Transform itemRowPosition = item.GetComponent<Transform>();
+                //Want to determine if I even need to slide, just generall positions my boxes
+                if(itemObjectsList.Count >= 4 && currentSelection >= 2){ //Want to check if 
+                    itemRowPosition.localPosition = new Vector3(0,340 - (280 * i - (280 * (currentSelection - 1))),0);
+                }else{
+                    itemRowPosition.localPosition = new Vector3(0,340 - (280 * i),0); 
+                }
+                
             }
+            
             selectedObject.GetComponent<Image>().color = new Color32(255, 112, 112, 100); //Set selected gameObject to different color
-            currentSelection = target; //Updates current selection to reflect a successful change
             
 
 

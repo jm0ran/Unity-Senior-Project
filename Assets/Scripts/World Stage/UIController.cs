@@ -199,7 +199,7 @@ public class UIController : MonoBehaviour
             itemNameBox.text = playerItems[i].itemName;
             itemImageBox.sprite = itemController.itemDictionary[playerItems[i].itemName];
             newItemRow.transform.SetParent(itemsContainer.transform);
-            newItemRow.transform.localPosition = new Vector3(0,340 - (280 * i),0);
+            
             
         }
         // GameObject newInvRow = Instantiate(inventoryRowPrefab, rowLocation, Quaternion.identity);
