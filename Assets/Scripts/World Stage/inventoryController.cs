@@ -14,6 +14,7 @@ public class inventoryController : MonoBehaviour
     //just using Unity Editor to assign this
     private GameObject UI;
     private GameObject inventoryUI;
+    private static GameObject itemsContainer;
     private GameObject player;
     private List<GameObject> itemObjectsList;
 
@@ -42,6 +43,11 @@ public class inventoryController : MonoBehaviour
             GameObject.FindWithTag("inventory").SendMessage("initController");
         }else{
             inAction = false;
+            //Need to get rid of all the old objects
+            //Just makes sure inventory is clear, may run a bit more than I like but will be fine
+            foreach(Transform child in itemsContainer.transform){
+                Destroy(child.gameObject);
+            }
         }
     }
 
@@ -60,7 +66,7 @@ public class inventoryController : MonoBehaviour
             //I want a section here to determine if the items need to be moves down or up with funny algorithm of if and butts and coconuts
             
 
-            for(int i = 0; i < itemObjectsList.Count; i++){
+            for(int i = 0; i < itemObjectsList.Count; i++){ //Logic for resetting item box colors and item box positioning
                 GameObject item = itemObjectsList[i];
                 item.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
                 Transform itemRowPosition = item.GetComponent<Transform>();
@@ -72,13 +78,7 @@ public class inventoryController : MonoBehaviour
                 }
                 
             }
-            
             selectedObject.GetComponent<Image>().color = new Color32(255, 112, 112, 100); //Set selected gameObject to different color
-            
-
-
-        }else{//This error handle needs to be a bit more sophisticated
-            Debug.Log("Target of " + target + " is not real bozo");
         }
     }
 
@@ -86,17 +86,11 @@ public class inventoryController : MonoBehaviour
         currentSelection = 0;
         inAction = true;
         itemObjectsList = new List<GameObject>();
-        
-        
+
         //The following just find the children and throws them into a list of gameObjects;
-        foreach (Transform child in gameObject.transform)
-            {
-                if(child.gameObject.name == "itemsContainer"){ //Overcomplicated? Sure. Works? Hell Yeah! Not much time left in school year need to write more code quickly
-                    foreach(Transform childI in child){
-                        itemObjectsList.Add(childI.gameObject);
-                    }
-                }
-            }
+        foreach (Transform child in itemsContainer.transform){
+            itemObjectsList.Add(child.gameObject);
+        }
         
         updateSelected(currentSelection); //This is the initial update for selected, just initially highlights the first option
     }
@@ -107,6 +101,7 @@ public class inventoryController : MonoBehaviour
         inAction = false;
         UI = GameObject.FindWithTag("UI");
         inventoryUI = GameObject.FindWithTag("inventory");
+        itemsContainer = GameObject.Find("itemsContainer");
 
     }
     void Start(){

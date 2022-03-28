@@ -11,6 +11,8 @@ public class itemController : MonoBehaviour
 
 
     public static Dictionary<string, Sprite> itemDictionary = new Dictionary<string, Sprite>();
+    public static Dictionary<string, string> infoDictionary = new Dictionary<string, string>();
+
 
     //Sort out the error relating to this at a later point
     void Awake(){
@@ -20,5 +22,10 @@ public class itemController : MonoBehaviour
             itemDictionary.Add("Dragon Ball", dragonBall);
             itemDictionary.Add("MBDTF", mbdtf);
         }
+        
+        if(!(infoDictionary.Count > 0)){
+            // infoDictionary.Add();
+        }
+
     }
 }
