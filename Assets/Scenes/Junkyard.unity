@@ -434,8 +434,9 @@ GameObject:
   m_Component:
   - component: {fileID: 933533158}
   - component: {fileID: 933533157}
+  - component: {fileID: 933533159}
   m_Layer: 0
-  m_Name: Junkyard
+  m_Name: mapSprite
   m_TagString: Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -509,6 +510,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &933533159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 933533156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7214627048b354e2dbdb5c1a39e76296, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1016392399
 GameObject:
   m_ObjectHideFlags: 0
@@ -1787,8 +1800,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 8103483010478753442, guid: b7046dd2988cc40df8270addaea8b73e, type: 3}
+      propertyPath: oneTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8103483010478753442, guid: b7046dd2988cc40df8270addaea8b73e, type: 3}
       propertyPath: followUp
-      value: fadeRemove
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8103483010478753442, guid: b7046dd2988cc40df8270addaea8b73e, type: 3}
+      propertyPath: persistID
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8103483010478753442, guid: b7046dd2988cc40df8270addaea8b73e, type: 3}
       propertyPath: dia.Array.size

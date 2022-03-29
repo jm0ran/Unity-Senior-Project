@@ -12,7 +12,7 @@ public class saveDataOverride : MonoBehaviour
             true, //0 Opening Diaogue in Junk Cave
             true, //1 Opening Dialogue in Junkyard
             false, //2 Test chest
-            true, //3 initial time speaking to Ned in junkyard
+            false, //3 initial time speaking to Ned in junkyard
             false,
             false,
             false,
@@ -40,6 +40,8 @@ public class saveDataOverride : MonoBehaviour
             false,
         };
         targetSave.inventory.items = new List<Item>();
-        
     }
+    
+
+    
 }

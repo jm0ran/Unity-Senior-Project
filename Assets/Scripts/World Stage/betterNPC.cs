@@ -43,9 +43,11 @@ public class betterNPC : MonoBehaviour
     }
 
     void Start(){
-        if(oneTime && persistID != -1 && saveDataController.globalSave.oneTimes[persistID]){ //If one time has been triggered
+        if(oneTime && persistID != -1 && saveDataController.globalSave.oneTimes[persistID] && gameObject.GetComponent<npcFollowUp>().altSprite != null){ //If one time has been triggered
             gameObject.SendMessage("swapSprite");
         }
+
+        
 
         
     }

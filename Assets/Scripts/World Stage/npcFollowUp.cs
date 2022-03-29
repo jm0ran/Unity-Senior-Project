@@ -8,7 +8,9 @@ public class npcFollowUp : MonoBehaviour
 
 
     void fadeRemove(string followUpArg){
+        UIController.setMenuState("none");
         StartCoroutine(fadeRemoveCo());
+        
     }
 
     void chest(string followUpArg){ //This is for chests, needs to give player an item and stuff yk
@@ -21,6 +23,11 @@ public class npcFollowUp : MonoBehaviour
         }else{
             Debug.Log("AltSprite is null");
         }
+    }
+
+    void checkForYeezys(){
+        UIController.setMenuState("none");
+        Debug.Log("Yeezy Season");
     }
 
     IEnumerator fadeRemoveCo(){ //Used to fade screen in and out while also disabling the NPC that this is triggered on
