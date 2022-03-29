@@ -55,6 +55,7 @@ MonoBehaviour:
   fight: 0
   diaType: photoDia
   followUp: 
+  followUpArg: 
 --- !u!114 &8081234984780112556
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -67,3 +68,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57c1a638be1a3439f914f5311be0a705, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  altSprite: {fileID: 0}
