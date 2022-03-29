@@ -120,7 +120,14 @@ public class UIController : MonoBehaviour
 
     void Start(){
         StartCoroutine(fadeIn());
-        setMenuState("none");
+        
+
+        //Cannot use a setmenustate none here because unity is weired
+        currentLayer = null;
+        photoDia.SetActive(false);
+        noPhotoDia.SetActive(false);
+        inventory.SetActive(false);
+
     }
 
     //Going to override for Dialogue without images
