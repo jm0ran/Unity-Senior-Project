@@ -28,8 +28,9 @@ public class openingDiaController : MonoBehaviour
         if(!hasChecked){
             hasChecked = true;
             if(oneTime){
-                if(!tempOneTimes.oneTimes[persistID]){
-                    tempOneTimes.oneTimes[persistID] = true;
+                if(!saveDataController.globalSave.oneTimes[persistID]){
+                    saveDataController.globalSave.oneTimes[persistID] = true;
+                    saveDataController.globalSave.serializeSaveData();
                     if(diaType == "photoDia"){
                         StartCoroutine(UIController.DiaCycle(dia,diaOrder, gameObject, followUp, followUpArg));
                     }else if(diaType == "noPhotoDia"){

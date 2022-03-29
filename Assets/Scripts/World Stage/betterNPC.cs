@@ -19,10 +19,32 @@ public class betterNPC : MonoBehaviour
     
 
     void startDia(){
+
+        if(oneTime){
+            if(persistID == -1){
+                Debug.Log("PersistID has not been set");
+                return;
+            }else{
+                if(!saveDataController.globalSave.oneTimes[persistID]){
+                    saveDataController.globalSave.oneTimes[persistID] = true;
+                    saveDataController.globalSave.serializeSaveData();
+                }else{
+                    Debug.Log("Has already been triggered");
+                    return;  
+                }
+            }
+        }
+
         if(diaType == "photoDia"){
             StartCoroutine(UIController.DiaCycle(dia,diaOrder, gameObject, followUp, followUpArgument));
         }else if(diaType == "noPhotoDia"){
             StartCoroutine(UIController.DiaCycle(dia,gameObject, followUp, followUpArgument));
+        }
+    }
+
+    void Start(){
+        if(oneTime && persistID != -1 && saveDataController.globalSave.oneTimes[persistID]){ //If one time has been triggered
+            gameObject.SendMessage("swapSprite");
         }
     }
 

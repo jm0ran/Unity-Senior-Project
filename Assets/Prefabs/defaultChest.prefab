@@ -134,7 +134,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dia: []
   diaOrder: []
-  oneTime: 0
+  oneTime: 1
   persistID: -1
   rewards: 0
   fight: 0
@@ -153,3 +153,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57c1a638be1a3439f914f5311be0a705, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  altSprite: {fileID: 21300000, guid: e45b73101a2984d3788484a7b687fbc9, type: 3}

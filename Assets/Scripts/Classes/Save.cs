@@ -10,6 +10,39 @@ public class Save{
     public string[] currentTeam;
     //MAKE SURE TO ADD NEW VALUES DOWN IN READ FUNCTION
     public Inventory inventory;
+    //Below is the oneTime controller, the heart of saves because it can be, cry about it
+    public List<bool> oneTimes = new List<bool>(){
+        false, //0 Opening Diaogue in Junk Cave
+        false, //1 Opening Dialogue in Junkyard
+        false, //2 Test chest
+        false, //3 First development chest
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+    };
 
     public Save(){
         acquiredCharacters = new List<Character>();
@@ -32,6 +65,7 @@ public class Save{
                 this.acquiredCharacters = acquiredData.acquiredCharacters;
                 this.currentTeam = acquiredData.currentTeam;
                 this.inventory = acquiredData.inventory;
+                this.oneTimes = acquiredData.oneTimes;
             }else{
                 Debug.Log("Save data json file is empty");
             }

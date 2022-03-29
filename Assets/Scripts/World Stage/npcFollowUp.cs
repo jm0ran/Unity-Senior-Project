@@ -4,12 +4,23 @@ using UnityEngine;
 
 public class npcFollowUp : MonoBehaviour
 {
+    public Sprite altSprite; //Extra arguments for follow up
+
+
     void fadeRemove(string followUpArg){
         StartCoroutine(fadeRemoveCo());
     }
 
     void chest(string followUpArg){ //This is for chests, needs to give player an item and stuff yk
         StartCoroutine(chestCo(followUpArg));
+    }
+
+    void swapSprite(){
+        if(altSprite != null){
+            gameObject.GetComponent<SpriteRenderer>().sprite = altSprite;
+        }else{
+            Debug.Log("AltSprite is null");
+        }
     }
 
     IEnumerator fadeRemoveCo(){ //Used to fade screen in and out while also disabling the NPC that this is triggered on
@@ -22,14 +33,21 @@ public class npcFollowUp : MonoBehaviour
         foreach(Component indCol in collidersToDestroy){
             Destroy(indCol as CircleCollider2D);
         }
-        
-        
         yield return null;
     }
 
     IEnumerator chestCo(string followUpArg){
-        Debug.Log(followUpArg);
-        Destroy(gameObject);
+        UIController.returnGate = false; //Used for return gate to prevent automatic progression
+        UIController.setMenuState("noPhotoDia"); //Enables the noPhotoUI layer
+        UIController.updateDia(followUpArg); //Changes the text to the necessary description
+        
+        swapSprite();
+
+        while(!UIController.returnGate){
+            yield return null;
+        }
+        
+        UIController.setMenuState("none");
         yield return null;
     }
 }
