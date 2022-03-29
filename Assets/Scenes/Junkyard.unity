@@ -351,10 +351,6 @@ PrefabInstance:
       value: noPhotoDia
       objectReference: {fileID: 0}
     - target: {fileID: 985297981440303804, guid: c7aedca8adb4049c5bafeb956e3387e1, type: 3}
-      propertyPath: followUp
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 985297981440303804, guid: c7aedca8adb4049c5bafeb956e3387e1, type: 3}
       propertyPath: persistID
       value: 1
       objectReference: {fileID: 0}

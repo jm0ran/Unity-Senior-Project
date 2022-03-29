@@ -9,8 +9,8 @@ public class saveDataOverride : MonoBehaviour
     void Start(){
         targetSave = saveDataController.globalSave;
         targetSave.oneTimes = new List<bool>(){
-            false, //0 Opening Diaogue in Junk Cave
-            false, //1 Opening Dialogue in Junkyard
+            true, //0 Opening Diaogue in Junk Cave
+            true, //1 Opening Dialogue in Junkyard
             false, //2 Test chest
             false, //3 First development chest
             false,

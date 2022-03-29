@@ -47,6 +47,13 @@ public class npcFollowUp : MonoBehaviour
             yield return null;
         }
         
+        if(itemController.itemDictionary.ContainsKey(followUpArg) && itemController.infoDictionary.ContainsKey(followUpArg)){
+            saveDataController.globalSave.inventory.addObj(followUpArg, 1);
+        }else{
+            Debug.Log("Item attempting to be added does not exist in itemDictionary and/or infoDictonary");
+        }
+        
+
         UIController.setMenuState("none");
         yield return null;
     }
