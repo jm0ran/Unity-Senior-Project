@@ -12,8 +12,7 @@ public class saveDataOverride : MonoBehaviour
             true, //0 Opening Diaogue in Junk Cave
             true, //1 Opening Dialogue in Junkyard
             false, //2 Test chest
-            false, //3 First development chest
-            false,
+            true, //3 initial time speaking to Ned in junkyard
             false,
             false,
             false,

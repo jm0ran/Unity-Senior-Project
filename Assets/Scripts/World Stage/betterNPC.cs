@@ -46,6 +46,8 @@ public class betterNPC : MonoBehaviour
         if(oneTime && persistID != -1 && saveDataController.globalSave.oneTimes[persistID]){ //If one time has been triggered
             gameObject.SendMessage("swapSprite");
         }
+
+        
     }
 
 
