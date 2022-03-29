@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class npcFollowUp : MonoBehaviour
 {
-    void fadeRemove(){
+    void fadeRemove(string followUpArg){
         StartCoroutine(fadeRemoveCo());
     }
 
-    void chest(){ //This is for chests, needs to give player an item and stuff yk
-        
-        Debug.Log("Triggered a chest");
+    void chest(string followUpArg){ //This is for chests, needs to give player an item and stuff yk
+        StartCoroutine(chestCo(followUpArg));
     }
-
 
     IEnumerator fadeRemoveCo(){ //Used to fade screen in and out while also disabling the NPC that this is triggered on
         StartCoroutine(UIController.fadeOut(null));
@@ -26,6 +24,12 @@ public class npcFollowUp : MonoBehaviour
         }
         
         
+        yield return null;
+    }
+
+    IEnumerator chestCo(string followUpArg){
+        Debug.Log(followUpArg);
+        Destroy(gameObject);
         yield return null;
     }
 }

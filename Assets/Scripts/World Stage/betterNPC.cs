@@ -20,9 +20,9 @@ public class betterNPC : MonoBehaviour
 
     void startDia(){
         if(diaType == "photoDia"){
-            StartCoroutine(UIController.DiaCycle(dia,diaOrder, gameObject, followUp));
+            StartCoroutine(UIController.DiaCycle(dia,diaOrder, gameObject, followUp, followUpArgument));
         }else if(diaType == "noPhotoDia"){
-            StartCoroutine(UIController.DiaCycle(dia,gameObject, followUp));
+            StartCoroutine(UIController.DiaCycle(dia,gameObject, followUp, followUpArgument));
         }
     }
 

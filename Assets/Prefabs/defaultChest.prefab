@@ -140,7 +140,7 @@ MonoBehaviour:
   fight: 0
   diaType: noPhotoDia
   followUp: chest
-  followUpArgument: 
+  followUpArgument: MBDTF
 --- !u!114 &8916257415007279666
 MonoBehaviour:
   m_ObjectHideFlags: 0
