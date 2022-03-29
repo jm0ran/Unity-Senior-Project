@@ -25,6 +25,8 @@ public class UIController : MonoBehaviour
     public static GameObject player;
     public GameObject inventoryPrefabPointer;
     public static GameObject inventoryPrefab;
+
+    public static GameObject mapObj;
     
 
    public static GameObject findChild(string target, GameObject parent){
@@ -54,6 +56,9 @@ public class UIController : MonoBehaviour
                 photoDia.SetActive(false);
                 noPhotoDia.SetActive(false);
                 inventory.SetActive(false);
+
+                //IMPORTANT TO HAVE FOLLOWUPS SET MENU STATE TO NONE AS THIS UPDATES CHARACTERS
+                mapObj.SendMessage("updateScene");
                 break;
             case "photoDia":
                 currentLayer = photoDia;
@@ -107,6 +112,7 @@ public class UIController : MonoBehaviour
         noPhotoDia = findChild("noPhotoDia", gameObject);
         inventory = findChild("inventory", gameObject);
         itemsContainer = findChild("itemsContainer", inventory);
+        mapObj = GameObject.FindWithTag("Map");
         
         inventoryPrefab = inventoryPrefabPointer;
         
@@ -126,7 +132,6 @@ public class UIController : MonoBehaviour
             updateDia(dia[0], diaOrder[0]);
         }else{
             hasDialogue = false;
-            setMenuState("none");
         }
         if(hasDialogue){
             yield return new WaitForSeconds(0.3f);
@@ -142,11 +147,12 @@ public class UIController : MonoBehaviour
                 yield return null;
             }
             returnGate = false;
-            setMenuState("none");
         }
         
         if(followUp != ""){
              origin.SendMessage(followUp, followUpArg);
+        }else{
+            setMenuState("none");
         }
     }
     public static IEnumerator DiaCycle(List<string> dia, GameObject origin, string followUp, string followUpArg){
@@ -157,7 +163,6 @@ public class UIController : MonoBehaviour
             updateDia(dia[0]);
         }else{
             hasDialogue = false;
-            setMenuState("none");
         }
         if(hasDialogue){
             yield return new WaitForSeconds(0.3f);
@@ -173,10 +178,12 @@ public class UIController : MonoBehaviour
                 yield return null;
             }
             returnGate = false;
-            setMenuState("none");
+            
         }
         if(followUp != ""){
             origin.SendMessage(followUp, followUpArg);
+        }else{
+            setMenuState("none");
         }
         
     }
@@ -217,9 +224,7 @@ public class UIController : MonoBehaviour
             itemImageBox.sprite = itemController.itemDictionary[playerItems[i].itemName];
             newItemRow.transform.SetParent(itemsContainer.transform);
         }
-        // GameObject newInvRow = Instantiate(inventoryRowPrefab, rowLocation, Quaternion.identity);
 
-        //Should clear contents of this section first to prevent buildup every time you open menu but I will do that later
     }
 
 }

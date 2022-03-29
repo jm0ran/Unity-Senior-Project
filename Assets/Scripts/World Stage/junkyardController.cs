@@ -13,12 +13,28 @@ public class junkyardController : MonoBehaviour
 
     void Start(){ //This will determine who to spawn and all of that
         ned = GameObject.Find("ned");
-       
-        if(saveDataController.globalSave.oneTimes[3]){ //If initial speak with ned
-            Destroy(ned);
-        }
-        
-        
-
+       //Work from the top down likely although not super efficent probably wont get toooooo confusing but you get it don't you future Joseph, you're smarter than past Joseph so you must
+        updateScene();
     }
+        
+    void updateScene(){
+        if(saveDataController.globalSave.oneTimes[3]){ //If initial speak with ned
+            betterNPC npcComponent = ned.GetComponent<betterNPC>();
+            npcComponent.followUp = "checkForYeezys";
+            npcComponent.persistID = -1;
+            npcComponent.oneTime = false;
+            npcComponent.followUpArgument = null;  
+            npcComponent.dia = new List<string>(){
+                "Have you found the Yeezys"
+            };
+            npcComponent.diaOrder = new List<string>(){
+                "ned"
+            };
+        }
+    } 
+    void testFunction(){
+        Debug.Log("Test");
+    }
+
 }
+
