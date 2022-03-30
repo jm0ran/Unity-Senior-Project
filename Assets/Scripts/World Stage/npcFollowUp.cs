@@ -18,6 +18,7 @@ public class npcFollowUp : MonoBehaviour
     }
 
     void swapSprite(){
+        Debug.Log("Swapped image on " + gameObject.name);
         if(altSprite != null){
             gameObject.GetComponent<SpriteRenderer>().sprite = altSprite;
         }else{
