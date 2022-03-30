@@ -25,9 +25,14 @@ public class npcFollowUp : MonoBehaviour
         }
     }
 
-    void checkForYeezys(){
+    void checkForYeezys(){ //This is based and redpilled
         UIController.setMenuState("none");
-        Debug.Log("Yeezy Season");
+        if(saveDataController.globalSave.inventory.findObj("Yeezy") != -1){
+            Debug.Log("You have the Yeezy");
+        }else{
+            Debug.Log("You don't have the Yeezy");
+        }
+        
     }
 
     IEnumerator fadeRemoveCo(){ //Used to fade screen in and out while also disabling the NPC that this is triggered on
