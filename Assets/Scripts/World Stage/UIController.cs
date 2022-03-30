@@ -157,7 +157,7 @@ public class UIController : MonoBehaviour
         }
         
         if(followUp != ""){
-             origin.SendMessage(followUp, followUpArg);
+            origin.SendMessage(followUp, followUpArg);
         }else{
             setMenuState("none");
         }

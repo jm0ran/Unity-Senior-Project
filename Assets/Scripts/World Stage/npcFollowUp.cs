@@ -8,16 +8,17 @@ public class npcFollowUp : MonoBehaviour
 
 
     void fadeRemove(string followUpArg){
-        UIController.setMenuState("none");
         StartCoroutine(fadeRemoveCo());
         
     }
 
     void chest(string followUpArg){ //This is for chests, needs to give player an item and stuff yk
+        saveDataController.globalSave.serializeSaveData();
         StartCoroutine(chestCo(followUpArg));
     }
 
     void swapSprite(){
+        Debug.Log("Swapped image on " + gameObject.name);
         if(altSprite != null){
             gameObject.GetComponent<SpriteRenderer>().sprite = altSprite;
         }else{
@@ -25,21 +26,29 @@ public class npcFollowUp : MonoBehaviour
         }
     }
 
-    void checkForYeezys(){
-        UIController.setMenuState("none");
-        Debug.Log("Yeezy Season");
+    void checkForYeezys(){ //This is based and redpilled
+        if((saveDataController.globalSave.inventory.findObj("Yeezy") != -1) && !saveDataController.globalSave.oneTimes[5]){
+            StartCoroutine(UIController.DiaCycle(new List<string>(){
+                "Yeah thats the one, it looks like its seen better days though",
+                "Good luck kid, I sense great adventure in your future"
+            }, new List<string>(){
+                "ned",
+                "ned"
+            }, gameObject, "fadeRemove", ""));
+            saveDataController.globalSave.oneTimes[5] = true;
+            saveDataController.globalSave.serializeSaveData();
+        }else{
+            UIController.setMenuState("none");
+            Debug.Log("You don't have the Yeezy");
+        }
+        
     }
 
     IEnumerator fadeRemoveCo(){ //Used to fade screen in and out while also disabling the NPC that this is triggered on
         StartCoroutine(UIController.fadeOut(null));
         yield return new WaitForSeconds(0.8f);
+        UIController.setMenuState("none");
         StartCoroutine(UIController.fadeIn());
-        gameObject.GetComponent<SpriteRenderer>().enabled = false;
-        Component[] collidersToDestroy = gameObject.GetComponents<CircleCollider2D>() as Component[];
-        //Destroys both the collision collider and interaction collider
-        foreach(Component indCol in collidersToDestroy){
-            Destroy(indCol as CircleCollider2D);
-        }
         yield return null;
     }
 
