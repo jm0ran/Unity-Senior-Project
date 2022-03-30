@@ -32,9 +32,6 @@ public class junkyardController : MonoBehaviour
             };
         }
     } 
-    void testFunction(){
-        Debug.Log("Test");
-    }
 
 }
 
