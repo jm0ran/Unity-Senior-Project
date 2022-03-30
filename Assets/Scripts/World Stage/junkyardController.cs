@@ -18,7 +18,20 @@ public class junkyardController : MonoBehaviour
     }
         
     void updateScene(){
-        if(saveDataController.globalSave.oneTimes[3]){ //If initial speak with ned
+        //The Ned Check Section
+        if(saveDataController.globalSave.oneTimes[5]){
+            GameObject ned = GameObject.Find("ned");
+            if(ned.GetComponent<SpriteRenderer>().enabled){ //FIX THIS
+                ned.GetComponent<SpriteRenderer>().enabled = false;
+                //Gets rid of the stuff
+                Component[] collidersToDestroy = ned.GetComponents<CircleCollider2D>() as Component[];
+                //Destroys both the collision collider and interaction collider
+                foreach(Component indCol in collidersToDestroy){
+                    Destroy(indCol as CircleCollider2D);
+                }
+            }
+        }
+        else if(saveDataController.globalSave.oneTimes[3]){ //If initial speak with ned
             betterNPC npcComponent = ned.GetComponent<betterNPC>();
             npcComponent.followUp = "checkForYeezys";
             npcComponent.persistID = -1;
@@ -31,7 +44,12 @@ public class junkyardController : MonoBehaviour
                 "ned"
             };
         }
+
+
+        //CHESTS
+        
     } 
+
 
 }
 
