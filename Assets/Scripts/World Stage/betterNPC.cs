@@ -16,6 +16,8 @@ public class betterNPC : MonoBehaviour
     public string diaType = "photoDia";
     public string followUp = "";
     public string followUpArgument = "";
+
+    private bool hasStartRan = false; //Just needed to order some things for development
     
 
     void startDia(){
@@ -42,10 +44,14 @@ public class betterNPC : MonoBehaviour
         }
     }
 
-    void Start(){
-        if(oneTime && persistID != -1 && saveDataController.globalSave.oneTimes[persistID] && gameObject.GetComponent<npcFollowUp>().altSprite != null){ //If one time has been triggered
-            gameObject.SendMessage("swapSprite");
+    void Update(){
+        if(!hasStartRan){
+            hasStartRan = true;
+            if((oneTime) && (persistID != -1) && (saveDataController.globalSave.oneTimes[persistID]) && (gameObject.GetComponent<npcFollowUp>().altSprite != null)){ //If one time has been triggered
+                gameObject.SendMessage("swapSprite");
+            }
         }
+        
 
         
 

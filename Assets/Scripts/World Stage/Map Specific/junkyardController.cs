@@ -21,8 +21,9 @@ public class junkyardController : MonoBehaviour
         //The Ned Check Section
         if(saveDataController.globalSave.oneTimes[5]){
             GameObject ned = GameObject.Find("ned");
-            if(ned.GetComponent<SpriteRenderer>().enabled){ //FIX THIS
+            if(ned.GetComponent<SpriteRenderer>().enabled){ 
                 ned.GetComponent<SpriteRenderer>().enabled = false;
+                Debug.Log("Disabled Ned's Sprite Renderer");
                 //Gets rid of the stuff
                 Component[] collidersToDestroy = ned.GetComponents<CircleCollider2D>() as Component[];
                 //Destroys both the collision collider and interaction collider
@@ -38,7 +39,7 @@ public class junkyardController : MonoBehaviour
             npcComponent.oneTime = false;
             npcComponent.followUpArgument = null;  
             npcComponent.dia = new List<string>(){
-                "Have you found the Yeezys"
+                "Have you found the Yeezy?"
             };
             npcComponent.diaOrder = new List<string>(){
                 "ned"

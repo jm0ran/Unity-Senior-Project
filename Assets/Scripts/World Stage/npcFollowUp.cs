@@ -5,6 +5,7 @@ using UnityEngine;
 public class npcFollowUp : MonoBehaviour
 {
     public Sprite altSprite; //Extra arguments for follow up
+    
 
 
     void fadeRemove(string followUpArg){
@@ -30,9 +31,14 @@ public class npcFollowUp : MonoBehaviour
         if((saveDataController.globalSave.inventory.findObj("Yeezy") != -1) && !saveDataController.globalSave.oneTimes[5]){
             StartCoroutine(UIController.DiaCycle(new List<string>(){
                 "Yeah thats the one, it looks like its seen better days though",
-                "Good luck kid, I sense great adventure in your future"
+                "Good luck kid, I sense great adventure in your future",
+                "What?-",
+                "Present it to HIM and your path will open...",
+
             }, new List<string>(){
                 "ned",
+                "ned",
+                "player",
                 "ned"
             }, gameObject, "fadeRemove", ""));
             saveDataController.globalSave.oneTimes[5] = true;
@@ -42,6 +48,15 @@ public class npcFollowUp : MonoBehaviour
             Debug.Log("You don't have the Yeezy");
         }
         
+    }
+
+    void canInteractWithKanyeStatue(){
+        if(saveDataController.globalSave.inventory.findObj("Yeezy") != -1){
+            Debug.Log("He got da yeezys");
+        }else{
+            Debug.Log("He aint got the yeezys and cant interact with the statue");
+        }
+        UIController.setMenuState("none"); //Here temporarily to make sure dialogue ends
     }
 
     IEnumerator fadeRemoveCo(){ //Used to fade screen in and out while also disabling the NPC that this is triggered on
