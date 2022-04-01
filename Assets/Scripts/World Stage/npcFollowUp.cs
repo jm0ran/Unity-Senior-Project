@@ -38,7 +38,7 @@ public class npcFollowUp : MonoBehaviour
             }, new List<string>(){
                 "ned",
                 "ned",
-                "player",
+                "main",
                 "ned"
             }, gameObject, "fadeRemove", ""));
             saveDataController.globalSave.oneTimes[5] = true;
