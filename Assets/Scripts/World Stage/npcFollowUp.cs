@@ -53,11 +53,51 @@ public class npcFollowUp : MonoBehaviour
     void canInteractWithKanyeStatue(){
         if(saveDataController.globalSave.inventory.findObj("Yeezy") != -1){
             Debug.Log("He got da yeezys");
+            StartCoroutine(UIController.DiaCycle(new List<string>(){
+                "Something is happening to the Yeezy?!",
+                "Yeezus just rose again...",
+                "What-"
+            }, new List<string>(){
+                "main",
+                "kanye", //This needs to be a mystery icon I don't have it yet though
+                "main"
+            }, gameObject, "kanyeArrives", ""));
         }else{
             Debug.Log("He aint got the yeezys and cant interact with the statue");
+            UIController.setMenuState("none");
         }
-        UIController.setMenuState("none"); //Here temporarily to make sure dialogue ends
+         
     }
+
+    void kanyeArrives(){
+        StartCoroutine(kanyeArrivesCo());
+    }
+
+    IEnumerator kanyeArrivesCo(){
+        GameObject fadeShade = UIController.fadeShade;
+        CanvasGroup canvasGroup = fadeShade.GetComponent<CanvasGroup>();
+        float alpha = 0.0f;
+        while (alpha < 1f){
+            alpha += 0.05f;
+            canvasGroup.alpha = alpha;
+            yield return new WaitForSeconds(0.025f);
+        }
+
+        yield return new WaitForSeconds(0.2f);
+
+        alpha = 1.0f;
+        canvasGroup.alpha = alpha;
+        while (alpha > 0f){
+            alpha -= 0.05f;
+            canvasGroup.alpha = alpha;
+            yield return new WaitForSeconds(0.025f);
+        }
+
+
+        Debug.Log("Flashing lights");
+        UIController.setMenuState("none");
+    }
+
 
     IEnumerator fadeRemoveCo(){ //Used to fade screen in and out while also disabling the NPC that this is triggered on
         StartCoroutine(UIController.fadeOut(null));

@@ -12,6 +12,7 @@ public class UIController : MonoBehaviour
     public static GameObject photoDia;
     public static GameObject noPhotoDia;
     public static GameObject inventory;
+    public static GameObject fadeShade;
     
 
     public static GameObject currentLayer = null;
@@ -113,6 +114,7 @@ public class UIController : MonoBehaviour
         inventory = findChild("inventory", gameObject);
         itemsContainer = findChild("itemsContainer", inventory);
         mapObj = GameObject.FindWithTag("Map");
+        fadeShade = GameObject.Find("fadeShade");
         
         inventoryPrefab = inventoryPrefabPointer;
         
@@ -196,7 +198,7 @@ public class UIController : MonoBehaviour
     }
 
     public static IEnumerator fadeIn(){
-        CanvasGroup canvasGroup = GameObject.Find("fadeShade").GetComponent<CanvasGroup>();
+        CanvasGroup canvasGroup = fadeShade.GetComponent<CanvasGroup>();
         float alpha = 1.0f;
         canvasGroup.alpha = alpha;
         while (alpha > 0f){
@@ -207,7 +209,7 @@ public class UIController : MonoBehaviour
     }
 
     public static IEnumerator fadeOut(string destScene){
-        CanvasGroup canvasGroup = GameObject.Find("fadeShade").GetComponent<CanvasGroup>();
+        CanvasGroup canvasGroup = fadeShade.GetComponent<CanvasGroup>();
         float alpha = 0.0f;
         while (alpha < 1f){
             alpha += 0.05f;
