@@ -59,7 +59,7 @@ public class npcFollowUp : MonoBehaviour
                 "What-"
             }, new List<string>(){
                 "main",
-                "kanye", //This needs to be a mystery icon I don't have it yet though
+                "unknown", //This needs to be a mystery icon I don't have it yet though
                 "main"
             }, gameObject, "kanyeArrives", ""));
         }else{
