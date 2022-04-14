@@ -11,39 +11,39 @@ public class saveDataOverride : MonoBehaviour
 
     void Start(){
         targetSave = saveDataController.globalSave;
-        // targetSave.oneTimes = new List<bool>(){
-        //     false, //0 Opening Diaogue in Junk Cave
-        //     false, //1 Opening Dialogue in Junkyard
-        //     false, //2 MBDTF chest
-        //     false, //3 initial time speaking to Ned in junkyard
-        //     false, //4 Yeezy chest
-        //     false, //5 Yeezy Dialogue Complete and ned is gone
-        //     //--------------------------------------------------------------
-        //     //First short section of one times done
-        //     false, 
-        //     false,
-        //     false,
-        //     false,
-        //     false,
-        //     false,
-        //     false,
-        //     false,
-        //     false,
-        //     false,
-        //     false,
-        //     false,
-        //     false,
-        //     false,
-        //     false,
-        //     false,
-        //     false,
-        //     false,
-        //     false,
-        //     false,
-        //     false,
-        //     false,
-        //     false,
-        // };
+        targetSave.oneTimes = new List<bool>(){
+            true, //0 Opening Diaogue in Junk Cave
+            true, //1 Opening Dialogue in Junkyard
+            true, //2 MBDTF chest
+            true, //3 initial time speaking to Ned in junkyard
+            true, //4 Yeezy chest
+            true, //5 Yeezy Dialogue Complete and ned is gone
+            //--------------------------------------------------------------
+            //First short section of one times done
+            false, //6 Kanye summoned trigger
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+        };
         
         targetSave.inventory.items = new List<Item>(){
             new Item("Yeezy", 3),

@@ -51,8 +51,9 @@ public class npcFollowUp : MonoBehaviour
     }
 
     void canInteractWithKanyeStatue(){
-        if(saveDataController.globalSave.inventory.findObj("Yeezy") != -1){
+        if(saveDataController.globalSave.inventory.findObj("Yeezy") != -1 && !saveDataController.globalSave.oneTimes[6]){
             Debug.Log("He got da yeezys");
+            saveDataController.globalSave.oneTimes[6] = true;
             StartCoroutine(UIController.DiaCycle(new List<string>(){
                 "Something is happening to the Yeezy?!",
                 "Yeezus just rose again...",
@@ -83,6 +84,10 @@ public class npcFollowUp : MonoBehaviour
             yield return new WaitForSeconds(0.025f);
         }
 
+        swapSprite();
+        GameObject.FindWithTag("Player").GetComponent<Transform>().position = new Vector3(0f, -0.8f, 0f);
+        //Need to update camera position on this later as well
+        
         yield return new WaitForSeconds(0.2f);
 
         alpha = 1.0f;
@@ -93,9 +98,25 @@ public class npcFollowUp : MonoBehaviour
             yield return new WaitForSeconds(0.025f);
         }
 
+        //Need to spawn kanye around this part, may need to move player in order to accomodate him who knows maybe just move player during the uh thing
 
-        Debug.Log("Flashing lights");
+        StartCoroutine(UIController.DiaCycle(new List<string>(){
+                "Are you...",
+            }, new List<string>(){
+                "main"
+            }, gameObject, "kanyePostFirstDia", ""));
+
+        
+
+
+
+        // UIController.setMenuState("none");
+    }
+
+    void kanyePostFirstDia(){
+        Debug.Log("Kanye Finished his introductory dialogue");
         UIController.setMenuState("none");
+
     }
 
 
