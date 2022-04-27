@@ -57,11 +57,11 @@ public class npcFollowUp : MonoBehaviour
             StartCoroutine(UIController.DiaCycle(new List<string>(){
                 "Something is happening to the Yeezy?!",
                 "Yeezus just rose again...",
-                "What-"
+                "What-",
             }, new List<string>(){
                 "main",
                 "unknown", //This needs to be a mystery icon I don't have it yet though
-                "main"
+                "main",
             }, gameObject, "kanyeArrives", ""));
         }else{
             Debug.Log("He aint got the yeezys and cant interact with the statue");
@@ -95,13 +95,6 @@ public class npcFollowUp : MonoBehaviour
 
         yield return new WaitForSeconds(0.2f);
 
-        alpha = 1.0f;
-        canvasGroup.alpha = alpha;
-        while (alpha > 0f){
-            alpha -= 0.05f;
-            canvasGroup.alpha = alpha;
-            yield return new WaitForSeconds(0.025f);
-        }
 
         StartCoroutine(UIController.DiaCycle(new List<string>(){
                 "Are you...", //1
@@ -140,6 +133,13 @@ public class npcFollowUp : MonoBehaviour
 
             }, gameObject, "kanyePostFirstDia", ""));
 
+        alpha = 1.0f;
+        canvasGroup.alpha = alpha;
+        while (alpha > 0f){
+            alpha -= 0.05f;
+            canvasGroup.alpha = alpha;
+            yield return new WaitForSeconds(0.025f);
+        }
         
     }
 
@@ -171,7 +171,15 @@ public class npcFollowUp : MonoBehaviour
             yield return new WaitForSeconds(0.025f);
         }
 
-        Debug.Log("Kanye Finished his introductory dialogue");
+        StartCoroutine(UIController.DiaCycle(new List<string>(){
+                "<i>I don't think I'm crazy...<i>", //1
+                "<i>What could be the worst thing that could happen? I'll listen to him for now<i>"
+
+            }, new List<string>(){
+                "main", //1
+                "main", //2
+
+            }, gameObject, "", ""));
         
     }
 
