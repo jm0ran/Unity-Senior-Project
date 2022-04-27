@@ -130,6 +130,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8103483010478753442, guid: b7046dd2988cc40df8270addaea8b73e, type: 3}
+      propertyPath: dia.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8103483010478753442, guid: b7046dd2988cc40df8270addaea8b73e, type: 3}
+      propertyPath: diaOrder.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8103483010478753443, guid: b7046dd2988cc40df8270addaea8b73e, type: 3}
       propertyPath: m_Name
       value: kanyeNPC
@@ -194,7 +202,9 @@ PrefabInstance:
       propertyPath: m_SortingLayerID
       value: 1260859883
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8103483010478753447, guid: b7046dd2988cc40df8270addaea8b73e, type: 3}
+    - {fileID: 8103483010478753446, guid: b7046dd2988cc40df8270addaea8b73e, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: b7046dd2988cc40df8270addaea8b73e, type: 3}
 --- !u!1 &11129659
 GameObject:

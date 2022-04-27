@@ -85,9 +85,14 @@ public class npcFollowUp : MonoBehaviour
         }
 
         swapSprite();
-        GameObject.FindWithTag("Player").GetComponent<Transform>().position = new Vector3(0f, -0.8f, 0f);
+        Vector3 targetPosition = new Vector3(0f, -0.8f, 0f);
+        GameObject.FindWithTag("Player").GetComponent<Transform>().position = targetPosition;
+        Vector3 currentCamPosition = GameObject.FindWithTag("MainCamera").GetComponent<Transform>().position;
+        GameObject.FindWithTag("MainCamera").GetComponent<Transform>().position = new Vector3(targetPosition.x, targetPosition.y, currentCamPosition.z);
         //Need to update camera position on this later as well
-        
+
+        GameObject.Find("kanyeNPC").GetComponent<SpriteRenderer>().enabled = true;
+
         yield return new WaitForSeconds(0.2f);
 
         alpha = 1.0f;
@@ -98,25 +103,76 @@ public class npcFollowUp : MonoBehaviour
             yield return new WaitForSeconds(0.025f);
         }
 
-        //Need to spawn kanye around this part, may need to move player in order to accomodate him who knows maybe just move player during the uh thing
-
         StartCoroutine(UIController.DiaCycle(new List<string>(){
-                "Are you...",
+                "Are you...", //1
+                "Kanye West", //2
+                "How is that even possible?!", //3
+                "Ten years ago <i>they<i> sealed me...", //4
+                "Even now I am only a projection, I must combine with my 3 other parts", //5
+                "I can maintain this form temporarily, but will need an object to assume", //6
+                "Did somebody drug me, am I hallucinating", //7
+                "You woke me up with my old pair of Yeezys, those will work fine", //8
+                "Wait wait wait. Is this real??", //9
+                "Yes",
+                "And why should I believe you",
+                "Because I'm Kanye freaking West",
+                "Now I'm going to posses those Yeezys, we need to get to the closest city as soon as possible"
+
+
+
+
             }, new List<string>(){
-                "main"
+                "main", //1
+                "kanye", //2
+                "main", //3
+                "kanye", //4
+                "kanye", //5
+                "kanye", //6
+                "main", //7
+                "kanye", //8
+                "main", //9
+                "kanye",
+                "main",
+                "kanye",
+                "kanye"
+
+
+
             }, gameObject, "kanyePostFirstDia", ""));
 
         
-
-
-
-        // UIController.setMenuState("none");
     }
 
-    void kanyePostFirstDia(){
-        Debug.Log("Kanye Finished his introductory dialogue");
-        UIController.setMenuState("none");
+    void kanyePostFirstDia(){ //Needs to return IE Numerator so have to move this stuff out into another function
+        StartCoroutine(coKanyePostFirstDia());
+    }
 
+    IEnumerator coKanyePostFirstDia(){
+        GameObject fadeShade = UIController.fadeShade;
+        CanvasGroup canvasGroup = fadeShade.GetComponent<CanvasGroup>();
+        float alpha = 0.0f;
+        
+        alpha = 0.0f;
+        while (alpha < 1f){
+            alpha += 0.05f;
+            canvasGroup.alpha = alpha;
+            yield return new WaitForSeconds(0.025f);
+        }
+
+        yield return new WaitForSeconds(0.2f);
+        UIController.setMenuState("none");
+        GameObject.Find("kanyeNPC").GetComponent<SpriteRenderer>().enabled = false;
+
+        alpha = 1.0f;
+        canvasGroup.alpha = alpha;
+        while (alpha > 0f){
+            alpha -= 0.05f;
+            canvasGroup.alpha = alpha;
+            yield return new WaitForSeconds(0.025f);
+        }
+
+        Debug.Log("Kanye Finished his introductory dialogue");
+        
     }
 
 

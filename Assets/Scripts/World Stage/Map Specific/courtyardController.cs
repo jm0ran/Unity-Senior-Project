@@ -6,6 +6,7 @@ public class courtyardController : MonoBehaviour
 {
     void Start(){ 
         updateScene();
+        GameObject.Find("kanyeNPC").GetComponent<SpriteRenderer>().enabled = false;
     }
         
     void updateScene(){
