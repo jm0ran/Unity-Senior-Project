@@ -12,6 +12,7 @@ public class persistSprites : MonoBehaviour
     public Sprite imposterProfile;
     public Sprite nedProfile;
     public Sprite unknownProfile;
+    public Sprite drakeProfile;
 
     public static Dictionary<string, Sprite> profiles = new Dictionary<string, Sprite>();
     
@@ -25,6 +26,8 @@ public class persistSprites : MonoBehaviour
             profiles.Add("imposter", imposterProfile);
             profiles.Add("ned", nedProfile);
             profiles.Add("unknown", unknownProfile);
+            profiles.Add("drake", drakeProfile);
+
         }
     }
 }

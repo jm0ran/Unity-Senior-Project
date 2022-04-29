@@ -171,13 +171,18 @@ public class npcFollowUp : MonoBehaviour
             yield return new WaitForSeconds(0.025f);
         }
 
+        saveDataController.globalSave.oneTimes[6] = true;
+        saveDataController.globalSave.serializeSaveData();
+
         StartCoroutine(UIController.DiaCycle(new List<string>(){
                 "<i>I don't think I'm crazy...<i>", //1
-                "<i>What could be the worst thing that could happen? I'll listen to him for now<i>"
+                "<i>What could be the worst thing that could happen? I'll listen to him for now<i>",
+                "<i>I'll leave the junkyard and head towards the city<i>"
 
             }, new List<string>(){
                 "main", //1
                 "main", //2
+                "main"
 
             }, gameObject, "", ""));
         
