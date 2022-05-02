@@ -10,7 +10,6 @@ public class courtyardController : MonoBehaviour
     }
         
     void updateScene(){
-        Debug.Log("Updated scene on courtyard");
         if(saveDataController.globalSave.oneTimes[6]){ //Logic in here to decide whether to spawn statue with or without kanye on it, going to get to later
             GameObject kanyeStatue = GameObject.Find(("kanyeStatue"));
             kanyeStatue.SendMessage("swapSprite");

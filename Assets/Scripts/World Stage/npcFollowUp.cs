@@ -19,7 +19,6 @@ public class npcFollowUp : MonoBehaviour
     }
 
     void swapSprite(){
-        Debug.Log("Swapped image on " + gameObject.name);
         if(altSprite != null){
             gameObject.GetComponent<SpriteRenderer>().sprite = altSprite;
         }else{
@@ -85,7 +84,7 @@ public class npcFollowUp : MonoBehaviour
         }
 
         swapSprite();
-        Vector3 targetPosition = new Vector3(0f, -0.8f, 0f);
+        Vector3 targetPosition = new Vector3(0f, -0.5f, 0f);
         GameObject.FindWithTag("Player").GetComponent<Transform>().position = targetPosition;
         Vector3 currentCamPosition = GameObject.FindWithTag("MainCamera").GetComponent<Transform>().position;
         GameObject.FindWithTag("MainCamera").GetComponent<Transform>().position = new Vector3(targetPosition.x, targetPosition.y, currentCamPosition.z);
