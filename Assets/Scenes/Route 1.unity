@@ -1569,7 +1569,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8103483010478753443, guid: b7046dd2988cc40df8270addaea8b73e, type: 3}
       propertyPath: m_Name
-      value: NPC 2.0
+      value: drakeNPC
       objectReference: {fileID: 0}
     - target: {fileID: 8103483010478753444, guid: b7046dd2988cc40df8270addaea8b73e, type: 3}
       propertyPath: m_RootOrder

@@ -22,7 +22,7 @@ public class route1Controller : MonoBehaviour
     }
         
     void updateScene(){
-        Debug.Log("Updated scene on courtyard");
+        
     }
 
     void Update(){
@@ -32,6 +32,7 @@ public class route1Controller : MonoBehaviour
                     "Where do you think you're going", //1
                     "Another psycho?",
                     "Don't you know who I am... Look me in the eyes",
+                    "Drake...",
                     "No... why would you be here",
                     "I have some business with those shoes of yours"
 
@@ -40,12 +41,9 @@ public class route1Controller : MonoBehaviour
                     "main",
                     "unknown",
                     "main",
+                    "main",
                     "drake"
-                    
-                
-
-                }, gameObject, "", ""));
-                Debug.Log("Started dialogue maybe");
+                }, GameObject.Find("drakeNPC"), "drakeDialogueFollowUp", ""));
             }
 
             drakeTriggered = true;

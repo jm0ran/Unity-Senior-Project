@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class npcFollowUp : MonoBehaviour
 {
@@ -215,6 +216,25 @@ public class npcFollowUp : MonoBehaviour
         
 
         UIController.setMenuState("none");
+        yield return null;
+    }
+
+    void drakeDialogueFollowUp(){
+       StartCoroutine(drakeDialogueFollowUpCo());
+    }
+
+    IEnumerator drakeDialogueFollowUpCo(){
+        Debug.Log("Drake follow up");
+        UIController.setMenuState("none");
+        GameObject fadeShade = UIController.fadeShade;
+        CanvasGroup canvasGroup = fadeShade.GetComponent<CanvasGroup>();
+        float alpha = 0.0f;
+        while (alpha < 1f){
+            alpha += 0.05f;
+            canvasGroup.alpha = alpha;
+            yield return new WaitForSeconds(0.025f);
+        }
+        SceneManager.LoadSceneAsync("Battle Stage");
         yield return null;
     }
 }
