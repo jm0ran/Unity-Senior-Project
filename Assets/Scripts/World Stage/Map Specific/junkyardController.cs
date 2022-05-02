@@ -23,7 +23,6 @@ public class junkyardController : MonoBehaviour
             GameObject ned = GameObject.Find("ned");
             if(ned.GetComponent<SpriteRenderer>().enabled){ 
                 ned.GetComponent<SpriteRenderer>().enabled = false;
-                Debug.Log("Disabled Ned's Sprite Renderer");
                 //Gets rid of the stuff
                 Component[] collidersToDestroy = ned.GetComponents<CircleCollider2D>() as Component[];
                 //Destroys both the collision collider and interaction collider
@@ -44,6 +43,10 @@ public class junkyardController : MonoBehaviour
             npcComponent.diaOrder = new List<string>(){
                 "ned"
             };
+        }
+
+        if(saveDataController.globalSave.oneTimes[6]){ //If Kanye has been summoned we need to unblock the pathway to Route 1
+            GameObject.Find("route1DoorBlocker").SendMessage("disableBarrier");
         }
 
 

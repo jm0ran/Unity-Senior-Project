@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class npcFollowUp : MonoBehaviour
 {
@@ -19,7 +20,6 @@ public class npcFollowUp : MonoBehaviour
     }
 
     void swapSprite(){
-        Debug.Log("Swapped image on " + gameObject.name);
         if(altSprite != null){
             gameObject.GetComponent<SpriteRenderer>().sprite = altSprite;
         }else{
@@ -85,7 +85,7 @@ public class npcFollowUp : MonoBehaviour
         }
 
         swapSprite();
-        Vector3 targetPosition = new Vector3(0f, -0.8f, 0f);
+        Vector3 targetPosition = new Vector3(0f, -0.5f, 0f);
         GameObject.FindWithTag("Player").GetComponent<Transform>().position = targetPosition;
         Vector3 currentCamPosition = GameObject.FindWithTag("MainCamera").GetComponent<Transform>().position;
         GameObject.FindWithTag("MainCamera").GetComponent<Transform>().position = new Vector3(targetPosition.x, targetPosition.y, currentCamPosition.z);
@@ -216,6 +216,25 @@ public class npcFollowUp : MonoBehaviour
         
 
         UIController.setMenuState("none");
+        yield return null;
+    }
+
+    void drakeDialogueFollowUp(){
+       StartCoroutine(drakeDialogueFollowUpCo());
+    }
+
+    IEnumerator drakeDialogueFollowUpCo(){
+        Debug.Log("Drake follow up");
+        UIController.setMenuState("none");
+        GameObject fadeShade = UIController.fadeShade;
+        CanvasGroup canvasGroup = fadeShade.GetComponent<CanvasGroup>();
+        float alpha = 0.0f;
+        while (alpha < 1f){
+            alpha += 0.05f;
+            canvasGroup.alpha = alpha;
+            yield return new WaitForSeconds(0.025f);
+        }
+        SceneManager.LoadSceneAsync("Battle Stage");
         yield return null;
     }
 }

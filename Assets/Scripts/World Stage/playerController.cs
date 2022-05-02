@@ -178,6 +178,8 @@ public class playerController : MonoBehaviour
             currentInterObj = other.gameObject; //Stores collided object assuming it is tagged "Interactable"
         }else if(other.tag == "chest"){
             currentInterObj = other.gameObject;
+        }else if(other.tag == "doorBlocker"){
+            other.gameObject.SendMessage("recievePlayer");
         }
         if (other.tag == "door"){
             locked = true;
