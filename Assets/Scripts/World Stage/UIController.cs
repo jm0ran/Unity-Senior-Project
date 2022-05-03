@@ -225,13 +225,14 @@ public class UIController : MonoBehaviour
         GameObject targetObject = findChild("items", currentLayer);
         List<Item> playerItems = saveDataController.globalSave.inventory.items;
         for(int i = 0; i < playerItems.Count; i++){
+            //Fix inventory rowing because of scaling
             GameObject newItemRow = Instantiate(inventoryPrefab, new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
             newItemRow.gameObject.name = playerItems[i].itemName;
             TextMeshProUGUI itemNameBox = findChild("itemName", newItemRow).GetComponent<TextMeshProUGUI>();
             Image itemImageBox = findChild("itemImage", newItemRow).GetComponent<Image>();
             itemNameBox.text = playerItems[i].itemName;
             itemImageBox.sprite = itemController.itemDictionary[playerItems[i].itemName];
-            newItemRow.transform.SetParent(itemsContainer.transform);
+            newItemRow.transform.SetParent(itemsContainer.transform, false);
         }
 
     }

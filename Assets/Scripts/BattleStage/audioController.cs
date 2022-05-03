@@ -71,9 +71,11 @@ public class audioController : MonoBehaviour
 
     IEnumerator startMusic(){
         yield return new WaitForSeconds(delayStart);
+        Debug.Log("Hit 2");
         //Starts audio
         mainSong.time = 0 + customStartTime; //Start at a custom start time if necessary
         mainSong.Play();
+        Debug.Log("Started music");
     }
 
     void pruneNotesFrom(float prunePoint){
@@ -89,7 +91,7 @@ public class audioController : MonoBehaviour
         noteLocked = state;
     }
 
-
+   
 
 //------------------------------------------------------------------------
 //Unity Defined functions
@@ -102,6 +104,7 @@ public class audioController : MonoBehaviour
         mainMap.readBeatMap("Bring Me Down.json");
         pruneNotesFrom(customStartTime);
         StartCoroutine(startMusic());
+        // StartCoroutine(fadeIn());
        
     }
 
