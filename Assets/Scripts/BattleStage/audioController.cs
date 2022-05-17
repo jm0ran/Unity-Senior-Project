@@ -16,9 +16,12 @@ public class audioController : MonoBehaviour
     public float noteSpawnX;
     private float noteSpawnY;
     public float noteTargetX;
-    public float customStartTime = 0;
+    public float customStartTime = 0f;
+    public float noteTimingOffset = 0f;
+    public float infoAtStart = 5f;
 
     private bool noteLocked = false;
+    private bool started = false;
 
 //------------------------------------------------------------------------
 //User Defined Functions
@@ -37,7 +40,7 @@ public class audioController : MonoBehaviour
         songTime = mainSong.time;
         if(mainMap.map.Count > 0 && !noteLocked){
             if(mainMap.map[0].time - timeToTarget - customStartTime <= 0){
-                if((Time.timeSinceLevelLoad + customStartTime) > (mainMap.map[0].time + delayStart - timeToTarget)){
+                if((Time.timeSinceLevelLoad - infoAtStart + customStartTime) > (mainMap.map[0].time + delayStart - timeToTarget)){
                     newArrow(mainMap.map[0].time, mainMap.map[0].button);
                 }
             }
@@ -100,6 +103,27 @@ public class audioController : MonoBehaviour
         noteLocked = state;
     }
 
+    IEnumerator battleInit(){
+        if(customStartTime != 0){
+            GameObject.Find("howToPlayCanvas").SetActive(false);
+        }else{
+            yield return new WaitForSeconds(infoAtStart);
+            GameObject.Find("howToPlayCanvas").SetActive(false);
+        }
+
+        mainSong = gameObject.GetComponent<AudioSource>();
+        //Imports the beatMap's json file which holds the information on each note
+        mainMap = new beatMap();
+        mainMap.readBeatMap("Bring Me Down.json");
+        for(var i = 0; i < mainMap.map.Count;i++){
+            mainMap.map[i].time = mainMap.map[i].time + noteTimingOffset;
+        }
+        pruneNotesFrom(customStartTime);
+        StartCoroutine(startMusic());
+        // StartCoroutine(fadeIn());
+        started = true;
+
+    }
    
 
 //------------------------------------------------------------------------
@@ -107,25 +131,16 @@ public class audioController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(closeTutorialScreenAfter(10f));
-        mainSong = gameObject.GetComponent<AudioSource>();
-        //Imports the beatMap's json file which holds the information on each note
-        mainMap = new beatMap();
-        mainMap.readBeatMap("Bring Me Down.json");
-        pruneNotesFrom(customStartTime);
-        StartCoroutine(startMusic());
-        // StartCoroutine(fadeIn());
+        StartCoroutine(battleInit());
        
     }
 
     // Update is called once per frame
     void Update()
     {
-        noteSpawner();
-        if(Input.GetKey("p")){
-            mainSong.Pause();
-        }else if(Input.GetKey("o")){
-            mainSong.UnPause();
+        if(started){
+            noteSpawner();
         }
+        
     }
 }
