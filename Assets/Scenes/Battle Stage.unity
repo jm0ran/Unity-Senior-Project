@@ -1516,7 +1516,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 593, y: 455}
+  m_AnchoredPosition: {x: 0, y: 455}
   m_SizeDelta: {x: 550, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &882693525
@@ -3323,7 +3323,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 605, y: 504}
+  m_AnchoredPosition: {x: 0, y: 504}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1311350534
@@ -3707,7 +3707,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1428273692}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.16, y: 1.34, z: 0}
+  m_LocalPosition: {x: 1.75, y: 1.28, z: 0}
   m_LocalScale: {x: 3.3379, y: 3.3379, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3972,9 +3972,9 @@ MonoBehaviour:
   timeToTarget: 3
   noteSpawnX: 6
   noteTargetX: -4.3
-  customStartTime: 0
+  customStartTime: 0.1
   noteTimingOffset: -0.175
-  infoAtStart: 5
+  infoAtStart: 0
 --- !u!82 &1459815464
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3990,7 +3990,7 @@ AudioSource:
   m_Volume: 0.1
   m_Pitch: 1
   Loop: 0
-  Mute: 0
+  Mute: 1
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
