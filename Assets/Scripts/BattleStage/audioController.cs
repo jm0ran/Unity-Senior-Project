@@ -22,6 +22,17 @@ public class audioController : MonoBehaviour
 
 //------------------------------------------------------------------------
 //User Defined Functions
+    IEnumerator closeTutorialScreenAfter(float delay){
+        if(customStartTime != 0){
+            GameObject.Find("howToPlayCanvas").SetActive(false);
+        }else{
+            yield return new WaitForSeconds(delay);
+            GameObject.Find("howToPlayCanvas").SetActive(false);
+        }
+        
+    }
+
+
     void noteSpawner(){ //Tracks current progress in song and spawns new notes accordingly      
         songTime = mainSong.time;
         if(mainMap.map.Count > 0 && !noteLocked){
@@ -71,11 +82,9 @@ public class audioController : MonoBehaviour
 
     IEnumerator startMusic(){
         yield return new WaitForSeconds(delayStart);
-        Debug.Log("Hit 2");
         //Starts audio
         mainSong.time = 0 + customStartTime; //Start at a custom start time if necessary
         mainSong.Play();
-        Debug.Log("Started music");
     }
 
     void pruneNotesFrom(float prunePoint){
@@ -98,6 +107,7 @@ public class audioController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        StartCoroutine(closeTutorialScreenAfter(10f));
         mainSong = gameObject.GetComponent<AudioSource>();
         //Imports the beatMap's json file which holds the information on each note
         mainMap = new beatMap();
