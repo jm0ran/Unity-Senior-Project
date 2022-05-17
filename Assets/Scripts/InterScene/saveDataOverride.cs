@@ -20,7 +20,7 @@ public class saveDataOverride : MonoBehaviour
             true, //5 Yeezy Dialogue Complete and ned is gone
             //--------------------------------------------------------------
             //First short section of one times done
-            false, //6 Kanye summoned trigger
+            true, //6 Kanye summoned trigger
             false, //7 Initial encounter with drake fight
             false,
             false,

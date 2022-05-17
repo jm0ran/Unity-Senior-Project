@@ -105,10 +105,12 @@ MonoBehaviour:
   speed: 2
   timeToTarget: 0
   trackDistance: 0
+  isMoving: 1
   upSprite: {fileID: -757019719, guid: d2cc8f40dac1f4afda0018eb9eeb9f8c, type: 3}
   downSprite: {fileID: 735763953, guid: d2cc8f40dac1f4afda0018eb9eeb9f8c, type: 3}
   rightSprite: {fileID: -1258319381, guid: d2cc8f40dac1f4afda0018eb9eeb9f8c, type: 3}
   leftSprite: {fileID: 1130564420, guid: d2cc8f40dac1f4afda0018eb9eeb9f8c, type: 3}
+  spriteRenderer: {fileID: 0}
 --- !u!50 &-2137267091734178537
 Rigidbody2D:
   serializedVersion: 4
@@ -123,7 +125,7 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 0.0001
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
