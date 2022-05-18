@@ -8,23 +8,18 @@ public class enemyController : MonoBehaviour
 {
    public string enemyName = "Drake"; //Going to be set dynamically in the future
    public Enemy enemyObj;
-   public GameObject enemyVisualInfo;
-   private SpriteRenderer enemySprite;
-   private TextMeshProUGUI enemyNameTextBox;
-   private Slider enemyHealthBar;
-   private Transform enemyObjTransform;
-   private GameObject rootLayer;
-   private GameObject actionTextLayer;
-   private TextMeshProUGUI actionMessageBox;
-   private GameObject buttonLayers;
+   public Slider enemySlider;
 
    void Awake(){
-      
+      enemySlider = GameObject.Find("enemyHealthDisplay").GetComponent<Slider>();
    }
 
 
    void Start(){
       loadEnemy();
+      enemySlider.value = 0.75f;
+
+      //Temporary
    }
 
    void loadEnemy(){

@@ -51,16 +51,16 @@ public class audioController : MonoBehaviour
         noteSpawnY = 0f; //Default in case beatmap is wrong
         switch(button){
             case "up":
-                noteSpawnY = 1.5f;
+                noteSpawnY = 1.1f;
                 break;
             case "down":
-                noteSpawnY = -1.5f;
+                noteSpawnY = -1.9f;
                 break;
             case "right":
-                noteSpawnY = -0.5f;
+                noteSpawnY = -0.9f;
                 break;
             case "left":
-                noteSpawnY = 0.5f;
+                noteSpawnY = 0.1f;
                 break;
         }
         

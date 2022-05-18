@@ -11,7 +11,7 @@ public class rythmStateController : MonoBehaviour
     private GameObject[] arrows;
     private GameObject [] arrowTargets;
     private GameObject actionUI;
-    private GameObject rythmUI;
+    private GameObject diaUI;
 
     //This is where I want to control the state of the game and manage transitioning between the stages of battle and Rythm
     //States are going to include
@@ -34,7 +34,7 @@ public class rythmStateController : MonoBehaviour
 
 
     void initState(){
-        //actionUI.SetActive(false);
+        diaUI.SetActive(false);
     }
 
 
@@ -45,7 +45,7 @@ public class rythmStateController : MonoBehaviour
     }
 
     private void Awake() {
-        actionUI = GameObject.Find("actionUI");
+        diaUI = GameObject.Find("diaUI");
     }
 
     
