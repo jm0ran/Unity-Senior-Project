@@ -25,16 +25,6 @@ public class audioController : MonoBehaviour
 
 //------------------------------------------------------------------------
 //User Defined Functions
-    IEnumerator closeTutorialScreenAfter(float delay){
-        if(customStartTime != 0){
-            GameObject.Find("howToPlayCanvas").SetActive(false);
-        }else{
-            yield return new WaitForSeconds(delay);
-            GameObject.Find("howToPlayCanvas").SetActive(false);
-        }
-        
-    }
-
 
     void noteSpawner(){ //Tracks current progress in song and spawns new notes accordingly      
         songTime = mainSong.time;
@@ -64,17 +54,17 @@ public class audioController : MonoBehaviour
                 noteSpawnY = 1.5f;
                 break;
             case "down":
-                noteSpawnY = 0.5f;
+                noteSpawnY = -1.5f;
                 break;
             case "right":
                 noteSpawnY = -0.5f;
                 break;
             case "left":
-                noteSpawnY = -1.5f;
+                noteSpawnY = 0.5f;
                 break;
         }
         
-        newArrow.transform.position = new Vector3(noteSpawnX,noteSpawnY,0); //Want to change this based on note type
+        newArrow.transform.position = new Vector3(noteSpawnX,noteSpawnY,0); 
         noteController newArrowNC = newArrow.GetComponent<noteController>(); 
         newArrowNC.triggerTime = triggerTime;
         newArrowNC.button = button;
@@ -123,6 +113,10 @@ public class audioController : MonoBehaviour
         // StartCoroutine(fadeIn());
         started = true;
 
+    }
+
+    IEnumerator timingEvents(){
+        yield return null;
     }
    
 
