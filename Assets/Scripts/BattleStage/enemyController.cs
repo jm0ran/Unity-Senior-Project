@@ -11,13 +11,16 @@ public class enemyController : MonoBehaviour
    public Slider enemySlider;
    public float enemyHealth = 100f;
    public float enemyMaxHealth = 100f;
+   public GameObject victoryScreen;
 
    void Awake(){
       enemySlider = GameObject.Find("enemyHealthDisplay").GetComponent<Slider>();
+      victoryScreen = GameObject.Find("victoryScreen");
    }
 
 
    void Start(){
+      victoryScreen.SetActive(false);
       loadEnemy();
       updateSlider();
 
@@ -26,9 +29,9 @@ public class enemyController : MonoBehaviour
 
    void updateSlider(){
       float newValue = enemyHealth / enemyMaxHealth;
-      Debug.Log(newValue);
       if(newValue <= 0){
          Debug.Log("Victory Condition");
+         victoryScreen.SetActive(true);//Prob want to put this transition into a coroutine to make it a bit smoother, also remove old notes with prune prob
          enemySlider.value = newValue;
       }else{
          enemySlider.value = newValue;

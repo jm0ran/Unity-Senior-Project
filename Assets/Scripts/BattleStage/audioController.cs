@@ -101,6 +101,7 @@ public class audioController : MonoBehaviour
             GameObject.Find("howToPlayCanvas").SetActive(false);
         }
 
+
         mainSong = gameObject.GetComponent<AudioSource>();
         //Imports the beatMap's json file which holds the information on each note
         mainMap = new beatMap();
