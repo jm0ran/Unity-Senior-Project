@@ -42,6 +42,7 @@ public class rythmStateController : MonoBehaviour
     {
         currentState = "rythm";
         initState();
+
     }
 
     private void Awake() {

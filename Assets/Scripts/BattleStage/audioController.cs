@@ -112,6 +112,7 @@ public class audioController : MonoBehaviour
         StartCoroutine(startMusic());
         // StartCoroutine(fadeIn());
         started = true;
+        yield return null;
 
     }
 
@@ -126,7 +127,7 @@ public class audioController : MonoBehaviour
     void Start()
     {
         StartCoroutine(battleInit());
-       
+ 
     }
 
     // Update is called once per frame
