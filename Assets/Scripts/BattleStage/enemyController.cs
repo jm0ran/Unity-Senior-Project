@@ -12,10 +12,15 @@ public class enemyController : MonoBehaviour
    public float enemyHealth = 100f;
    public float enemyMaxHealth = 100f;
    public GameObject victoryScreen;
+   public AudioSource hitSoundEffect;
+   public Transform drakeTransform;
+   
 
    void Awake(){
       enemySlider = GameObject.Find("enemyHealthDisplay").GetComponent<Slider>();
       victoryScreen = GameObject.Find("victoryScreen");
+      hitSoundEffect = gameObject.GetComponent<AudioSource>();
+      drakeTransform = gameObject.GetComponent<Transform>();
    }
 
 
@@ -39,16 +44,24 @@ public class enemyController : MonoBehaviour
       
    }
 
+   IEnumerator shiftDrake(){ // Function to shift drake around
+      drakeTransform.position = new Vector3(1.9f,0.44f,0);
+      yield return new WaitForSeconds(0.2f);
+      drakeTransform.position = new Vector3(1.75f,0.44f,0);
+      yield return null;
+   }
+
    void loadEnemy(){
       enemyObj = new Enemy(enemyName); // <------ This is where I left off
    }
 
    void recieveHit(){ //Going to recieve a hit and lower the health bar accordingly
-      Debug.Log("Enemy controller recieved a hit");
+      //Play hit sound
+      //Shift drake quickly
+      StartCoroutine(shiftDrake());
+      hitSoundEffect.Play();
       enemyHealth--;
       updateSlider();
-
-
    }
 
 
