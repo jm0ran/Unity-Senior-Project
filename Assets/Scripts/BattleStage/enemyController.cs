@@ -8,96 +8,64 @@ public class enemyController : MonoBehaviour
 {
    public string enemyName = "Drake"; //Going to be set dynamically in the future
    public Enemy enemyObj;
-   public GameObject enemyVisualInfo;
-   private SpriteRenderer enemySprite;
-   private TextMeshProUGUI enemyNameTextBox;
-   private Slider enemyHealthBar;
-   private Transform enemyObjTransform;
-   private GameObject rootLayer;
-   private GameObject actionTextLayer;
-   private TextMeshProUGUI actionMessageBox;
-   private GameObject buttonLayers;
+   public Slider enemySlider;
+   public float enemyHealth = 100f;
+   public float enemyMaxHealth = 100f;
+   public GameObject victoryScreen;
+   public AudioSource hitSoundEffect;
+   public Transform drakeTransform;
+   
 
    void Awake(){
-      enemyVisualInfo = GameObject.FindWithTag("enemyVisualInfo");
-      enemyObjTransform = gameObject.GetComponent<Transform>();
-      rootLayer = GameObject.Find("rootLayer");
-      actionTextLayer = GameObject.Find("actionTextLayer");
-      buttonLayers = GameObject.Find("ButtonLayers");
-      actionMessageBox = actionTextLayer.GetComponent<TextMeshProUGUI>();
+      enemySlider = GameObject.Find("enemyHealthDisplay").GetComponent<Slider>();
+      victoryScreen = GameObject.Find("victoryScreen");
+      hitSoundEffect = gameObject.GetComponent<AudioSource>();
+      drakeTransform = gameObject.GetComponent<Transform>();
    }
 
 
    void Start(){
+      victoryScreen.SetActive(false);
       loadEnemy();
-      loadEnemyInfo();
+      updateSlider();
+
+      //Temporary
+   }
+
+   void updateSlider(){
+      float newValue = enemyHealth / enemyMaxHealth;
+      if(newValue <= 0){
+         Debug.Log("Victory Condition");
+         victoryScreen.SetActive(true);//Prob want to put this transition into a coroutine to make it a bit smoother, also remove old notes with prune prob
+         enemySlider.value = newValue;
+      }else{
+         enemySlider.value = newValue;
+      }
+      
+   }
+
+   IEnumerator shiftDrake(){ // Function to shift drake around
+      drakeTransform.position = new Vector3(1.9f,0.44f,0);
+      yield return new WaitForSeconds(0.2f);
+      drakeTransform.position = new Vector3(1.75f,0.44f,0);
+      yield return null;
    }
 
    void loadEnemy(){
       enemyObj = new Enemy(enemyName); // <------ This is where I left off
    }
 
-   void loadEnemyInfo(){
-      
-      foreach (Transform child in enemyVisualInfo.transform)
-      {
-         switch(child.gameObject.name){
-            case "enemyName":
-               enemyNameTextBox = child.gameObject.GetComponent<TextMeshProUGUI>();
-               break;
-            case "enemyHealthSlider":
-               enemyHealthBar = child.gameObject.GetComponent<Slider>();
-               break;
-         }
-      }
-
-      gameObject.GetComponent<SpriteRenderer>().enabled = false;
-      enemySprite = GameObject.Find("enemyObject").GetComponent<SpriteRenderer>();
-
-      enemySprite.sprite = charProfileImageController.enemyDictionary[enemyName];
-      enemyNameTextBox.text = enemyName;
-      updateHealth();
-
+   void recieveHit(){ //Going to recieve a hit and lower the health bar accordingly
+      //Play hit sound
+      //Shift drake quickly
+      StartCoroutine(shiftDrake());
+      hitSoundEffect.Play();
+      enemyHealth--;
+      updateSlider();
    }
 
-   void updateHealth(){ //All enemy damage calculations and stuff I want to handle in this script for better or for worse
-      enemyHealthBar.value = enemyObj.currentHealth / enemyObj.maxHealth;
-   }
 
-   public void recieveDamage(Move recievedMove){
-      StartCoroutine(damageProcess(recievedMove));
-   }
-
-   IEnumerator damageProcess(Move recievedMove){ //This prob should't be in here lol but we'll roll with it
-      string charName = buttonLayers.GetComponent<actionButtonLayerController>().currentChar;
-      string message = charName + " used " + recievedMove.name;
-      buttonLayers.SendMessage("menuTransition", actionTextLayer);
-      actionMessageBox.text = message;
-
-      yield return new WaitForSeconds(0.3f);
-      enemyObj.currentHealth -= recievedMove.damage;
-      updateHealth();
-      enemyObjTransform.position = new Vector3(enemyObjTransform.position.x + 0.25f, enemyObjTransform.position.y, enemyObjTransform.position.z);
-      yield return new WaitForSeconds(0.1f);
-      enemyObjTransform.position = new Vector3(enemyObjTransform.position.x - 0.5f, enemyObjTransform.position.y, enemyObjTransform.position.z);
-      yield return new WaitForSeconds(0.1f);
-      enemyObjTransform.position = new Vector3(enemyObjTransform.position.x + 0.25f, enemyObjTransform.position.y, enemyObjTransform.position.z);
-      yield return new WaitForSeconds(1f);
-      
-      //Check for death and process if dead
-      if(enemyObj.currentHealth <= 0){
-         //This is where the battle will theroretically end, this is big I may finally be leaving the battle stage
-         message = enemyObj.name + " got dogged on";
-         actionMessageBox.text = message;
-         yield return new WaitForSeconds(2f);
-         GameObject.Find("rythmStateController").SendMessage("enterRythmState");
-      }else{
-         buttonLayers.SendMessage("menuTransition", rootLayer);
-
-      }
-
-      
-   }
+   
    
    
 }

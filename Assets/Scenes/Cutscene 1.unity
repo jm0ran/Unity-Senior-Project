@@ -520,7 +520,7 @@ GameObject:
   - component: {fileID: 1515099315}
   - component: {fileID: 1515099314}
   m_Layer: 5
-  m_Name: Image
+  m_Name: cutsceneImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -566,7 +566,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 230f9603ea5fc49688ba8218bee7e68a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4344fe764990b4cff9dcc25ee3c2314b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -704,3 +704,8 @@ MonoBehaviour:
   textDelay: 0.25
   locked: 0
   fadeShade: {fileID: 0}
+  scene0: {fileID: 21300000, guid: 4344fe764990b4cff9dcc25ee3c2314b, type: 3}
+  scene1: {fileID: 21300000, guid: feac583ca687d4fa3a953e1c85dbdf34, type: 3}
+  scene2: {fileID: 21300000, guid: 4344fe764990b4cff9dcc25ee3c2314b, type: 3}
+  scene3: {fileID: 21300000, guid: d25c39a4cf6cb43d3bf2dbb079c9ffce, type: 3}
+  scene4: {fileID: 21300000, guid: 4344fe764990b4cff9dcc25ee3c2314b, type: 3}

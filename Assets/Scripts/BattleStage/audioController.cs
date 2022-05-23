@@ -25,16 +25,6 @@ public class audioController : MonoBehaviour
 
 //------------------------------------------------------------------------
 //User Defined Functions
-    IEnumerator closeTutorialScreenAfter(float delay){
-        if(customStartTime != 0){
-            GameObject.Find("howToPlayCanvas").SetActive(false);
-        }else{
-            yield return new WaitForSeconds(delay);
-            GameObject.Find("howToPlayCanvas").SetActive(false);
-        }
-        
-    }
-
 
     void noteSpawner(){ //Tracks current progress in song and spawns new notes accordingly      
         songTime = mainSong.time;
@@ -61,20 +51,20 @@ public class audioController : MonoBehaviour
         noteSpawnY = 0f; //Default in case beatmap is wrong
         switch(button){
             case "up":
-                noteSpawnY = 1.5f;
+                noteSpawnY = 1.1f;
                 break;
             case "down":
-                noteSpawnY = 0.5f;
+                noteSpawnY = -1.9f;
                 break;
             case "right":
-                noteSpawnY = -0.5f;
+                noteSpawnY = -0.9f;
                 break;
             case "left":
-                noteSpawnY = -1.5f;
+                noteSpawnY = 0.1f;
                 break;
         }
         
-        newArrow.transform.position = new Vector3(noteSpawnX,noteSpawnY,0); //Want to change this based on note type
+        newArrow.transform.position = new Vector3(noteSpawnX,noteSpawnY,0); 
         noteController newArrowNC = newArrow.GetComponent<noteController>(); 
         newArrowNC.triggerTime = triggerTime;
         newArrowNC.button = button;
@@ -111,6 +101,7 @@ public class audioController : MonoBehaviour
             GameObject.Find("howToPlayCanvas").SetActive(false);
         }
 
+
         mainSong = gameObject.GetComponent<AudioSource>();
         //Imports the beatMap's json file which holds the information on each note
         mainMap = new beatMap();
@@ -122,7 +113,12 @@ public class audioController : MonoBehaviour
         StartCoroutine(startMusic());
         // StartCoroutine(fadeIn());
         started = true;
+        yield return null;
 
+    }
+
+    IEnumerator timingEvents(){
+        yield return null;
     }
    
 
@@ -132,7 +128,7 @@ public class audioController : MonoBehaviour
     void Start()
     {
         StartCoroutine(battleInit());
-       
+ 
     }
 
     // Update is called once per frame

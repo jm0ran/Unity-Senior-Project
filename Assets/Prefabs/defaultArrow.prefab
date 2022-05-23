@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8480444032266791212}
   - component: {fileID: -2137267091734178537}
   - component: {fileID: -7076509505633557053}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: defaultArrow
   m_TagString: arrow
   m_Icon: {fileID: 0}
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 11
   m_Sprite: {fileID: -757019719, guid: d2cc8f40dac1f4afda0018eb9eeb9f8c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
