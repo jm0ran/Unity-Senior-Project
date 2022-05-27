@@ -18,7 +18,7 @@ public class rythmInputController : MonoBehaviour
 
 //------------------------------------------------------------------------
 //User Defined Functions
-    void triggerCurrentNote(){ 
+    public void triggerCurrentNote(){ 
         spriteRenderer.sprite = invertedArrow;
         StartCoroutine(returnToSprite(0.25f));
         if(currentNotes.Count > 0){ //The closest note to the player is going to be 0 in the array, besides for the possible edgecase of a passed note, but thats an edgecase to work on later

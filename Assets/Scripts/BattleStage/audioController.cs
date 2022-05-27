@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class audioController : MonoBehaviour
 {
@@ -19,9 +21,12 @@ public class audioController : MonoBehaviour
     public float customStartTime = 0f;
     public float noteTimingOffset = 0f;
     public float infoAtStart = 5f;
+    public GameObject lossScreen;
 
-    private bool noteLocked = false;
-    private bool started = false;
+    public bool noteLocked = false;
+    public bool started = false;
+    public bool playerWon = false;
+    public bool playerLost = false;
 
 //------------------------------------------------------------------------
 //User Defined Functions
@@ -42,7 +47,46 @@ public class audioController : MonoBehaviour
             else{ //If it doesn't meet either conditions above remove the note bc something is prob wrong
                 mainMap.map.RemoveAt(0);
             }
+        }else if(!playerWon){
+            //Check how many notes are left
+            GameObject[] remainingArrows;
+            remainingArrows = GameObject.FindGameObjectsWithTag("arrow");
+            if(remainingArrows.Length == 0 && !playerLost && !playerWon){
+                playerLost = true;
+                StartCoroutine(lossTransition());
+            }
+           
         }
+    }
+
+    IEnumerator lossTransition(){
+        Debug.Log("Player Lost");
+        float musicVolume = mainSong.volume;
+        while(musicVolume > 0f){
+            musicVolume -= 0.005f;
+            mainSong.volume = musicVolume;
+            yield return new WaitForSeconds(0.10f);
+        }
+
+        //This is where I need to fade in the loss screen relatively quickly
+        lossScreen.SetActive(true);
+        CanvasRenderer lossImage = GameObject.Find("lossImage").GetComponent<CanvasRenderer>();
+        float opacity = 0f;
+
+        while(opacity <= 1){
+            opacity += 0.05f;
+            lossImage.SetAlpha(opacity);
+            yield return new WaitForSeconds(0.05f);
+        }
+
+        //Now I need an enter gate to hold player until they make their decision
+        while(!Input.GetKeyDown(KeyCode.Return)){
+            yield return null;
+        }
+        
+        SceneManager.LoadScene("Battle Stage");
+
+        
     }
 
     void newArrow(float triggerTime, string button){ //This is my function that is going to instantiate my arrow
@@ -86,7 +130,14 @@ public class audioController : MonoBehaviour
                 mainMap.map.RemoveAt(0);
             }
         }
-        
+    }
+
+    public void pruneNotesFromCurrent(){
+        if(mainMap.map.Count > 0){
+            while(mainMap.map[0].time <= mainSong.clip.length){
+                mainMap.map.RemoveAt(0);
+            }
+        }
     }
 
     void isAction(bool state){ //Function that is going to clear notes on field, lock notespawner and iniate transition to action stage
@@ -105,7 +156,7 @@ public class audioController : MonoBehaviour
         mainSong = gameObject.GetComponent<AudioSource>();
         //Imports the beatMap's json file which holds the information on each note
         mainMap = new beatMap();
-        mainMap.readBeatMap("Bring Me Down.json");
+        mainMap.readBeatMap("iWonder.json");
         for(var i = 0; i < mainMap.map.Count;i++){
             mainMap.map[i].time = mainMap.map[i].time + noteTimingOffset;
         }
@@ -125,8 +176,13 @@ public class audioController : MonoBehaviour
 //------------------------------------------------------------------------
 //Unity Defined functions
     // Start is called before the first frame update
+    void Awake(){
+        lossScreen = GameObject.Find("lossScreen");
+    }
+    
     void Start()
     {
+        lossScreen.SetActive(false);
         StartCoroutine(battleInit());
  
     }

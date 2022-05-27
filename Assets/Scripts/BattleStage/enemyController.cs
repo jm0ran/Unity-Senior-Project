@@ -35,7 +35,16 @@ public class enemyController : MonoBehaviour
    void updateSlider(){
       float newValue = enemyHealth / enemyMaxHealth;
       if(newValue <= 0){
-         Debug.Log("Victory Condition");
+         audioController targetAudioController = GameObject.Find("audioControllerObj").GetComponent<audioController>();
+         targetAudioController.noteLocked = true;
+         targetAudioController.playerWon = true;
+         //Trigger all remaining notes
+         GameObject[] remainingArrows;
+         remainingArrows = GameObject.FindGameObjectsWithTag("arrow");
+         foreach(GameObject arrow in remainingArrows)
+         {
+            arrow.SendMessage("triggerNote");
+         }
          victoryScreen.SetActive(true);//Prob want to put this transition into a coroutine to make it a bit smoother, also remove old notes with prune prob
          enemySlider.value = newValue;
       }else{
