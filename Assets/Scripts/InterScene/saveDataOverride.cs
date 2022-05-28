@@ -22,27 +22,7 @@ public class saveDataOverride : MonoBehaviour
             //First short section of one times done
             false, //6 Kanye summoned trigger
             false, //7 Initial encounter with drake fight
-            false, //8 Completion of drake fight
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
+            false, //8 Completion of drake fight <-- Want to spawn player in 
         };
         
         targetSave.inventory.items = new List<Item>(){

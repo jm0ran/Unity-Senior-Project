@@ -90,6 +90,7 @@ public class enemyController : MonoBehaviour
         
 
       //NEED TO SET PERSIST ID TO TRUE HERE TO PREVENT REPEAT OF BOSS BATTLE
+      saveDataController.globalSave.oneTimes[8] = true;
       
       SceneManager.LoadScene("Title Screen");
       

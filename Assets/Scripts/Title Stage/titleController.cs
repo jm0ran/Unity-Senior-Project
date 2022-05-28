@@ -60,7 +60,23 @@ public class titleController : MonoBehaviour
     }
 
     void startGame(){
-        SceneManager.LoadScene("Cutscene 1");
+        //This is where I need to implement logic based on persist object to decide what scene to load into
+        //Work backwards in terms of checking to go to the latest scene
+        Debug.Log("Stage Transition");
+        Debug.Log(saveDataController.globalSave.oneTimes[0]);
+        string targetScene = "Cutscene 1"; //Default if save data check returns all false
+       
+        //Have to reverse this in a second
+        if(saveDataController.globalSave.oneTimes[8]){ //If player beat drake fight, spawn them in Route 1 to explore
+            targetScene = "Route 1";
+        }else if(saveDataController.globalSave.oneTimes[1]){ //If starting dialogue in Junkyard has been triggered
+            targetScene = "Junkyard";
+        }else if(saveDataController.globalSave.oneTimes[0]){ //If opening dialogue has been triggered
+            targetScene = "Junk Cave";
+        }
+        //There is already a default set which is cutscene 1
+        
+        SceneManager.LoadScene(targetScene);
     }
 
 

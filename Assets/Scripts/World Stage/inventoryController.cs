@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class inventoryController : MonoBehaviour
 {
@@ -114,9 +115,13 @@ public class inventoryController : MonoBehaviour
         itemsContainer = GameObject.Find("itemsContainer");
 
         //Current item info
-        currentItemImage = GameObject.Find("currentItemImage").GetComponent<Image>();
-        currentItemDescription = GameObject.Find("currentItemDescription").GetComponent<TextMeshProUGUI>();
-        currentItemAmount = GameObject.Find("currentItemAmount").GetComponent<TextMeshProUGUI>();
+        //If not title scene
+        if(SceneManager.GetActiveScene().name != "Title Screen" && SceneManager.GetActiveScene().name != "Battle Stage"){
+            currentItemImage = GameObject.Find("currentItemImage").GetComponent<Image>();
+            currentItemDescription = GameObject.Find("currentItemDescription").GetComponent<TextMeshProUGUI>();
+            currentItemAmount = GameObject.Find("currentItemAmount").GetComponent<TextMeshProUGUI>();
+        }
+        
 
     }
     
