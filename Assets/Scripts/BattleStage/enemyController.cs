@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class enemyController : MonoBehaviour
 {
@@ -14,11 +15,13 @@ public class enemyController : MonoBehaviour
    public GameObject victoryScreen;
    public AudioSource hitSoundEffect;
    public Transform drakeTransform;
+   public GameObject closingScreen;
    
 
    void Awake(){
       enemySlider = GameObject.Find("enemyHealthDisplay").GetComponent<Slider>();
       victoryScreen = GameObject.Find("victoryScreen");
+      closingScreen = GameObject.Find("closingScreen");
       hitSoundEffect = gameObject.GetComponent<AudioSource>();
       drakeTransform = gameObject.GetComponent<Transform>();
    }
@@ -26,6 +29,7 @@ public class enemyController : MonoBehaviour
 
    void Start(){
       victoryScreen.SetActive(false);
+      closingScreen.SetActive(false);
       loadEnemy();
       updateSlider();
 
@@ -47,10 +51,49 @@ public class enemyController : MonoBehaviour
          }
          victoryScreen.SetActive(true);//Prob want to put this transition into a coroutine to make it a bit smoother, also remove old notes with prune prob
          enemySlider.value = newValue;
+
+         StartCoroutine(startClosing());
       }else{
          enemySlider.value = newValue;
       }
       
+   }
+
+   IEnumerator startClosing(){
+      AudioSource mainSong = GameObject.Find("audioControllerObj").GetComponent<AudioSource>();
+      float musicVolume = mainSong.volume;
+      //Fade out music
+      while(musicVolume > 0f){
+         musicVolume -= 0.005f;
+         mainSong.volume = musicVolume;
+         yield return new WaitForSeconds(0.10f);
+      }
+      closingScreen.SetActive(true);
+      //Fade in the closing screen relatively quickly
+      
+      CanvasRenderer closingImage = GameObject.Find("closingImage").GetComponent<CanvasRenderer>();
+      float opacity = 0f;
+
+      while(opacity <= 1){
+         opacity += 0.05f;
+         closingImage.SetAlpha(opacity);
+         yield return new WaitForSeconds(0.05f);
+      }
+
+      victoryScreen.SetActive(false); //Disable victory screen after
+      
+      //Now I need to add a return gate
+
+      while(!Input.GetKeyDown(KeyCode.Return)){
+         yield return null;
+      }
+        
+
+      //NEED TO SET PERSIST ID TO TRUE HERE TO PREVENT REPEAT OF BOSS BATTLE
+      
+      SceneManager.LoadScene("Title Screen");
+      
+      yield return null;
    }
 
    IEnumerator shiftDrake(){ // Function to shift drake around
