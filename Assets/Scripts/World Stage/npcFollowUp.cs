@@ -224,7 +224,6 @@ public class npcFollowUp : MonoBehaviour
     }
 
     IEnumerator drakeDialogueFollowUpCo(){
-        Debug.Log("Drake follow up");
         UIController.setMenuState("none");
         GameObject fadeShade = UIController.fadeShade;
         CanvasGroup canvasGroup = fadeShade.GetComponent<CanvasGroup>();
