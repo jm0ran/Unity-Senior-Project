@@ -2045,7 +2045,7 @@ MonoBehaviour:
     level: 0
     moves: []
   enemySlider: {fileID: 0}
-  enemyHealth: 1
+  enemyHealth: 200
   enemyMaxHealth: 100
   victoryScreen: {fileID: 0}
   hitSoundEffect: {fileID: 0}
@@ -2258,7 +2258,7 @@ MonoBehaviour:
   timeToTarget: 3
   noteSpawnX: 6
   noteTargetX: -4.3
-  customStartTime: 110
+  customStartTime: 0
   noteTimingOffset: -0.175
   infoAtStart: 0
   lossScreen: {fileID: 0}
@@ -2281,7 +2281,7 @@ AudioSource:
   m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
-  Mute: 1
+  Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128

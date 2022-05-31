@@ -49,12 +49,12 @@
             "button": "right"
         },
         {
-            "time": 9.375,
-            "button": "down"
-        },
-        {
             "time": 9.0625,
             "button": "up"
+        },
+        {
+            "time": 9.375,
+            "button": "down"
         },
         {
             "time": 9.6875,
@@ -313,7 +313,7 @@
             "button": "up"
         },
         {
-            "time": 72.65625,
+            "time": 72.5,
             "button": "left"
         },
         {
@@ -397,10 +397,6 @@
             "button": "down"
         },
         {
-            "time": 116.09375,
-            "button": "down"
-        },
-        {
             "time": 116.25,
             "button": "left"
         },
@@ -409,24 +405,12 @@
             "button": "left"
         },
         {
-            "time": 116.5625,
-            "button": "up"
-        },
-        {
             "time": 116.71875,
             "button": "right"
         },
         {
-            "time": 116.875,
-            "button": "down"
-        },
-        {
             "time": 117.03125,
             "button": "left"
-        },
-        {
-            "time": 117.1875,
-            "button": "up"
         },
         {
             "time": 117.34375,
@@ -437,10 +421,6 @@
             "button": "up"
         },
         {
-            "time": 118.59375,
-            "button": "down"
-        },
-        {
             "time": 118.90625,
             "button": "left"
         },
@@ -449,19 +429,7 @@
             "button": "up"
         },
         {
-            "time": 119.375,
-            "button": "down"
-        },
-        {
             "time": 119.53125,
-            "button": "down"
-        },
-        {
-            "time": 119.6875,
-            "button": "right"
-        },
-        {
-            "time": 121.40625,
             "button": "down"
         },
         {
@@ -469,7 +437,7 @@
             "button": "up"
         },
         {
-            "time": 121.5625,
+            "time": 121.40625,
             "button": "down"
         },
         {
@@ -477,23 +445,11 @@
             "button": "right"
         },
         {
-            "time": 122.03125,
-            "button": "left"
-        },
-        {
             "time": 122.1875,
             "button": "up"
         },
         {
-            "time": 122.34375,
-            "button": "down"
-        },
-        {
             "time": 122.96875,
-            "button": "left"
-        },
-        {
-            "time": 123.125,
             "button": "left"
         },
         {
@@ -505,16 +461,8 @@
             "button": "up"
         },
         {
-            "time": 123.75,
-            "button": "right"
-        },
-        {
             "time": 125,
             "button": "left"
-        },
-        {
-            "time": 125.15625,
-            "button": "up"
         },
         {
             "time": 127.65625,
@@ -526,10 +474,6 @@
         },
         {
             "time": 128.28125,
-            "button": "down"
-        },
-        {
-            "time": 128.4375,
             "button": "down"
         },
         {
@@ -549,10 +493,6 @@
             "button": "down"
         },
         {
-            "time": 129.6875,
-            "button": "down"
-        },
-        {
             "time": 129.84375,
             "button": "right"
         },
@@ -565,10 +505,6 @@
             "button": "down"
         },
         {
-            "time": 131.09375,
-            "button": "right"
-        },
-        {
             "time": 131.40625,
             "button": "up"
         },
@@ -577,23 +513,11 @@
             "button": "down"
         },
         {
-            "time": 131.5625,
-            "button": "down"
-        },
-        {
             "time": 132.03125,
             "button": "left"
         },
         {
-            "time": 132.1875,
-            "button": "right"
-        },
-        {
             "time": 132.34375,
-            "button": "up"
-        },
-        {
-            "time": 133.4375,
             "button": "up"
         },
         {
@@ -601,24 +525,12 @@
             "button": "right"
         },
         {
-            "time": 133.28125,
-            "button": "up"
-        },
-        {
             "time": 133.59375,
             "button": "left"
         },
         {
-            "time": 133.75,
-            "button": "down"
-        },
-        {
             "time": 133.90625,
             "button": "right"
-        },
-        {
-            "time": 134.0625,
-            "button": "left"
         },
         {
             "time": 134.21875,
@@ -627,10 +539,6 @@
         {
             "time": 134.53125,
             "button": "down"
-        },
-        {
-            "time": 134.6875,
-            "button": "left"
         },
         {
             "time": 134.84375,

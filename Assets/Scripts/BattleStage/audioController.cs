@@ -31,6 +31,15 @@ public class audioController : MonoBehaviour
 //------------------------------------------------------------------------
 //User Defined Functions
 
+    IEnumerator printTime(){
+        while(true){
+            if(Time.timeSinceLevelLoad > delayStart + 1f){
+                Debug.Log(mainSong.time);
+            }
+            yield return new WaitForSeconds(0.05f);
+        }
+    }
+
     void noteSpawner(){ //Tracks current progress in song and spawns new notes accordingly      
         songTime = mainSong.time;
         if(mainMap.map.Count > 0 && !noteLocked){
@@ -184,6 +193,7 @@ public class audioController : MonoBehaviour
     {
         lossScreen.SetActive(false);
         StartCoroutine(battleInit());
+        StartCoroutine(printTime());
  
     }
 
