@@ -26,6 +26,9 @@ public class playerController : MonoBehaviour
     public GameObject camObj;
     public Camera cam;
 
+    //Walking SFX
+    public AudioSource walkingSFX;
+
 //------------------------------------------------------------------------
 //Main User Defined Functions used in the Script
     void triggerInteract(){ //This is how I am going to handle player actions with the new interact system
@@ -78,9 +81,11 @@ public class playerController : MonoBehaviour
 
     void updateAnimation(){ //This is where all my animation logic is stored and managed I hate animation controller thingy dumb stupid thing
         if(locked && !continuedMovement){
+            Debug.Log("Not Moving");
             animator.SetFloat("horizontalSpeed", 0);
             animator.SetFloat("verticalSpeed", 0);
             animator.SetFloat("totSpeed", 0);
+            walkingSFX.Pause();
         }else if(continuedMovement){
             animator.SetFloat("horizontalSpeed", continuedDirection.x);
             animator.SetFloat("verticalSpeed", continuedDirection.y);
@@ -125,11 +130,13 @@ public class playerController : MonoBehaviour
                 //Locks turning
                 if (Input.GetKey("up") || Input.GetKey("down") || Input.GetKey("left") || Input.GetKey("right")){
                     turnLocked = true;
+                    walkingSFX.Play();
                 }
             }
             //Triggered once a key has been held down, just lets you continue in that general direction
             else{
                 if(Input.GetKey(lastKey)){
+                    Debug.Log("IS Moving");
                     if(lastKey == "up"){
                         movement.y = 1;
                     }else if(lastKey == "down"){
@@ -142,6 +149,7 @@ public class playerController : MonoBehaviour
                 
                 }else{
                     turnLocked = false;
+                    walkingSFX.Pause();
                 }
             }
             rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
@@ -166,6 +174,7 @@ public class playerController : MonoBehaviour
         animator = GetComponent<Animator>(); //Grabs the animator component from the object that this script is attached to
         camObj = GameObject.FindWithTag("MainCamera");
         cam = camObj.GetComponent<Camera>();
+        walkingSFX = GameObject.Find("walkingSoundEffect").GetComponent<AudioSource>();
     }
 
     void FixedUpdate(){
