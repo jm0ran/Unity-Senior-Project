@@ -118,6 +118,30 @@ public class cutsceneController : MonoBehaviour
         }
         StartCoroutine(fadeTransition("Junk Cave"));
     }
+
+    void InitSaveData(){
+        Save targetSave;
+        targetSave = saveDataController.globalSave;
+        targetSave.oneTimes = new List<bool>(){
+            false, //0 Opening Diaogue in Junk Cave
+            false, //1 Opening Dialogue in Junkyard
+            false, //2 MBDTF chest
+            false, //3 initial time speaking to Ned in junkyard
+            false, //4 Yeezy chest
+            false, //5 Yeezy Dialogue Complete and ned is gone
+            //--------------------------------------------------------------
+            //First short section of one times done
+            false, //6 Kanye summoned trigger
+            false, //7 Initial encounter with drake fight
+            false, //8 Completion of drake fight <-- Want to spawn player in 
+        };
+        
+        targetSave.inventory.items = new List<Item>(){
+            new Item("Old Yeezy", 1)
+        };
+
+        targetSave.serializeSaveData();
+    }
     
 
 
@@ -134,6 +158,7 @@ public class cutsceneController : MonoBehaviour
 
     void Start(){
         StartCoroutine(mainLoop());
+        InitSaveData();
     }
 
     // Update is called once per frame

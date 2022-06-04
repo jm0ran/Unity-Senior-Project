@@ -91,7 +91,8 @@ public class npcFollowUp : MonoBehaviour
         GameObject.FindWithTag("MainCamera").GetComponent<Transform>().position = new Vector3(targetPosition.x, targetPosition.y, currentCamPosition.z);
         //Need to update camera position on this later as well
 
-        GameObject.Find("kanyeNPC").GetComponent<SpriteRenderer>().enabled = true;
+        GameObject.Find("kanyeNPC").GetComponent<SpriteRenderer>().enabled = true; //Enables kanye
+        GameObject.Find("defaultPlayer").GetComponent<SpriteRenderer>().sortingLayerName = "MapAbove";
 
         yield return new WaitForSeconds(0.2f);
 
@@ -162,6 +163,7 @@ public class npcFollowUp : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
         UIController.setMenuState("none");
         GameObject.Find("kanyeNPC").GetComponent<SpriteRenderer>().enabled = false;
+        GameObject.Find("defaultPlayer").GetComponent<SpriteRenderer>().sortingLayerName = "Player";
 
         alpha = 1.0f;
         canvasGroup.alpha = alpha;
@@ -200,7 +202,7 @@ public class npcFollowUp : MonoBehaviour
     IEnumerator chestCo(string followUpArg){
         UIController.returnGate = false; //Used for return gate to prevent automatic progression
         UIController.setMenuState("noPhotoDia"); //Enables the noPhotoUI layer
-        UIController.updateDia(followUpArg); //Changes the text to the necessary description
+        UIController.updateDia("You found a " + followUpArg); //Changes the text to the necessary description
         
         swapSprite();
 

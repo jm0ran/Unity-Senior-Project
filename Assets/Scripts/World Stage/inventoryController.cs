@@ -116,7 +116,7 @@ public class inventoryController : MonoBehaviour
 
         //Current item info
         //If not title scene
-        if(SceneManager.GetActiveScene().name != "Title Screen" && SceneManager.GetActiveScene().name != "Battle Stage"){
+        if(SceneManager.GetActiveScene().name != "Title Screen" && SceneManager.GetActiveScene().name != "Battle Stage" && SceneManager.GetActiveScene().name != "Cutscene 1"){
             currentItemImage = GameObject.Find("currentItemImage").GetComponent<Image>();
             currentItemDescription = GameObject.Find("currentItemDescription").GetComponent<TextMeshProUGUI>();
             currentItemAmount = GameObject.Find("currentItemAmount").GetComponent<TextMeshProUGUI>();

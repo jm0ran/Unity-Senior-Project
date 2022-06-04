@@ -319,6 +319,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: defaultPlayer
       objectReference: {fileID: 0}
+    - target: {fileID: 7013170602728527734, guid: 063ec37f9165d4d7cb6f519194ccbb96, type: 3}
+      propertyPath: m_Volume
+      value: 0.066
+      objectReference: {fileID: 0}
+    - target: {fileID: 7013170602728527734, guid: 063ec37f9165d4d7cb6f519194ccbb96, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 063ec37f9165d4d7cb6f519194ccbb96, type: 3}
 --- !u!1001 &860144897
