@@ -16,10 +16,12 @@ public class doorController : MonoBehaviour
 
     public GameObject fadeShade;
     public GameObject player;
+    public AudioSource doorSFX;
 
 //------------------------------------------------------------------------
 //Main User defined functions
     void nextScene(){
+        doorSFX.Play();
         //Grabs cam size because pixelperfect camera is weird
         sceneController.initPlayerPos[0] = destX;
         sceneController.initPlayerPos[1] = destY;
@@ -29,25 +31,14 @@ public class doorController : MonoBehaviour
         // StartCoroutine(fadeTransition(destScene));
     }
 
-    IEnumerator fadeTransition(string destScene){
-        CanvasGroup canvasGroup = fadeShade.GetComponent<CanvasGroup>();
-        float alpha = 0.0f;
-        while (alpha < 1f){
-            alpha += 0.05f;
-            canvasGroup.alpha = alpha;
-            yield return new WaitForSeconds(0.025f);
-        }
-        SceneManager.LoadScene(destScene);
-
-    }
-
 
 
 //------------------------------------------------------------------------
 //Unity defined functions
-    void Start(){
+    void Awake(){
         fadeShade = GameObject.FindWithTag("fadeShade");
         player = GameObject.FindWithTag("Player");
+        doorSFX = gameObject.GetComponent<AudioSource>();
     }
 }
 
