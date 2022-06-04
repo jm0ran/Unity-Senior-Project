@@ -28,6 +28,8 @@ public class UIController : MonoBehaviour
     public static GameObject inventoryPrefab;
 
     public static GameObject mapObj;
+
+    public static AudioSource nextDialogueSFX;
     
 
    public static GameObject findChild(string target, GameObject parent){
@@ -115,6 +117,7 @@ public class UIController : MonoBehaviour
         itemsContainer = findChild("itemsContainer", inventory);
         mapObj = GameObject.FindWithTag("Map");
         fadeShade = GameObject.Find("fadeShade");
+        nextDialogueSFX = GameObject.Find("dialogueSoundEffect").GetComponent<AudioSource>();
         
         inventoryPrefab = inventoryPrefabPointer;
         
@@ -138,6 +141,7 @@ public class UIController : MonoBehaviour
         setMenuState("photoDia");
         bool hasDialogue = true;
         if(dia.Count > 0){
+            nextDialogueSFX.Play();
             updateDia(dia[0], diaOrder[0]);
         }else{
             hasDialogue = false;
@@ -148,6 +152,7 @@ public class UIController : MonoBehaviour
                 while(!returnGate){
                     yield return null;
                 }
+                nextDialogueSFX.Play();
                 updateDia(dia[i], diaOrder[i]);
                 yield return new WaitForSeconds(0.3f);
                 returnGate = false;
@@ -169,6 +174,7 @@ public class UIController : MonoBehaviour
         setMenuState("noPhotoDia");
         bool hasDialogue = true;
         if(dia.Count > 0){
+            nextDialogueSFX.Play();
             updateDia(dia[0]);
         }else{
             hasDialogue = false;
@@ -179,6 +185,7 @@ public class UIController : MonoBehaviour
                 while(!returnGate){
                     yield return null;
                 }
+                nextDialogueSFX.Play();
                 updateDia(dia[i]);
                 yield return new WaitForSeconds(0.3f);
                 returnGate = false;

@@ -203,6 +203,7 @@ public class npcFollowUp : MonoBehaviour
         UIController.returnGate = false; //Used for return gate to prevent automatic progression
         UIController.setMenuState("noPhotoDia"); //Enables the noPhotoUI layer
         UIController.updateDia("You found a " + followUpArg); //Changes the text to the necessary description
+        gameObject.GetComponent<AudioSource>().Play();
         
         swapSprite();
 
