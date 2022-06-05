@@ -75,6 +75,7 @@ public class npcFollowUp : MonoBehaviour
     }
 
     IEnumerator kanyeArrivesCo(){
+        gameObject.GetComponent<AudioSource>().Play();
         GameObject fadeShade = UIController.fadeShade;
         CanvasGroup canvasGroup = fadeShade.GetComponent<CanvasGroup>();
         float alpha = 0.0f;
@@ -87,6 +88,14 @@ public class npcFollowUp : MonoBehaviour
         swapSprite();
         Vector3 targetPosition = new Vector3(0f, -0.5f, 0f);
         GameObject.FindWithTag("Player").GetComponent<Transform>().position = targetPosition;
+
+        //Set Player Look direction
+        Animator playerAnimator = GameObject.FindWithTag("Player").GetComponent<Animator>();
+        playerAnimator.SetFloat("horizontalSpeed", 0);
+        playerAnimator.SetFloat("verticalSpeed", 1);
+        playerAnimator.SetFloat("totSpeed", 1);
+        playerAnimator.SetInteger("lastDirection", 1);
+
         Vector3 currentCamPosition = GameObject.FindWithTag("MainCamera").GetComponent<Transform>().position;
         GameObject.FindWithTag("MainCamera").GetComponent<Transform>().position = new Vector3(targetPosition.x, targetPosition.y, currentCamPosition.z);
         //Need to update camera position on this later as well

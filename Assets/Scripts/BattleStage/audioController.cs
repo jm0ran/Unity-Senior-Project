@@ -166,6 +166,7 @@ public class audioController : MonoBehaviour
         //Imports the beatMap's json file which holds the information on each note
         mainMap = new beatMap();
         mainMap.readBeatMap("iWonder.json");
+        Debug.Log(mainMap.map.Count);
         for(var i = 0; i < mainMap.map.Count;i++){
             mainMap.map[i].time = mainMap.map[i].time + noteTimingOffset;
         }

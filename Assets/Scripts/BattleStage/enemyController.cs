@@ -11,7 +11,7 @@ public class enemyController : MonoBehaviour
    public Enemy enemyObj;
    public Slider enemySlider;
    public float enemyHealth = 100f;
-   public float enemyMaxHealth = 100f;
+   public float enemyMaxHealth = 108f;
    public GameObject victoryScreen;
    public AudioSource hitSoundEffect;
    public Transform drakeTransform;
@@ -32,9 +32,8 @@ public class enemyController : MonoBehaviour
       closingScreen.SetActive(false);
       loadEnemy();
       updateSlider();
-
-      //Temporary
    }
+
 
    void updateSlider(){
       float newValue = enemyHealth / enemyMaxHealth;
@@ -92,6 +91,7 @@ public class enemyController : MonoBehaviour
       //NEED TO SET PERSIST ID TO TRUE HERE TO PREVENT REPEAT OF BOSS BATTLE
       saveDataController.globalSave.oneTimes[7] = true;
       saveDataController.globalSave.oneTimes[8] = true;
+      saveDataController.globalSave.serializeSaveData();
       
       
       SceneManager.LoadScene("Title Screen");
