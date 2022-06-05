@@ -2,14 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
-public class Item{ //I removed monobehavior here which may or may not be a bad idea
-    //This is going to be my item class, properties
-    public string itemName;
-    public int itemAmount;
+//Item classes used to store data for each item in inventory
 
-    //This is the constructor for my class
-    public Item(string itemName, int itemAmount){
+[System.Serializable] //Serializable to JSON
+public class Item{
+    public string itemName; //item name
+    public int itemAmount; //Item amount
+
+    public Item(string itemName, int itemAmount){ //Constructor
+        //Assigns appropriate values
         this.itemName = itemName;
         this.itemAmount = itemAmount;
     }
