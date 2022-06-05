@@ -22,11 +22,13 @@ public class inventoryController : MonoBehaviour
     private static int currentSelection = 0; //Going to be static so that my input controller can change them (may be bad idea may be fine)
     public static bool inAction;
     private GameObject[] currentItemObjects;
+    public AudioSource inputSFX;
 
     //CurrentItemInfoBoxes
     private Image currentItemImage;
     private TextMeshProUGUI currentItemDescription;
     private TextMeshProUGUI currentItemAmount;
+    
 
 
 //------------------------------------------------------------------------
@@ -34,6 +36,7 @@ public class inventoryController : MonoBehaviour
 
     void menuInput(string inputPassed){
         if(inAction){
+            inputSFX.Play();
             if(inputPassed == "down"){
                 updateSelected(currentSelection + 1);
             }else if(inputPassed == "up"){
@@ -120,6 +123,7 @@ public class inventoryController : MonoBehaviour
             currentItemImage = GameObject.Find("currentItemImage").GetComponent<Image>();
             currentItemDescription = GameObject.Find("currentItemDescription").GetComponent<TextMeshProUGUI>();
             currentItemAmount = GameObject.Find("currentItemAmount").GetComponent<TextMeshProUGUI>();
+            inputSFX = GameObject.Find("dialogueSoundEffect").GetComponent<AudioSource>();
         }
         
 

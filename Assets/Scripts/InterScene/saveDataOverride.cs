@@ -26,10 +26,10 @@ public class saveDataOverride : MonoBehaviour
         };
         
         targetSave.inventory.items = new List<Item>(){
-            // new Item("Yeezy", 3),
-            // new Item("MBDTF", 1),
-            // new Item("Dragon Ball", 1),
-            // new Item("Black Glasses", 1)
+            new Item("Yeezy", 3),
+            new Item("MBDTF", 1),
+            new Item("Dragon Ball", 1),
+            new Item("Black Glasses", 1)
             
 
         };

@@ -59,6 +59,7 @@ public class UIController : MonoBehaviour
                 photoDia.SetActive(false);
                 noPhotoDia.SetActive(false);
                 inventory.SetActive(false);
+                nextDialogueSFX.Play();
 
                 //IMPORTANT TO HAVE FOLLOWUPS SET MENU STATE TO NONE AS THIS UPDATES CHARACTERS
                 mapObj.SendMessage("updateScene");
@@ -76,6 +77,7 @@ public class UIController : MonoBehaviour
                 inventory.SetActive(false);
                 break;
             case "inventory":
+                nextDialogueSFX.Play();
                 currentLayer = inventory;
                 photoDia.SetActive(false);
                 noPhotoDia.SetActive(false);
