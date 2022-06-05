@@ -10,7 +10,7 @@ public class enemyController : MonoBehaviour
    public string enemyName = "Drake"; //Going to be set dynamically in the future
    public Enemy enemyObj;
    public Slider enemySlider;
-   public float enemyHealth = 100f;
+   public float enemyHealth = 108f;
    public float enemyMaxHealth = 108f;
    public GameObject victoryScreen;
    public AudioSource hitSoundEffect;
@@ -35,7 +35,7 @@ public class enemyController : MonoBehaviour
    }
 
 
-   void updateSlider(){
+   public void updateSlider(){
       float newValue = enemyHealth / enemyMaxHealth;
       if(newValue <= 0){
          audioController targetAudioController = GameObject.Find("audioControllerObj").GetComponent<audioController>();
