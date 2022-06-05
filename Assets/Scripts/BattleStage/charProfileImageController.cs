@@ -5,7 +5,11 @@ using UnityEngine.UI;
 
 public class charProfileImageController : MonoBehaviour
 {
-    //Def a better way to do this that future me will find
+
+//Depreacated from old battle system, but was used to store character profile images
+//------------------------------------------------------------------------
+//Main Variables Used in Scripts
+    //Used Headers for visual editor, each Sprite variable just stores the enemy image sprite
     [Header("Characters")]
     public Sprite kanye;
     public Sprite goku;
@@ -15,31 +19,39 @@ public class charProfileImageController : MonoBehaviour
     public Sprite drake;
     public Sprite bandit;
 
+    private Image profile; //Profile image component reference
 
-    private Image profile;
-
+    //Dictionaries used to store sprites linked to strings, static so other components can access it easily
     public static Dictionary<string, Sprite> spriteDictionary = new Dictionary<string, Sprite>();
     public static Dictionary<string, Sprite> enemyDictionary = new Dictionary<string, Sprite>();
 
-    void Awake(){ //Want sprite dictionary loaded very early
-        //Sprite Dictionary
+//------------------------------------------------------------------------
+//User Defined Functions
+    void switchProfile(string charName){ //Switches current profile
+        profile.sprite = spriteDictionary[charName]; //Set profile sprite to passes sprite name looked up in dictionary
+    }
+
+
+//------------------------------------------------------------------------
+//Unity Defined Functions
+    void Awake(){ //Want sprite dictionary loaded in Awake
+        //Adds characters sprites to dictionary
         spriteDictionary.Add("Kanye", kanye);
         spriteDictionary.Add("Goku", goku);
         spriteDictionary.Add("Imposter", imposter);
 
-        //Enemy Dictionary
+        //Adds enemy sprites to dictionary
         enemyDictionary.Add("Drake", drake);
         enemyDictionary.Add("Bandit", bandit);
+
+        profile = gameObject.GetComponent<Image>(); //Sets reference to profile
     }
 
-    void Start(){
-        profile = gameObject.GetComponent<Image>();
-        switchProfile(saveDataController.globalSave.currentTeam[0]);
+    void Start(){ //On Start
+        switchProfile(saveDataController.globalSave.currentTeam[0]); //Switch profile to first character
     }
 
-    void switchProfile(string charName){
-        profile.sprite = spriteDictionary[charName];
-    }
+    
 
 
 }

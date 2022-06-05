@@ -3,17 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 
-[System.Serializable]
+//Class for characters, mostly deprecated upon the revamp of the battle system
+
+[System.Serializable] //Serializable to json
 public class Character
 {
-    public string name;
-    public int maxHealth;
-    public int currentHealth;
-    public int level;
-    public Move[] moves;
-    //Probably want to create a system for learning new moves at some point
+    public string name; //Character name
+    public int maxHealth; //Charcter max health
+    public int currentHealth; //Character current health
+    public int level; //Character level
+    public Move[] moves; //Array of character moves
 
-    public Character(string name, int maxHealth, Move[] moves){
+    public Character(string name, int maxHealth, Move[] moves){ //Constructor function
+        //Assigns passed values
         this.name = name;
         this.maxHealth = maxHealth;
         this.currentHealth = maxHealth;
@@ -21,14 +23,12 @@ public class Character
         this.moves = moves;
     }
 
-    public void changeMove(int moveIndex, string moveName, int moveMaxUses, int moveDamage){
-        //Need a try and catch loop for if the move index doesn't exist
-        //Moves should be created as a list of 4 null items, might switch to arrays latter as I think that may let me force size
+    public void changeMove(int moveIndex, string moveName, int moveMaxUses, int moveDamage){ //Changes a move based on passed values
         this.moves[moveIndex] = new Move(moveName, moveMaxUses, moveDamage);
     }
 
-    public void serialize(){
-        string jsonDataW = JsonUtility.ToJson(this);
-        System.IO.File.WriteAllText(Path.Combine(Application.streamingAssetsPath, "characters", this.name + ".json"), jsonDataW);
+    public void serialize(){ //Serialize character, function used purely in development to create character templates
+        string jsonDataW = JsonUtility.ToJson(this); //Convers to JSON
+        System.IO.File.WriteAllText(Path.Combine(Application.streamingAssetsPath, "characters", this.name + ".json"), jsonDataW); //Writes json to a file
     }
 }
