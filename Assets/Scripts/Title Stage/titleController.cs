@@ -16,6 +16,8 @@ public class titleController : MonoBehaviour
     private RectTransform leftCloud;
     private RectTransform rightCloud;
 
+    private AudioSource inputSFX;
+
     IEnumerator groundSlide(){ //Works better then it did before
         leftGround = groundA;
         rightGround = groundB;
@@ -59,9 +61,10 @@ public class titleController : MonoBehaviour
         }
     }
 
-    void startGame(){
+    IEnumerator startGame(){
         //This is where I need to implement logic based on persist object to decide what scene to load into
         //Work backwards in terms of checking to go to the latest scene
+        
         Debug.Log("Stage Transition");
         Debug.Log(saveDataController.globalSave.oneTimes[0]);
         string targetScene = "Cutscene 1"; //Default if save data check returns all false
@@ -74,22 +77,29 @@ public class titleController : MonoBehaviour
         }else if(saveDataController.globalSave.oneTimes[0]){ //If opening dialogue has been triggered
             targetScene = "Junk Cave";
         }
+        inputSFX.Play();
+        yield return new WaitForSeconds(0.5f);
         //There is already a default set which is cutscene 1
-        
         SceneManager.LoadScene(targetScene);
+
+        yield return null;
     }
 
 
 
 
 
-    void Start()
-    {
+    void Awake(){
+        inputSFX = gameObject.GetComponent<AudioSource>();
         flashingText = GameObject.FindWithTag("flashingText");
         groundA = GameObject.FindWithTag("groundA").GetComponent<RectTransform>();
         groundB = GameObject.FindWithTag("groundB").GetComponent<RectTransform>();
         cloudA = GameObject.FindWithTag("cloudA").GetComponent<RectTransform>();
         cloudB = GameObject.FindWithTag("cloudB").GetComponent<RectTransform>();
+    }
+
+    void Start()
+    {
         StartCoroutine(startFlashingText());
         StartCoroutine(groundSlide());
         StartCoroutine(cloudSlide());
@@ -97,7 +107,7 @@ public class titleController : MonoBehaviour
 
     void Update(){
         if(Input.GetKeyDown(KeyCode.Return)){
-            startGame();
+            StartCoroutine(startGame());
         }else if(Input.GetKeyDown(KeyCode.M)){
             SceneManager.LoadScene("Battle Stage");
         }
