@@ -4,54 +4,47 @@ using UnityEngine;
 
 public class junkyardController : MonoBehaviour
 {
-    //The main role of this controller is going to be to manage the state of specifically the junkyard, there will be others in this style for each map just to handle spawning of entities based on one time events and the sorts
-    //Should be reached right now by a send message to the object with the tag "Map"
 
-    //Objects
-    private GameObject ned;
+//The main role of this controller is going to be to manage the state of specifically the junkyard, there will be others in this style for each map just to handle spawning of entities based on one time events and the sorts
 
+//------------------------------------------------------------------------
+//Main Variables Used in Script
+    private GameObject ned; //Reference for ned GameObject
 
+//------------------------------------------------------------------------
+//Unity Defined Functions
     void Start(){ //This will determine who to spawn and all of that
-        ned = GameObject.Find("ned");
-       //Work from the top down likely although not super efficent probably wont get toooooo confusing but you get it don't you future Joseph, you're smarter than past Joseph so you must
-        updateScene();
+        updateScene(); //Update Scene
     }
         
     void updateScene(){
-        //The Ned Check Section
-        if(saveDataController.globalSave.oneTimes[5]){
-            GameObject ned = GameObject.Find("ned");
-            if(ned.GetComponent<SpriteRenderer>().enabled){ 
-                ned.GetComponent<SpriteRenderer>().enabled = false;
-                //Gets rid of the stuff
-                Component[] collidersToDestroy = ned.GetComponents<CircleCollider2D>() as Component[];
+        if(saveDataController.globalSave.oneTimes[5]){ //If secondary ned dialogue has occurred
+            GameObject ned = GameObject.Find("ned"); //Find ned
+            if(ned.GetComponent<SpriteRenderer>().enabled){ //If he is enabled
+                ned.GetComponent<SpriteRenderer>().enabled = false; //disable him
+                Component[] collidersToDestroy = ned.GetComponents<CircleCollider2D>() as Component[]; //Find his colliders
                 //Destroys both the collision collider and interaction collider
-                foreach(Component indCol in collidersToDestroy){
-                    Destroy(indCol as CircleCollider2D);
+                foreach(Component indCol in collidersToDestroy){ //For his colliders
+                    Destroy(indCol as CircleCollider2D); //Destroy them
                 }
             }
-        }
-        else if(saveDataController.globalSave.oneTimes[3]){ //If initial speak with ned
-            betterNPC npcComponent = ned.GetComponent<betterNPC>();
-            npcComponent.followUp = "checkForYeezys";
-            npcComponent.persistID = -1;
-            npcComponent.oneTime = false;
-            npcComponent.followUpArgument = null;  
-            npcComponent.dia = new List<string>(){
+        }else if(saveDataController.globalSave.oneTimes[3]){ //If initial speak with ned
+            betterNPC npcComponent = ned.GetComponent<betterNPC>(); //Get access to ned's betterNPC controller
+            npcComponent.followUp = "checkForYeezys"; //Change neds followup to Yeezy check
+            npcComponent.persistID = -1; //Change his peristsID to -1 so his initial dialogue doesnt happen again
+            npcComponent.oneTime = false; //Disable one time nature
+            npcComponent.followUpArgument = null;  //Disable his follow up arguments
+            npcComponent.dia = new List<string>(){ //New Dialogue
                 "Have you found the Yeezy?"
             };
-            npcComponent.diaOrder = new List<string>(){
+            npcComponent.diaOrder = new List<string>(){ //New Dialogue order
                 "ned"
             };
         }
-
         if(saveDataController.globalSave.oneTimes[6]){ //If Kanye has been summoned we need to unblock the pathway to Route 1
-            GameObject.Find("route1DoorBlocker").SendMessage("disableBarrier");
+            GameObject.Find("route1DoorBlocker").SendMessage("disableBarrier"); //Disable Route 1 Barrier
         }
 
-
-        //CHESTS
-        
     } 
 
 

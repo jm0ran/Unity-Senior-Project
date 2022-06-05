@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class saveDataOverride : MonoBehaviour
 {
+    //The save data override is used for debugging to set custom save values that update whenever the scene loads, is disabled for production
+
     private Save targetSave;
     
-
-
-
     void Start(){
         // targetSave = saveDataController.globalSave;
         // targetSave.oneTimes = new List<bool>(){

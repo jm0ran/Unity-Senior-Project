@@ -4,19 +4,22 @@ using UnityEngine;
 
 public class courtyardController : MonoBehaviour
 {
+
+//The courtyard controller is used to set state of scene based on the onetimes in the save object
+
+//------------------------------------------------------------------------
+//Unity Defined Functions
     void Start(){ 
-        updateScene();
-        GameObject.Find("kanyeNPC").GetComponent<SpriteRenderer>().enabled = false;
+        updateScene(); //Update scene when scene starts
+        GameObject.Find("kanyeNPC").GetComponent<SpriteRenderer>().enabled = false; //Disable kanyeNPC, whow will be enabled later for dialogue
     }
         
     void updateScene(){
-        if(saveDataController.globalSave.oneTimes[6]){ //Logic in here to decide whether to spawn statue with or without kanye on it, going to get to later
-            GameObject kanyeStatue = GameObject.Find(("kanyeStatue"));
-            kanyeStatue.SendMessage("swapSprite");
-            kanyeStatue.GetComponent<betterNPC>().dia = new List<string>();
-            kanyeStatue.GetComponent<betterNPC>().diaOrder = new List<string>();
+        if(saveDataController.globalSave.oneTimes[6]){ //If kanye statue interact has already happened
+            GameObject kanyeStatue = GameObject.Find(("kanyeStatue")); //Get Reference to statue
+            kanyeStatue.SendMessage("swapSprite"); //Swap statue sprite with empty sprite
+            kanyeStatue.GetComponent<betterNPC>().dia = new List<string>(); //Set dialogue to empty
+            kanyeStatue.GetComponent<betterNPC>().diaOrder = new List<string>(); //Set Dia order to empty
         }
-
-        //When kanye statue has been triggered I need to change the sprite on it in here and also change the dialogue
     }
 }
