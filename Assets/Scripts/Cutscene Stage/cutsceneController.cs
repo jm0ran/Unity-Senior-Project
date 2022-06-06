@@ -82,21 +82,21 @@ public class cutsceneController : MonoBehaviour
 
         inputSFX.Play();
         cutsceneImage.sprite = scene2; //Move to next cutscene image
-        renderText("Unknown Male: Plans changed…");
+        renderText("Drake: Plans changed…");
         yield return new WaitForSeconds(textDelay);
         while(!Input.GetKeyDown(KeyCode.Return) || locked){
             yield return null;
         }
 
         inputSFX.Play();
-        renderText("Unknown Male: Little old me has a little old job to do Ye");
+        renderText("Drake: Little old me has a little old job to do Ye");
         yield return new WaitForSeconds(textDelay);
         while(!Input.GetKeyDown(KeyCode.Return) || locked){
             yield return null;
         }
 
         inputSFX.Play();
-        renderText("Unknown Male: We no longer have a need for you");
+        renderText("Drake: We no longer have a need for you");
         yield return new WaitForSeconds(textDelay);
         while(!Input.GetKeyDown(KeyCode.Return) || locked){
             yield return null;
@@ -111,8 +111,8 @@ public class cutsceneController : MonoBehaviour
         }
 
         inputSFX.Play();
-        cutsceneImage.sprite = scene2; //Move to next cutscene image
-        renderText("Unknown Female: It’s time to end this Bad Blood Kanye");
+        cutsceneImage.sprite = scene4; //Move to next cutscene image
+        renderText("Taylor: It’s time to end this Bad Blood Kanye");
         yield return new WaitForSeconds(textDelay);
         while(!Input.GetKeyDown(KeyCode.Return) || locked){
             yield return null;
@@ -127,7 +127,7 @@ public class cutsceneController : MonoBehaviour
         }
         
         inputSFX.Play();
-        cutsceneImage.sprite = scene4; //Move to next cutscene image
+        cutsceneImage.sprite = scene0; //Move to next cutscene image
         renderText("Almost a decade later many have forgotten about Ye, but not all have given up hope…");
         yield return new WaitForSeconds(textDelay);
         while(!Input.GetKeyDown(KeyCode.Return) || locked){
