@@ -5,20 +5,23 @@ using UnityEngine;
 public class cameraController : MonoBehaviour
 {
 
+//Camera controller focuses on initial camera position and the camera following the player
+
 //------------------------------------------------------------------------
 //Main variables used in Script
-    public Transform player;
-    public Vector3 offset;
-    public Camera cam; 
-    public GameObject map;
-    public SpriteRenderer mapSprite;
-    public float[] mapBoundaries;
-    public float[] newCameraCords;
+    public Transform player; //Reference to player transform
+    public Vector3 offset; //Offset 
+    public Camera cam; //Reference to camera
+    public GameObject map; //Reference to map object
+    public SpriteRenderer mapSprite; //Reference to mapSprite renderer
+    public float[] mapBoundaries; //Storage for mapBoundaries
+    public float[] newCameraCords; //Storage for newCameraCords
 
 //------------------------------------------------------------------------
 //User Defined Functions
     void setCamera(string cameraPos){ //Used to move the camera to starting positions stores in the Scene Controller
-        switch(cameraPos){
+        switch(cameraPos){ //Switch statement based on intended camera position
+            //Each case moves the camera based on the passed cameraPos for the start of different scenes
             case "topLeft":
                 newCameraCords[0] = -(mapBoundaries[0]) + sceneController.camSize * sceneController.camAspect;
                 newCameraCords [1] = (mapBoundaries[1]) - sceneController.camSize;
@@ -39,7 +42,7 @@ public class cameraController : MonoBehaviour
 
 //------------------------------------------------------------------------
 //Unity Defined Functions
-    void Awake(){ //Have to be cautious around timing on functions like Awake and Start
+    void Awake(){
         //Grabs the necessary components
         cam = gameObject.GetComponent<Camera>();
         map = GameObject.FindWithTag("Map");
@@ -53,7 +56,7 @@ public class cameraController : MonoBehaviour
         player.position = new Vector3(sceneController.initPlayerPos[0], sceneController.initPlayerPos[1], player.position.z);
     }
 
-    void Update(){
+    void Update(){ //Update function focuses on camera following player within boundaries
         //If Camera's x position is at the maximum distance for X stop updating in relation to player
         if(cam.orthographicSize * cam.aspect + Mathf.Abs(player.position.x) < mapBoundaries[0]){
             newCameraCords[0] = player.position.x;
@@ -66,8 +69,7 @@ public class cameraController : MonoBehaviour
         }else{
             newCameraCords[1] = transform.position.y;
         }
-
-        transform.position = new Vector3(newCameraCords[0], newCameraCords[1], transform.position.z);
+        transform.position = new Vector3(newCameraCords[0], newCameraCords[1], transform.position.z); //Finalize the position for the camera
         
     }
 }

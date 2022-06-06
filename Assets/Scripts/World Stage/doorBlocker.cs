@@ -4,43 +4,51 @@ using UnityEngine;
 
 public class doorBlocker : MonoBehaviour
 {
-    public bool isActive = false;
-    public string returnDirection = "up";
-    public GameObject playerObj;
-    public string message = "";
 
-    public void Awake(){
-        playerObj = GameObject.FindWithTag("Player");
-    }
+//The door blocker controller is on all door blockers meant to prevent the player from access certain areas while returning dialogue
 
+//------------------------------------------------------------------------
+//Main Variables Used in Scripts
+    public bool isActive = false; //bool for state of blocker
+    public string returnDirection = "up"; //Direction for blocker to send player
+    public GameObject playerObj; //Reference to player object
+    public string message = ""; //Message for blocker
 
-    public void recievePlayer(){
-        if(!isActive){
-            StartCoroutine(recievePlayerCo());
+//------------------------------------------------------------------------
+//User Defined Function
+    public void recievePlayer(){ //Function to recieve player
+        if(!isActive){ //If blocker is active
+            StartCoroutine(recievePlayerCo()); //Starts recievePlayerCoroutine
         } 
     } 
 
-    public IEnumerator recievePlayerCo(){
-        UIController.returnGate = false;
-        isActive = true;
-        playerObj.SendMessage("lockPlayer", true);
-        UIController.setMenuState("noPhotoDia");
-        UIController.updateDia(message);
-        while(!UIController.returnGate){
-            yield return null;
+    public IEnumerator recievePlayerCo(){ //Coroutine for recieving the player
+        UIController.returnGate = false; //Sets returnGate case to fault
+        isActive = true; //Sets blocker to active
+        playerObj.SendMessage("lockPlayer", true); //Lock player controlled movement
+        UIController.setMenuState("noPhotoDia"); //Set menu state to noPhotoDia
+        UIController.updateDia(message); //Set message to dialogue box
+        while(!UIController.returnGate){ //Until the return gate flips
+            yield return null; //Return null
         }
-        UIController.returnGate = false;
-        UIController.setMenuState("none");
-        playerObj.SendMessage("lockPlayer", false);
-        isActive = false;
-        yield return null;
+        UIController.returnGate = false; //Reset return gate
+        UIController.setMenuState("none"); //Disable the noPhotoDia scene
+        playerObj.SendMessage("lockPlayer", false); //Unlock player movement
+        isActive = false; //Return to not active
+        yield return null; //Default return case
     }
 
-    void disableBarrier(){
-        Component[] colliders = GetComponents<PolygonCollider2D>() as Component[];
-        foreach(Component collider in colliders){
-            Destroy(collider as PolygonCollider2D);
+    void disableBarrier(){ //Function to disable the barrier 
+        Component[] colliders = GetComponents<PolygonCollider2D>() as Component[]; //Store the barriers colliders
+        foreach(Component collider in colliders){ //For each collider
+            Destroy(collider as PolygonCollider2D); //Destroy it
         }
             
+    }
+
+//------------------------------------------------------------------------
+//Unity Defined Functions
+    public void Awake(){
+        playerObj = GameObject.FindWithTag("Player"); //Grab player reference
     }
 }

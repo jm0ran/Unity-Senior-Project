@@ -5,59 +5,48 @@ using UnityEngine.SceneManagement;
 
 public class inputController : MonoBehaviour
 {
-   
+
+//The input controller handles almost all of the input bar a few small key strokes and player movement
+
 //------------------------------------------------------------------------
 //Predefined Script Variables   
- //Input Controller is where I eventually want to move all my key triggers to keep them all organized in one place
-    private GameObject UI;
-    private GameObject player;
-    public GameObject persistController;
-    private GameObject inventoryController;
-
+    private GameObject UI; //Reference to UI Object
+    private GameObject player; //Reference to player Object
+    public GameObject persistController; //Reference to persist controller
+    private GameObject inventoryController; //Reference to inventoryController
 
     //STATES
-    public bool playerLocked = false;
-    public bool inInventory = false;
-    public bool inDialogue = false;
+    public bool playerLocked = false; //Is player locked
+    public bool inInventory = false; //Is in inventory
+    public bool inDialogue = false; //Is in dialogue
 
 //User Defined Functions
-
 
 //------------------------------------------------------------------------
 //Unity Defined Functions
     void Update(){ //Used for singular non movement button inputs like menus and interactiosn
-        //general Input Logic
-        if(Input.GetKeyDown(KeyCode.I)){
+        //General Input Logic
+        if(Input.GetKeyDown(KeyCode.I)){ //If player presss I
             //Need to lock player during inventory but want to fix the input controller first
-            if(!inInventory){
-                if(UIController.currentLayer == null){
-                    UIController.setMenuState("inventory");
-                    inInventory = true;
+            if(!inInventory){ //if not in inventory
+                if(UIController.currentLayer == null){ //Clear current layer
+                    UIController.setMenuState("inventory"); //Set menu state to inventory
+                    inInventory = true; //Set in inventory to true
                 }
+            }else{ //If already in inventory
+                UIController.setMenuState("none"); //exit inventory
+                inInventory = false; //Set in inventory to false
             }
-            else{
-                UIController.setMenuState("none");
-                inInventory = false;
-            }
-            
         }
-        if(Input.GetKeyDown(KeyCode.O)){
-
+        if(Input.GetKeyDown(KeyCode.E)){ //If player hits E
+            player.SendMessage("triggerInteract"); //Trigger an interaction
         }
-        if(Input.GetKeyDown(KeyCode.E)){
-            player.SendMessage("triggerInteract");
+        if(Input.GetKeyDown(KeyCode.Return)){ //If player hits return
+            UIController.returnGate = true; //Flip return gate
         }
-        if(Input.GetKeyDown(KeyCode.M)){
-            SceneManager.LoadScene("Battle Stage");
-        }
-        if(Input.GetKeyDown(KeyCode.Return)){
-            UIController.returnGate = true;
-        }
-
-
-        //Should section this by state
-        if(UIController.currentLayer == UIController.inventory){
-            string inputToPass = null;
+        if(UIController.currentLayer == UIController.inventory){ //Inventory control
+            string inputToPass = null; //Input to pass default is null
+            //Sets input to pass to key pressed
             if(Input.GetKeyDown(KeyCode.UpArrow)){
                 inputToPass = "up";
             }
@@ -70,24 +59,17 @@ public class inputController : MonoBehaviour
             if(Input.GetKeyDown(KeyCode.LeftArrow)){
                 inputToPass = "left";
             }
-            if(inputToPass != null){
-                inventoryController.SendMessage("menuInput", inputToPass);
-
+            if(inputToPass != null){ //If there is an input to pass
+                inventoryController.SendMessage("menuInput", inputToPass); //Send input to the inventory controller to be processes
             }
         }
-
-
-       //Move logic is staying in player controller right now because the locking system is weird to implement here so I'm working on it
-        
     }
+
     void Awake(){
+        //Assigns values to the appropriate variables
         persistController = GameObject.Find("persistController");
         UI = GameObject.FindWithTag("UI");
         player = GameObject.FindWithTag("Player");
         inventoryController = GameObject.FindWithTag("inventory");
-    }
-
-    void Start(){
-        
     }
 }
