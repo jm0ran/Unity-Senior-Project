@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class sceneController : MonoBehaviour
 {
@@ -26,7 +27,7 @@ public class sceneController : MonoBehaviour
         player = GameObject.FindWithTag("Player"); //Gets player reference
         cam = GameObject.FindWithTag("MainCamera"); //Gets camera reference
         if(sceneController.origin != null){ //Prevents from running on startup of program
-            if(cameraPos != null){ //If camera position is set to something
+            if(cameraPos != null && SceneManager.GetActiveScene().name != "Battle Stage"){ //If camera position is set to something
                 cam.SendMessage("setCamera", cameraPos); //Send new camera position
             }else{ //If camera position is null
                 //Camera will just lock to player

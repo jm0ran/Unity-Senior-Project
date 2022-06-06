@@ -209,6 +209,8 @@ public class UIController : MonoBehaviour
         }
     }
 
+//------------------------------------------------------------------------
+//Unity Defined Function
     void Awake(){
         //Assign the appropriate values
         player = GameObject.FindWithTag("Player");

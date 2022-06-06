@@ -29,7 +29,7 @@ public class junkyardController : MonoBehaviour
                 }
             }
         }else if(saveDataController.globalSave.oneTimes[3]){ //If initial speak with ned
-            betterNPC npcComponent = ned.GetComponent<betterNPC>(); //Get access to ned's betterNPC controller
+            betterNPC npcComponent = GameObject.Find("ned").GetComponent<betterNPC>(); //Get access to ned's betterNPC controller
             npcComponent.followUp = "checkForYeezys"; //Change neds followup to Yeezy check
             npcComponent.persistID = -1; //Change his peristsID to -1 so his initial dialogue doesnt happen again
             npcComponent.oneTime = false; //Disable one time nature
