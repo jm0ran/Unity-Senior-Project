@@ -1,7 +1,8 @@
-# YeBound
-A Kanye West RPG written in Unity
+# Unity Senior Project - YeBound
 
-YeBound is planned to be a combination of an RPG, Rythm, and Turn Based game
+Authors: Joe Moran (development), Andrew Luna (art)
 
-The game will be playable silently through only the github build but will be intended for the Player to provide the Kanye Songs from legal sources
+Senior year project at Platt Technical High School. Created a comedic RPG/rhythm game in Unity with C#. Art and animation creates in Aseprite. Completed a brief demo including an exploration section as well as 1 implemented song for the rhythm game section. Developed skills with Unity, C#, Object Oriented Design.
+
+
 
